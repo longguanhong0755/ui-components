@@ -2,9 +2,8 @@
 
 import { useEffect, useRef } from "react"
 import type { CSSProperties } from "react"
-// Pinned, and a full URL rather than a bare name. Common builders resolve
-// bare specifiers through a CDN at whatever version is current, and this
-// component is written against r170: on r186 the instanced
+// Pinned, and a full URL rather than a bare name. Common builders resolve bare specifiers through a CDN at whatever version is
+// current, and this component is written against r170: on r186 the instanced
 // draws fail with GL_INVALID_OPERATION and the capsule shell renders as
 // nothing at all.
 import * as THREE from "https://esm.sh/three@0.170.0"
