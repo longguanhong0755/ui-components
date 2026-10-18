@@ -224,7 +224,7 @@ type TextSphereProps = {
 };
 
 function __BaseImpl_TextSphere({
-    word = "origin kit",
+    word = "hello world",
     color = "#ffffff",
     font = {
         fontFamily: "Inter",
@@ -546,7 +546,7 @@ const __presetProps = {
     "lineHeight": "1.5em",
     "letterSpacing": "0em"
   },
-  "word": "origin kit",
+  "word": "hello world",
   "color": "#ffffff",
   "speed": 7,
   "twist": 50,

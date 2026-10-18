@@ -224,7 +224,7 @@ type TextSphereProps = {
 };
 
 function __BaseImpl_TextSphere({
-    word = "origin kit",
+    word = "hello world",
     color = "#ffffff",
     font = {
         fontFamily: "Inter",

@@ -8,8 +8,6 @@ text effects, cursors, backgrounds, and more. Every component is a single self-c
 共 650+ 个基础组件和 450+ 个预设变体。每个组件都是单个自包含的 `.tsx` 文件，
 复制进项目即可使用。
 
-> This repository is refreshed automatically every 7 days.
-
 ## 快速开始 / Quick Start
 
 1. 找到你喜欢的组件，把 `components/<name>.tsx` 复制到你的项目里（例如 `src/components/ui/`）。
