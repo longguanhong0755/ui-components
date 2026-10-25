@@ -297,18 +297,6 @@
   "posterBytes": 110879
  },
  {
-  "slug": "astralume",
-  "name": "Astralume",
-  "category": "interactive-elements",
-  "noVideo": true,
-  "v": "",
-  "pv": "mvevmbku",
-  "file": "",
-  "poster": "astralume.jpg",
-  "bytes": 0,
-  "posterBytes": 27705
- },
- {
   "slug": "atlas-sash",
   "name": "Atlas Sash",
   "category": "animation",
