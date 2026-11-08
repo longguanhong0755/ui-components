@@ -1,9 +1,9 @@
 {
  "source": "https://pro.reactbits.dev",
- "generatedAt": "2026-11-08T10:14:11+00:00",
+ "generatedAt": "2026-11-08T10:19:07+00:00",
  "webpack": "https://pro.reactbits.dev/_next/static/chunks/webpack-9b5a3d0f56973969.js?dpl=dpl_wN86oRS3t6xUGV2WPQ9rJuVdixkW",
- "total": 218,
- "ok": 218,
+ "total": 230,
+ "ok": 230,
  "failed": 0,
  "components": [
   {
@@ -1386,6 +1386,21 @@
    "description": "A tilted stack of circles that cycles through your images"
   },
   {
+   "slug": "circles",
+   "module": 13430,
+   "chunk": 13430,
+   "deps": [],
+   "url": "https://pro.reactbits.dev/_next/static/chunks/13430.6606e9a5a352af4e.js",
+   "fallback": true,
+   "bytes": 41281,
+   "chunkFile": "chunks/circles__13430.js",
+   "entryBytes": 26574,
+   "entryExtracted": true,
+   "name": "Circles",
+   "category": "UI & Cards",
+   "description": "Rings of images orbiting a center"
+  },
+  {
    "slug": "click-stack",
    "module": 51808,
    "chunk": 29427,
@@ -1993,6 +2008,21 @@
    "description": "A ribbon of images winding through 3D space"
   },
   {
+   "slug": "device",
+   "module": 30038,
+   "chunk": 30038,
+   "deps": [],
+   "url": "https://pro.reactbits.dev/_next/static/chunks/30038.d49d3fd7afda1f3f.js",
+   "fallback": true,
+   "bytes": 31249,
+   "chunkFile": "chunks/device__30038.js",
+   "entryBytes": 29504,
+   "entryExtracted": true,
+   "name": "Device",
+   "category": "3D & Shaders",
+   "description": "A studio-lit 3D phone mockup that frames any image or content"
+  },
+  {
    "slug": "dither-cursor",
    "module": 4120,
    "chunk": 4120,
@@ -2256,6 +2286,21 @@
    "name": "Draggable Grid",
    "category": "UI & Cards",
    "description": "A grid you can drag around with smooth momentum"
+  },
+  {
+   "slug": "eclipse",
+   "module": 94875,
+   "chunk": 94875,
+   "deps": [],
+   "url": "https://pro.reactbits.dev/_next/static/chunks/94875.8ac6e6718c3b8c3f.js",
+   "fallback": true,
+   "bytes": 32204,
+   "chunkFile": "chunks/eclipse__94875.js",
+   "entryBytes": 30451,
+   "entryExtracted": true,
+   "name": "Eclipse",
+   "category": "Backgrounds",
+   "description": "A dark shape eclipsing a soft, color-shifting corona of light"
   },
   {
    "slug": "elastic-lettering",
@@ -2982,6 +3027,21 @@
    "name": "Glitter Warp",
    "category": "Backgrounds",
    "description": "A glittering starfield warp tunnel"
+  },
+  {
+   "slug": "globe",
+   "module": 61875,
+   "chunk": 61875,
+   "deps": [],
+   "url": "https://pro.reactbits.dev/_next/static/chunks/61875.bdd7bf5cee77dd9b.js",
+   "fallback": true,
+   "bytes": 13401,
+   "chunkFile": "chunks/globe__61875.js",
+   "entryBytes": 11860,
+   "entryExtracted": true,
+   "name": "Globe",
+   "category": "3D & Shaders",
+   "description": "A dotted 3D globe with animated arcs"
   },
   {
    "slug": "glowing-ridges",
@@ -4018,6 +4078,21 @@
    "description": "A label that becomes the cursor and trails a 3D stack"
   },
   {
+   "slug": "landscape",
+   "module": 39396,
+   "chunk": 39396,
+   "deps": [],
+   "url": "https://pro.reactbits.dev/_next/static/chunks/39396.6e517d31f921a301.js",
+   "fallback": true,
+   "bytes": 20395,
+   "chunkFile": "chunks/landscape__39396.js",
+   "entryBytes": 18854,
+   "entryExtracted": true,
+   "name": "Landscape",
+   "category": "Backgrounds",
+   "description": "An endless landscape rolling toward the horizon"
+  },
+  {
    "slug": "lenticular-carousel",
    "module": 96289,
    "chunk": 96289,
@@ -4094,6 +4169,21 @@
    "name": "Light Droplets",
    "category": "Backgrounds",
    "description": "Streaks of light falling like rain"
+  },
+  {
+   "slug": "lightspeed",
+   "module": 9530,
+   "chunk": 9530,
+   "deps": [],
+   "url": "https://pro.reactbits.dev/_next/static/chunks/9530.dae42e732dd490c3.js",
+   "fallback": true,
+   "bytes": 12034,
+   "chunkFile": "chunks/lightspeed__9530.js",
+   "entryBytes": 10494,
+   "entryExtracted": true,
+   "name": "Lightspeed",
+   "category": "Backgrounds",
+   "description": "A hyperspace jump of streaking stars"
   },
   {
    "slug": "liquid-ascii",
@@ -4590,6 +4680,21 @@
    "name": "Modal Cards",
    "category": "UI & Cards",
    "description": "Cards that expand into full-screen modals"
+  },
+  {
+   "slug": "mosaic",
+   "module": 93,
+   "chunk": 93,
+   "deps": [],
+   "url": "https://pro.reactbits.dev/_next/static/chunks/93.8bcd8b900edc98a9.js",
+   "fallback": true,
+   "bytes": 12199,
+   "chunkFile": "chunks/mosaic__93.js",
+   "entryBytes": 10661,
+   "entryExtracted": true,
+   "name": "Mosaic",
+   "category": "Backgrounds",
+   "description": "A tiled mosaic over a moving wave or video"
   },
   {
    "slug": "mosaic-waves",
@@ -5559,6 +5664,36 @@
    "description": "A photo you can stir like liquid"
   },
   {
+   "slug": "portal",
+   "module": 95782,
+   "chunk": 95782,
+   "deps": [],
+   "url": "https://pro.reactbits.dev/_next/static/chunks/95782.928921be0505d10a.js",
+   "fallback": true,
+   "bytes": 22433,
+   "chunkFile": "chunks/portal__95782.js",
+   "entryBytes": 20886,
+   "entryExtracted": true,
+   "name": "Portal",
+   "category": "3D & Shaders",
+   "description": "A glowing portal of warp-speed light you can click to jump through"
+  },
+  {
+   "slug": "preloader",
+   "module": 7412,
+   "chunk": 7412,
+   "deps": [],
+   "url": "https://pro.reactbits.dev/_next/static/chunks/7412.8b4dc469f9782919.js",
+   "fallback": true,
+   "bytes": 15158,
+   "chunkFile": "chunks/preloader__7412.js",
+   "entryBytes": 13618,
+   "entryExtracted": true,
+   "name": "Preloader",
+   "category": "UI & Cards",
+   "description": "Loading screens in five styles"
+  },
+  {
    "slug": "prism-carousel",
    "module": 90297,
    "chunk": 57440,
@@ -5673,6 +5808,21 @@
    "name": "Radial Liquid",
    "category": "Backgrounds",
    "description": "Liquid ripples spreading from a center"
+  },
+  {
+   "slug": "ravine",
+   "module": 63018,
+   "chunk": 63018,
+   "deps": [],
+   "url": "https://pro.reactbits.dev/_next/static/chunks/63018.261cbf7e2ec03259.js",
+   "fallback": true,
+   "bytes": 12031,
+   "chunkFile": "chunks/ravine__63018.js",
+   "entryBytes": 10486,
+   "entryExtracted": true,
+   "name": "Ravine",
+   "category": "Backgrounds",
+   "description": "An endless flight down a dark canyon"
   },
   {
    "slug": "reel-gallery",
@@ -8142,6 +8292,21 @@
    "description": "A ring of photos that blurs as it spins and clicks into place"
   },
   {
+   "slug": "vortex",
+   "module": 81754,
+   "chunk": 81754,
+   "deps": [],
+   "url": "https://pro.reactbits.dev/_next/static/chunks/81754.2119edc97328fa92.js",
+   "fallback": true,
+   "bytes": 9168,
+   "chunkFile": "chunks/vortex__81754.js",
+   "entryBytes": 7627,
+   "entryExtracted": true,
+   "name": "Vortex",
+   "category": "Backgrounds",
+   "description": "An endless spinning tunnel of particles"
+  },
+  {
    "slug": "voxel-arc",
    "module": 99159,
    "chunk": 99159,
@@ -8258,6 +8423,21 @@
    "name": "Warped Card",
    "category": "3D & Shaders",
    "description": "An image card that bulges under the cursor"
+  },
+  {
+   "slug": "watercolor",
+   "module": 79304,
+   "chunk": 79304,
+   "deps": [],
+   "url": "https://pro.reactbits.dev/_next/static/chunks/79304.a055099b3b197dac.js",
+   "fallback": true,
+   "bytes": 10682,
+   "chunkFile": "chunks/watercolor__79304.js",
+   "entryBytes": 9117,
+   "entryExtracted": true,
+   "name": "Watercolor",
+   "category": "Backgrounds",
+   "description": "Two colors blending like watercolor"
   },
   {
    "slug": "wave-lettering",

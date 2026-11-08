@@ -1,7 +1,7 @@
 {
  "source": "https://pro.reactbits.dev",
- "generatedAt": "2026-11-08T10:14:11+00:00",
- "count": 218,
+ "generatedAt": "2026-11-08T10:19:07+00:00",
+ "count": 230,
  "components": [
   {
    "slug": "3d-letter-swap",
@@ -14,7 +14,8 @@
    "chunkFile": "chunks/3d-letter-swap__58394.js",
    "componentFile": "components/3d-letter-swap.js",
    "bytes": 10701,
-   "entryBytes": 9160
+   "entryBytes": 9160,
+   "fallback": false
   },
   {
    "slug": "3d-text-reveal",
@@ -27,7 +28,8 @@
    "chunkFile": "chunks/3d-text-reveal__77705.js",
    "componentFile": "components/3d-text-reveal.js",
    "bytes": 8315,
-   "entryBytes": 6774
+   "entryBytes": 6774,
+   "fallback": false
   },
   {
    "slug": "agentic-ball",
@@ -40,7 +42,8 @@
    "chunkFile": "chunks/agentic-ball__91424.js",
    "componentFile": "components/agentic-ball.js",
    "bytes": 8898,
-   "entryBytes": 7353
+   "entryBytes": 7353,
+   "fallback": false
   },
   {
    "slug": "ai-blob",
@@ -53,7 +56,8 @@
    "chunkFile": "chunks/ai-blob__29136.js",
    "componentFile": "components/ai-blob.js",
    "bytes": 25842,
-   "entryBytes": 24291
+   "entryBytes": 24291,
+   "fallback": false
   },
   {
    "slug": "album-rail",
@@ -66,7 +70,8 @@
    "chunkFile": "chunks/album-rail__36880.js",
    "componentFile": "components/album-rail.js",
    "bytes": 47130,
-   "entryBytes": 45367
+   "entryBytes": 45367,
+   "fallback": false
   },
   {
    "slug": "animated-list",
@@ -79,7 +84,8 @@
    "chunkFile": "chunks/animated-list__5326.js",
    "componentFile": "components/animated-list.js",
    "bytes": 15621,
-   "entryBytes": 13030
+   "entryBytes": 13030,
+   "fallback": false
   },
   {
    "slug": "arc-cursor",
@@ -92,7 +98,8 @@
    "chunkFile": "chunks/arc-cursor__77507.js",
    "componentFile": "components/arc-cursor.js",
    "bytes": 35043,
-   "entryBytes": 33290
+   "entryBytes": 33290,
+   "fallback": false
   },
   {
    "slug": "ascii-cursor",
@@ -105,7 +112,8 @@
    "chunkFile": "chunks/ascii-cursor__55113.js",
    "componentFile": "components/ascii-cursor.js",
    "bytes": 11280,
-   "entryBytes": 9705
+   "entryBytes": 9705,
+   "fallback": false
   },
   {
    "slug": "ascii-ripple",
@@ -118,7 +126,8 @@
    "chunkFile": "chunks/ascii-ripple__35426.js",
    "componentFile": "components/ascii-ripple.js",
    "bytes": 19398,
-   "entryBytes": 17853
+   "entryBytes": 17853,
+   "fallback": false
   },
   {
    "slug": "ascii-tiles",
@@ -131,7 +140,8 @@
    "chunkFile": "chunks/ascii-tiles__68640.js",
    "componentFile": "components/ascii-tiles.js",
    "bytes": 14489,
-   "entryBytes": 12914
+   "entryBytes": 12914,
+   "fallback": false
   },
   {
    "slug": "ascii-waves",
@@ -144,7 +154,8 @@
    "chunkFile": "chunks/ascii-waves__73216.js",
    "componentFile": "components/ascii-waves.js",
    "bytes": 11883,
-   "entryBytes": 10342
+   "entryBytes": 10342,
+   "fallback": false
   },
   {
    "slug": "astral-shell",
@@ -157,7 +168,8 @@
    "chunkFile": "chunks/astral-shell__27415.js",
    "componentFile": "components/astral-shell.js",
    "bytes": 25682,
-   "entryBytes": 23929
+   "entryBytes": 23929,
+   "fallback": false
   },
   {
    "slug": "aura-blob",
@@ -170,7 +182,8 @@
    "chunkFile": "chunks/aura-blob__5073.js",
    "componentFile": "components/aura-blob.js",
    "bytes": 17056,
-   "entryBytes": 15516
+   "entryBytes": 15516,
+   "fallback": false
   },
   {
    "slug": "aurora-beam",
@@ -183,7 +196,8 @@
    "chunkFile": "chunks/aurora-beam__68444.js",
    "componentFile": "components/aurora-beam.js",
    "bytes": 18204,
-   "entryBytes": 16663
+   "entryBytes": 16663,
+   "fallback": false
   },
   {
    "slug": "aurora-blur",
@@ -196,7 +210,8 @@
    "chunkFile": "chunks/aurora-blur__81716.js",
    "componentFile": "components/aurora-blur.js",
    "bytes": 11958,
-   "entryBytes": 10417
+   "entryBytes": 10417,
+   "fallback": false
   },
   {
    "slug": "axial-beam",
@@ -209,7 +224,8 @@
    "chunkFile": "chunks/axial-beam__29595.js",
    "componentFile": "components/axial-beam.js",
    "bytes": 22449,
-   "entryBytes": 20698
+   "entryBytes": 20698,
+   "fallback": false
   },
   {
    "slug": "bend-gallery",
@@ -222,7 +238,8 @@
    "chunkFile": "chunks/bend-gallery__5226.js",
    "componentFile": "components/bend-gallery.js",
    "bytes": 15502,
-   "entryBytes": 13962
+   "entryBytes": 13962,
+   "fallback": false
   },
   {
    "slug": "bending-marquee",
@@ -235,7 +252,8 @@
    "chunkFile": "chunks/bending-marquee__56388.js",
    "componentFile": "components/bending-marquee.js",
    "bytes": 11942,
-   "entryBytes": 10391
+   "entryBytes": 10391,
+   "fallback": false
   },
   {
    "slug": "binary-orbits",
@@ -248,7 +266,8 @@
    "chunkFile": "chunks/binary-orbits__83642.js",
    "componentFile": "components/binary-orbits.js",
    "bytes": 33675,
-   "entryBytes": 31922
+   "entryBytes": 31922,
+   "fallback": false
   },
   {
    "slug": "black-hole",
@@ -261,7 +280,8 @@
    "chunkFile": "chunks/black-hole__30792.js",
    "componentFile": "components/black-hole.js",
    "bytes": 26253,
-   "entryBytes": 24508
+   "entryBytes": 24508,
+   "fallback": false
   },
   {
    "slug": "blinking-dots",
@@ -274,7 +294,8 @@
    "chunkFile": "chunks/blinking-dots__85475.js",
    "componentFile": "components/blinking-dots.js",
    "bytes": 15532,
-   "entryBytes": 13991
+   "entryBytes": 13991,
+   "fallback": false
   },
   {
    "slug": "blinking-squares",
@@ -287,7 +308,8 @@
    "chunkFile": "chunks/blinking-squares__27133.js",
    "componentFile": "components/blinking-squares.js",
    "bytes": 10082,
-   "entryBytes": 8519
+   "entryBytes": 8519,
+   "fallback": false
   },
   {
    "slug": "blur-highlight",
@@ -300,7 +322,8 @@
    "chunkFile": "chunks/blur-highlight__87066.js",
    "componentFile": "components/blur-highlight.js",
    "bytes": 9253,
-   "entryBytes": 6879
+   "entryBytes": 6879,
+   "fallback": false
   },
   {
    "slug": "blurred-rays",
@@ -313,7 +336,8 @@
    "chunkFile": "chunks/blurred-rays__50388.js",
    "componentFile": "components/blurred-rays.js",
    "bytes": 33393,
-   "entryBytes": 31648
+   "entryBytes": 31648,
+   "fallback": false
   },
   {
    "slug": "card-spread",
@@ -326,7 +350,8 @@
    "chunkFile": "chunks/card-spread__4297.js",
    "componentFile": "components/card-spread.js",
    "bytes": 11528,
-   "entryBytes": 9988
+   "entryBytes": 9988,
+   "fallback": false
   },
   {
    "slug": "celebration-cursor",
@@ -339,7 +364,8 @@
    "chunkFile": "chunks/celebration-cursor__84134.js",
    "componentFile": "components/celebration-cursor.js",
    "bytes": 24191,
-   "entryBytes": 22438
+   "entryBytes": 22438,
+   "fallback": false
   },
   {
    "slug": "center-flow",
@@ -352,7 +378,8 @@
    "chunkFile": "chunks/center-flow__38743.js",
    "componentFile": "components/center-flow.js",
    "bytes": 13048,
-   "entryBytes": 11507
+   "entryBytes": 11507,
+   "fallback": false
   },
   {
    "slug": "chroma-blinds",
@@ -365,7 +392,8 @@
    "chunkFile": "chunks/chroma-blinds__43860.js",
    "componentFile": "components/chroma-blinds.js",
    "bytes": 12922,
-   "entryBytes": 11359
+   "entryBytes": 11359,
+   "fallback": false
   },
   {
    "slug": "chroma-card",
@@ -378,7 +406,8 @@
    "chunkFile": "chunks/chroma-card__87058.js",
    "componentFile": "components/chroma-card.js",
    "bytes": 11104,
-   "entryBytes": 9563
+   "entryBytes": 9563,
+   "fallback": false
   },
   {
    "slug": "chroma-current",
@@ -391,7 +420,8 @@
    "chunkFile": "chunks/chroma-current__81033.js",
    "componentFile": "components/chroma-current.js",
    "bytes": 34205,
-   "entryBytes": 32452
+   "entryBytes": 32452,
+   "fallback": false
   },
   {
    "slug": "chroma-halo",
@@ -404,7 +434,8 @@
    "chunkFile": "chunks/chroma-halo__15819.js",
    "componentFile": "components/chroma-halo.js",
    "bytes": 27385,
-   "entryBytes": 25632
+   "entryBytes": 25632,
+   "fallback": false
   },
   {
    "slug": "chroma-waves",
@@ -417,7 +448,8 @@
    "chunkFile": "chunks/chroma-waves__33190.js",
    "componentFile": "components/chroma-waves.js",
    "bytes": 12628,
-   "entryBytes": 11087
+   "entryBytes": 11087,
+   "fallback": false
   },
   {
    "slug": "chrome-orbit",
@@ -430,7 +462,8 @@
    "chunkFile": "chunks/chrome-orbit__4132.js",
    "componentFile": "components/chrome-orbit.js",
    "bytes": 18518,
-   "entryBytes": 16766
+   "entryBytes": 16766,
+   "fallback": false
   },
   {
    "slug": "cipher-reveal",
@@ -443,7 +476,8 @@
    "chunkFile": "chunks/cipher-reveal__83739.js",
    "componentFile": "components/cipher-reveal.js",
    "bytes": 17315,
-   "entryBytes": 15562
+   "entryBytes": 15562,
+   "fallback": false
   },
   {
    "slug": "circle-gallery",
@@ -456,7 +490,8 @@
    "chunkFile": "chunks/circle-gallery__55426.js",
    "componentFile": "components/circle-gallery.js",
    "bytes": 10255,
-   "entryBytes": 8714
+   "entryBytes": 8714,
+   "fallback": false
   },
   {
    "slug": "circle-stack",
@@ -469,7 +504,22 @@
    "chunkFile": "chunks/circle-stack__62912.js",
    "componentFile": "components/circle-stack.js",
    "bytes": 6519,
-   "entryBytes": 4978
+   "entryBytes": 4978,
+   "fallback": false
+  },
+  {
+   "slug": "circles",
+   "name": "Circles",
+   "category": "UI & Cards",
+   "description": "Rings of images orbiting a center",
+   "module": 13430,
+   "chunk": 13430,
+   "chunkUrl": "https://pro.reactbits.dev/_next/static/chunks/13430.6606e9a5a352af4e.js",
+   "chunkFile": "chunks/circles__13430.js",
+   "componentFile": "components/circles.js",
+   "bytes": 41281,
+   "entryBytes": 26574,
+   "fallback": true
   },
   {
    "slug": "click-stack",
@@ -482,7 +532,8 @@
    "chunkFile": "chunks/click-stack__29427.js",
    "componentFile": "components/click-stack.js",
    "bytes": 8925,
-   "entryBytes": 7368
+   "entryBytes": 7368,
+   "fallback": false
   },
   {
    "slug": "cloud-atlas",
@@ -495,7 +546,8 @@
    "chunkFile": "chunks/cloud-atlas__23881.js",
    "componentFile": "components/cloud-atlas.js",
    "bytes": 20864,
-   "entryBytes": 19113
+   "entryBytes": 19113,
+   "fallback": false
   },
   {
    "slug": "color-loops",
@@ -508,7 +560,8 @@
    "chunkFile": "chunks/color-loops__33349.js",
    "componentFile": "components/color-loops.js",
    "bytes": 23141,
-   "entryBytes": 21396
+   "entryBytes": 21396,
+   "fallback": false
   },
   {
    "slug": "comparison-slider",
@@ -521,7 +574,8 @@
    "chunkFile": "chunks/comparison-slider__28305.js",
    "componentFile": "components/comparison-slider.js",
    "bytes": 20343,
-   "entryBytes": 12940
+   "entryBytes": 12940,
+   "fallback": false
   },
   {
    "slug": "concave-carousel",
@@ -534,7 +588,8 @@
    "chunkFile": "chunks/concave-carousel__30915.js",
    "componentFile": "components/concave-carousel.js",
    "bytes": 31396,
-   "entryBytes": 29639
+   "entryBytes": 29639,
+   "fallback": false
   },
   {
    "slug": "concentric-tides",
@@ -547,7 +602,8 @@
    "chunkFile": "chunks/concentric-tides__57996.js",
    "componentFile": "components/concentric-tides.js",
    "bytes": 21947,
-   "entryBytes": 20194
+   "entryBytes": 20194,
+   "fallback": false
   },
   {
    "slug": "constellation-gallery",
@@ -560,7 +616,8 @@
    "chunkFile": "chunks/constellation-gallery__94671.js",
    "componentFile": "components/constellation-gallery.js",
    "bytes": 36223,
-   "entryBytes": 34464
+   "entryBytes": 34464,
+   "fallback": false
   },
   {
    "slug": "contact-sheet",
@@ -573,7 +630,8 @@
    "chunkFile": "chunks/contact-sheet__6298.js",
    "componentFile": "components/contact-sheet.js",
    "bytes": 33349,
-   "entryBytes": 31593
+   "entryBytes": 31593,
+   "fallback": false
   },
   {
    "slug": "contour-tide",
@@ -586,7 +644,8 @@
    "chunkFile": "chunks/contour-tide__6393.js",
    "componentFile": "components/contour-tide.js",
    "bytes": 23144,
-   "entryBytes": 21394
+   "entryBytes": 21394,
+   "fallback": false
   },
   {
    "slug": "credit-card",
@@ -599,7 +658,8 @@
    "chunkFile": "chunks/credit-card__11085.js",
    "componentFile": "components/credit-card.js",
    "bytes": 14961,
-   "entryBytes": 13005
+   "entryBytes": 13005,
+   "fallback": false
   },
   {
    "slug": "cursor-wave",
@@ -612,7 +672,8 @@
    "chunkFile": "chunks/cursor-wave__25809.js",
    "componentFile": "components/cursor-wave.js",
    "bytes": 12246,
-   "entryBytes": 10681
+   "entryBytes": 10681,
+   "fallback": false
   },
   {
    "slug": "custom-cursor",
@@ -625,7 +686,8 @@
    "chunkFile": "chunks/custom-cursor__2833.js",
    "componentFile": "components/custom-cursor.js",
    "bytes": 14631,
-   "entryBytes": 10765
+   "entryBytes": 10765,
+   "fallback": false
   },
   {
    "slug": "dappled-light",
@@ -638,7 +700,8 @@
    "chunkFile": "chunks/dappled-light__96310.js",
    "componentFile": "components/dappled-light.js",
    "bytes": 33546,
-   "entryBytes": 31793
+   "entryBytes": 31793,
+   "fallback": false
   },
   {
    "slug": "depth-card",
@@ -651,7 +714,8 @@
    "chunkFile": "chunks/depth-card__89032.js",
    "componentFile": "components/depth-card.js",
    "bytes": 11229,
-   "entryBytes": 9688
+   "entryBytes": 9688,
+   "fallback": false
   },
   {
    "slug": "depth-image",
@@ -664,7 +728,8 @@
    "chunkFile": "chunks/depth-image__18831.js",
    "componentFile": "components/depth-image.js",
    "bytes": 22019,
-   "entryBytes": 20470
+   "entryBytes": 20470,
+   "fallback": false
   },
   {
    "slug": "depth-ribbon",
@@ -677,7 +742,22 @@
    "chunkFile": "chunks/depth-ribbon__75643.js",
    "componentFile": "components/depth-ribbon.js",
    "bytes": 35454,
-   "entryBytes": 33697
+   "entryBytes": 33697,
+   "fallback": false
+  },
+  {
+   "slug": "device",
+   "name": "Device",
+   "category": "3D & Shaders",
+   "description": "A studio-lit 3D phone mockup that frames any image or content",
+   "module": 30038,
+   "chunk": 30038,
+   "chunkUrl": "https://pro.reactbits.dev/_next/static/chunks/30038.d49d3fd7afda1f3f.js",
+   "chunkFile": "chunks/device__30038.js",
+   "componentFile": "components/device.js",
+   "bytes": 31249,
+   "entryBytes": 29504,
+   "fallback": true
   },
   {
    "slug": "dither-cursor",
@@ -690,7 +770,8 @@
    "chunkFile": "chunks/dither-cursor__4120.js",
    "componentFile": "components/dither-cursor.js",
    "bytes": 11791,
-   "entryBytes": 9279
+   "entryBytes": 9279,
+   "fallback": false
   },
   {
    "slug": "dither-wave",
@@ -703,7 +784,8 @@
    "chunkFile": "chunks/dither-wave__15536.js",
    "componentFile": "components/dither-wave.js",
    "bytes": 10273,
-   "entryBytes": 8732
+   "entryBytes": 8732,
+   "fallback": false
   },
   {
    "slug": "dolly-gallery",
@@ -716,7 +798,8 @@
    "chunkFile": "chunks/dolly-gallery__56988.js",
    "componentFile": "components/dolly-gallery.js",
    "bytes": 15190,
-   "entryBytes": 13643
+   "entryBytes": 13643,
+   "fallback": false
   },
   {
    "slug": "domino-lettering",
@@ -729,7 +812,8 @@
    "chunkFile": "chunks/domino-lettering__93957.js",
    "componentFile": "components/domino-lettering.js",
    "bytes": 18528,
-   "entryBytes": 16775
+   "entryBytes": 16775,
+   "fallback": false
   },
   {
    "slug": "dot-shift",
@@ -742,7 +826,8 @@
    "chunkFile": "chunks/dot-shift__51412.js",
    "componentFile": "components/dot-shift.js",
    "bytes": 5294,
-   "entryBytes": 3753
+   "entryBytes": 3753,
+   "fallback": false
   },
   {
    "slug": "drafting-cursor",
@@ -755,7 +840,8 @@
    "chunkFile": "chunks/drafting-cursor__90274.js",
    "componentFile": "components/drafting-cursor.js",
    "bytes": 43417,
-   "entryBytes": 41660
+   "entryBytes": 41660,
+   "fallback": false
   },
   {
    "slug": "draggable-grid",
@@ -768,7 +854,22 @@
    "chunkFile": "chunks/draggable-grid__84584.js",
    "componentFile": "components/draggable-grid.js",
    "bytes": 10363,
-   "entryBytes": 8056
+   "entryBytes": 8056,
+   "fallback": false
+  },
+  {
+   "slug": "eclipse",
+   "name": "Eclipse",
+   "category": "Backgrounds",
+   "description": "A dark shape eclipsing a soft, color-shifting corona of light",
+   "module": 94875,
+   "chunk": 94875,
+   "chunkUrl": "https://pro.reactbits.dev/_next/static/chunks/94875.8ac6e6718c3b8c3f.js",
+   "chunkFile": "chunks/eclipse__94875.js",
+   "componentFile": "components/eclipse.js",
+   "bytes": 32204,
+   "entryBytes": 30451,
+   "fallback": true
   },
   {
    "slug": "elastic-lettering",
@@ -781,7 +882,8 @@
    "chunkFile": "chunks/elastic-lettering__11807.js",
    "componentFile": "components/elastic-lettering.js",
    "bytes": 20658,
-   "entryBytes": 18907
+   "entryBytes": 18907,
+   "fallback": false
   },
   {
    "slug": "elastic-reel",
@@ -794,7 +896,8 @@
    "chunkFile": "chunks/elastic-reel__62139.js",
    "componentFile": "components/elastic-reel.js",
    "bytes": 34640,
-   "entryBytes": 32883
+   "entryBytes": 32883,
+   "fallback": false
   },
   {
    "slug": "elastic-sticker",
@@ -807,7 +910,8 @@
    "chunkFile": "chunks/elastic-sticker__11242.js",
    "componentFile": "components/elastic-sticker.js",
    "bytes": 42666,
-   "entryBytes": 35813
+   "entryBytes": 35813,
+   "fallback": false
   },
   {
    "slug": "ember-reveal",
@@ -820,7 +924,8 @@
    "chunkFile": "chunks/ember-reveal__23159.js",
    "componentFile": "components/ember-reveal.js",
    "bytes": 32958,
-   "entryBytes": 31205
+   "entryBytes": 31205,
+   "fallback": false
   },
   {
    "slug": "expanding-grid",
@@ -833,7 +938,8 @@
    "chunkFile": "chunks/expanding-grid__82794.js",
    "componentFile": "components/expanding-grid.js",
    "bytes": 26196,
-   "entryBytes": 24439
+   "entryBytes": 24439,
+   "fallback": false
   },
   {
    "slug": "fading-stars",
@@ -846,7 +952,8 @@
    "chunkFile": "chunks/fading-stars__56997.js",
    "componentFile": "components/fading-stars.js",
    "bytes": 32870,
-   "entryBytes": 31117
+   "entryBytes": 31117,
+   "fallback": false
   },
   {
    "slug": "falling-rays",
@@ -859,7 +966,8 @@
    "chunkFile": "chunks/falling-rays__30869.js",
    "componentFile": "components/falling-rays.js",
    "bytes": 13063,
-   "entryBytes": 11522
+   "entryBytes": 11522,
+   "fallback": false
   },
   {
    "slug": "flame-paths",
@@ -872,7 +980,8 @@
    "chunkFile": "chunks/flame-paths__54352.js",
    "componentFile": "components/flame-paths.js",
    "bytes": 29754,
-   "entryBytes": 28009
+   "entryBytes": 28009,
+   "fallback": false
   },
   {
    "slug": "fog-sphere",
@@ -885,7 +994,8 @@
    "chunkFile": "chunks/fog-sphere__19006.js",
    "componentFile": "components/fog-sphere.js",
    "bytes": 14665,
-   "entryBytes": 13094
+   "entryBytes": 13094,
+   "fallback": false
   },
   {
    "slug": "frame-border",
@@ -898,7 +1008,8 @@
    "chunkFile": "chunks/frame-border__10772.js",
    "componentFile": "components/frame-border.js",
    "bytes": 30716,
-   "entryBytes": 28971
+   "entryBytes": 28971,
+   "fallback": false
   },
   {
    "slug": "frame-scrub",
@@ -911,7 +1022,8 @@
    "chunkFile": "chunks/frame-scrub__53779.js",
    "componentFile": "components/frame-scrub.js",
    "bytes": 19655,
-   "entryBytes": 18114
+   "entryBytes": 18114,
+   "fallback": false
   },
   {
    "slug": "ghost-type",
@@ -924,7 +1036,8 @@
    "chunkFile": "chunks/ghost-type__29358.js",
    "componentFile": "components/ghost-type.js",
    "bytes": 21009,
-   "entryBytes": 19242
+   "entryBytes": 19242,
+   "fallback": false
   },
   {
    "slug": "glass-cursor",
@@ -937,7 +1050,8 @@
    "chunkFile": "chunks/glass-cursor__82071.js",
    "componentFile": "components/glass-cursor.js",
    "bytes": 14323,
-   "entryBytes": 12782
+   "entryBytes": 12782,
+   "fallback": false
   },
   {
    "slug": "glass-flow",
@@ -950,7 +1064,8 @@
    "chunkFile": "chunks/glass-flow__43726.js",
    "componentFile": "components/glass-flow.js",
    "bytes": 12634,
-   "entryBytes": 11093
+   "entryBytes": 11093,
+   "fallback": false
   },
   {
    "slug": "glass-reveal",
@@ -963,7 +1078,8 @@
    "chunkFile": "chunks/glass-reveal__72465.js",
    "componentFile": "components/glass-reveal.js",
    "bytes": 15381,
-   "entryBytes": 13836
+   "entryBytes": 13836,
+   "fallback": false
   },
   {
    "slug": "glass-tiles",
@@ -976,7 +1092,8 @@
    "chunkFile": "chunks/glass-tiles__70976.js",
    "componentFile": "components/glass-tiles.js",
    "bytes": 8573,
-   "entryBytes": 7016
+   "entryBytes": 7016,
+   "fallback": false
   },
   {
    "slug": "glimmer-wrap",
@@ -989,7 +1106,8 @@
    "chunkFile": "chunks/glimmer-wrap__15562.js",
    "componentFile": "components/glimmer-wrap.js",
    "bytes": 26986,
-   "entryBytes": 25233
+   "entryBytes": 25233,
+   "fallback": false
   },
   {
    "slug": "glitch-text",
@@ -1002,7 +1120,8 @@
    "chunkFile": "chunks/glitch-text__15092.js",
    "componentFile": "components/glitch-text.js",
    "bytes": 10375,
-   "entryBytes": 8834
+   "entryBytes": 8834,
+   "fallback": false
   },
   {
    "slug": "glitter-warp",
@@ -1015,7 +1134,22 @@
    "chunkFile": "chunks/glitter-warp__1385.js",
    "componentFile": "components/glitter-warp.js",
    "bytes": 8237,
-   "entryBytes": 6697
+   "entryBytes": 6697,
+   "fallback": false
+  },
+  {
+   "slug": "globe",
+   "name": "Globe",
+   "category": "3D & Shaders",
+   "description": "A dotted 3D globe with animated arcs",
+   "module": 61875,
+   "chunk": 61875,
+   "chunkUrl": "https://pro.reactbits.dev/_next/static/chunks/61875.bdd7bf5cee77dd9b.js",
+   "chunkFile": "chunks/globe__61875.js",
+   "componentFile": "components/globe.js",
+   "bytes": 13401,
+   "entryBytes": 11860,
+   "fallback": true
   },
   {
    "slug": "glowing-ridges",
@@ -1028,7 +1162,8 @@
    "chunkFile": "chunks/glowing-ridges__31212.js",
    "componentFile": "components/glowing-ridges.js",
    "bytes": 13923,
-   "entryBytes": 12378
+   "entryBytes": 12378,
+   "fallback": false
   },
   {
    "slug": "glowing-wave",
@@ -1041,7 +1176,8 @@
    "chunkFile": "chunks/glowing-wave__5450.js",
    "componentFile": "components/glowing-wave.js",
    "bytes": 18024,
-   "entryBytes": 16484
+   "entryBytes": 16484,
+   "fallback": false
   },
   {
    "slug": "glue-dots",
@@ -1054,7 +1190,8 @@
    "chunkFile": "chunks/glue-dots__45652.js",
    "componentFile": "components/glue-dots.js",
    "bytes": 13652,
-   "entryBytes": 12111
+   "entryBytes": 12111,
+   "fallback": false
   },
   {
    "slug": "glyph-ember",
@@ -1067,7 +1204,8 @@
    "chunkFile": "chunks/glyph-ember__76728.js",
    "componentFile": "components/glyph-ember.js",
    "bytes": 33265,
-   "entryBytes": 31504
+   "entryBytes": 31504,
+   "fallback": false
   },
   {
    "slug": "glyph-lottery",
@@ -1080,7 +1218,8 @@
    "chunkFile": "chunks/glyph-lottery__4587.js",
    "componentFile": "components/glyph-lottery.js",
    "bytes": 21769,
-   "entryBytes": 20017
+   "entryBytes": 20017,
+   "fallback": false
   },
   {
    "slug": "glyph-orb",
@@ -1093,7 +1232,8 @@
    "chunkFile": "chunks/glyph-orb__42008.js",
    "componentFile": "components/glyph-orb.js",
    "bytes": 34375,
-   "entryBytes": 32610
+   "entryBytes": 32610,
+   "fallback": false
   },
   {
    "slug": "glyph-sonar",
@@ -1106,7 +1246,8 @@
    "chunkFile": "chunks/glyph-sonar__56838.js",
    "componentFile": "components/glyph-sonar.js",
    "bytes": 35292,
-   "entryBytes": 33469
+   "entryBytes": 33469,
+   "fallback": false
   },
   {
    "slug": "glyph-stream",
@@ -1119,7 +1260,8 @@
    "chunkFile": "chunks/glyph-stream__30701.js",
    "componentFile": "components/glyph-stream.js",
    "bytes": 30455,
-   "entryBytes": 28610
+   "entryBytes": 28610,
+   "fallback": false
   },
   {
    "slug": "glyph-tide",
@@ -1132,7 +1274,8 @@
    "chunkFile": "chunks/glyph-tide__38907.js",
    "componentFile": "components/glyph-tide.js",
    "bytes": 32999,
-   "entryBytes": 31246
+   "entryBytes": 31246,
+   "fallback": false
   },
   {
    "slug": "gradient-bars",
@@ -1145,7 +1288,8 @@
    "chunkFile": "chunks/gradient-bars__84093.js",
    "componentFile": "components/gradient-bars.js",
    "bytes": 10950,
-   "entryBytes": 9389
+   "entryBytes": 9389,
+   "fallback": false
   },
   {
    "slug": "gradient-blob",
@@ -1158,7 +1302,8 @@
    "chunkFile": "chunks/gradient-blob__40445.js",
    "componentFile": "components/gradient-blob.js",
    "bytes": 17326,
-   "entryBytes": 15785
+   "entryBytes": 15785,
+   "fallback": false
   },
   {
    "slug": "gradient-carousel",
@@ -1171,7 +1316,8 @@
    "chunkFile": "chunks/gradient-carousel__60255.js",
    "componentFile": "components/gradient-carousel.js",
    "bytes": 17693,
-   "entryBytes": 16152
+   "entryBytes": 16152,
+   "fallback": false
   },
   {
    "slug": "grain-wave",
@@ -1184,7 +1330,8 @@
    "chunkFile": "chunks/grain-wave__88358.js",
    "componentFile": "components/grain-wave.js",
    "bytes": 10337,
-   "entryBytes": 8796
+   "entryBytes": 8796,
+   "fallback": false
   },
   {
    "slug": "gravity-letters",
@@ -1197,7 +1344,8 @@
    "chunkFile": "chunks/gravity-letters__84543.js",
    "componentFile": "components/gravity-letters.js",
    "bytes": 30230,
-   "entryBytes": 28475
+   "entryBytes": 28475,
+   "fallback": false
   },
   {
    "slug": "grid-rise",
@@ -1210,7 +1358,8 @@
    "chunkFile": "chunks/grid-rise__2544.js",
    "componentFile": "components/grid-rise.js",
    "bytes": 20510,
-   "entryBytes": 18970
+   "entryBytes": 18970,
+   "fallback": false
   },
   {
    "slug": "gyroscope-cursor",
@@ -1223,7 +1372,8 @@
    "chunkFile": "chunks/gyroscope-cursor__24179.js",
    "componentFile": "components/gyroscope-cursor.js",
    "bytes": 24790,
-   "entryBytes": 23031
+   "entryBytes": 23031,
+   "fallback": false
   },
   {
    "slug": "halftone-vortex",
@@ -1236,7 +1386,8 @@
    "chunkFile": "chunks/halftone-vortex__1606.js",
    "componentFile": "components/halftone-vortex.js",
    "bytes": 25435,
-   "entryBytes": 23691
+   "entryBytes": 23691,
+   "fallback": false
   },
   {
    "slug": "halftone-wave",
@@ -1249,7 +1400,8 @@
    "chunkFile": "chunks/halftone-wave__84462.js",
    "componentFile": "components/halftone-wave.js",
    "bytes": 11666,
-   "entryBytes": 10101
+   "entryBytes": 10101,
+   "fallback": false
   },
   {
    "slug": "helix-gallery",
@@ -1262,7 +1414,8 @@
    "chunkFile": "chunks/helix-gallery__8860.js",
    "componentFile": "components/helix-gallery.js",
    "bytes": 32591,
-   "entryBytes": 30835
+   "entryBytes": 30835,
+   "fallback": false
   },
   {
    "slug": "hexagonal-vault",
@@ -1275,7 +1428,8 @@
    "chunkFile": "chunks/hexagonal-vault__76725.js",
    "componentFile": "components/hexagonal-vault.js",
    "bytes": 28616,
-   "entryBytes": 26865
+   "entryBytes": 26865,
+   "fallback": false
   },
   {
    "slug": "horizon-bloom",
@@ -1288,7 +1442,8 @@
    "chunkFile": "chunks/horizon-bloom__82734.js",
    "componentFile": "components/horizon-bloom.js",
    "bytes": 31445,
-   "entryBytes": 29692
+   "entryBytes": 29692,
+   "fallback": false
   },
   {
    "slug": "hover-preview",
@@ -1301,7 +1456,8 @@
    "chunkFile": "chunks/hover-preview__83566.js",
    "componentFile": "components/hover-preview.js",
    "bytes": 11227,
-   "entryBytes": 7705
+   "entryBytes": 7705,
+   "fallback": false
   },
   {
    "slug": "infinite-gallery",
@@ -1314,7 +1470,8 @@
    "chunkFile": "chunks/infinite-gallery__23854.js",
    "componentFile": "components/infinite-gallery.js",
    "bytes": 16992,
-   "entryBytes": 15431
+   "entryBytes": 15431,
+   "fallback": false
   },
   {
    "slug": "interference-ribbons",
@@ -1327,7 +1484,8 @@
    "chunkFile": "chunks/interference-ribbons__30804.js",
    "componentFile": "components/interference-ribbons.js",
    "bytes": 28496,
-   "entryBytes": 26743
+   "entryBytes": 26743,
+   "fallback": false
   },
   {
    "slug": "inverted-dome",
@@ -1340,7 +1498,8 @@
    "chunkFile": "chunks/inverted-dome__10851.js",
    "componentFile": "components/inverted-dome.js",
    "bytes": 20590,
-   "entryBytes": 19039
+   "entryBytes": 19039,
+   "fallback": false
   },
   {
    "slug": "iris-gallery",
@@ -1353,7 +1512,8 @@
    "chunkFile": "chunks/iris-gallery__64063.js",
    "componentFile": "components/iris-gallery.js",
    "bytes": 30512,
-   "entryBytes": 28753
+   "entryBytes": 28753,
+   "fallback": false
   },
   {
    "slug": "label-orbit",
@@ -1366,7 +1526,22 @@
    "chunkFile": "chunks/label-orbit__49162.js",
    "componentFile": "components/label-orbit.js",
    "bytes": 20820,
-   "entryBytes": 19065
+   "entryBytes": 19065,
+   "fallback": false
+  },
+  {
+   "slug": "landscape",
+   "name": "Landscape",
+   "category": "Backgrounds",
+   "description": "An endless landscape rolling toward the horizon",
+   "module": 39396,
+   "chunk": 39396,
+   "chunkUrl": "https://pro.reactbits.dev/_next/static/chunks/39396.6e517d31f921a301.js",
+   "chunkFile": "chunks/landscape__39396.js",
+   "componentFile": "components/landscape.js",
+   "bytes": 20395,
+   "entryBytes": 18854,
+   "fallback": true
   },
   {
    "slug": "lenticular-carousel",
@@ -1379,7 +1554,8 @@
    "chunkFile": "chunks/lenticular-carousel__96289.js",
    "componentFile": "components/lenticular-carousel.js",
    "bytes": 23902,
-   "entryBytes": 22127
+   "entryBytes": 22127,
+   "fallback": false
   },
   {
    "slug": "light-droplets",
@@ -1392,7 +1568,22 @@
    "chunkFile": "chunks/light-droplets__94012.js",
    "componentFile": "components/light-droplets.js",
    "bytes": 10943,
-   "entryBytes": 9402
+   "entryBytes": 9402,
+   "fallback": false
+  },
+  {
+   "slug": "lightspeed",
+   "name": "Lightspeed",
+   "category": "Backgrounds",
+   "description": "A hyperspace jump of streaking stars",
+   "module": 9530,
+   "chunk": 9530,
+   "chunkUrl": "https://pro.reactbits.dev/_next/static/chunks/9530.dae42e732dd490c3.js",
+   "chunkFile": "chunks/lightspeed__9530.js",
+   "componentFile": "components/lightspeed.js",
+   "bytes": 12034,
+   "entryBytes": 10494,
+   "fallback": true
   },
   {
    "slug": "liquid-ascii",
@@ -1405,7 +1596,8 @@
    "chunkFile": "chunks/liquid-ascii__74230.js",
    "componentFile": "components/liquid-ascii.js",
    "bytes": 16968,
-   "entryBytes": 15407
+   "entryBytes": 15407,
+   "fallback": false
   },
   {
    "slug": "liquid-bars",
@@ -1418,7 +1610,8 @@
    "chunkFile": "chunks/liquid-bars__23479.js",
    "componentFile": "components/liquid-bars.js",
    "bytes": 16283,
-   "entryBytes": 14742
+   "entryBytes": 14742,
+   "fallback": false
   },
   {
    "slug": "liquid-lines",
@@ -1431,7 +1624,8 @@
    "chunkFile": "chunks/liquid-lines__91027.js",
    "componentFile": "components/liquid-lines.js",
    "bytes": 10263,
-   "entryBytes": 8722
+   "entryBytes": 8722,
+   "fallback": false
   },
   {
    "slug": "liquid-swap",
@@ -1444,7 +1638,8 @@
    "chunkFile": "chunks/liquid-swap__26078.js",
    "componentFile": "components/liquid-swap.js",
    "bytes": 13061,
-   "entryBytes": 11520
+   "entryBytes": 11520,
+   "fallback": false
   },
   {
    "slug": "long-exposure",
@@ -1457,7 +1652,8 @@
    "chunkFile": "chunks/long-exposure__12408.js",
    "componentFile": "components/long-exposure.js",
    "bytes": 15002,
-   "entryBytes": 13457
+   "entryBytes": 13457,
+   "fallback": false
   },
   {
    "slug": "loupe-image",
@@ -1470,7 +1666,8 @@
    "chunkFile": "chunks/loupe-image__70651.js",
    "componentFile": "components/loupe-image.js",
    "bytes": 33627,
-   "entryBytes": 26770
+   "entryBytes": 26770,
+   "fallback": false
   },
   {
    "slug": "luminous-filaments",
@@ -1483,7 +1680,8 @@
    "chunkFile": "chunks/luminous-filaments__97749.js",
    "componentFile": "components/luminous-filaments.js",
    "bytes": 32963,
-   "entryBytes": 31210
+   "entryBytes": 31210,
+   "fallback": false
   },
   {
    "slug": "luminous-type",
@@ -1496,7 +1694,8 @@
    "chunkFile": "chunks/luminous-type__42906.js",
    "componentFile": "components/luminous-type.js",
    "bytes": 13513,
-   "entryBytes": 11762
+   "entryBytes": 11762,
+   "fallback": false
   },
   {
    "slug": "magic-transform",
@@ -1509,7 +1708,8 @@
    "chunkFile": "chunks/magic-transform__62306.js",
    "componentFile": "components/magic-transform.js",
    "bytes": 18994,
-   "entryBytes": 17445
+   "entryBytes": 17445,
+   "fallback": false
   },
   {
    "slug": "mesh-lettering",
@@ -1522,7 +1722,8 @@
    "chunkFile": "chunks/mesh-lettering__19956.js",
    "componentFile": "components/mesh-lettering.js",
    "bytes": 27287,
-   "entryBytes": 25534
+   "entryBytes": 25534,
+   "fallback": false
   },
   {
    "slug": "metallic-swirl",
@@ -1535,7 +1736,8 @@
    "chunkFile": "chunks/metallic-swirl__7483.js",
    "componentFile": "components/metallic-swirl.js",
    "bytes": 11204,
-   "entryBytes": 9636
+   "entryBytes": 9636,
+   "fallback": false
   },
   {
    "slug": "minimal-ripple",
@@ -1548,7 +1750,8 @@
    "chunkFile": "chunks/minimal-ripple__86939.js",
    "componentFile": "components/minimal-ripple.js",
    "bytes": 13857,
-   "entryBytes": 12316
+   "entryBytes": 12316,
+   "fallback": false
   },
   {
    "slug": "modal-cards",
@@ -1561,7 +1764,22 @@
    "chunkFile": "chunks/modal-cards__86246.js",
    "componentFile": "components/modal-cards.js",
    "bytes": 11549,
-   "entryBytes": 10008
+   "entryBytes": 10008,
+   "fallback": false
+  },
+  {
+   "slug": "mosaic",
+   "name": "Mosaic",
+   "category": "Backgrounds",
+   "description": "A tiled mosaic over a moving wave or video",
+   "module": 93,
+   "chunk": 93,
+   "chunkUrl": "https://pro.reactbits.dev/_next/static/chunks/93.8bcd8b900edc98a9.js",
+   "chunkFile": "chunks/mosaic__93.js",
+   "componentFile": "components/mosaic.js",
+   "bytes": 12199,
+   "entryBytes": 10661,
+   "fallback": true
   },
   {
    "slug": "mosaic-waves",
@@ -1574,7 +1792,8 @@
    "chunkFile": "chunks/mosaic-waves__75545.js",
    "componentFile": "components/mosaic-waves.js",
    "bytes": 15391,
-   "entryBytes": 6363
+   "entryBytes": 6363,
+   "fallback": false
   },
   {
    "slug": "neon-reveal",
@@ -1587,7 +1806,8 @@
    "chunkFile": "chunks/neon-reveal__33966.js",
    "componentFile": "components/neon-reveal.js",
    "bytes": 30809,
-   "entryBytes": 29064
+   "entryBytes": 29064,
+   "fallback": false
   },
   {
    "slug": "neural-flash",
@@ -1600,7 +1820,8 @@
    "chunkFile": "chunks/neural-flash__31949.js",
    "componentFile": "components/neural-flash.js",
    "bytes": 14055,
-   "entryBytes": 12510
+   "entryBytes": 12510,
+   "fallback": false
   },
   {
    "slug": "neural-float",
@@ -1613,7 +1834,8 @@
    "chunkFile": "chunks/neural-float__49868.js",
    "componentFile": "components/neural-float.js",
    "bytes": 21550,
-   "entryBytes": 20009
+   "entryBytes": 20009,
+   "fallback": false
   },
   {
    "slug": "neural-tunnel",
@@ -1626,7 +1848,8 @@
    "chunkFile": "chunks/neural-tunnel__82088.js",
    "componentFile": "components/neural-tunnel.js",
    "bytes": 14052,
-   "entryBytes": 12511
+   "entryBytes": 12511,
+   "fallback": false
   },
   {
    "slug": "nexus-rays",
@@ -1639,7 +1862,8 @@
    "chunkFile": "chunks/nexus-rays__35898.js",
    "componentFile": "components/nexus-rays.js",
    "bytes": 22413,
-   "entryBytes": 20662
+   "entryBytes": 20662,
+   "fallback": false
   },
   {
    "slug": "orbit-reel",
@@ -1652,7 +1876,8 @@
    "chunkFile": "chunks/orbit-reel__65236.js",
    "componentFile": "components/orbit-reel.js",
    "bytes": 25301,
-   "entryBytes": 23540
+   "entryBytes": 23540,
+   "fallback": false
   },
   {
    "slug": "orbital-type",
@@ -1665,7 +1890,8 @@
    "chunkFile": "chunks/orbital-type__26571.js",
    "componentFile": "components/orbital-type.js",
    "bytes": 20593,
-   "entryBytes": 18840
+   "entryBytes": 18840,
+   "fallback": false
   },
   {
    "slug": "page-flip",
@@ -1678,7 +1904,8 @@
    "chunkFile": "chunks/page-flip__81021.js",
    "componentFile": "components/page-flip.js",
    "bytes": 11498,
-   "entryBytes": 8906
+   "entryBytes": 8906,
+   "fallback": false
   },
   {
    "slug": "parallax-cards",
@@ -1691,7 +1918,8 @@
    "chunkFile": "chunks/parallax-cards__54302.js",
    "componentFile": "components/parallax-cards.js",
    "bytes": 14293,
-   "entryBytes": 7656
+   "entryBytes": 7656,
+   "fallback": false
   },
   {
    "slug": "parallax-carousel",
@@ -1704,7 +1932,8 @@
    "chunkFile": "chunks/parallax-carousel__28938.js",
    "componentFile": "components/parallax-carousel.js",
    "bytes": 18752,
-   "entryBytes": 12109
+   "entryBytes": 12109,
+   "fallback": false
   },
   {
    "slug": "parallax-pills",
@@ -1717,7 +1946,8 @@
    "chunkFile": "chunks/parallax-pills__58264.js",
    "componentFile": "components/parallax-pills.js",
    "bytes": 14360,
-   "entryBytes": 10020
+   "entryBytes": 10020,
+   "fallback": false
   },
   {
    "slug": "particle-image",
@@ -1730,7 +1960,8 @@
    "chunkFile": "chunks/particle-image__26137.js",
    "componentFile": "components/particle-image.js",
    "bytes": 17973,
-   "entryBytes": 16432
+   "entryBytes": 16432,
+   "fallback": false
   },
   {
    "slug": "particle-morph",
@@ -1743,7 +1974,8 @@
    "chunkFile": "chunks/particle-morph__35949.js",
    "componentFile": "components/particle-morph.js",
    "bytes": 36260,
-   "entryBytes": 34503
+   "entryBytes": 34503,
+   "fallback": false
   },
   {
    "slug": "particle-text",
@@ -1756,7 +1988,8 @@
    "chunkFile": "chunks/particle-text__39734.js",
    "componentFile": "components/particle-text.js",
    "bytes": 7816,
-   "entryBytes": 6249
+   "entryBytes": 6249,
+   "fallback": false
   },
   {
    "slug": "passage-gallery",
@@ -1769,7 +2002,8 @@
    "chunkFile": "chunks/passage-gallery__227.js",
    "componentFile": "components/passage-gallery.js",
    "bytes": 36457,
-   "entryBytes": 34702
+   "entryBytes": 34702,
+   "fallback": false
   },
   {
    "slug": "perspective-grid",
@@ -1782,7 +2016,8 @@
    "chunkFile": "chunks/perspective-grid__84800.js",
    "componentFile": "components/perspective-grid.js",
    "bytes": 10369,
-   "entryBytes": 8828
+   "entryBytes": 8828,
+   "fallback": false
   },
   {
    "slug": "photon-knot",
@@ -1795,7 +2030,8 @@
    "chunkFile": "chunks/photon-knot__56864.js",
    "componentFile": "components/photon-knot.js",
    "bytes": 32335,
-   "entryBytes": 30582
+   "entryBytes": 30582,
+   "fallback": false
   },
   {
    "slug": "pigment-trail",
@@ -1808,7 +2044,8 @@
    "chunkFile": "chunks/pigment-trail__83573.js",
    "componentFile": "components/pigment-trail.js",
    "bytes": 27683,
-   "entryBytes": 25930
+   "entryBytes": 25930,
+   "fallback": false
   },
   {
    "slug": "pixel-magnet",
@@ -1821,7 +2058,8 @@
    "chunkFile": "chunks/pixel-magnet__22587.js",
    "componentFile": "components/pixel-magnet.js",
    "bytes": 13432,
-   "entryBytes": 11891
+   "entryBytes": 11891,
+   "fallback": false
   },
   {
    "slug": "pixel-rain",
@@ -1834,7 +2072,8 @@
    "chunkFile": "chunks/pixel-rain__24621.js",
    "componentFile": "components/pixel-rain.js",
    "bytes": 13579,
-   "entryBytes": 12038
+   "entryBytes": 12038,
+   "fallback": false
   },
   {
    "slug": "pixel-reveal",
@@ -1847,7 +2086,8 @@
    "chunkFile": "chunks/pixel-reveal__99343.js",
    "componentFile": "components/pixel-reveal.js",
    "bytes": 13009,
-   "entryBytes": 11460
+   "entryBytes": 11460,
+   "fallback": false
   },
   {
    "slug": "pixel-sculpt",
@@ -1860,7 +2100,8 @@
    "chunkFile": "chunks/pixel-sculpt__34481.js",
    "componentFile": "components/pixel-sculpt.js",
    "bytes": 21639,
-   "entryBytes": 20096
+   "entryBytes": 20096,
+   "fallback": false
   },
   {
    "slug": "pixelate-hover",
@@ -1873,7 +2114,8 @@
    "chunkFile": "chunks/pixelate-hover__26008.js",
    "componentFile": "components/pixelate-hover.js",
    "bytes": 17269,
-   "entryBytes": 15724
+   "entryBytes": 15724,
+   "fallback": false
   },
   {
    "slug": "pond-image",
@@ -1886,7 +2128,36 @@
    "chunkFile": "chunks/pond-image__81130.js",
    "componentFile": "components/pond-image.js",
    "bytes": 30007,
-   "entryBytes": 23160
+   "entryBytes": 23160,
+   "fallback": false
+  },
+  {
+   "slug": "portal",
+   "name": "Portal",
+   "category": "3D & Shaders",
+   "description": "A glowing portal of warp-speed light you can click to jump through",
+   "module": 95782,
+   "chunk": 95782,
+   "chunkUrl": "https://pro.reactbits.dev/_next/static/chunks/95782.928921be0505d10a.js",
+   "chunkFile": "chunks/portal__95782.js",
+   "componentFile": "components/portal.js",
+   "bytes": 22433,
+   "entryBytes": 20886,
+   "fallback": true
+  },
+  {
+   "slug": "preloader",
+   "name": "Preloader",
+   "category": "UI & Cards",
+   "description": "Loading screens in five styles",
+   "module": 7412,
+   "chunk": 7412,
+   "chunkUrl": "https://pro.reactbits.dev/_next/static/chunks/7412.8b4dc469f9782919.js",
+   "chunkFile": "chunks/preloader__7412.js",
+   "componentFile": "components/preloader.js",
+   "bytes": 15158,
+   "entryBytes": 13618,
+   "fallback": true
   },
   {
    "slug": "prism-carousel",
@@ -1899,7 +2170,8 @@
    "chunkFile": "chunks/prism-carousel__57440.js",
    "componentFile": "components/prism-carousel.js",
    "bytes": 28444,
-   "entryBytes": 26687
+   "entryBytes": 26687,
+   "fallback": false
   },
   {
    "slug": "prismatic-slats",
@@ -1912,7 +2184,8 @@
    "chunkFile": "chunks/prismatic-slats__78404.js",
    "componentFile": "components/prismatic-slats.js",
    "bytes": 30362,
-   "entryBytes": 28611
+   "entryBytes": 28611,
+   "fallback": false
   },
   {
    "slug": "radial-liquid",
@@ -1925,7 +2198,22 @@
    "chunkFile": "chunks/radial-liquid__54866.js",
    "componentFile": "components/radial-liquid.js",
    "bytes": 21702,
-   "entryBytes": 20161
+   "entryBytes": 20161,
+   "fallback": false
+  },
+  {
+   "slug": "ravine",
+   "name": "Ravine",
+   "category": "Backgrounds",
+   "description": "An endless flight down a dark canyon",
+   "module": 63018,
+   "chunk": 63018,
+   "chunkUrl": "https://pro.reactbits.dev/_next/static/chunks/63018.261cbf7e2ec03259.js",
+   "chunkFile": "chunks/ravine__63018.js",
+   "componentFile": "components/ravine.js",
+   "bytes": 12031,
+   "entryBytes": 10486,
+   "fallback": true
   },
   {
    "slug": "reel-gallery",
@@ -1938,7 +2226,8 @@
    "chunkFile": "chunks/reel-gallery__40794.js",
    "componentFile": "components/reel-gallery.js",
    "bytes": 20759,
-   "entryBytes": 19218
+   "entryBytes": 19218,
+   "fallback": false
   },
   {
    "slug": "retro-lines",
@@ -1951,7 +2240,8 @@
    "chunkFile": "chunks/retro-lines__85296.js",
    "componentFile": "components/retro-lines.js",
    "bytes": 12533,
-   "entryBytes": 10960
+   "entryBytes": 10960,
+   "fallback": false
   },
   {
    "slug": "ribbon-trail",
@@ -1964,7 +2254,8 @@
    "chunkFile": "chunks/ribbon-trail__67684.js",
    "componentFile": "components/ribbon-trail.js",
    "bytes": 19723,
-   "entryBytes": 17970
+   "entryBytes": 17970,
+   "fallback": false
   },
   {
    "slug": "ribbon-type",
@@ -1977,7 +2268,8 @@
    "chunkFile": "chunks/ribbon-type__13399.js",
    "componentFile": "components/ribbon-type.js",
    "bytes": 25128,
-   "entryBytes": 23375
+   "entryBytes": 23375,
+   "fallback": false
   },
   {
    "slug": "ring-field",
@@ -1990,7 +2282,8 @@
    "chunkFile": "chunks/ring-field__9181.js",
    "componentFile": "components/ring-field.js",
    "bytes": 37359,
-   "entryBytes": 35607
+   "entryBytes": 35607,
+   "fallback": false
   },
   {
    "slug": "rising-ink",
@@ -2003,7 +2296,8 @@
    "chunkFile": "chunks/rising-ink__81024.js",
    "componentFile": "components/rising-ink.js",
    "bytes": 15858,
-   "entryBytes": 14105
+   "entryBytes": 14105,
+   "fallback": false
   },
   {
    "slug": "rising-lines",
@@ -2016,7 +2310,8 @@
    "chunkFile": "chunks/rising-lines__84065.js",
    "componentFile": "components/rising-lines.js",
    "bytes": 32574,
-   "entryBytes": 30829
+   "entryBytes": 30829,
+   "fallback": false
   },
   {
    "slug": "rising-particles",
@@ -2029,7 +2324,8 @@
    "chunkFile": "chunks/rising-particles__12837.js",
    "componentFile": "components/rising-particles.js",
    "bytes": 17074,
-   "entryBytes": 15533
+   "entryBytes": 15533,
+   "fallback": false
   },
   {
    "slug": "rolling-blinds",
@@ -2042,7 +2338,8 @@
    "chunkFile": "chunks/rolling-blinds__19811.js",
    "componentFile": "components/rolling-blinds.js",
    "bytes": 12515,
-   "entryBytes": 10974
+   "entryBytes": 10974,
+   "fallback": false
   },
   {
    "slug": "rotating-cards",
@@ -2055,7 +2352,8 @@
    "chunkFile": "chunks/rotating-cards__48364.js",
    "componentFile": "components/rotating-cards.js",
    "bytes": 15343,
-   "entryBytes": 6725
+   "entryBytes": 6725,
+   "fallback": false
   },
   {
    "slug": "rotating-stars",
@@ -2068,7 +2366,8 @@
    "chunkFile": "chunks/rotating-stars__90145.js",
    "componentFile": "components/rotating-stars.js",
    "bytes": 6752,
-   "entryBytes": 5211
+   "entryBytes": 5211,
+   "fallback": false
   },
   {
    "slug": "rubber-fluid",
@@ -2081,7 +2380,8 @@
    "chunkFile": "chunks/rubber-fluid__35528.js",
    "componentFile": "components/rubber-fluid.js",
    "bytes": 26895,
-   "entryBytes": 25150
+   "entryBytes": 25150,
+   "fallback": false
   },
   {
    "slug": "satin-ridges",
@@ -2094,7 +2394,8 @@
    "chunkFile": "chunks/satin-ridges__54428.js",
    "componentFile": "components/satin-ridges.js",
    "bytes": 17646,
-   "entryBytes": 15895
+   "entryBytes": 15895,
+   "fallback": false
   },
   {
    "slug": "scroll-bend",
@@ -2107,7 +2408,8 @@
    "chunkFile": "chunks/scroll-bend__83546.js",
    "componentFile": "components/scroll-bend.js",
    "bytes": 30282,
-   "entryBytes": 28733
+   "entryBytes": 28733,
+   "fallback": false
   },
   {
    "slug": "scroll-mask",
@@ -2120,7 +2422,8 @@
    "chunkFile": "chunks/scroll-mask__54684.js",
    "componentFile": "components/scroll-mask.js",
    "bytes": 15855,
-   "entryBytes": 14314
+   "entryBytes": 14314,
+   "fallback": false
   },
   {
    "slug": "scroll-portal",
@@ -2133,7 +2436,8 @@
    "chunkFile": "chunks/scroll-portal__16679.js",
    "componentFile": "components/scroll-portal.js",
    "bytes": 11667,
-   "entryBytes": 10126
+   "entryBytes": 10126,
+   "fallback": false
   },
   {
    "slug": "scroll-stack",
@@ -2146,7 +2450,8 @@
    "chunkFile": "chunks/scroll-stack__40731.js",
    "componentFile": "components/scroll-stack.js",
    "bytes": 15126,
-   "entryBytes": 13585
+   "entryBytes": 13585,
+   "fallback": false
   },
   {
    "slug": "shader-card",
@@ -2159,7 +2464,8 @@
    "chunkFile": "chunks/shader-card__63719.js",
    "componentFile": "components/shader-card.js",
    "bytes": 34637,
-   "entryBytes": 31936
+   "entryBytes": 31936,
+   "fallback": false
   },
   {
    "slug": "shader-reveal",
@@ -2172,7 +2478,8 @@
    "chunkFile": "chunks/shader-reveal__64487.js",
    "componentFile": "components/shader-reveal.js",
    "bytes": 32509,
-   "entryBytes": 30968
+   "entryBytes": 30968,
+   "fallback": false
   },
   {
    "slug": "shader-waves",
@@ -2185,7 +2492,8 @@
    "chunkFile": "chunks/shader-waves__85577.js",
    "componentFile": "components/shader-waves.js",
    "bytes": 10321,
-   "entryBytes": 8780
+   "entryBytes": 8780,
+   "fallback": false
   },
   {
    "slug": "shadow-bars",
@@ -2198,7 +2506,8 @@
    "chunkFile": "chunks/shadow-bars__42814.js",
    "componentFile": "components/shadow-bars.js",
    "bytes": 12667,
-   "entryBytes": 11126
+   "entryBytes": 11126,
+   "fallback": false
   },
   {
    "slug": "shatter-type",
@@ -2211,7 +2520,8 @@
    "chunkFile": "chunks/shatter-type__83542.js",
    "componentFile": "components/shatter-type.js",
    "bytes": 31766,
-   "entryBytes": 30013
+   "entryBytes": 30013,
+   "fallback": false
   },
   {
    "slug": "signal-type",
@@ -2224,7 +2534,8 @@
    "chunkFile": "chunks/signal-type__94342.js",
    "componentFile": "components/signal-type.js",
    "bytes": 19808,
-   "entryBytes": 18053
+   "entryBytes": 18053,
+   "fallback": false
   },
   {
    "slug": "silk-waves",
@@ -2237,7 +2548,8 @@
    "chunkFile": "chunks/silk-waves__55821.js",
    "componentFile": "components/silk-waves.js",
    "bytes": 11080,
-   "entryBytes": 9539
+   "entryBytes": 9539,
+   "fallback": false
   },
   {
    "slug": "simple-graph",
@@ -2250,7 +2562,8 @@
    "chunkFile": "chunks/simple-graph__1196.js",
    "componentFile": "components/simple-graph.js",
    "bytes": 14098,
-   "entryBytes": 11604
+   "entryBytes": 11604,
+   "fallback": false
   },
   {
    "slug": "simple-swirl",
@@ -2263,7 +2576,8 @@
    "chunkFile": "chunks/simple-swirl__7860.js",
    "componentFile": "components/simple-swirl.js",
    "bytes": 27780,
-   "entryBytes": 26036
+   "entryBytes": 26036,
+   "fallback": false
   },
   {
    "slug": "skewed-carousel",
@@ -2276,7 +2590,8 @@
    "chunkFile": "chunks/skewed-carousel__85367.js",
    "componentFile": "components/skewed-carousel.js",
    "bytes": 11321,
-   "entryBytes": 9550
+   "entryBytes": 9550,
+   "fallback": false
   },
   {
    "slug": "smoke-type",
@@ -2289,7 +2604,8 @@
    "chunkFile": "chunks/smoke-type__54368.js",
    "componentFile": "components/smoke-type.js",
    "bytes": 24299,
-   "entryBytes": 22546
+   "entryBytes": 22546,
+   "fallback": false
   },
   {
    "slug": "smooth-cursor",
@@ -2302,7 +2618,8 @@
    "chunkFile": "chunks/smooth-cursor__51029.js",
    "componentFile": "components/smooth-cursor.js",
    "bytes": 8853,
-   "entryBytes": 7312
+   "entryBytes": 7312,
+   "fallback": false
   },
   {
    "slug": "snapshot-trail",
@@ -2315,7 +2632,8 @@
    "chunkFile": "chunks/snapshot-trail__4938.js",
    "componentFile": "components/snapshot-trail.js",
    "bytes": 32995,
-   "entryBytes": 31243
+   "entryBytes": 31243,
+   "fallback": false
   },
   {
    "slug": "specter-orb",
@@ -2328,7 +2646,8 @@
    "chunkFile": "chunks/specter-orb__30188.js",
    "componentFile": "components/specter-orb.js",
    "bytes": 20422,
-   "entryBytes": 18881
+   "entryBytes": 18881,
+   "fallback": false
   },
   {
    "slug": "spectral-clouds",
@@ -2341,7 +2660,8 @@
    "chunkFile": "chunks/spectral-clouds__5307.js",
    "componentFile": "components/spectral-clouds.js",
    "bytes": 19357,
-   "entryBytes": 17817
+   "entryBytes": 17817,
+   "fallback": false
   },
   {
    "slug": "spectral-drape",
@@ -2354,7 +2674,8 @@
    "chunkFile": "chunks/spectral-drape__61376.js",
    "componentFile": "components/spectral-drape.js",
    "bytes": 22705,
-   "entryBytes": 20954
+   "entryBytes": 20954,
+   "fallback": false
   },
   {
    "slug": "speeding-text",
@@ -2367,7 +2688,8 @@
    "chunkFile": "chunks/speeding-text__20324.js",
    "componentFile": "components/speeding-text.js",
    "bytes": 12610,
-   "entryBytes": 10275
+   "entryBytes": 10275,
+   "fallback": false
   },
   {
    "slug": "spin-shutter",
@@ -2380,7 +2702,8 @@
    "chunkFile": "chunks/spin-shutter__431.js",
    "componentFile": "components/spin-shutter.js",
    "bytes": 32529,
-   "entryBytes": 30774
+   "entryBytes": 30774,
+   "fallback": false
   },
   {
    "slug": "spiral-funnel",
@@ -2393,7 +2716,8 @@
    "chunkFile": "chunks/spiral-funnel__89718.js",
    "componentFile": "components/spiral-funnel.js",
    "bytes": 38009,
-   "entryBytes": 36256
+   "entryBytes": 36256,
+   "fallback": false
   },
   {
    "slug": "spring-lettering",
@@ -2406,7 +2730,8 @@
    "chunkFile": "chunks/spring-lettering__24919.js",
    "componentFile": "components/spring-lettering.js",
    "bytes": 14206,
-   "entryBytes": 12453
+   "entryBytes": 12453,
+   "fallback": false
   },
   {
    "slug": "square-matrix",
@@ -2419,7 +2744,8 @@
    "chunkFile": "chunks/square-matrix__88138.js",
    "componentFile": "components/square-matrix.js",
    "bytes": 32312,
-   "entryBytes": 30567
+   "entryBytes": 30567,
+   "fallback": false
   },
   {
    "slug": "squares-terminal",
@@ -2432,7 +2758,8 @@
    "chunkFile": "chunks/squares-terminal__71336.js",
    "componentFile": "components/squares-terminal.js",
    "bytes": 12775,
-   "entryBytes": 11234
+   "entryBytes": 11234,
+   "fallback": false
   },
   {
    "slug": "squircle-shift",
@@ -2445,7 +2772,8 @@
    "chunkFile": "chunks/squircle-shift__36892.js",
    "componentFile": "components/squircle-shift.js",
    "bytes": 10867,
-   "entryBytes": 9326
+   "entryBytes": 9326,
+   "fallback": false
   },
   {
    "slug": "staggered-text",
@@ -2458,7 +2786,8 @@
    "chunkFile": "chunks/staggered-text__25860.js",
    "componentFile": "components/staggered-text.js",
    "bytes": 9609,
-   "entryBytes": 8068
+   "entryBytes": 8068,
+   "fallback": false
   },
   {
    "slug": "star-burst",
@@ -2471,7 +2800,8 @@
    "chunkFile": "chunks/star-burst__11869.js",
    "componentFile": "components/star-burst.js",
    "bytes": 10743,
-   "entryBytes": 9202
+   "entryBytes": 9202,
+   "fallback": false
   },
   {
    "slug": "star-swipe",
@@ -2484,7 +2814,8 @@
    "chunkFile": "chunks/star-swipe__7512.js",
    "componentFile": "components/star-swipe.js",
    "bytes": 11394,
-   "entryBytes": 9830
+   "entryBytes": 9830,
+   "fallback": false
   },
   {
    "slug": "stardust-cursor",
@@ -2497,7 +2828,8 @@
    "chunkFile": "chunks/stardust-cursor__32077.js",
    "componentFile": "components/stardust-cursor.js",
    "bytes": 40403,
-   "entryBytes": 38650
+   "entryBytes": 38650,
+   "fallback": false
   },
   {
    "slug": "stipple-type",
@@ -2510,7 +2842,8 @@
    "chunkFile": "chunks/stipple-type__39911.js",
    "componentFile": "components/stipple-type.js",
    "bytes": 31521,
-   "entryBytes": 29768
+   "entryBytes": 29768,
+   "fallback": false
   },
   {
    "slug": "swirl-blend",
@@ -2523,7 +2856,8 @@
    "chunkFile": "chunks/swirl-blend__42236.js",
    "componentFile": "components/swirl-blend.js",
    "bytes": 25476,
-   "entryBytes": 23731
+   "entryBytes": 23731,
+   "fallback": false
   },
   {
    "slug": "synaptic-shift",
@@ -2536,7 +2870,8 @@
    "chunkFile": "chunks/synaptic-shift__88437.js",
    "componentFile": "components/synaptic-shift.js",
    "bytes": 6458,
-   "entryBytes": 4917
+   "entryBytes": 4917,
+   "fallback": false
   },
   {
    "slug": "tech-wall",
@@ -2549,7 +2884,8 @@
    "chunkFile": "chunks/tech-wall__10654.js",
    "componentFile": "components/tech-wall.js",
    "bytes": 20170,
-   "entryBytes": 18629
+   "entryBytes": 18629,
+   "fallback": false
   },
   {
    "slug": "terminal-rain",
@@ -2562,7 +2898,8 @@
    "chunkFile": "chunks/terminal-rain__65732.js",
    "componentFile": "components/terminal-rain.js",
    "bytes": 31565,
-   "entryBytes": 29630
+   "entryBytes": 29630,
+   "fallback": false
   },
   {
    "slug": "tessera-trail",
@@ -2575,7 +2912,8 @@
    "chunkFile": "chunks/tessera-trail__60305.js",
    "componentFile": "components/tessera-trail.js",
    "bytes": 18607,
-   "entryBytes": 16850
+   "entryBytes": 16850,
+   "fallback": false
   },
   {
    "slug": "text-cube",
@@ -2588,7 +2926,8 @@
    "chunkFile": "chunks/text-cube__34832.js",
    "componentFile": "components/text-cube.js",
    "bytes": 32242,
-   "entryBytes": 30399
+   "entryBytes": 30399,
+   "fallback": false
   },
   {
    "slug": "text-morph",
@@ -2601,7 +2940,8 @@
    "chunkFile": "chunks/text-morph__37832.js",
    "componentFile": "components/text-morph.js",
    "bytes": 26857,
-   "entryBytes": 25096
+   "entryBytes": 25096,
+   "fallback": false
   },
   {
    "slug": "text-path",
@@ -2614,7 +2954,8 @@
    "chunkFile": "chunks/text-path__39712.js",
    "componentFile": "components/text-path.js",
    "bytes": 7318,
-   "entryBytes": 5011
+   "entryBytes": 5011,
+   "fallback": false
   },
   {
    "slug": "text-scatter",
@@ -2627,7 +2968,8 @@
    "chunkFile": "chunks/text-scatter__39048.js",
    "componentFile": "components/text-scatter.js",
    "bytes": 4509,
-   "entryBytes": 2942
+   "entryBytes": 2942,
+   "fallback": false
   },
   {
    "slug": "thinking-dots",
@@ -2640,7 +2982,8 @@
    "chunkFile": "chunks/thinking-dots__98434.js",
    "componentFile": "components/thinking-dots.js",
    "bytes": 19320,
-   "entryBytes": 17779
+   "entryBytes": 17779,
+   "fallback": false
   },
   {
    "slug": "tile-reveal",
@@ -2653,7 +2996,8 @@
    "chunkFile": "chunks/tile-reveal__919.js",
    "componentFile": "components/tile-reveal.js",
    "bytes": 18465,
-   "entryBytes": 11820
+   "entryBytes": 11820,
+   "fallback": false
   },
   {
    "slug": "tilted-tiles",
@@ -2666,7 +3010,8 @@
    "chunkFile": "chunks/tilted-tiles__90491.js",
    "componentFile": "components/tilted-tiles.js",
    "bytes": 13751,
-   "entryBytes": 9934
+   "entryBytes": 9934,
+   "fallback": false
   },
   {
    "slug": "tumble-carousel",
@@ -2679,7 +3024,8 @@
    "chunkFile": "chunks/tumble-carousel__71811.js",
    "componentFile": "components/tumble-carousel.js",
    "bytes": 13645,
-   "entryBytes": 10823
+   "entryBytes": 10823,
+   "fallback": false
   },
   {
    "slug": "tumble-wall",
@@ -2692,7 +3038,8 @@
    "chunkFile": "chunks/tumble-wall__16473.js",
    "componentFile": "components/tumble-wall.js",
    "bytes": 47902,
-   "entryBytes": 41053
+   "entryBytes": 41053,
+   "fallback": false
   },
   {
    "slug": "twilight-lines",
@@ -2705,7 +3052,8 @@
    "chunkFile": "chunks/twilight-lines__91265.js",
    "componentFile": "components/twilight-lines.js",
    "bytes": 11565,
-   "entryBytes": 10022
+   "entryBytes": 10022,
+   "fallback": false
   },
   {
    "slug": "twisting-gallery",
@@ -2718,7 +3066,8 @@
    "chunkFile": "chunks/twisting-gallery__92357.js",
    "componentFile": "components/twisting-gallery.js",
    "bytes": 16749,
-   "entryBytes": 15208
+   "entryBytes": 15208,
+   "fallback": false
   },
   {
    "slug": "typographic-wall",
@@ -2731,7 +3080,8 @@
    "chunkFile": "chunks/typographic-wall__80431.js",
    "componentFile": "components/typographic-wall.js",
    "bytes": 30157,
-   "entryBytes": 28402
+   "entryBytes": 28402,
+   "fallback": false
   },
   {
    "slug": "user-cursor",
@@ -2744,7 +3094,8 @@
    "chunkFile": "chunks/user-cursor__71033.js",
    "componentFile": "components/user-cursor.js",
    "bytes": 14260,
-   "entryBytes": 10393
+   "entryBytes": 10393,
+   "fallback": false
   },
   {
    "slug": "vapor-type",
@@ -2757,7 +3108,8 @@
    "chunkFile": "chunks/vapor-type__25131.js",
    "componentFile": "components/vapor-type.js",
    "bytes": 32552,
-   "entryBytes": 30797
+   "entryBytes": 30797,
+   "fallback": false
   },
   {
    "slug": "vertical-reel",
@@ -2770,7 +3122,22 @@
    "chunkFile": "chunks/vertical-reel__41897.js",
    "componentFile": "components/vertical-reel.js",
    "bytes": 36447,
-   "entryBytes": 34690
+   "entryBytes": 34690,
+   "fallback": false
+  },
+  {
+   "slug": "vortex",
+   "name": "Vortex",
+   "category": "Backgrounds",
+   "description": "An endless spinning tunnel of particles",
+   "module": 81754,
+   "chunk": 81754,
+   "chunkUrl": "https://pro.reactbits.dev/_next/static/chunks/81754.2119edc97328fa92.js",
+   "chunkFile": "chunks/vortex__81754.js",
+   "componentFile": "components/vortex.js",
+   "bytes": 9168,
+   "entryBytes": 7627,
+   "fallback": true
   },
   {
    "slug": "voxel-arc",
@@ -2783,7 +3150,8 @@
    "chunkFile": "chunks/voxel-arc__99159.js",
    "componentFile": "components/voxel-arc.js",
    "bytes": 32856,
-   "entryBytes": 31103
+   "entryBytes": 31103,
+   "fallback": false
   },
   {
    "slug": "warp-twister",
@@ -2796,7 +3164,8 @@
    "chunkFile": "chunks/warp-twister__89705.js",
    "componentFile": "components/warp-twister.js",
    "bytes": 12633,
-   "entryBytes": 11092
+   "entryBytes": 11092,
+   "fallback": false
   },
   {
    "slug": "warped-card",
@@ -2809,7 +3178,22 @@
    "chunkFile": "chunks/warped-card__74576.js",
    "componentFile": "components/warped-card.js",
    "bytes": 8525,
-   "entryBytes": 6982
+   "entryBytes": 6982,
+   "fallback": false
+  },
+  {
+   "slug": "watercolor",
+   "name": "Watercolor",
+   "category": "Backgrounds",
+   "description": "Two colors blending like watercolor",
+   "module": 79304,
+   "chunk": 79304,
+   "chunkUrl": "https://pro.reactbits.dev/_next/static/chunks/79304.a055099b3b197dac.js",
+   "chunkFile": "chunks/watercolor__79304.js",
+   "componentFile": "components/watercolor.js",
+   "bytes": 10682,
+   "entryBytes": 9117,
+   "fallback": true
   },
   {
    "slug": "wave-lettering",
@@ -2822,7 +3206,8 @@
    "chunkFile": "chunks/wave-lettering__1661.js",
    "componentFile": "components/wave-lettering.js",
    "bytes": 31361,
-   "entryBytes": 29609
+   "entryBytes": 29609,
+   "fallback": false
   },
   {
    "slug": "wireframe-ball",
@@ -2835,7 +3220,8 @@
    "chunkFile": "chunks/wireframe-ball__75303.js",
    "componentFile": "components/wireframe-ball.js",
    "bytes": 22571,
-   "entryBytes": 21030
+   "entryBytes": 21030,
+   "fallback": false
   }
  ]
 }
