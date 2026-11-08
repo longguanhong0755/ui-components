@@ -1,0 +1,2623 @@
+/* ReactBits Pro public preview module 36880 for album-rail.
+ * Extracted from https://pro.reactbits.dev/_next/static/chunks/36880.93cfed09df17ff29.js
+ * This is the compiled browser implementation, not the original TSX. */
+
+const module = {
+  36880: (e, t, a) => {
+    (a.r(t), a.d(t, { default: () => Y }));
+    var r = a(95155),
+      n = a(12115),
+      o = a(56388),
+      i = a(86049),
+      l = a(90761),
+      s = a(12246),
+      u = a(2253),
+      d = a(90650);
+    let c = 2 * Math.PI,
+      p = [
+        {
+          src: "/demo-media/abstract-amber-loop.webp",
+          alt: "Amber loop cover: tilted golden-amber loop on a grainy raspberry-purple field",
+          title: "Amber loop",
+          subtitle: "Quiet Coast",
+        },
+        {
+          src: "/demo-media/abstract-pink-eclipse.webp",
+          alt: "Pink eclipse cover: coral-pink disc crossing a violet diagonal plane on a grainy purple field",
+          title: "Pink eclipse",
+          subtitle: "Iona Vale",
+        },
+        {
+          src: "/demo-media/abstract-rose-balance.webp",
+          alt: "Rose balance cover: tilted raspberry rounded rectangle and tangerine disc on a rose-pink field",
+          title: "Rose balance",
+          subtitle: "Low Meridian",
+        },
+        {
+          src: "/demo-media/abstract-coral-fold.webp",
+          alt: "Coral fold cover: broad vermilion and orange folded plane over deep plum with fine grain",
+          title: "Coral fold",
+          subtitle: "Static Gardens",
+        },
+        {
+          src: "/demo-media/abstract-fuchsia-wave.webp",
+          alt: "Fuchsia wave cover: broad fuchsia S-shaped band with a coral gradient across deep plum",
+          title: "Fuchsia wave",
+          subtitle: "Mira Sol",
+        },
+        {
+          src: "/demo-media/abstract-violet-steps.webp",
+          alt: "Violet steps cover: three interlocking violet and pink stepped planes with an amber edge",
+          title: "Violet steps",
+          subtitle: "The Slow Hours",
+        },
+        {
+          src: "/demo-media/abstract-plum-ribbon.webp",
+          alt: "Plum ribbon cover: intersecting pink and plum diagonal ribbons on a coral-magenta field",
+          title: "Plum ribbon",
+          subtitle: "Hollow North",
+        },
+        {
+          src: "/demo-media/abstract-orchid-orbit.webp",
+          alt: "Orchid orbit cover: fuchsia ring and peach crescent on a grainy orchid-purple field",
+          title: "Orchid orbit",
+          subtitle: "June Atlas",
+        },
+      ],
+      h = (e, t, a) => Math.min(a, Math.max(t, e)),
+      m = (e, t, a) => {
+        let r = h((a - e) / (t - e), 0, 1);
+        return r * r * (3 - 2 * r);
+      },
+      f = (e) => {
+        let t = window.matchMedia("(prefers-reduced-motion: reduce)");
+        return (
+          t.addEventListener("change", e),
+          () => t.removeEventListener("change", e)
+        );
+      },
+      v = () => window.matchMedia("(prefers-reduced-motion: reduce)").matches,
+      g = (e) => {
+        let t = e.trim().replace("#", "");
+        if (!/^[0-9a-f]{3}(?:[0-9a-f]{3})?$/i.test(t)) return null;
+        let a = 3 === t.length ? t.replace(/./g, (e) => e + e) : t;
+        return [0, 2, 4].map(
+          (e) => Number.parseInt(a.slice(e, e + 2), 16) / 255,
+        );
+      },
+      b = (e) =>
+        e <= 0.04045 ? e / 12.92 : Math.pow((e + 0.055) / 1.055, 2.4),
+      x = (e, t, a) => {
+        let r = b(e),
+          n = b(t),
+          o = b(a),
+          i = Math.cbrt(0.4122214708 * r + 0.5363325363 * n + 0.0514459929 * o),
+          l = Math.cbrt(0.2119034982 * r + 0.6806995451 * n + 0.1073969566 * o),
+          s = Math.cbrt(0.0883024619 * r + 0.2817188376 * n + 0.6299787005 * o);
+        return [
+          0.2104542553 * i + 0.793617785 * l - 0.0040720468 * s,
+          1.9779984951 * i - 2.428592205 * l + 0.4505937099 * s,
+          0.0259040371 * i + 0.7827717662 * l - 0.808675766 * s,
+        ];
+      },
+      y = (e, t, a) => {
+        let r = Math.pow(e + 0.3963377774 * t + 0.2158037573 * a, 3),
+          n = Math.pow(e - 0.1055613458 * t - 0.0638541728 * a, 3),
+          o = Math.pow(e - 0.0894841775 * t - 1.291485548 * a, 3);
+        return [
+          4.0767416621 * r - 3.3077115913 * n + 0.2309699292 * o,
+          -1.2684380046 * r + 2.6097574011 * n - 0.3413193965 * o,
+          -0.0041960863 * r - 0.7034186147 * n + 1.707614701 * o,
+        ];
+      },
+      w = x(139 / 255, 92 / 255, 246 / 255),
+      M = (e, t, a, r, n, o) => {
+        let i = c / Math.max(n, 0.02),
+          l = Math.max(1, Math.ceil(r / (1 / 240))),
+          s = r / l,
+          u = t,
+          d = e;
+        for (let e = 0; e < l; e++)
+          ((u += (i * i * (a - d) - 2 * o * i * u) * s), (d += u * s));
+        return [d, u];
+      },
+      k = {
+        position: "absolute",
+        width: 1,
+        height: 1,
+        padding: 0,
+        margin: -1,
+        overflow: "hidden",
+        clip: "rect(0, 0, 0, 0)",
+        whiteSpace: "nowrap",
+        border: 0,
+      },
+      C = {
+        position: "absolute",
+        inset: 0,
+        touchAction: "pan-y",
+        userSelect: "none",
+        WebkitUserSelect: "none",
+        WebkitTouchCallout: "none",
+      },
+      S = "color-mix(in oklch, currentColor 10%, transparent)",
+      j = "var(--album-rail-tone, #8B5CF6)",
+      P = (e) => `color-mix(in oklch, ${j} ${e}%, transparent)`,
+      I = {
+        position: "absolute",
+        left: 0,
+        right: 0,
+        top: 0,
+        flexDirection: "column",
+        alignItems: "center",
+        gap: 4,
+        padding: "0 16px",
+        textAlign: "center",
+        pointerEvents: "none",
+        opacity: 0,
+        willChange: "transform, opacity",
+      },
+      E = {
+        maxWidth: "100%",
+        overflow: "hidden",
+        textOverflow: "ellipsis",
+        whiteSpace: "nowrap",
+        fontSize: 16,
+        fontWeight: 600,
+        lineHeight: 1.25,
+        letterSpacing: "-0.012em",
+      },
+      A = {
+        maxWidth: "100%",
+        overflow: "hidden",
+        textOverflow: "ellipsis",
+        whiteSpace: "nowrap",
+        fontSize: 13,
+        lineHeight: 1.4,
+        opacity: 0.55,
+      },
+      L = {
+        position: "absolute",
+        left: 0,
+        right: 0,
+        top: -100,
+        height: 38,
+        alignItems: "center",
+        justifyContent: "center",
+        gap: 12,
+        padding: "0 16px",
+        pointerEvents: "none",
+      },
+      N = {
+        position: "relative",
+        width: "min(296px, calc(100% - 80px))",
+        height: 38,
+        flex: "0 1 auto",
+      },
+      T = {
+        position: "absolute",
+        inset: 0,
+        cursor: "ew-resize",
+        touchAction: "none",
+        pointerEvents: "auto",
+        WebkitMaskImage:
+          "linear-gradient(90deg, transparent, #000 20%, #000 80%, transparent)",
+        maskImage:
+          "linear-gradient(90deg, transparent, #000 20%, #000 80%, transparent)",
+      },
+      z = {
+        position: "absolute",
+        left: "50%",
+        top: 0,
+        width: 38,
+        height: 38,
+        marginLeft: -19,
+        display: "grid",
+        placeItems: "center",
+        padding: 0,
+        border: 0,
+        borderRadius: 999,
+        color: j,
+        cursor: "pointer",
+        pointerEvents: "auto",
+        transition: "background-color 420ms ease, color 420ms ease",
+      },
+      B = {
+        gridArea: "1 / 1",
+        transition:
+          "opacity 200ms ease, transform 260ms cubic-bezier(0.22, 1, 0.36, 1)",
+      },
+      F = {
+        position: "absolute",
+        left: "50%",
+        top: 10,
+        width: 2,
+        height: 18,
+        marginLeft: -1,
+        borderRadius: 2,
+        background: j,
+        pointerEvents: "none",
+        transition: "background-color 420ms ease",
+      },
+      R = {
+        width: 28,
+        height: 28,
+        flex: "0 0 auto",
+        display: "grid",
+        placeItems: "center",
+        padding: 0,
+        border: 0,
+        borderRadius: 999,
+        background: "transparent",
+        color: "inherit",
+        opacity: 0.55,
+        cursor: "pointer",
+        pointerEvents: "auto",
+        transition: "opacity 160ms ease, background-color 160ms ease",
+      },
+      H = `
+uniform vec2 uSize;
+varying vec2 vUv;
+
+void main() {
+  vUv = position.xy / uSize + 0.5;
+  gl_Position = projectionMatrix * modelViewMatrix * vec4(position, 1.0);
+}
+`,
+      W = `
+precision highp float;
+
+uniform sampler2D uImage;
+uniform float uImageAspect;
+uniform vec2 uSize;
+uniform float uLoaded;
+uniform float uDim;
+uniform vec3 uBackground;
+uniform vec3 uPlaceholder;
+varying vec2 vUv;
+
+void main() {
+  float cardAspect = uSize.x / uSize.y;
+  vec2 uv = vUv - 0.5;
+  if (cardAspect > uImageAspect) {
+    uv.y *= uImageAspect / cardAspect;
+  } else {
+    uv.x *= cardAspect / uImageAspect;
+  }
+  uv += 0.5;
+  vec3 color = texture2D(uImage, uv).rgb;
+  color = mix(uPlaceholder, color, clamp(uLoaded, 0.0, 1.0));
+  color = mix(color, uBackground, clamp(uDim, 0.0, 1.0));
+  gl_FragColor = vec4(color, 1.0);
+}
+`,
+      D = `
+varying vec2 vUv;
+
+void main() {
+  vUv = uv;
+  gl_Position = projectionMatrix * modelViewMatrix * vec4(position, 1.0);
+}
+`,
+      $ = `
+precision highp float;
+
+uniform vec2 uSize;
+uniform vec2 uBox;
+uniform float uRadius;
+uniform float uBlur;
+uniform float uStrength;
+uniform float uRound;
+varying vec2 vUv;
+
+float roundBox(vec2 p, vec2 b, float r) {
+  vec2 q = abs(p) - b + r;
+  return length(max(q, 0.0)) + min(max(q.x, q.y), 0.0) - r;
+}
+
+void main() {
+  vec2 p = (vUv - 0.5) * uSize;
+  float d = uRound > 0.5 ? length(p) - uBox.x : roundBox(p, uBox, uRadius);
+  float a = 1.0 - smoothstep(-uBlur, uBlur, d);
+  a *= a;
+  float alpha = a * uStrength;
+  if (alpha < 0.002) discard;
+  gl_FragColor = vec4(0.0, 0.0, 0.0, alpha);
+}
+`,
+      U = `
+varying vec2 vPos;
+
+void main() {
+  vPos = position.xy;
+  gl_Position = projectionMatrix * modelViewMatrix * vec4(position, 1.0);
+}
+`,
+      O = `
+precision highp float;
+
+uniform sampler2D uImage;
+uniform float uImageAspect;
+uniform float uLoaded;
+uniform float uSpin;
+uniform vec3 uVinyl;
+uniform vec3 uPlaceholder;
+uniform vec3 uBackground;
+uniform float uDim;
+varying vec2 vPos;
+
+float hash(float n) {
+  return fract(sin(n * 12.9898) * 43758.5453);
+}
+
+void main() {
+  float r = length(vPos);
+  float px = max(fwidth(r), 1e-4);
+  float theta = atan(vPos.y, vPos.x);
+  float label = 0.33;
+
+  vec3 color;
+  if (r < label) {
+    float c = cos(uSpin);
+    float s = sin(uSpin);
+    vec2 q = vec2(c * vPos.x + s * vPos.y, -s * vPos.x + c * vPos.y) / label;
+    vec2 uv = q * 0.5;
+    if (uImageAspect > 1.0) {
+      uv.x /= uImageAspect;
+    } else {
+      uv.y *= uImageAspect;
+    }
+    uv += 0.5;
+    vec3 art = texture2D(uImage, uv).rgb;
+    art = mix(uPlaceholder, art, clamp(uLoaded, 0.0, 1.0));
+    float edge = smoothstep(label - 0.018, label - 0.004, r);
+    color = art * (1.0 - 0.32 * edge);
+    float hole = 1.0 - smoothstep(0.026, 0.026 + px * 1.5, r);
+    color = mix(color, uBackground, hole);
+  } else {
+    float lead = smoothstep(label, label + 0.05, r) * (1.0 - smoothstep(0.935, 0.95, r));
+    float ring = (r - 0.4) * 6.0;
+    float cell = floor(ring);
+    float local = fract(ring);
+    float separator = (1.0 - smoothstep(0.0, 0.035 + px * 6.0, local)) * step(0.4, r) * step(r, 0.935);
+    float density = clamp(px * 140.0, 0.0, 1.0);
+    float groove = mix(0.5 + 0.5 * sin(r * 880.0 + hash(cell) * 6.2831), 0.5, density);
+    vec3 base = uVinyl * (0.92 + 0.12 * groove * lead);
+    float light = 0.86;
+    float facing = abs(cos(theta + uSpin * 0.0 - light));
+    float sheen = pow(facing, 26.0) + 0.45 * pow(abs(cos(theta - light - 0.32)), 70.0);
+    float sheenBand = smoothstep(label + 0.02, 0.46, r) * (1.0 - smoothstep(0.9, 0.95, r));
+    vec3 highlight = vec3(1.0) * sheen * sheenBand * (0.13 + 0.08 * groove);
+    float rim = smoothstep(0.955, 0.99, r) * (1.0 - smoothstep(0.99, 1.0, r));
+    color = base + highlight + vec3(0.06) * separator * sheenBand + vec3(0.05) * rim;
+  }
+  float alpha = 1.0 - smoothstep(1.0 - px * 1.2, 1.0, r);
+  color = mix(color, uBackground, clamp(uDim, 0.0, 1.0));
+  gl_FragColor = vec4(color * alpha, alpha);
+}
+`,
+      X = (0, n.forwardRef)(function (
+        {
+          items: e = p,
+          startIndex: t = 0,
+          aspect: a = 1,
+          size: o = 0.62,
+          spread: i = 0.58,
+          stack: l = 0.5,
+          fan: b = 6,
+          turn: j = 22,
+          depth: X = 0.5,
+          visible: V = 3,
+          radius: q = 14,
+          dim: _ = 0.45,
+          shadow: G = 0.6,
+          vinyl: Y = !0,
+          vinylColor: Q = "#131116",
+          accentColor: K = "auto",
+          rpm: Z = 33,
+          autoplay: J = !0,
+          interval: ee = 4,
+          pauseOnHover: et = !0,
+          loop: ea = !0,
+          draggable: er = !0,
+          wheel: en = !0,
+          captions: eo = !0,
+          controls: ei = !0,
+          backgroundColor: el = "transparent",
+          paused: es = !1,
+          dpr: eu = 2,
+          ariaLabel:
+            ed = "Album rail. Scroll, drag or use the arrow keys to browse. Press Enter to play the focused album.",
+          onIndexChange: ec,
+          onSelect: ep,
+          onPlayChange: eh,
+          className: em,
+          style: ef,
+        },
+        ev,
+      ) {
+        let eg,
+          eb = (0, n.useRef)(null),
+          ex = (0, n.useRef)(null),
+          ey = (0, n.useRef)(null),
+          ew = (0, n.useRef)(null),
+          eM = (0, n.useRef)(null),
+          ek = (0, n.useRef)(null),
+          eC = (0, n.useRef)(null),
+          eS = (0, n.useRef)(null),
+          ej = (0, n.useSyncExternalStore)(f, v, () => !1),
+          eP = e.length ? e : p,
+          eI = (0, n.useRef)(eP),
+          [eE] = (0, n.useState)(() =>
+            h(Math.round(t), 0, Math.max(eP.length - 1, 0)),
+          ),
+          [eA, eL] = (0, n.useState)(eE),
+          [eN, eT] = (0, n.useState)(!1),
+          [ez, eB] = (0, n.useState)(!1),
+          eF = {
+            aspect: a,
+            size: o,
+            spread: i,
+            stack: l,
+            fan: b,
+            turn: j,
+            depth: X,
+            visible: V,
+            radius: q,
+            dim: _,
+            shadow: G,
+            vinyl: Y,
+            vinylColor: Q,
+            accentColor: K,
+            rpm: Z,
+            autoplay: J,
+            interval: ee,
+            pauseOnHover: et,
+            loop: ea,
+            draggable: er,
+            wheel: en,
+            captions: eo,
+            controls: ei,
+            backgroundColor: el,
+            paused: es,
+            dpr: eu,
+            reduced: ej,
+          },
+          eR = (0, n.useRef)(eF),
+          eH = (0, n.useRef)({
+            onIndexChange: ec,
+            onSelect: ep,
+            onPlayChange: eh,
+          });
+        ((0, n.useEffect)(() => {
+          ((eR.current = eF),
+            (eI.current = eP),
+            (eH.current = {
+              onIndexChange: ec,
+              onSelect: ep,
+              onPlayChange: eh,
+            }),
+            eS.current?.sync());
+        }),
+          (0, n.useEffect)(() => {
+            let e = eb.current,
+              t = ex.current,
+              a = ey.current,
+              r = ew.current,
+              n = eM.current,
+              o = ek.current,
+              i = eC.current;
+            if (!e || !t || !a || !r || !n || !o || !i) return;
+            let l = ((e, t, a, r, n, o, i) => {
+              let l,
+                d = e.ownerDocument,
+                p = d.createElement("canvas");
+              p.style.cssText =
+                "position:absolute;inset:0;width:100%;height:100%;display:block";
+              try {
+                l = new s.WebGLRenderer({
+                  canvas: p,
+                  alpha: !0,
+                  antialias: !0,
+                  premultipliedAlpha: !0,
+                  powerPreference: "high-performance",
+                });
+              } catch {
+                return null;
+              }
+              (t.appendChild(p), l.setClearColor(0, 0));
+              let f = new u.Z58(),
+                v = new u.ubm(30, 1, 10, 8e3),
+                b = new u.GYF(new Uint8Array([128, 128, 128, 255]), 1, 1);
+              b.needsUpdate = !0;
+              let k = new u.Q1f(0, 0, 0),
+                C = new u.Q1f(0.5, 0.5, 0.5),
+                S = new u.Q1f(0.08, 0.075, 0.09),
+                j = Math.min(8, l.capabilities.getMaxAnisotropy()),
+                P = new u.I9Y(300, 300),
+                I = new u.MSw(new u.ypk(), 1),
+                E = new u.bdM(1, 1),
+                A = new u.tcD(1.01, 160),
+                L = (e) =>
+                  new u.BKk({
+                    uniforms: {
+                      uSize: { value: new u.I9Y(1, 1) },
+                      uBox: { value: new u.I9Y(1, 1) },
+                      uRadius: { value: 12 },
+                      uBlur: { value: 24 },
+                      uStrength: { value: 0.3 },
+                      uRound: { value: +!!e },
+                    },
+                    vertexShader: D,
+                    fragmentShader: $,
+                    transparent: !0,
+                    premultipliedAlpha: !1,
+                    depthWrite: !1,
+                    depthTest: !1,
+                  }),
+                N = Array.from({ length: 13 }, () => {
+                  let e = new u.BKk({
+                      uniforms: {
+                        uImage: { value: b },
+                        uImageAspect: { value: 1 },
+                        uSize: { value: P },
+                        uLoaded: { value: 0 },
+                        uDim: { value: 0 },
+                        uBackground: { value: k },
+                        uPlaceholder: { value: C },
+                      },
+                      vertexShader: H,
+                      fragmentShader: W,
+                      side: u.$EB,
+                      transparent: !0,
+                      depthTest: !1,
+                      depthWrite: !1,
+                    }),
+                    t = new u.eaF(I, e);
+                  ((t.frustumCulled = !1), (t.visible = !1), f.add(t));
+                  let a = new u.eaF(E, L(!1));
+                  return (
+                    (a.frustumCulled = !1),
+                    (a.visible = !1),
+                    f.add(a),
+                    { mesh: t, shade: a, index: 0, order: 0 }
+                  );
+                }),
+                T = new u.eaF(
+                  A,
+                  new u.BKk({
+                    uniforms: {
+                      uImage: { value: b },
+                      uImageAspect: { value: 1 },
+                      uLoaded: { value: 0 },
+                      uSpin: { value: 0 },
+                      uVinyl: { value: S },
+                      uPlaceholder: { value: C },
+                      uDim: { value: 0 },
+                      uBackground: { value: k },
+                    },
+                    vertexShader: U,
+                    fragmentShader: O,
+                    side: u.$EB,
+                    transparent: !0,
+                    premultipliedAlpha: !0,
+                    depthTest: !1,
+                    depthWrite: !1,
+                  }),
+                );
+              ((T.frustumCulled = !1), (T.visible = !1), f.add(T));
+              let z = new u.eaF(E, L(!0));
+              ((z.frustumCulled = !1), (z.visible = !1), f.add(z));
+              let B = [],
+                F = "",
+                R = 0,
+                X = 0,
+                V = 1,
+                q = !1,
+                _ = o,
+                G = 0,
+                Y = o,
+                Q = 0,
+                K = !1,
+                Z = 0,
+                J = 0,
+                ee = 0,
+                et = 0,
+                ea = !1,
+                er = 0,
+                en = 0,
+                eo = 0,
+                ei = 0,
+                el = 0,
+                es = !1,
+                eu = -1,
+                ed = 0,
+                ec = 0,
+                ep = o,
+                eh = "",
+                em = d.createElement("canvas"),
+                ef = 0,
+                ev = 0,
+                eg = 0,
+                eb = !1,
+                ex = !1,
+                ey = !1,
+                ew = !1,
+                eM = !1,
+                ek = !1,
+                eC = 0,
+                eS = 0,
+                ej = null,
+                eP = NaN,
+                eI = NaN,
+                eE = NaN,
+                eA = -1,
+                eL = NaN,
+                eN = NaN,
+                eT = 0,
+                ez = NaN,
+                eB = null,
+                eF = Array.from({ length: 29 }, () => {
+                  let e = d.createElement("span");
+                  return (
+                    (e.style.cssText =
+                      "position:absolute;left:0;top:50%;width:1px;height:9px;margin-top:-4.5px;border-radius:1px;background:currentColor;opacity:0;will-change:transform"),
+                    a.ruler.appendChild(e),
+                    { node: e, x: NaN, on: !1 }
+                  );
+                }),
+                eR = "",
+                eH = 0,
+                eW = new Map(),
+                eD = null,
+                e$ = {
+                  cardW: 300,
+                  cardH: 300,
+                  step: 180,
+                  lift: 0,
+                  labelGap: 28,
+                  controlsTop: 28,
+                  distance: 1200,
+                },
+                eU = () => Math.max(n.current.length, 1),
+                eO = (e) => ((e % eU()) + eU()) % eU(),
+                eX = (e) => (r.current.loop ? e : h(e, 0, eU() - 1)),
+                eV = () => {
+                  let e = n.current,
+                    t = e.map((e) => e.src).join("\0");
+                  if (t === F) return;
+                  ((F = t),
+                    B.forEach((e) => {
+                      ((e.image.onload = null), e.texture.dispose());
+                    }));
+                  let a = Math.max(e.length, 1),
+                    r = eO(Math.round(_));
+                  B = e.map((e, t) => {
+                    let n = new Image();
+                    ((n.crossOrigin = "anonymous"), (n.decoding = "async"));
+                    let o = Math.abs(t - r) % a;
+                    n.fetchPriority = 2 >= Math.min(o, a - o) ? "high" : "low";
+                    let i = new u.gPd(n);
+                    ((i.colorSpace = u.jf0),
+                      (i.minFilter = u.$_I),
+                      (i.magFilter = u.k6q),
+                      (i.generateMipmaps = !0),
+                      (i.anisotropy = j));
+                    let l = {
+                      image: n,
+                      texture: i,
+                      aspect: 1,
+                      ready: !1,
+                      uploaded: !1,
+                      fade: 0,
+                      tone: null,
+                    };
+                    return (
+                      (n.onload = () => {
+                        if (ex) return;
+                        let e = () => {
+                          ex ||
+                            l.ready ||
+                            ((l.aspect =
+                              n.naturalWidth / Math.max(n.naturalHeight, 1)),
+                            (l.ready = !0),
+                            (l.tone = ((e, t) => {
+                              let a;
+                              ((t.width = 28), (t.height = 28));
+                              let r = t.getContext("2d", {
+                                willReadFrequently: !0,
+                              });
+                              if (!r) return null;
+                              try {
+                                (r.drawImage(e, 0, 0, 28, 28),
+                                  (a = r.getImageData(0, 0, 28, 28).data));
+                              } catch {
+                                return null;
+                              }
+                              let n = new Float64Array(36),
+                                o = [];
+                              for (let e = 0; e < a.length; e += 4) {
+                                let [t, r, i] = x(
+                                    a[e] / 255,
+                                    a[e + 1] / 255,
+                                    a[e + 2] / 255,
+                                  ),
+                                  l = Math.hypot(r, i);
+                                if (l < 0.04) continue;
+                                let s =
+                                  Math.pow(l, 1.5) *
+                                  Math.max(0, 1 - 1.5 * Math.abs(t - 0.62));
+                                if (s <= 0) continue;
+                                let u = Math.atan2(i, r),
+                                  d =
+                                    Math.floor(((((u / c) % 1) + 1) % 1) * 36) %
+                                    36;
+                                ((n[d] += s), o.push(t, r, i, u, s));
+                              }
+                              if (!o.length) return null;
+                              let i = 0,
+                                l = -1;
+                              for (let e = 0; e < 36; e++) {
+                                let t =
+                                  n[(e + 35) % 36] + 2 * n[e] + n[(e + 1) % 36];
+                                t > l && ((l = t), (i = e));
+                              }
+                              let s = ((i + 0.5) / 36) * c,
+                                u = 0,
+                                d = 0,
+                                p = 0,
+                                h = 0;
+                              for (let e = 0; e < o.length; e += 5) {
+                                if (
+                                  Math.abs(
+                                    Math.atan2(
+                                      Math.sin(o[e + 3] - s),
+                                      Math.cos(o[e + 3] - s),
+                                    ),
+                                  ) > 0.32
+                                )
+                                  continue;
+                                let t = o[e + 4];
+                                ((u += t),
+                                  (d += o[e] * t),
+                                  (p += o[e + 1] * t),
+                                  (h += o[e + 2] * t));
+                              }
+                              return u > 0 ? [d / u, p / u, h / u] : null;
+                            })(n, em)),
+                            (eh = ""),
+                            (i.needsUpdate = !0),
+                            eQ());
+                        };
+                        n.decode().then(e, e);
+                      }),
+                      (n.src = e.src),
+                      l
+                    );
+                  });
+                },
+                eq = () => {
+                  let t = r.current,
+                    a = Math.round(e.clientWidth),
+                    n = Math.round(e.clientHeight);
+                  if (a < 2 || n < 2) return ((q = !1), !1);
+                  let o = Math.min(
+                    window.devicePixelRatio || 1,
+                    Math.max(t.dpr, 0.5),
+                  );
+                  return (
+                    (!q || a !== R || n !== X || o !== V) &&
+                    ((q = !0),
+                    (R = a),
+                    (X = n),
+                    (V = o),
+                    l.setPixelRatio(V),
+                    l.setSize(R, X, !1),
+                    !0)
+                  );
+                },
+                e_ = () => {
+                  (() => {
+                    let t = r.current.backgroundColor;
+                    if (g(t)) return k.setStyle(t, u.jf0);
+                    let a = e,
+                      n = d.defaultView ?? window;
+                    for (; a;) {
+                      let e = n.getComputedStyle(a).backgroundColor;
+                      if (
+                        e &&
+                        "transparent" !== e &&
+                        !/rgba\([^)]*,\s*0\)$/.test(e)
+                      )
+                        return void k.setStyle(e, u.jf0);
+                      a = a.parentElement;
+                    }
+                    let o = n.getComputedStyle(e).color,
+                      i = new u.Q1f();
+                    (i.setStyle(o || "#000", u.jf0),
+                      k.setHex(
+                        i.r + i.g + i.b > 1.5 ? 657930 : 0xffffff,
+                        u.jf0,
+                      ));
+                  })();
+                  let t = 0.2126 * k.r + 0.7152 * k.g + 0.0722 * k.b > 0.6;
+                  C.copy(k).lerp(new u.Q1f(0xffffff * !t), 0.08);
+                  let a = r.current.vinylColor;
+                  g(a) && S.setStyle(a, u.jf0);
+                },
+                eG = () => {
+                  let e = r.current,
+                    t = h(X / 620, 0.72, 1.15),
+                    n = 28 * t,
+                    o = e.captions ? n + 42 + 28 * t : n,
+                    i = e.controls ? o + 38 : e.captions ? n + 42 : 0;
+                  ((eT = a.ruler.clientWidth),
+                    (e$.labelGap = n),
+                    (e$.controlsTop = o));
+                  let l = Math.max(X - i, 0.5 * X),
+                    s = h(e.aspect, 0.5, 2),
+                    d = h(e.size, 0.2, 0.95) * l,
+                    c = 0.46 + 0.3 * m(900, 360, R);
+                  d * s > R * c && (d = (R * c) / s);
+                  let p = d * s;
+                  ((e$.cardW = p),
+                    (e$.cardH = d),
+                    (e$.step = p * h(e.spread, 0.1, 1.4)));
+                  let f = Math.max(3.1 * d, 600);
+                  ((e$.distance = f),
+                    (v.fov = (2 * Math.atan(X / 2 / f) * 180) / Math.PI),
+                    (v.aspect = R / X),
+                    (v.near = 0.05 * f),
+                    (v.far = 6 * f),
+                    v.position.set(0, 0, f),
+                    v.lookAt(0, 0, 0),
+                    (e$.lift = i / 2),
+                    v.setViewOffset(R, X, 0, e$.lift, R, X),
+                    v.updateProjectionMatrix(),
+                    v.updateMatrixWorld());
+                  let g = h(e.radius, 0, Math.min(p, d) / 2),
+                    b = `${p.toFixed(2)}|${d.toFixed(2)}|${g.toFixed(2)}`;
+                  if (b !== eR) {
+                    eR = b;
+                    let e = new u.ypk(),
+                      t = p / 2,
+                      a = d / 2,
+                      r = Math.max(g, 0.001);
+                    (e.moveTo(-t + r, -a),
+                      e.lineTo(t - r, -a),
+                      e.absarc(t - r, -a + r, r, -Math.PI / 2, 0, !1),
+                      e.lineTo(t, a - r),
+                      e.absarc(t - r, a - r, r, 0, Math.PI / 2, !1),
+                      e.lineTo(-t + r, a),
+                      e.absarc(-t + r, a - r, r, Math.PI / 2, Math.PI, !1),
+                      e.lineTo(-t, -a + r),
+                      e.absarc(-t + r, -a + r, r, Math.PI, 1.5 * Math.PI, !1));
+                    let n = new u.MSw(e, 12);
+                    (N.forEach((e) => {
+                      e.mesh.geometry = n;
+                    }),
+                      I.dispose(),
+                      (I = n),
+                      P.set(p, d));
+                  }
+                },
+                eY = (e, t) => {
+                  let a = r.current,
+                    n = Math.abs(e) * t,
+                    o = Math.sign(e),
+                    i = 1 - 0.85 * h(a.stack, 0, 1),
+                    l = i * n + ((1 - i) * Math.tanh(1.5 * n)) / Math.tanh(1.5),
+                    s = Math.sqrt(n * n + 0.09) - 0.3,
+                    u = h(a.depth, 0, 1),
+                    d = (h(a.fan, 0, 30) * Math.PI) / 180,
+                    c =
+                      Math.tanh(1.4 * e * t) *
+                      ((h(a.turn, 0, 70) * Math.PI) / 180),
+                    p = 1 - (0.04 + 0.12 * u) * Math.tanh(1.2 * s),
+                    m = n < 1 ? Math.pow(Math.sin(Math.PI * n), 2) : 0,
+                    f = 0.5 * i + ((1 - i) * Math.tanh(0.75)) / Math.tanh(1.5),
+                    v = Math.max(0, 0.5 * e$.cardW * 1.04 - e$.step * f);
+                  return {
+                    x: o * (e$.step * l + v * m),
+                    y: -(0.035 * e$.cardH) * l * l,
+                    z: -e$.cardH * (0.24 + 0.46 * u) * s,
+                    rz: -o * d * l,
+                    ry: c,
+                    scale: p,
+                  };
+                },
+                eQ = () => {
+                  ex ||
+                    ey ||
+                    !eb ||
+                    ef ||
+                    (ev && (window.clearTimeout(ev), (ev = 0)),
+                    (ef = requestAnimationFrame(e9)));
+                },
+                eK = (e = 2.6) => {
+                  let t = performance.now() / 1e3;
+                  ((J = Math.max(J, t + e)),
+                    (Z = Math.max(Z, t + Math.max(r.current.interval, e))));
+                },
+                eZ = (e) => {
+                  if (!r.current.vinyl && e) return;
+                  let t = eO(Math.round(Y));
+                  (e !== es || t !== eu) &&
+                    ((es = e), (eu = e ? t : -1), i.onPlay(t, e), eK(), eQ());
+                },
+                eJ = (e) => {
+                  if (r.current.loop) {
+                    let t = eU(),
+                      a = Math.round(Y),
+                      r =
+                        ((((e - eO(a)) % t) + t + Math.floor(t / 2)) % t) -
+                        Math.floor(t / 2);
+                    Y = a + r;
+                  } else Y = h(e, 0, eU() - 1);
+                  (eK(), eQ());
+                },
+                e0 = (e) => {
+                  ((Y = eX(Math.round(Y) + e)), eK(), eQ());
+                },
+                e1 = new u.O9p(),
+                e2 = new u.kn4(),
+                e5 = new u.PTz(),
+                e6 = new u.PTz(),
+                e3 = new u.Pq0(),
+                e4 = new u.Pq0(),
+                e8 = new u.Pq0();
+              function e9(t) {
+                let o, s;
+                if (((ef = 0), ex || ey)) return;
+                if (!q) {
+                  if ((eq(), !q)) return;
+                  eG();
+                }
+                let u = r.current,
+                  d =
+                    eg && t - eg < 100
+                      ? Math.min(Math.max((t - eg) / 1e3, 0), 0.05)
+                      : 1 / 60;
+                eg = t;
+                let p = performance.now() / 1e3,
+                  g = u.reduced,
+                  x = !1;
+                for (let e of (p - eH > 1.2 && ((eH = p), e_()),
+                (() => {
+                  let e = B.length,
+                    t = eO(Math.round(_)),
+                    a = null,
+                    r = 1 / 0;
+                  for (let n = 0; n < e; n++) {
+                    let o = B[n];
+                    if (!o.ready || o.uploaded) continue;
+                    let i = Math.abs(n - t) % e,
+                      l = Math.min(i, e - i);
+                    l < r && ((r = l), (a = o));
+                  }
+                  return (
+                    !!a && (l.initTexture(a.texture), (a.uploaded = !0), !0)
+                  );
+                })() && (x = !0),
+                B))
+                  e.uploaded &&
+                    e.fade < 1 &&
+                    ((e.fade = g || !ea ? 1 : Math.min(1, e.fade + d / 0.45)),
+                    (x = !0));
+                if (!ea) {
+                  er || (er = p);
+                  let e = !0;
+                  for (let t = -2; t <= 2; t++) {
+                    let a = B[eO(Math.round(_) + t)];
+                    a && !a.uploaded && (e = !1);
+                  }
+                  e || g || p - er > 1.6 ? ((ea = !0), (ee = +!!g)) : (x = !0);
+                }
+                ea &&
+                  ee < 1 &&
+                  (([ee, et] = M(ee, et, 1, d, g ? 0.05 : 1.5, 0.92)),
+                  1e-4 > Math.abs(1 - ee) && 1e-4 > Math.abs(et)
+                    ? ((ee = 1), (et = 0))
+                    : (x = !0));
+                let C = Math.max(u.interval, 1),
+                  S = !!eD || !!eB || (u.pauseOnHover && eM),
+                  j = S || p < J || es;
+                (u.autoplay && !u.paused && !g && eU() > 1
+                  ? j || 0 === Z
+                    ? (Z = Math.max(Z, p + C * (S || es ? 0.6 : 1)))
+                    : p >= Z &&
+                      ((Z = p + C),
+                      (Y =
+                        !u.loop && Math.round(Y) >= eU() - 1
+                          ? 0
+                          : eX(Math.round(Y) + 1)))
+                  : (Z = 0),
+                  K && p - Q > 0.14 && ((K = !1), (Y = eX(Math.round(Y)))),
+                  (eD && eD.moved) || (eB && eB.moved)
+                    ? (x = !0)
+                    : (([_, G] = M(
+                        _,
+                        G,
+                        Y,
+                        d,
+                        g ? 0.06 : K ? 0.6 : 0.85,
+                        0.88,
+                      )),
+                      1e-4 > Math.abs(_ - Y) && 1e-4 > Math.abs(G)
+                        ? ((_ = Y), (G = 0))
+                        : (x = !0)));
+                let P = eO(Math.round(_));
+                P !== eP && ((eP = P), i.onActive(P));
+                let I =
+                  0.04 > Math.abs(_ - Math.round(_)) &&
+                  !eD?.moved &&
+                  !eB?.moved;
+                es &&
+                  (eu !== eO(Math.round(Y)) || !u.vinyl) &&
+                  ((es = !1), i.onPlay(eu, !1), (eu = -1));
+                let E = Math.round(Y);
+                ep !== E &&
+                  ei < 0.01 &&
+                  en < 0.01 &&
+                  ((ep = E), (ei = 0), (el = 0), (en = 0), (eo = 0));
+                let A = ep === E,
+                  L = !!eD?.moved || !!eB?.moved,
+                  F = A && es && I ? 1 : 0;
+                (([ei, el] = M(
+                  ei,
+                  el,
+                  F,
+                  d,
+                  g ? 0.05 : F > ei ? 0.7 : L ? 0.14 : 0.45,
+                  F > ei ? 0.74 : 1,
+                )),
+                  Math.abs(ei - F) > 1e-4 || Math.abs(el) > 1e-4
+                    ? (x = !0)
+                    : ((ei = F), (el = 0)));
+                let R = A && u.vinyl && ek && I && !es ? 1 : 0;
+                (([en, eo] = M(
+                  en,
+                  eo,
+                  R,
+                  d,
+                  g ? 0.05 : L ? 0.14 : 0.42,
+                  L ? 1 : 0.95,
+                )),
+                  Math.abs(en - R) > 1e-4 || Math.abs(eo) > 1e-4
+                    ? (x = !0)
+                    : ((en = R), (eo = 0)));
+                let H = es && !g ? (h(u.rpm, 0, 90) * c) / 60 : 0;
+                (Math.abs(
+                  (ec += (H - ec) * (1 - Math.exp(-d / (H > ec ? 0.7 : 1.1)))),
+                ) > 0.001
+                  ? ((ed = (ed + ec * d) % c), (x = !0))
+                  : (ec = 0),
+                  eq(),
+                  eG(),
+                  eM && !eD && ti());
+                let W =
+                    ((s = h(Math.round((o = r.current).visible), 1, 5)),
+                    o.loop
+                      ? Math.min(s, Math.max(1, Math.floor((eU() - 1) / 2)))
+                      : s),
+                  D = h(u.dim, 0, 1),
+                  $ = h(u.shadow, 0, 1),
+                  U = Math.round(_),
+                  O = 0.47 * Math.min(e$.cardW, e$.cardH),
+                  V = h(ei, -0.2, 1.2),
+                  em = 2 * O * (0.15 * en + 0.56 * V),
+                  eb = ep - _,
+                  ew = -(0.62 * O) * V,
+                  eC = 0,
+                  eS = null;
+                for (let e = -13; e <= 13 && eC < 13; e++) {
+                  let t = U + e;
+                  if (!u.loop && (t < 0 || t >= eU())) continue;
+                  let a = t - _;
+                  if (Math.abs(a) > W + 0.6) continue;
+                  let r = N[eC++];
+                  r.index = t;
+                  let n = eY(a, ee),
+                    o = ew + 1.25 * O * (m(0, 0.6, a - eb) * V),
+                    i = m(W - 0.4, W + 0.55, Math.abs(a)),
+                    l = m(0, 0.5, ee * (1.4 - 0.18 * Math.abs(a))),
+                    s = eW.get(t) ?? 0,
+                    c = +(ej === t);
+                  (Math.abs((s += (c - s) * (1 - Math.exp(-d / 0.16))) - c) >
+                  0.001
+                    ? (x = !0)
+                    : (s = c),
+                    eW.set(t, s));
+                  let p = Math.max(
+                    i,
+                    D * m(0.35, 3.2, Math.abs(a)) * (1 - 0.6 * s),
+                    1 - l,
+                  );
+                  (e1.set(0, n.ry, n.rz, "YXZ"),
+                    e5.setFromEuler(e1),
+                    e8.set(n.x + o, n.y, n.z),
+                    e4.set(n.scale, n.scale, 1),
+                    e2.compose(e8, e5, e4),
+                    (r.mesh.matrixAutoUpdate = !1),
+                    r.mesh.matrix.copy(e2),
+                    (r.mesh.matrixWorldNeedsUpdate = !0),
+                    (r.mesh.visible = p < 0.999),
+                    (r.order = 1e3 - 100 * Math.abs(a) + 0.01 * (a > 0)),
+                    (r.mesh.renderOrder = r.order));
+                  let f = B[eO(t)],
+                    v = r.mesh.material.uniforms;
+                  ((v.uDim.value = p),
+                    f &&
+                      ((v.uImage.value = f.uploaded ? f.texture : b),
+                      (v.uImageAspect.value = f.aspect),
+                      (v.uLoaded.value = f.uploaded ? f.fade : 0)),
+                    e3
+                      .set(0, -(0.03 * e$.cardH), 0)
+                      .applyQuaternion(e5)
+                      .multiplyScalar(n.scale),
+                    e8.set(n.x + o + e3.x, n.y + e3.y, n.z + e3.z),
+                    e4.set(
+                      n.scale * (1.5 * e$.cardW),
+                      n.scale * (1.5 * e$.cardH),
+                      1,
+                    ),
+                    e2.compose(e8, e5, e4),
+                    (r.shade.matrixAutoUpdate = !1),
+                    r.shade.matrix.copy(e2),
+                    (r.shade.matrixWorldNeedsUpdate = !0),
+                    (r.shade.visible = r.mesh.visible && $ > 0.001),
+                    (r.shade.renderOrder = r.order - 0.5));
+                  let g = r.shade.material.uniforms;
+                  (g.uSize.value.set(1.5 * e$.cardW, 1.5 * e$.cardH),
+                    g.uBox.value.set(0.49 * e$.cardW, 0.49 * e$.cardH),
+                    (g.uRadius.value = h(u.radius, 0, e$.cardH / 2)),
+                    (g.uBlur.value = 0.075 * e$.cardH),
+                    (g.uStrength.value = 0.55 * $ * (1 - 0.85 * p)),
+                    t === ep &&
+                      ((eS = {
+                        x: n.x + o,
+                        y: n.y,
+                        z: n.z,
+                        scale: n.scale,
+                        order: r.order,
+                        dim: p,
+                      }),
+                      e6.copy(e5)));
+                }
+                for (let e = eC; e < 13; e++)
+                  ((N[e].mesh.visible = !1), (N[e].shade.visible = !1));
+                for (let e of Array.from(eW.keys()))
+                  Math.abs(e - _) > 13 && eW.delete(e);
+                let eR = u.vinyl && eS && (em > 0.5 || ei > 0.001);
+                if (
+                  ((T.visible = !!eR),
+                  (z.visible = !!eR && $ > 0.001),
+                  eR && eS)
+                ) {
+                  let e = B[eO(ep)],
+                    t = O * eS.scale;
+                  (e3
+                    .set(em, 0, -0.5)
+                    .applyQuaternion(e6)
+                    .multiplyScalar(eS.scale),
+                    e8.set(eS.x + e3.x, eS.y + e3.y, eS.z + e3.z),
+                    e4.set(t, t, 1),
+                    (T.matrixAutoUpdate = !1),
+                    T.matrix.compose(e8, e6, e4),
+                    (T.matrixWorldNeedsUpdate = !0),
+                    (T.renderOrder = eS.order - 0.7));
+                  let a = T.material.uniforms;
+                  ((a.uSpin.value = ed),
+                    (a.uDim.value = eS.dim),
+                    e &&
+                      ((a.uImage.value = e.uploaded ? e.texture : b),
+                      (a.uImageAspect.value = e.aspect),
+                      (a.uLoaded.value = +!!e.uploaded)),
+                    e3
+                      .set(em, -(0.05 * O), -0.75)
+                      .applyQuaternion(e6)
+                      .multiplyScalar(eS.scale),
+                    e8.set(eS.x + e3.x, eS.y + e3.y, eS.z + e3.z),
+                    e4.set(3 * t, 3 * t, 1),
+                    (z.matrixAutoUpdate = !1),
+                    z.matrix.compose(e8, e6, e4),
+                    (z.matrixWorldNeedsUpdate = !0),
+                    (z.renderOrder = eS.order - 0.8));
+                  let r = z.material.uniforms;
+                  (r.uSize.value.set(3 * t, 3 * t),
+                    r.uBox.value.set(0.98 * t, 0.98 * t),
+                    (r.uBlur.value = 0.16 * t),
+                    (r.uStrength.value =
+                      0.5 * $ * m(0, 0.3, en + V) * (1 - 0.85 * eS.dim)));
+                }
+                let eV = u.accentColor.trim(),
+                  eK = eO(Math.round(_)),
+                  eZ = 0.2126 * k.r + 0.7152 * k.g + 0.0722 * k.b > 0.6,
+                  eJ =
+                    eV && "auto" !== eV
+                      ? `fixed|${eV}`
+                      : `${eK}|${+!!B[eK]?.tone}|${+!!eZ}`;
+                (eJ !== eh &&
+                  ((eh = eJ),
+                  e.style.setProperty(
+                    "--album-rail-tone",
+                    eV && "auto" !== eV
+                      ? eV
+                      : ((e, t) => {
+                          let [a, r, n] = e ?? w,
+                            o = Math.atan2(n, r),
+                            i = t
+                              ? Math.max(0, 1 - Math.abs(o - 1.75) / 0.35)
+                              : 0,
+                            l = t
+                              ? Math.max(0, 1 - Math.abs(o - 2.23) / 0.28)
+                              : 0;
+                          o += (1.33 - o) * i + (2.62 - o) * l;
+                          let s = t
+                              ? h(a, 0.42, 0.56 + 0.08 * i)
+                              : h(a, 0.74, 0.86),
+                            u = h(1.5 * Math.hypot(r, n), 0.1 * !!e, 0.21),
+                            d = y(s, u * Math.cos(o), u * Math.sin(o));
+                          for (
+                            let e = 0;
+                            e < 16 && d.some((e) => e < -0.001 || e > 1.001);
+                            e++
+                          )
+                            ((u *= 0.88),
+                              (d = y(s, u * Math.cos(o), u * Math.sin(o))));
+                          return `#${d
+                            .map((e) => {
+                              let t;
+                              return Math.round(
+                                255 *
+                                  h(
+                                    (t = h(e, 0, 1)) <= 0.0031308
+                                      ? 12.92 * t
+                                      : 1.055 * Math.pow(t, 1 / 2.4) - 0.055,
+                                    0,
+                                    1,
+                                  ),
+                              )
+                                .toString(16)
+                                .padStart(2, "0");
+                            })
+                            .join("")}`;
+                        })(B[eK]?.tone ?? null, eZ),
+                  )),
+                  (function (e) {
+                    let t = r.current,
+                      o = X / 2 - e$.lift + e$.cardH / 2,
+                      i = o + e$.labelGap;
+                    (Number.isNaN(eL) || Math.abs(i - eL) > 0.25) &&
+                      ((eL = i), (a.caption.style.top = `${eL.toFixed(2)}px`));
+                    let l = o + e$.controlsTop;
+                    if (
+                      ((Number.isNaN(eN) || Math.abs(l - eN) > 0.25) &&
+                        ((eN = l), (a.deck.style.top = `${eN.toFixed(2)}px`)),
+                      t.captions)
+                    ) {
+                      let t = Math.round(_);
+                      if (t !== eI) {
+                        eI = t;
+                        let e = n.current[eO(t)];
+                        ((a.title.textContent = e ? (e.title ?? e.alt) : ""),
+                          (a.artist.textContent = e?.subtitle ?? ""),
+                          (a.artist.style.display = e?.subtitle ? "" : "none"));
+                      }
+                      let r = _ - t,
+                        o = ea ? (e ? 1 : m(0.35, 0.9, ee)) : 0,
+                        i = Math.abs(eD?.moved || eB?.moved ? 0 : G),
+                        l =
+                          (1 - m(0.08, 0.42, Math.abs(r))) *
+                          (1 - m(2.5, 7, i)) *
+                          o,
+                        s = e ? 0 : -(46 * r);
+                      ((Number.isNaN(eE) || Math.abs(s - eE) > 0.02) &&
+                        ((eE = s),
+                        (a.caption.style.transform = `translate3d(${s.toFixed(2)}px, 0, 0)`)),
+                        Math.abs(l - eA) > 0.002 &&
+                          ((eA = l), (a.caption.style.opacity = l.toFixed(3))));
+                    }
+                    if (
+                      t.controls &&
+                      eT > 0 &&
+                      (_ !== ez || Number.isNaN(ez))
+                    ) {
+                      ez = _;
+                      let e = eT / 2,
+                        a = t.vinyl ? 27 : 3,
+                        r = Math.round(_),
+                        n = Math.floor(14.5);
+                      for (let o = 0; o < 29; o++) {
+                        let i = eF[o],
+                          l = r - n + o,
+                          s = e + (l - _) * 18,
+                          u =
+                            (t.loop || (l >= 0 && l < eU())) &&
+                            s > 0 &&
+                            s < eT &&
+                            Math.abs(s - e) > a;
+                        (u !== i.on &&
+                          ((i.on = u),
+                          (i.node.style.opacity = u ? "0.34" : "0")),
+                          u &&
+                            (Number.isNaN(i.x) || Math.abs(s - i.x) > 0.01) &&
+                            ((i.x = s),
+                            (i.node.style.transform = `translate3d(${(s - 0.5).toFixed(2)}px, 0, 0)`)));
+                      }
+                    }
+                  })(g),
+                  l.render(f, v),
+                  x || eD || eB
+                    ? eQ()
+                    : u.autoplay &&
+                      !u.paused &&
+                      !g &&
+                      !S &&
+                      !es &&
+                      eU() > 1 &&
+                      (ev = window.setTimeout(
+                        () => {
+                          ((ev = 0), (eg = 0), eQ());
+                        },
+                        1e3 * Math.max(Math.max(Z, J) - p, 0.02) + 16,
+                      )));
+              }
+              let e7 = new u.tBo(),
+                te = new u.I9Y(),
+                tt = (t, a) => {
+                  let r = e.getBoundingClientRect();
+                  (te.set(
+                    ((t - r.left) / Math.max(r.width, 1)) * 2 - 1,
+                    1 - ((a - r.top) / Math.max(r.height, 1)) * 2,
+                  ),
+                    e7.setFromCamera(te, v));
+                  let n = N.filter((e) => e.mesh.visible).map((e) => e.mesh);
+                  T.visible && n.push(T);
+                  let o = e7.intersectObjects(n, !1),
+                    i = null;
+                  for (let e of o)
+                    (!i || e.object.renderOrder > i.renderOrder) &&
+                      (i = e.object);
+                  if (!i) return null;
+                  if (i === T) return { kind: "disc", index: ep };
+                  let l = N.find((e) => e.mesh === i);
+                  return l ? { kind: "card", index: l.index } : null;
+                },
+                ta = () => {
+                  if (((ek = !1), !es)) return;
+                  let e = eu;
+                  ((es = !1), (eu = -1), i.onPlay(e, !1));
+                },
+                tr = (e) => {
+                  if (e.isPrimary && !(e.button > 0)) {
+                    (e.stopPropagation(),
+                      (eB = {
+                        id: e.pointerId,
+                        x: e.clientX,
+                        origin: _,
+                        moved: !1,
+                        samples: [{ t: performance.now(), p: _ }],
+                      }),
+                      (G = 0),
+                      eK());
+                    try {
+                      a.ruler.setPointerCapture(e.pointerId);
+                    } catch {}
+                    eQ();
+                  }
+                },
+                tn = (e) => {
+                  if (!eB || eB.id !== e.pointerId) return;
+                  let t = e.clientX - eB.x;
+                  if (
+                    (!eB.moved && Math.abs(t) > 3 && ((eB.moved = !0), ta()),
+                    !eB.moved)
+                  )
+                    return;
+                  let a = r.current,
+                    n = eB.origin - t / 18;
+                  if (!a.loop) {
+                    let e = eU() - 1;
+                    n < 0 ? (n *= 0.35) : n > e && (n = e + (n - e) * 0.35);
+                  }
+                  ((_ = n), (Y = n));
+                  let o = performance.now();
+                  for (
+                    eB.samples.push({ t: o, p: _ });
+                    eB.samples.length > 2 && o - eB.samples[0].t > 110;
+                  )
+                    eB.samples.shift();
+                  eQ();
+                },
+                to = (e) => {
+                  if (!eB || eB.id !== e.pointerId) return;
+                  let t = eB;
+                  eB = null;
+                  try {
+                    a.ruler.hasPointerCapture(e.pointerId) &&
+                      a.ruler.releasePointerCapture(e.pointerId);
+                  } catch {}
+                  if (t.moved) {
+                    let e = performance.now(),
+                      a = t.samples.filter((t) => e - t.t < 110),
+                      n = 0;
+                    if (a.length > 1 && e - a[a.length - 1].t < 60) {
+                      let e = Math.max(
+                        (a[a.length - 1].t - a[0].t) / 1e3,
+                        1 / 120,
+                      );
+                      n = (a[a.length - 1].p - a[0].p) / e;
+                    }
+                    ((G = n = r.current.reduced ? 0 : h(n, -14, 14)),
+                      (Y = eX(Math.round(_ + 0.2 * n))));
+                  } else {
+                    let t = a.ruler.getBoundingClientRect(),
+                      r = Math.round((e.clientX - t.left - t.width / 2) / 18);
+                    Y = eX(Math.round(Y) + r);
+                  }
+                  (eK(), eQ());
+                };
+              function ti() {
+                let t = tt(eC, eS),
+                  a = Math.round(Y);
+                ((ej =
+                  t && "card" === t.kind && t.index !== a ? t.index : null),
+                  (ek = !!t && t.index === a));
+                let n = t ? "pointer" : r.current.draggable ? "grab" : "";
+                e.style.cursor !== n && (e.style.cursor = n);
+              }
+              let tl = (a) => {
+                  if (
+                    ("touch" === a.pointerType ||
+                      eD ||
+                      ((eM = !0), (eC = a.clientX), (eS = a.clientY), ti()),
+                    eD && eD.id === a.pointerId)
+                  ) {
+                    if (!eD.moved && Math.abs(a.clientX - eD.x) > 6) {
+                      ((eD.moved = !0),
+                        ta(),
+                        (ej = null),
+                        (ek = !1),
+                        (e.style.cursor = "grabbing"));
+                      try {
+                        t.setPointerCapture(a.pointerId);
+                      } catch {}
+                    }
+                    if (eD.moved) {
+                      let e = r.current,
+                        t =
+                          eD.origin - (a.clientX - eD.x) / Math.max(e$.step, 1);
+                      if (!e.loop) {
+                        let e = eU() - 1;
+                        t < 0 ? (t *= 0.35) : t > e && (t = e + (t - e) * 0.35);
+                      }
+                      _ = t;
+                      let n = performance.now();
+                      for (
+                        eD.samples.push({ t: n, p: _ });
+                        eD.samples.length > 2 && n - eD.samples[0].t > 110;
+                      )
+                        eD.samples.shift();
+                    }
+                    eD.lastX = a.clientX;
+                  }
+                  eQ();
+                },
+                ts = (e) => {
+                  !e.isPrimary ||
+                    e.button > 0 ||
+                    ((ew = !1),
+                    r.current.draggable &&
+                      ((eD = {
+                        id: e.pointerId,
+                        x: e.clientX,
+                        lastX: e.clientX,
+                        origin: _,
+                        moved: !1,
+                        samples: [{ t: performance.now(), p: _ }],
+                      }),
+                      (G = 0),
+                      eK(),
+                      eQ()));
+                },
+                tu = (a) => {
+                  if (!eD || eD.id !== a.pointerId) return;
+                  let n = eD;
+                  eD = null;
+                  try {
+                    t.hasPointerCapture(a.pointerId) &&
+                      t.releasePointerCapture(a.pointerId);
+                  } catch {}
+                  if (n.moved) {
+                    ew = !0;
+                    let t = performance.now(),
+                      a = n.samples.filter((e) => t - e.t < 110),
+                      o = 0;
+                    if (a.length > 1 && t - a[a.length - 1].t < 60) {
+                      let e = Math.max(
+                        (a[a.length - 1].t - a[0].t) / 1e3,
+                        1 / 120,
+                      );
+                      o = (a[a.length - 1].p - a[0].p) / e;
+                    }
+                    ((G = o = r.current.reduced ? 0 : h(o, -16, 16)),
+                      (Y = eX(Math.round(_ + 0.22 * o))),
+                      eK(),
+                      (e.style.cursor = r.current.draggable ? "grab" : ""));
+                  }
+                  eQ();
+                },
+                td = (e) => {
+                  if (ew) {
+                    ew = !1;
+                    return;
+                  }
+                  let t = tt(e.clientX, e.clientY);
+                  if (!t) {
+                    es && eZ(!1);
+                    return;
+                  }
+                  let a = Math.round(Y);
+                  t.index === a
+                    ? (i.onSelect(eO(a)), r.current.vinyl && eZ(!es))
+                    : ((Y = eX(t.index)), eK(), eQ());
+                },
+                tc = (t) => {
+                  (eD && eD.id === t.pointerId) ||
+                    ((eM = !1),
+                    (ej = null),
+                    (ek = !1),
+                    (e.style.cursor = ""),
+                    eQ());
+                },
+                tp = (e) => {
+                  if (!r.current.wheel) return;
+                  e.preventDefault();
+                  let t = 1 === e.deltaMode ? 16 : 2 === e.deltaMode ? X : 1,
+                    a = h(
+                      (Math.abs(e.deltaX) > Math.abs(e.deltaY)
+                        ? e.deltaX
+                        : e.deltaY) * t,
+                      -240,
+                      240,
+                    );
+                  ((Y = eX((K ? Y : Math.round(Y)) + a / 100)),
+                    (K = !0),
+                    (Q = performance.now() / 1e3),
+                    eK(),
+                    eQ());
+                },
+                th = (t) => {
+                  t.target === e &&
+                    ("ArrowRight" === t.key
+                      ? (t.preventDefault(), e0(1))
+                      : "ArrowLeft" === t.key
+                        ? (t.preventDefault(), e0(-1))
+                        : "Home" === t.key
+                          ? (t.preventDefault(), eJ(0))
+                          : "End" === t.key
+                            ? (t.preventDefault(), eJ(eU() - 1))
+                            : "Enter" === t.key || " " === t.key
+                              ? (t.preventDefault(),
+                                i.onSelect(eO(Math.round(Y))),
+                                r.current.vinyl && eZ(!es))
+                              : "Escape" === t.key &&
+                                es &&
+                                (t.preventDefault(), eZ(!1)));
+                };
+              (t.addEventListener("pointerdown", ts),
+                t.addEventListener("pointermove", tl),
+                t.addEventListener("pointerup", tu),
+                t.addEventListener("pointercancel", tu),
+                t.addEventListener("pointerleave", tc),
+                t.addEventListener("click", td),
+                t.addEventListener("wheel", tp, { passive: !1 }),
+                e.addEventListener("keydown", th),
+                a.ruler.addEventListener("pointerdown", tr),
+                a.ruler.addEventListener("pointermove", tn),
+                a.ruler.addEventListener("pointerup", to),
+                a.ruler.addEventListener("pointercancel", to));
+              let tm = new ResizeObserver(() => {
+                eq() && (eG(), eQ());
+              });
+              tm.observe(e);
+              let tf =
+                "undefined" == typeof IntersectionObserver
+                  ? null
+                  : new IntersectionObserver(
+                      ([e]) => {
+                        (eb = e.isIntersecting)
+                          ? ((eg = 0), eQ())
+                          : (ef && cancelAnimationFrame(ef),
+                            (ef = 0),
+                            ev && window.clearTimeout(ev),
+                            (ev = 0));
+                      },
+                      { rootMargin: "80px" },
+                    );
+              tf ? tf.observe(e) : (eb = !0);
+              let tv = (e) => {
+                  (e.preventDefault(),
+                    (ey = !0),
+                    ef && cancelAnimationFrame(ef),
+                    (ef = 0));
+                },
+                tg = () => {
+                  ((ey = !1), (F = ""), eV(), eQ());
+                };
+              return (
+                p.addEventListener("webglcontextlost", tv),
+                p.addEventListener("webglcontextrestored", tg),
+                eq(),
+                q && eG(),
+                e_(),
+                (N[0].mesh.visible = !0),
+                (N[0].shade.visible = !0),
+                (T.visible = !0),
+                (z.visible = !0),
+                l.compile(f, v),
+                (N[0].mesh.visible = !1),
+                (N[0].shade.visible = !1),
+                (T.visible = !1),
+                (z.visible = !1),
+                eV(),
+                eQ(),
+                {
+                  sync: () => {
+                    ((eq() || q) && eG(),
+                      e_(),
+                      eV(),
+                      (eI = NaN),
+                      (ez = NaN),
+                      r.current.loop || (Y = eX(Y)),
+                      eQ());
+                  },
+                  step: e0,
+                  goTo: eJ,
+                  setPlaying: eZ,
+                  destroy: () => {
+                    ((ex = !0),
+                      ef && cancelAnimationFrame(ef),
+                      ev && window.clearTimeout(ev),
+                      tf?.disconnect(),
+                      tm.disconnect(),
+                      t.removeEventListener("pointerdown", ts),
+                      t.removeEventListener("pointermove", tl),
+                      t.removeEventListener("pointerup", tu),
+                      t.removeEventListener("pointercancel", tu),
+                      t.removeEventListener("pointerleave", tc),
+                      t.removeEventListener("click", td),
+                      t.removeEventListener("wheel", tp),
+                      e.removeEventListener("keydown", th),
+                      a.ruler.removeEventListener("pointerdown", tr),
+                      a.ruler.removeEventListener("pointermove", tn),
+                      a.ruler.removeEventListener("pointerup", to),
+                      a.ruler.removeEventListener("pointercancel", to),
+                      eF.forEach((e) => e.node.remove()),
+                      (e.style.cursor = ""),
+                      e.style.removeProperty("--album-rail-tone"),
+                      p.removeEventListener("webglcontextlost", tv),
+                      p.removeEventListener("webglcontextrestored", tg),
+                      B.forEach((e) => {
+                        ((e.image.onload = null), e.texture.dispose());
+                      }),
+                      N.forEach((e) => {
+                        (e.mesh.material.dispose(), e.shade.material.dispose());
+                      }),
+                      T.material.dispose(),
+                      z.material.dispose(),
+                      eW.clear(),
+                      b.dispose(),
+                      I.dispose(),
+                      E.dispose(),
+                      A.dispose(),
+                      l.dispose(),
+                      l.getContext().isContextLost() || l.forceContextLoss(),
+                      p.remove());
+                  },
+                }
+              );
+            })(
+              e,
+              t,
+              { caption: a, title: r, artist: n, deck: o, ruler: i },
+              eR,
+              eI,
+              eE,
+              {
+                onActive: (e) => {
+                  (eL(e), eH.current.onIndexChange?.(e));
+                },
+                onSelect: (e) => {
+                  let t = eI.current[e];
+                  t &&
+                    (eH.current.onSelect?.(t, e),
+                    t.href &&
+                      !eR.current.vinyl &&
+                      window.location.assign(t.href));
+                },
+                onPlay: (e, t) => {
+                  (eT(t), eH.current.onPlayChange?.(e, t));
+                },
+              },
+            );
+            if (!l) {
+              let e = requestAnimationFrame(() => eB(!0));
+              return () => cancelAnimationFrame(e);
+            }
+            return (
+              (eS.current = l),
+              () => {
+                (l.destroy(), (eS.current = null));
+              }
+            );
+          }, [eE]),
+          (0, n.useImperativeHandle)(
+            ev,
+            () => ({
+              next: () => eS.current?.step(1),
+              previous: () => eS.current?.step(-1),
+              goTo: (e) => eS.current?.goTo(e),
+              play: () => eS.current?.setPlaying(!0),
+              stop: () => eS.current?.setPlaying(!1),
+            }),
+            [],
+          ));
+        let eW = el.trim().toLowerCase(),
+          eD = "transparent" === eW || "" === eW,
+          e$ =
+            !eD &&
+            !!(eg = g(eW)) &&
+            0.2126 * eg[0] + 0.7152 * eg[1] + 0.0722 * eg[2] > 0.6,
+          eU = eP[eA] ?? eP[0];
+        return (0, r.jsxs)("div", {
+          ref: eb,
+          className: (0, d.cn)(
+            "relative h-full min-h-[420px] w-full overflow-hidden outline-none focus-visible:outline-2 focus-visible:-outline-offset-2 focus-visible:outline-[color-mix(in_oklch,currentColor_35%,transparent)]",
+            em,
+          ),
+          style: {
+            backgroundColor: eD ? void 0 : el,
+            color: eD ? "currentColor" : e$ ? "#0a0a0a" : "#fafafa",
+            ...ef,
+          },
+          role: "region",
+          "aria-roledescription": "carousel",
+          "aria-label": ed,
+          tabIndex: 0,
+          children: [
+            (0, r.jsx)("div", { ref: ex, style: C }),
+            ez && eU
+              ? (0, r.jsx)("div", {
+                  style: {
+                    position: "absolute",
+                    inset: "16%",
+                    display: "grid",
+                    placeItems: "center",
+                  },
+                  children: (0, r.jsx)("img", {
+                    src: eU.src,
+                    alt: eU.alt,
+                    style: {
+                      maxWidth: "100%",
+                      maxHeight: "100%",
+                      objectFit: "cover",
+                      borderRadius: q,
+                    },
+                  }),
+                })
+              : null,
+            (0, r.jsx)("ul", {
+              style: k,
+              children: eP.map((e, t) =>
+                (0, r.jsx)(
+                  "li",
+                  {
+                    "aria-current": t === eA ? "true" : void 0,
+                    children: e.title
+                      ? `${e.title}${e.subtitle ? `, ${e.subtitle}` : ""}`
+                      : e.alt,
+                  },
+                  `${e.src}-${t}`,
+                ),
+              ),
+            }),
+            (0, r.jsx)("div", {
+              "aria-live": "polite",
+              style: k,
+              children: eU
+                ? `${eU.title ?? eU.alt}${eN ? ", playing" : ""}`
+                : "",
+            }),
+            (0, r.jsxs)("div", {
+              ref: ey,
+              "aria-hidden": "true",
+              style: { ...I, display: eo ? "flex" : "none" },
+              children: [
+                (0, r.jsx)("span", { ref: ew, style: E }),
+                (0, r.jsx)("span", { ref: eM, style: A }),
+              ],
+            }),
+            (0, r.jsxs)("div", {
+              ref: ek,
+              style: { ...L, display: ei ? "flex" : "none" },
+              children: [
+                (0, r.jsx)("button", {
+                  type: "button",
+                  "aria-label": "Previous album",
+                  onClick: () => eS.current?.step(-1),
+                  onPointerEnter: (e) => {
+                    ((e.currentTarget.style.opacity = "1"),
+                      (e.currentTarget.style.background = S));
+                  },
+                  onPointerLeave: (e) => {
+                    ((e.currentTarget.style.opacity = "0.55"),
+                      (e.currentTarget.style.background = "transparent"));
+                  },
+                  style: R,
+                  children: (0, r.jsx)("svg", {
+                    width: "14",
+                    height: "14",
+                    viewBox: "0 0 24 24",
+                    fill: "none",
+                    stroke: "currentColor",
+                    strokeWidth: "2",
+                    strokeLinecap: "round",
+                    strokeLinejoin: "round",
+                    "aria-hidden": "true",
+                    children: (0, r.jsx)("path", { d: "m15 18-6-6 6-6" }),
+                  }),
+                }),
+                (0, r.jsxs)("div", {
+                  style: N,
+                  children: [
+                    (0, r.jsx)("div", {
+                      ref: eC,
+                      role: "slider",
+                      "aria-label": "Albums",
+                      "aria-valuemin": 1,
+                      "aria-valuemax": eP.length,
+                      "aria-valuenow": eA + 1,
+                      "aria-valuetext": eU ? (eU.title ?? eU.alt) : void 0,
+                      style: T,
+                    }),
+                    Y
+                      ? (0, r.jsxs)("button", {
+                          type: "button",
+                          "aria-label": eN
+                            ? "Pause"
+                            : `Play ${eU?.title ?? "album"}`,
+                          "aria-pressed": eN,
+                          onClick: () => eS.current?.setPlaying(!eN),
+                          onPointerEnter: (e) => {
+                            eN || (e.currentTarget.style.background = P(30));
+                          },
+                          onPointerLeave: (e) => {
+                            e.currentTarget.style.background = P(eN ? 34 : 22);
+                          },
+                          style: { ...z, background: P(eN ? 34 : 22) },
+                          children: [
+                            (0, r.jsx)("svg", {
+                              width: "14",
+                              height: "14",
+                              viewBox: "0 0 24 24",
+                              fill: "currentColor",
+                              "aria-hidden": "true",
+                              style: {
+                                ...B,
+                                opacity: +!eN,
+                                transform: eN ? "scale(0.6)" : "scale(1)",
+                              },
+                              children: (0, r.jsx)("path", {
+                                d: "M8 5.5v13a1 1 0 0 0 1.5.86l10.5-6.5a1 1 0 0 0 0-1.72L9.5 4.64A1 1 0 0 0 8 5.5Z",
+                              }),
+                            }),
+                            (0, r.jsxs)("svg", {
+                              width: "14",
+                              height: "14",
+                              viewBox: "0 0 24 24",
+                              fill: "currentColor",
+                              "aria-hidden": "true",
+                              style: {
+                                ...B,
+                                opacity: +!!eN,
+                                transform: eN ? "scale(1)" : "scale(0.6)",
+                              },
+                              children: [
+                                (0, r.jsx)("rect", {
+                                  x: "6.5",
+                                  y: "5",
+                                  width: "3.6",
+                                  height: "14",
+                                  rx: "1.2",
+                                }),
+                                (0, r.jsx)("rect", {
+                                  x: "13.9",
+                                  y: "5",
+                                  width: "3.6",
+                                  height: "14",
+                                  rx: "1.2",
+                                }),
+                              ],
+                            }),
+                          ],
+                        })
+                      : (0, r.jsx)("span", { "aria-hidden": "true", style: F }),
+                  ],
+                }),
+                (0, r.jsx)("button", {
+                  type: "button",
+                  "aria-label": "Next album",
+                  onClick: () => eS.current?.step(1),
+                  onPointerEnter: (e) => {
+                    ((e.currentTarget.style.opacity = "1"),
+                      (e.currentTarget.style.background = S));
+                  },
+                  onPointerLeave: (e) => {
+                    ((e.currentTarget.style.opacity = "0.55"),
+                      (e.currentTarget.style.background = "transparent"));
+                  },
+                  style: R,
+                  children: (0, r.jsx)("svg", {
+                    width: "14",
+                    height: "14",
+                    viewBox: "0 0 24 24",
+                    fill: "none",
+                    stroke: "currentColor",
+                    strokeWidth: "2",
+                    strokeLinecap: "round",
+                    strokeLinejoin: "round",
+                    "aria-hidden": "true",
+                    children: (0, r.jsx)("path", { d: "m9 18 6-6-6-6" }),
+                  }),
+                }),
+              ],
+            }),
+          ],
+        });
+      });
+    X.displayName = "AlbumRail";
+    let V = [
+        [
+          "Currents",
+          "Tame Impala",
+          "Music115/v4/a8/2e/b4/a82eb490-f30a-a321-461a-0383c88fec95/15UMGIM23316.rgb.jpg",
+        ],
+        [
+          "Scaled And Icy",
+          "twenty one pilots",
+          "Music211/v4/24/f2/15/24f215e3-52cc-078b-d799-d58d606feddd/075679786210.jpg",
+        ],
+        [
+          "Plastic Beach",
+          "Gorillaz",
+          "Music/v4/b8/f9/b9/b8f9b9f8-a609-bde2-0302-349436ffc508/825646291038.jpg",
+        ],
+        [
+          "Moral Panic",
+          "Nothing But Thieves",
+          "Music125/v4/73/92/05/73920581-0801-84b2-bd1c-7f802696dcde/886448371342.jpg",
+        ],
+        [
+          "Persona",
+          "half•alive",
+          "Music221/v4/c0/72/b6/c072b6c0-4fa9-cf72-4160-dddfcc0e1619/00198704156670_Cover.jpg",
+        ],
+        [
+          "The Slow Rush",
+          "Tame Impala",
+          "Music115/v4/65/e3/e7/65e3e740-b69f-f5cb-f2e6-7dedb5265ac9/19UMGIM96748.rgb.jpg",
+        ],
+        [
+          "Humanz",
+          "Gorillaz",
+          "Music122/v4/59/cd/b0/59cdb036-be24-a2ae-5c50-12e79acb7aa4/190295824853.jpg",
+        ],
+        [
+          "Now, Not Yet",
+          "half•alive",
+          "Music115/v4/d9/f5/5d/d9f55d68-c60b-e3ce-559d-75cd63a7f591/886447791950.jpg",
+        ],
+        [
+          "Trench",
+          "twenty one pilots",
+          "Music211/v4/a3/c0/2b/a3c02b76-baa1-e575-dcba-247509200424/075679864789.jpg",
+        ],
+        [
+          "Dead Club City",
+          "Nothing But Thieves",
+          "Music116/v4/91/36/57/91365765-5ee4-f8cc-f645-f4112a662e2d/196589839190.jpg",
+        ],
+        [
+          "Cracker Island",
+          "Gorillaz",
+          "Music112/v4/b3/b9/bb/b3b9bbdf-8d38-661e-f70b-2eb5e9765bb7/5054197315893.jpg",
+        ],
+        [
+          "Blurryface",
+          "twenty one pilots",
+          "Music211/v4/8e/e2/89/8ee28904-0821-610d-5011-a61845f62756/075679926951.jpg",
+        ],
+      ].map(([e, t, a]) => ({
+        src: `https://is1-ssl.mzstatic.com/image/thumb/${a}/800x800bb.jpg`,
+        alt: `${e} by ${t}`,
+        title: e,
+        subtitle: t,
+      })),
+      q = {
+        sleeve: {
+          aspect: 1,
+          size: 0.62,
+          spread: 0.58,
+          stack: 0.5,
+          fan: 6,
+          turn: 22,
+          depth: 0.5,
+          visible: 3,
+          radius: 14,
+          dim: 0.45,
+        },
+        coverflow: {
+          aspect: 1,
+          size: 0.58,
+          spread: 0.86,
+          stack: 0.84,
+          fan: 0,
+          turn: 60,
+          depth: 0.75,
+          visible: 4,
+          radius: 10,
+          dim: 0.45,
+        },
+        fan: {
+          aspect: 1,
+          size: 0.6,
+          spread: 0.46,
+          stack: 0.35,
+          fan: 13,
+          turn: 8,
+          depth: 0.3,
+          visible: 3,
+          radius: 14,
+          dim: 0.4,
+        },
+        poster: {
+          aspect: 0.75,
+          size: 0.7,
+          spread: 0.55,
+          stack: 0.5,
+          fan: 4,
+          turn: 24,
+          depth: 0.5,
+          visible: 3,
+          radius: 10,
+          dim: 0.45,
+        },
+        rail: {
+          aspect: 1,
+          size: 0.6,
+          spread: 1.08,
+          stack: 0,
+          fan: 0,
+          turn: 0,
+          depth: 0.15,
+          visible: 3,
+          radius: 10,
+          dim: 0.55,
+        },
+      },
+      _ = [
+        { label: "Sleeve", value: "sleeve" },
+        { label: "Coverflow", value: "coverflow" },
+        { label: "Fan", value: "fan" },
+        { label: "Poster", value: "poster" },
+        { label: "Rail", value: "rail" },
+      ],
+      G = [
+        {
+          name: "items",
+          type: "{ src: string; alt: string; title?: string; subtitle?: string; href?: string }[]",
+          default: "built-in cover collection",
+          description:
+            "Covers to show, in order. Images must allow cross-origin loading. Title and subtitle (the artist) caption the focused cover; href makes selecting it navigate when vinyl is off.",
+        },
+        {
+          name: "startIndex",
+          type: "number",
+          default: "0",
+          description: "Index of the cover that starts in focus.",
+        },
+        {
+          name: "aspect",
+          type: "number",
+          default: "1",
+          description:
+            "Width divided by height of every cover. 1 is a square album sleeve; images are cropped to fill it.",
+        },
+        {
+          name: "size",
+          type: "number",
+          default: "0.62",
+          description:
+            "Height of the focused cover as a fraction of the space above the caption.",
+        },
+        {
+          name: "spread",
+          type: "number",
+          default: "0.58",
+          description:
+            "Distance from the focused cover to its first neighbours, as a fraction of the cover width.",
+        },
+        {
+          name: "stack",
+          type: "number",
+          default: "0.5",
+          description:
+            "How tightly the covers further out pack together. 0 spaces them evenly; 1 stacks them like a coverflow.",
+        },
+        {
+          name: "fan",
+          type: "number",
+          default: "6",
+          description:
+            "Tilt of each neighbour in degrees, fanning the covers like a hand of cards.",
+        },
+        {
+          name: "turn",
+          type: "number",
+          default: "22",
+          description:
+            "How far the neighbours turn away from the viewer in degrees.",
+        },
+        {
+          name: "depth",
+          type: "number",
+          default: "0.5",
+          description:
+            "How far the neighbours recede and shrink behind the focused cover.",
+        },
+        {
+          name: "visible",
+          type: "number",
+          default: "3",
+          description:
+            "Covers shown on each side of the focused one, from 1 to 5.",
+        },
+        {
+          name: "radius",
+          type: "number",
+          default: "14",
+          description: "Corner radius of the covers in pixels.",
+        },
+        {
+          name: "dim",
+          type: "number",
+          default: "0.45",
+          description:
+            "How much the covers away from the centre fade into the background. Hovering one brings it back.",
+        },
+        {
+          name: "shadow",
+          type: "number",
+          default: "0.6",
+          description:
+            "Strength of the soft shadows the covers and the record cast on each other.",
+        },
+        {
+          name: "vinyl",
+          type: "boolean",
+          default: "true",
+          description:
+            "Each cover holds a record. Hovering the focused cover lets the record peek out; clicking it, Enter or the play button slides it out and spins it.",
+        },
+        {
+          name: "vinylColor",
+          type: "string",
+          default: '"#131116"',
+          description:
+            "Colour of the record. The label in its centre shows the album art.",
+        },
+        {
+          name: "accentColor",
+          type: "string",
+          default: '"auto"',
+          description:
+            'Colour of the play button, or of the ruler marker when vinyl is off. "auto" picks the most vivid colour of the focused cover and adjusts it to the background; any CSS colour fixes it.',
+        },
+        {
+          name: "rpm",
+          type: "number",
+          default: "33",
+          description:
+            "Turntable speed of a playing record, in revolutions per minute.",
+        },
+        {
+          name: "autoplay",
+          type: "boolean",
+          default: "true",
+          description:
+            "Move to the next cover every interval seconds. Pauses while hovered, held or playing.",
+        },
+        {
+          name: "interval",
+          type: "number",
+          default: "4",
+          description: "Seconds between autoplay steps.",
+        },
+        {
+          name: "pauseOnHover",
+          type: "boolean",
+          default: "true",
+          description: "Pause autoplay while the pointer is over the rail.",
+        },
+        {
+          name: "loop",
+          type: "boolean",
+          default: "true",
+          description:
+            "Wrap around at the ends. When false, the rail stops at the first and last cover.",
+        },
+        {
+          name: "draggable",
+          type: "boolean",
+          default: "true",
+          description:
+            "Drag or swipe the covers sideways, with momentum and snapping.",
+        },
+        {
+          name: "wheel",
+          type: "boolean",
+          default: "true",
+          description:
+            "Scroll to move one cover per notch. Set false to leave page scrolling untouched.",
+        },
+        {
+          name: "captions",
+          type: "boolean",
+          default: "true",
+          description:
+            "Show the title and artist of the focused cover. The caption slides with the rail as it moves.",
+        },
+        {
+          name: "controls",
+          type: "boolean",
+          default: "true",
+          description:
+            "Show the ruler: one tick per album sliding with the rail, a play button at its centre and arrows at its ends. Drag or click the ruler to scrub.",
+        },
+        {
+          name: "backgroundColor",
+          type: "string",
+          default: '"transparent"',
+          description:
+            "Background of the component. Text, controls and the fading covers adapt to it.",
+        },
+        {
+          name: "paused",
+          type: "boolean",
+          default: "false",
+          description:
+            "Stops autoplay. Reduced-motion users get instant steps and a still record.",
+        },
+        {
+          name: "dpr",
+          type: "number",
+          default: "2",
+          description: "Maximum device pixel ratio for the canvas.",
+        },
+        {
+          name: "ariaLabel",
+          type: "string",
+          default: '"Album rail…"',
+          description: "Accessible description of the rail and how to use it.",
+        },
+        {
+          name: "onIndexChange",
+          type: "(index) => void",
+          default: "—",
+          description: "Called when a different cover comes into focus.",
+        },
+        {
+          name: "onSelect",
+          type: "(item, index) => void",
+          default: "—",
+          description:
+            "Called when the focused cover is clicked or Enter is pressed. Clicking any other cover brings it into focus.",
+        },
+        {
+          name: "onPlayChange",
+          type: "(index, playing) => void",
+          default: "—",
+          description: "Called when a record starts or stops playing.",
+        },
+        {
+          name: "ref",
+          type: "{ next, previous, goTo, play, stop }",
+          default: "—",
+          description:
+            "Imperative controls for moving through the rail and playing the focused record.",
+        },
+        {
+          name: "className",
+          type: "string",
+          default: "—",
+          description:
+            "Classes for the root element. It fills its parent, with a 420px minimum height.",
+        },
+        {
+          name: "style",
+          type: "CSSProperties",
+          default: "—",
+          description: "Inline styles for the root element.",
+        },
+      ],
+      Y = () => {
+        let [e, t] = (0, l.I)(),
+          a = (0, i.Y)(),
+          [s, u] = (0, n.useState)("sleeve"),
+          [d, c] = (0, n.useState)(q.sleeve),
+          p = (e) => (t) => c((a) => ({ ...a, [e]: t })),
+          [h, m] = (0, n.useState)(null),
+          [f, v] = (0, n.useState)(null),
+          g = h ?? ("dark" === a ? "#0A0A0A" : "#FFFFFF"),
+          [b, x] = (0, n.useState)(!0),
+          y = f ?? ("dark" === a ? "#B19EEF" : "#5227FF"),
+          [w, M] = (0, n.useState)("#131116"),
+          [k, C] = (0, n.useState)(0.6),
+          [S, j] = (0, n.useState)(!0),
+          [P, I] = (0, n.useState)(33),
+          [E, A] = (0, n.useState)(!0),
+          [L, N] = (0, n.useState)(4),
+          [T, z] = (0, n.useState)(!0),
+          [B, F] = (0, n.useState)(!0),
+          [R, H] = (0, n.useState)(!0),
+          [W, D] = (0, n.useState)(!0),
+          [$, U] = (0, n.useState)(!0),
+          [O, Y] = (0, n.useState)(!0),
+          [Q, K] = (0, n.useState)(!1);
+        return (0, r.jsxs)("div", {
+          children: [
+            (0, r.jsx)(o.Bg, {}),
+            (0, r.jsxs)(o.VX, {
+              children: [
+                (0, r.jsxs)(o.Ec, {
+                  children: [
+                    (0, r.jsx)(o.Ch, {
+                      onRefresh: t,
+                      minHeight: 560,
+                      enableResponsive: !0,
+                      children: (0, r.jsx)("div", {
+                        className: "relative h-full w-full",
+                        children: (0, r.jsx)(
+                          X,
+                          {
+                            items: V,
+                            aspect: d.aspect,
+                            size: d.size,
+                            spread: d.spread,
+                            stack: d.stack,
+                            fan: d.fan,
+                            turn: d.turn,
+                            depth: d.depth,
+                            visible: d.visible,
+                            radius: d.radius,
+                            dim: d.dim,
+                            shadow: k,
+                            vinyl: S,
+                            vinylColor: w,
+                            accentColor: b ? "auto" : y,
+                            rpm: P,
+                            autoplay: E,
+                            interval: L,
+                            pauseOnHover: T,
+                            loop: B,
+                            draggable: R,
+                            wheel: W,
+                            captions: $,
+                            controls: O,
+                            backgroundColor: g,
+                            paused: Q,
+                          },
+                          e,
+                        ),
+                      }),
+                    }),
+                    (0, r.jsxs)(o.IH, {
+                      children: [
+                        (0, r.jsx)(o.bg, {
+                          title: "Preset",
+                          value: s,
+                          options: _,
+                          onChange: (e) => {
+                            (u(e), c(q[e] ?? q.sleeve));
+                          },
+                        }),
+                        (0, r.jsx)(o.W7, {
+                          title: "Background",
+                          value: g,
+                          onChange: m,
+                        }),
+                        (0, r.jsx)(o.W7, {
+                          title: "Accent",
+                          value: y,
+                          onChange: (e) => {
+                            (v(e), x(!1));
+                          },
+                        }),
+                        (0, r.jsx)(o.W7, {
+                          title: "Vinyl",
+                          value: w,
+                          onChange: M,
+                        }),
+                        (0, r.jsx)(o.yt, {
+                          title: "Aspect",
+                          min: 0.6,
+                          max: 1.6,
+                          step: 0.01,
+                          value: d.aspect,
+                          onChange: p("aspect"),
+                        }),
+                        (0, r.jsx)(o.yt, {
+                          title: "Size",
+                          min: 0.35,
+                          max: 0.85,
+                          step: 0.01,
+                          value: d.size,
+                          onChange: p("size"),
+                        }),
+                        (0, r.jsx)(o.yt, {
+                          title: "Spread",
+                          min: 0.15,
+                          max: 1.2,
+                          step: 0.01,
+                          value: d.spread,
+                          onChange: p("spread"),
+                        }),
+                        (0, r.jsx)(o.yt, {
+                          title: "Stack",
+                          min: 0,
+                          max: 1,
+                          step: 0.01,
+                          value: d.stack,
+                          onChange: p("stack"),
+                        }),
+                        (0, r.jsx)(o.yt, {
+                          title: "Fan",
+                          min: 0,
+                          max: 20,
+                          step: 0.5,
+                          value: d.fan,
+                          valueUnit: "\xb0",
+                          onChange: p("fan"),
+                        }),
+                        (0, r.jsx)(o.yt, {
+                          title: "Turn",
+                          min: 0,
+                          max: 70,
+                          step: 1,
+                          value: d.turn,
+                          valueUnit: "\xb0",
+                          onChange: p("turn"),
+                        }),
+                        (0, r.jsx)(o.yt, {
+                          title: "Depth",
+                          min: 0,
+                          max: 1,
+                          step: 0.01,
+                          value: d.depth,
+                          onChange: p("depth"),
+                        }),
+                        (0, r.jsx)(o.yt, {
+                          title: "Visible",
+                          min: 1,
+                          max: 5,
+                          step: 1,
+                          value: d.visible,
+                          onChange: p("visible"),
+                        }),
+                        (0, r.jsx)(o.yt, {
+                          title: "Radius",
+                          min: 0,
+                          max: 32,
+                          step: 1,
+                          value: d.radius,
+                          valueUnit: "px",
+                          onChange: p("radius"),
+                        }),
+                        (0, r.jsx)(o.yt, {
+                          title: "Dim",
+                          min: 0,
+                          max: 0.9,
+                          step: 0.01,
+                          value: d.dim,
+                          onChange: p("dim"),
+                        }),
+                        (0, r.jsx)(o.yt, {
+                          title: "Shadow",
+                          min: 0,
+                          max: 1,
+                          step: 0.01,
+                          value: k,
+                          onChange: C,
+                        }),
+                        (0, r.jsx)(o.yt, {
+                          title: "RPM",
+                          min: 0,
+                          max: 78,
+                          step: 1,
+                          value: P,
+                          onChange: I,
+                        }),
+                        (0, r.jsx)(o.yt, {
+                          title: "Interval",
+                          min: 1.5,
+                          max: 10,
+                          step: 0.5,
+                          value: L,
+                          valueUnit: "s",
+                          onChange: N,
+                        }),
+                        (0, r.jsx)(o.tl, {
+                          title: "Album Accent",
+                          checked: b,
+                          onChange: x,
+                        }),
+                        (0, r.jsx)(o.tl, {
+                          title: "Vinyl",
+                          checked: S,
+                          onChange: j,
+                        }),
+                        (0, r.jsx)(o.tl, {
+                          title: "Autoplay",
+                          checked: E,
+                          onChange: A,
+                        }),
+                        (0, r.jsx)(o.tl, {
+                          title: "Pause On Hover",
+                          checked: T,
+                          onChange: z,
+                        }),
+                        (0, r.jsx)(o.tl, {
+                          title: "Loop",
+                          checked: B,
+                          onChange: F,
+                        }),
+                        (0, r.jsx)(o.tl, {
+                          title: "Draggable",
+                          checked: R,
+                          onChange: H,
+                        }),
+                        (0, r.jsx)(o.tl, {
+                          title: "Wheel",
+                          checked: W,
+                          onChange: D,
+                        }),
+                        (0, r.jsx)(o.tl, {
+                          title: "Captions",
+                          checked: $,
+                          onChange: U,
+                        }),
+                        (0, r.jsx)(o.tl, {
+                          title: "Controls",
+                          checked: O,
+                          onChange: Y,
+                        }),
+                        (0, r.jsx)(o.tl, {
+                          title: "Paused",
+                          checked: Q,
+                          onChange: K,
+                        }),
+                      ],
+                    }),
+                    (0, r.jsx)(o.Ub, { data: G }),
+                  ],
+                }),
+                (0, r.jsx)(o.lT, { children: (0, r.jsx)(o.Gv, {}) }),
+              ],
+            }),
+          ],
+        });
+      };
+  },
+};

@@ -1,0 +1,1618 @@
+/* ReactBits Pro public preview module 90297 for prism-carousel.
+ * Extracted from https://pro.reactbits.dev/_next/static/chunks/57440.a22002285178b9d9.js
+ * This is the compiled browser implementation, not the original TSX. */
+
+const module = {
+  90297: (e, t, a) => {
+    (a.r(t), a.d(t, { default: () => L }));
+    var r = a(95155),
+      n = a(12115),
+      i = a(56388),
+      o = a(86049),
+      l = a(90761),
+      s = a(12246),
+      u = a(2253),
+      c = a(90650);
+    let d = 2 * Math.PI,
+      p = [
+        {
+          src: "/demo-media/abstract-rose-balance.webp",
+          alt: "Tilted raspberry rounded rectangle and tangerine disc on a rose-pink field",
+          title: "Rose balance",
+          subtitle: "A bright point of balance",
+        },
+        {
+          src: "/demo-media/abstract-pink-eclipse.webp",
+          alt: "Coral-pink disc crossing a violet diagonal plane on a grainy purple field",
+          title: "Pink eclipse",
+          subtitle: "A disc across the diagonal",
+        },
+        {
+          src: "/demo-media/abstract-amber-loop.webp",
+          alt: "Tilted golden-amber loop on a grainy raspberry-purple field",
+          title: "Amber loop",
+          subtitle: "Warmth around an open center",
+        },
+        {
+          src: "/demo-media/abstract-coral-fold.webp",
+          alt: "Broad vermilion and orange folded plane over deep plum with fine grain",
+          title: "Coral fold",
+          subtitle: "A bold change of direction",
+        },
+        {
+          src: "/demo-media/abstract-fuchsia-wave.webp",
+          alt: "Broad fuchsia S-shaped band with a coral gradient across deep plum",
+          title: "Fuchsia wave",
+          subtitle: "One continuous curve",
+        },
+        {
+          src: "/demo-media/abstract-orchid-orbit.webp",
+          alt: "Fuchsia ring and peach crescent on a grainy orchid-purple field",
+          title: "Orchid orbit",
+          subtitle: "Color in orbit",
+        },
+        {
+          src: "/demo-media/abstract-plum-ribbon.webp",
+          alt: "Intersecting pink and plum diagonal ribbons on a coral-magenta field",
+          title: "Plum ribbon",
+          subtitle: "Two ribbons, one crossing",
+        },
+        {
+          src: "/demo-media/abstract-violet-steps.webp",
+          alt: "Three interlocking violet and pink stepped planes with an amber edge",
+          title: "Violet steps",
+          subtitle: "Three planes in rhythm",
+        },
+      ],
+      m = (e, t, a) => Math.min(a, Math.max(t, e)),
+      h = (e) => {
+        let t = m(e, 0, 1);
+        return t * t * (3 - 2 * t);
+      },
+      v = (e) => (e >= 1 ? 0.5 : e <= -1 ? -0.5 : e - (e * Math.abs(e)) / 2),
+      g = (e) => (v(e + 0.35) - v(e - 0.35)) / 0.7,
+      f = (e) => {
+        let t = window.matchMedia("(prefers-reduced-motion: reduce)");
+        return (
+          t.addEventListener("change", e),
+          () => t.removeEventListener("change", e)
+        );
+      },
+      b = () => window.matchMedia("(prefers-reduced-motion: reduce)").matches,
+      x = (e, t, a, r, n, i = 1) => {
+        let o = d / Math.max(n, 0.02),
+          l = Math.max(1, Math.ceil(r / (1 / 120))),
+          s = r / l,
+          u = t,
+          c = e;
+        for (let e = 0; e < l; e++)
+          ((u += (o * o * (a - c) - 2 * i * o * u) * s), (c += u * s));
+        return [c, u];
+      },
+      w = {
+        position: "absolute",
+        width: 1,
+        height: 1,
+        padding: 0,
+        margin: -1,
+        overflow: "hidden",
+        clip: "rect(0, 0, 0, 0)",
+        whiteSpace: "nowrap",
+        border: 0,
+      },
+      y = {
+        position: "absolute",
+        inset: 0,
+        touchAction: "pan-y",
+        userSelect: "none",
+        WebkitUserSelect: "none",
+        WebkitTouchCallout: "none",
+      },
+      S = "color-mix(in oklch, currentColor 10%, transparent)",
+      M = "color-mix(in oklch, currentColor 17%, transparent)",
+      k = {
+        width: 32,
+        height: 32,
+        display: "grid",
+        placeItems: "center",
+        padding: 0,
+        borderRadius: 999,
+        border: 0,
+        background: S,
+        color: "inherit",
+        cursor: "pointer",
+        transition: "background-color 160ms ease",
+      },
+      C = `
+varying vec2 vUv;
+
+void main() {
+  vUv = uv;
+  gl_Position = projectionMatrix * modelViewMatrix * vec4(position, 1.0);
+}
+`,
+      j = `
+precision highp float;
+
+uniform sampler2D uImage;
+uniform float uImageAspect;
+uniform vec2 uSize;
+uniform float uRadius;
+uniform float uLoaded;
+uniform float uBase;
+uniform float uReveal;
+uniform float uDirection;
+uniform float uBand;
+uniform float uSweep;
+uniform float uSpreadPx;
+uniform float uBright;
+uniform float uAlpha;
+varying vec2 vUv;
+
+float roundBox(vec2 p, vec2 b, float r) {
+  vec2 q = abs(p) - b + r;
+  return length(max(q, 0.0)) + min(max(q.x, q.y), 0.0) - r;
+}
+
+vec3 spectrum(float t) {
+  return clamp(0.5 + 0.5 * cos(6.2831853 * (t + vec3(0.0, 0.33, 0.67))), 0.0, 1.0);
+}
+
+vec3 sampleImage(vec2 uv) {
+  float spread = uSpreadPx / max(uSize.x, uSize.y * uImageAspect);
+  if (abs(spread) < 0.0004) return texture2D(uImage, uv).rgb;
+  float jitter = fract(52.9829189 * fract(dot(gl_FragCoord.xy, vec2(0.06711056, 0.00583715))));
+  vec3 total = vec3(0.0);
+  vec3 weights = vec3(0.0);
+  for (int k = 0; k < 9; k++) {
+    float t = (float(k) + jitter) / 9.0;
+    vec3 w = spectrum(t * 0.82);
+    total += texture2D(uImage, uv + vec2((t - 0.5) * spread, 0.0)).rgb * w;
+    weights += w;
+  }
+  return total / weights;
+}
+
+void main() {
+  vec2 p = (vUv - 0.5) * uSize;
+  float d = roundBox(p, uSize * 0.5, min(uRadius, min(uSize.x, uSize.y) * 0.5));
+  float aa = max(fwidth(d), 1e-3) * 0.75;
+  float mask = 1.0 - smoothstep(-aa, aa, d);
+  if (mask * uAlpha < 0.002) discard;
+
+  float cardAspect = uSize.x / max(uSize.y, 1.0);
+  vec2 uv = vUv - 0.5;
+  if (cardAspect > uImageAspect) {
+    uv.y *= uImageAspect / cardAspect;
+  } else {
+    uv.x *= cardAspect / uImageAspect;
+  }
+  uv += 0.5;
+
+  vec3 full = sampleImage(uv);
+  float luma = dot(full, vec3(0.2126, 0.7152, 0.0722));
+  vec3 gray = vec3(luma);
+
+  float along = uDirection > 0.0 ? vUv.x : 1.0 - vUv.x;
+  float front = uReveal;
+  float behind = uReveal < -0.5 ? 0.0 : 1.0 - smoothstep(front - uBand, front, along);
+  float amount = max(uBase, behind);
+  vec3 color = mix(gray, full, amount);
+  if (uReveal > -0.5) {
+    float mid = front - uBand * 0.5;
+    float bandShape = exp(-pow((along - mid) / (uBand * 0.42), 2.0));
+    vec3 light = spectrum(clamp((along - front + uBand) / uBand, 0.0, 1.0) * 0.82);
+    color += light * bandShape * uSweep * 0.28 * (1.0 - uBase);
+  }
+  color *= uBright;
+
+  vec3 placeholder = vec3(0.5);
+  float loaded = clamp(uLoaded, 0.0, 1.0);
+  vec3 rgb = mix(placeholder, color, loaded);
+  float alpha = mask * uAlpha * mix(0.12, 1.0, loaded);
+  gl_FragColor = vec4(rgb * alpha, alpha);
+}
+`,
+      I = (0, n.forwardRef)(function (
+        {
+          items: e = p,
+          startIndex: t = 0,
+          aspect: a = 1.5,
+          size: i = 0.62,
+          neighborScale: o = 0.66,
+          gap: l = 14,
+          radius: d = 18,
+          saturation: v = 0,
+          dim: I = 0.2,
+          sweep: A = 1,
+          sweepDuration: E = 1.1,
+          dispersion: P = 1,
+          autoplay: L = !0,
+          interval: D = 4.5,
+          loop: R = !0,
+          captions: B = !0,
+          controls: z = !0,
+          draggable: T = !0,
+          wheel: F = !0,
+          pauseOnHover: N = !0,
+          backgroundColor: U = "transparent",
+          paused: H = !1,
+          dpr: W = 2,
+          ariaLabel:
+            X = "Prism carousel. Scroll, drag or use the arrow keys to move between images.",
+          onIndexChange: O,
+          onSelect: q,
+          className: Y,
+          style: $,
+        },
+        _,
+      ) {
+        let V = (0, n.useRef)(null),
+          G = (0, n.useRef)(null),
+          K = (0, n.useRef)(null),
+          Q = (0, n.useRef)(null),
+          Z = (0, n.useSyncExternalStore)(f, b, () => !1),
+          J = e.length ? e : p,
+          ee = (0, n.useRef)(J),
+          [et] = (0, n.useState)(() =>
+            m(Math.round(t), 0, Math.max(J.length - 1, 0)),
+          ),
+          [ea, er] = (0, n.useState)(et),
+          [en, ei] = (0, n.useState)(!1),
+          eo = {
+            items: J,
+            aspect: a,
+            size: i,
+            neighborScale: o,
+            gap: l,
+            radius: d,
+            saturation: v,
+            dim: I,
+            sweep: A,
+            sweepDuration: E,
+            dispersion: P,
+            autoplay: L,
+            interval: D,
+            loop: R,
+            captions: B,
+            controls: z,
+            draggable: T,
+            wheel: F,
+            pauseOnHover: N,
+            backgroundColor: U,
+            paused: H,
+            dpr: W,
+            reduced: Z,
+          },
+          el = (0, n.useRef)(eo),
+          es = (0, n.useRef)({ onIndexChange: O, onSelect: q });
+        ((0, n.useEffect)(() => {
+          ((el.current = eo),
+            (ee.current = J),
+            (es.current = { onIndexChange: O, onSelect: q }),
+            Q.current?.sync());
+        }),
+          (0, n.useEffect)(() => {
+            let e = V.current,
+              t = G.current;
+            if (!e || !t) return;
+            let a = ((e, t, a, r, n, i) => {
+              let o,
+                l = e.ownerDocument.createElement("canvas");
+              l.style.cssText =
+                "position:absolute;inset:0;width:100%;height:100%;display:block";
+              try {
+                o = new s.WebGLRenderer({
+                  canvas: l,
+                  alpha: !0,
+                  antialias: !1,
+                  premultipliedAlpha: !0,
+                  powerPreference: "high-performance",
+                });
+              } catch {
+                return null;
+              }
+              (t.appendChild(l), o.setClearColor(0, 0));
+              let c = new u.Z58(),
+                d = new u.qUd(-1, 1, 1, -1, -10, 10),
+                p = new u.bdM(1, 1),
+                v = new u.GYF(new Uint8Array([128, 128, 128, 255]), 1, 1);
+              v.needsUpdate = !0;
+              let f = Array.from({ length: 11 }, () => {
+                  let e = new u.BKk({
+                      uniforms: {
+                        uImage: { value: v },
+                        uImageAspect: { value: 1.5 },
+                        uSize: { value: new u.I9Y(1, 1) },
+                        uRadius: { value: 16 },
+                        uLoaded: { value: 0 },
+                        uBase: { value: 0 },
+                        uReveal: { value: -1 },
+                        uDirection: { value: 1 },
+                        uBand: { value: 0.24 },
+                        uSweep: { value: 1 },
+                        uSpreadPx: { value: 0 },
+                        uBright: { value: 1 },
+                        uAlpha: { value: 1 },
+                      },
+                      vertexShader: C,
+                      fragmentShader: j,
+                      transparent: !0,
+                      premultipliedAlpha: !0,
+                      depthTest: !1,
+                      depthWrite: !1,
+                    }),
+                    t = new u.eaF(p, e);
+                  return (
+                    (t.frustumCulled = !1),
+                    (t.visible = !1),
+                    c.add(t),
+                    { mesh: t, index: 0, x: 0, y: 0, w: 0, h: 0, visible: !1 }
+                  );
+                }),
+                b = [],
+                w = "",
+                y = 1,
+                S = 1,
+                M = 1,
+                k = n,
+                I = 0,
+                A = n,
+                E = !1,
+                P = !1,
+                L = 0,
+                D = Math.round(n),
+                R = NaN,
+                B = D,
+                z = -10,
+                T = 1,
+                F = null,
+                N = !1,
+                U = 0,
+                H = 0,
+                W = 0,
+                X = 0,
+                O = 0,
+                q = !1,
+                Y = !1,
+                $ = !1,
+                _ = !1,
+                V = new Map(),
+                G = new Float64Array(12),
+                K = new Float64Array(12),
+                Q = 1,
+                Z = 1,
+                J = 1,
+                ee = "",
+                et = 0,
+                ea = null,
+                er = () => Math.max(r.current.length, 1),
+                en = (e) => ((e % er()) + er()) % er(),
+                ei = () => {
+                  let e = r.current,
+                    t = e.map((e) => e.src).join("\0");
+                  t !== w &&
+                    ((w = t),
+                    b.forEach((e) => {
+                      ((e.image.onload = null), e.texture.dispose());
+                    }),
+                    (b = e.map((e) => {
+                      let t = new Image();
+                      ((t.crossOrigin = "anonymous"), (t.decoding = "async"));
+                      let a = new u.gPd(t);
+                      ((a.colorSpace = u.jf0),
+                        (a.minFilter = u.$_I),
+                        (a.magFilter = u.k6q),
+                        (a.generateMipmaps = !0),
+                        (a.anisotropy = o.capabilities.getMaxAnisotropy()));
+                      let r = {
+                        image: t,
+                        texture: a,
+                        aspect: 1.5,
+                        ready: !1,
+                        fade: 0,
+                      };
+                      return (
+                        (t.onload = () => {
+                          Y ||
+                            ((r.aspect =
+                              t.naturalWidth / Math.max(t.naturalHeight, 1)),
+                            (r.ready = !0),
+                            (a.needsUpdate = !0),
+                            eh());
+                        }),
+                        (t.src = e.src),
+                        r
+                      );
+                    })));
+                },
+                eo = () => {
+                  let t = a.current,
+                    r = e.getBoundingClientRect(),
+                    n = Math.min(
+                      window.devicePixelRatio || 1,
+                      Math.max(t.dpr, 0.5),
+                    ),
+                    i = Math.max(1, Math.round(r.width)),
+                    l = Math.max(1, Math.round(r.height));
+                  return (
+                    (i !== y || l !== S || n !== M) &&
+                    ((y = i),
+                    (S = l),
+                    (M = n),
+                    o.setPixelRatio(M),
+                    o.setSize(y, S, !1),
+                    (d.left = -y / 2),
+                    (d.right = y / 2),
+                    (d.top = S / 2),
+                    (d.bottom = -S / 2),
+                    d.updateProjectionMatrix(),
+                    !0)
+                  );
+                },
+                el = () => {
+                  let e = a.current,
+                    t = m(e.aspect, 0.5, 3),
+                    r = 46 * !!e.captions + 46 * !!e.controls,
+                    n = Math.max(S - r, 0.5 * S),
+                    i = 0.62 + 0.22 * h((900 - y) / 500),
+                    o = Math.min(n * m(e.size, 0.2, 0.98), (y * i) / t),
+                    l = o * m(e.neighborScale, 0.3, 1);
+                  return {
+                    activeH: o,
+                    neighborH: l,
+                    widths: [o * t, 0.72 * l, 0.24 * l, 0.08 * l, 0],
+                    gap: Math.max(e.gap, 0),
+                    lift: (S - n) / 2,
+                  };
+                },
+                es = () => {
+                  let { activeH: e, neighborH: t, widths: a, gap: r } = el();
+                  ((Z = e), (J = t));
+                  let n = `${e}|${t}|${a.join(",")}|${r}`;
+                  if (n !== ee) {
+                    ee = n;
+                    for (let e = 0; e <= 11; e++) K[e] = a[e] ?? 0;
+                    for (let e = 0; e < 60; e++)
+                      for (let e = 0; e <= 10; e++) {
+                        let t = a[e] ?? 0,
+                          r = 0 === e ? K[1] : K[e - 1];
+                        K[e] = Math.max(
+                          0,
+                          (t - 0.0875 * (r + K[e + 1])) / 0.825,
+                        );
+                      }
+                    ((K[11] = 0), (G[0] = 0));
+                    for (let e = 1; e <= 11; e++)
+                      G[e] = G[e - 1] + (K[e - 1] + K[e]) / 2 + r;
+                    Q = G[1];
+                  }
+                },
+                eu = (e, t, a) => {
+                  let r = 0,
+                    n = Math.ceil(t - 1 - 0.35),
+                    i = Math.floor(t + 1 + 0.35);
+                  for (let o = n; o <= i; o++) {
+                    let n = g(t - o);
+                    if (n <= 0) continue;
+                    let i = e[Math.min(Math.abs(o), 11)];
+                    r += n * (a && o < 0 ? -i : i);
+                  }
+                  return r;
+                },
+                ec = (e) => {
+                  let t = h(Math.abs(e));
+                  return {
+                    x: eu(G, e, !0),
+                    w: Math.max(eu(K, e, !1), 0),
+                    h: Z + (J - Z) * t,
+                  };
+                },
+                ed = () => (es(), Q),
+                ep = (e) => (a.current.loop ? e : m(e, 0, er() - 1)),
+                em = (e) => {
+                  ((A = ep(Math.round(A) + e)), (H = 0), eh());
+                },
+                eh = () => {
+                  Y ||
+                    $ ||
+                    !q ||
+                    W ||
+                    (X && (window.clearTimeout(X), (X = 0)),
+                    (W = requestAnimationFrame(eg)));
+                },
+                ev = (e) => {
+                  let t = V.get(e);
+                  return (
+                    t ||
+                      ((t = { value: a.current.saturation, velocity: 0 }),
+                      V.set(e, t)),
+                    t
+                  );
+                };
+              function eg(t) {
+                if (((W = 0), Y || $)) return;
+                let r = a.current,
+                  n = O ? Math.min(Math.max((t - O) / 1e3, 0), 0.05) : 1 / 60;
+                ((O = t), (U += n));
+                let l = r.reduced,
+                  s = !1,
+                  u = r.pauseOnHover && N;
+                (r.autoplay &&
+                  !r.paused &&
+                  !l &&
+                  !u &&
+                  !ea &&
+                  er() > 1 &&
+                  (H += n) >= Math.max(r.interval, 1) &&
+                  ((H = 0),
+                  (A =
+                    !r.loop && Math.round(A) >= er() - 1
+                      ? 0
+                      : ep(Math.round(A) + 1))),
+                  P &&
+                    !ea &&
+                    t - L > 140 &&
+                    ((P = !1), (A = ep(Math.round(A)))),
+                  E
+                    ? ((I *= Math.exp(-(6 * n))), (s = !0))
+                    : (([k, I] = x(k, I, A, n, l ? 0.05 : 0.62, 0.92)),
+                      1e-4 > Math.abs(k - A) && 1e-4 > Math.abs(I)
+                        ? ((k = A), (I = 0))
+                        : (s = !0)));
+                let p = Math.round(k);
+                if (p !== D) {
+                  T = p > D ? 1 : -1;
+                  let e = ev(D),
+                    t = m((U - z) / Math.max(r.sweepDuration, 0.1), 0, 1);
+                  ((e.value = Math.max(e.value, t)), (B = D = p), (z = U));
+                }
+                let v = en(D);
+                v !== R && ((R = v), i.onActive(v));
+                let { activeH: g, lift: w } = el();
+                es();
+                let y = Math.round(k),
+                  M = Math.max(r.sweepDuration, 0.1),
+                  C = l ? 2 : (U - z) / M;
+                C < 1.4 && (s = !0);
+                let j = Math.abs(I) * ed(),
+                  q = l
+                    ? 0
+                    : m(0.006 * j * Math.max(r.dispersion, 0), 0, 22) *
+                      Math.sign(I);
+                for (let e = 0; e < 11; e++) {
+                  let t = f[e],
+                    a = y - 5 + e,
+                    i = a - k,
+                    o = ec(i),
+                    u = o.w,
+                    c = o.h,
+                    d = r.loop || (a >= 0 && a < er()),
+                    p = h((3.6 - Math.abs(i)) / 0.8);
+                  if (
+                    ((t.visible = d && u > 0.5 && p > 0.002 && b.length > 0),
+                    (t.mesh.visible = t.visible),
+                    (t.index = a),
+                    !t.visible)
+                  )
+                    continue;
+                  let v = o.x;
+                  ((t.x = v),
+                    (t.y = w),
+                    (t.w = u),
+                    (t.h = c),
+                    t.mesh.position.set(v, w, 0),
+                    t.mesh.scale.set(u, c, 1));
+                  let S = b[en(a)],
+                    M = t.mesh.material.uniforms;
+                  (S &&
+                    ((M.uImage.value = S.texture),
+                    (M.uImageAspect.value = S.aspect),
+                    S.ready &&
+                      S.fade < 1 &&
+                      ((S.fade = l ? 1 : Math.min(1, S.fade + n / 0.45)),
+                      (s = !0)),
+                    (M.uLoaded.value = S.ready ? S.fade : 0)),
+                    M.uSize.value.set(u, c),
+                    (M.uRadius.value = m(r.radius, 0, 200) * (c / g)),
+                    (M.uAlpha.value = p),
+                    (M.uBright.value = 1 - m(r.dim, 0, 1) * h(Math.abs(i))),
+                    (M.uSpreadPx.value =
+                      q * (1 - h((Math.abs(i) - 0.5) / 1.5))),
+                    (M.uSweep.value = m(r.sweep, 0, 3)),
+                    (M.uBand.value = 0.26),
+                    (M.uDirection.value = T));
+                  let j = ev(a),
+                    I = 0.6 * (F === a && a !== D),
+                    A = m(r.saturation, 0, 1);
+                  a === B && a === D
+                    ? ((M.uBase.value = Math.max(Math.min(j.value, 1), A)),
+                      C >= 1.26 || r.sweep <= 0
+                        ? ((j.value = 1),
+                          (j.velocity = 0),
+                          (M.uReveal.value = -1),
+                          (M.uBase.value = 1))
+                        : (M.uReveal.value = 1.26 * C))
+                    : (([j.value, j.velocity] = x(
+                        j.value,
+                        j.velocity,
+                        Math.max(A, I),
+                        n,
+                        l ? 0.05 : I > 0 ? 0.45 : 0.7,
+                      )),
+                      Math.abs(j.value - Math.max(A, I)) > 0.001 && (s = !0),
+                      (M.uBase.value = m(j.value, 0, 1)),
+                      (M.uReveal.value = -1));
+                }
+                for (let e of Array.from(V.keys()))
+                  Math.abs(e - k) > 8 && V.delete(e);
+                if (
+                  (e.style.setProperty(
+                    "--prism-caption-y",
+                    `${S / 2 - w + g / 2 + 16}px`,
+                  ),
+                  o.render(c, d),
+                  s || E || ea || N)
+                )
+                  eh();
+                else if (r.autoplay && !r.paused && !l && er() > 1) {
+                  let e = Math.max(r.interval - H, 0);
+                  X = window.setTimeout(() => {
+                    ((X = 0), (O = 0), (H = r.interval), eh());
+                  }, 1e3 * e);
+                }
+              }
+              let ef = (t, a) => {
+                  let r = e.getBoundingClientRect(),
+                    n = t - r.left - y / 2,
+                    i = -(a - r.top - S / 2),
+                    o = null,
+                    l = 1 / 0;
+                  for (let e of f)
+                    if (
+                      e.visible &&
+                      !(e.w < 6) &&
+                      Math.abs(n - e.x) <= e.w / 2 &&
+                      Math.abs(i - e.y) <= e.h / 2
+                    ) {
+                      let t = Math.abs(e.index - k);
+                      t < l && ((l = t), (o = e.index));
+                    }
+                  return o;
+                },
+                eb = (r) => {
+                  if ("touch" !== r.pointerType) {
+                    N = !0;
+                    let t = ef(r.clientX, r.clientY);
+                    t !== F &&
+                      ((F = t),
+                      (e.style.cursor =
+                        null !== t
+                          ? "pointer"
+                          : a.current.draggable
+                            ? "grab"
+                            : ""));
+                  }
+                  if (ea && ea.id === r.pointerId) {
+                    let n = r.clientX - ea.lastX;
+                    if (!ea.moved && Math.abs(r.clientX - ea.x) > 6) {
+                      ((ea.moved = !0),
+                        (E = !0),
+                        (F = null),
+                        (e.style.cursor = "grabbing"));
+                      try {
+                        t.setPointerCapture(r.pointerId);
+                      } catch {}
+                    }
+                    if (ea.moved) {
+                      let e = -n / ed(),
+                        t = k + e;
+                      a.current.loop ||
+                        (0 !==
+                          (t < 0 ? t : t > er() - 1 ? t - (er() - 1) : 0) &&
+                          (t = k + 0.35 * e));
+                      let r = performance.now(),
+                        i = Math.max((r - et) / 1e3, 1 / 240);
+                      for (
+                        et = r,
+                          I += ((t - k) / i - I) * 0.5,
+                          ea.samples.push({ t: r, d: t - k });
+                        ea.samples.length && r - ea.samples[0].t > 100;
+                      )
+                        ea.samples.shift();
+                      k = t;
+                    }
+                    ea.lastX = r.clientX;
+                  }
+                  eh();
+                },
+                ex = (e) => {
+                  a.current.draggable &&
+                    e.isPrimary &&
+                    !(e.button > 0) &&
+                    ((ea = {
+                      id: e.pointerId,
+                      x: e.clientX,
+                      lastX: e.clientX,
+                      moved: !1,
+                      samples: [],
+                    }),
+                    (_ = !1),
+                    (I = 0),
+                    eh());
+                },
+                ew = (a) => {
+                  if (!ea || ea.id !== a.pointerId) return;
+                  let r = ea;
+                  ea = null;
+                  try {
+                    t.hasPointerCapture(a.pointerId) &&
+                      t.releasePointerCapture(a.pointerId);
+                  } catch {}
+                  if (r.moved) {
+                    ((_ = !0), (E = !1));
+                    let t = performance.now(),
+                      a = r.samples.filter((e) => t - e.t < 100),
+                      n = 0;
+                    if (a.length > 1) {
+                      let e = Math.max(
+                        (a[a.length - 1].t - a[0].t) / 1e3,
+                        1 / 60,
+                      );
+                      n = a.reduce((e, t) => e + t.d, 0) / e;
+                    }
+                    ((I = m(n, -12, 12)),
+                      (A = ep(Math.round(k + 0.18 * m(n, -12, 12)))),
+                      (H = 0),
+                      (e.style.cursor = ""));
+                  }
+                  eh();
+                },
+                ey = (e) => {
+                  if (_) {
+                    _ = !1;
+                    return;
+                  }
+                  let t = ef(e.clientX, e.clientY);
+                  null !== t &&
+                    (t === Math.round(A)
+                      ? i.onSelect(en(t))
+                      : ((A = ep(t)), (H = 0), eh()));
+                },
+                eS = (t) => {
+                  (ea && ea.id === t.pointerId) ||
+                    ((N = !1), (F = null), (e.style.cursor = ""), eh());
+                },
+                eM = (e) => {
+                  if (!a.current.wheel) return;
+                  e.preventDefault();
+                  let t = 1 === e.deltaMode ? 16 : 2 === e.deltaMode ? S : 1,
+                    r = m((e.deltaY + e.deltaX) * t, -240, 240);
+                  ((A = ep((P ? A : Math.round(A)) + r / 100)),
+                    (P = !0),
+                    (L = performance.now()),
+                    (H = 0),
+                    eh());
+                },
+                ek = (t) => {
+                  "ArrowRight" === t.key
+                    ? (t.preventDefault(), em(1))
+                    : "ArrowLeft" === t.key
+                      ? (t.preventDefault(), em(-1))
+                      : "Enter" === t.key &&
+                        t.target === e &&
+                        (t.preventDefault(), i.onSelect(en(Math.round(A))));
+                };
+              (t.addEventListener("pointerdown", ex),
+                t.addEventListener("pointermove", eb),
+                t.addEventListener("pointerup", ew),
+                t.addEventListener("pointercancel", ew),
+                t.addEventListener("pointerleave", eS),
+                t.addEventListener("click", ey),
+                t.addEventListener("wheel", eM, { passive: !1 }),
+                e.addEventListener("keydown", ek));
+              let eC = new ResizeObserver(() => {
+                eo() && eh();
+              });
+              eC.observe(e);
+              let ej =
+                "undefined" == typeof IntersectionObserver
+                  ? null
+                  : new IntersectionObserver(
+                      ([e]) => {
+                        (q = e.isIntersecting)
+                          ? ((O = 0), eh())
+                          : (W && cancelAnimationFrame(W),
+                            (W = 0),
+                            X && window.clearTimeout(X),
+                            (X = 0));
+                      },
+                      { rootMargin: "80px" },
+                    );
+              ej ? ej.observe(e) : (q = !0);
+              let eI = (e) => {
+                  (e.preventDefault(),
+                    ($ = !0),
+                    W && cancelAnimationFrame(W),
+                    (W = 0));
+                },
+                eA = () => {
+                  (($ = !1), (w = ""), ei(), eh());
+                };
+              return (
+                l.addEventListener("webglcontextlost", eI),
+                l.addEventListener("webglcontextrestored", eA),
+                eo(),
+                ei(),
+                (z = a.current.reduced ? -10 : 0.35),
+                eh(),
+                {
+                  sync: () => {
+                    (eo(), ei(), a.current.loop || (A = ep(A)), (O = 0), eh());
+                  },
+                  step: em,
+                  goTo: (e) => {
+                    if (a.current.loop) {
+                      let t = er(),
+                        a = Math.round(A),
+                        r =
+                          ((((e - en(a)) % t) + t + Math.floor(t / 2)) % t) -
+                          Math.floor(t / 2);
+                      A = a + r;
+                    } else A = m(e, 0, er() - 1);
+                    ((H = 0), eh());
+                  },
+                  destroy: () => {
+                    ((Y = !0),
+                      W && cancelAnimationFrame(W),
+                      X && window.clearTimeout(X),
+                      ej?.disconnect(),
+                      eC.disconnect(),
+                      t.removeEventListener("pointerdown", ex),
+                      t.removeEventListener("pointermove", eb),
+                      t.removeEventListener("pointerup", ew),
+                      t.removeEventListener("pointercancel", ew),
+                      t.removeEventListener("pointerleave", eS),
+                      t.removeEventListener("click", ey),
+                      t.removeEventListener("wheel", eM),
+                      e.removeEventListener("keydown", ek),
+                      (e.style.cursor = ""),
+                      l.removeEventListener("webglcontextlost", eI),
+                      l.removeEventListener("webglcontextrestored", eA),
+                      b.forEach((e) => {
+                        ((e.image.onload = null), e.texture.dispose());
+                      }),
+                      f.forEach((e) => e.mesh.material.dispose()),
+                      v.dispose(),
+                      p.dispose(),
+                      o.dispose(),
+                      o.getContext().isContextLost() || o.forceContextLoss(),
+                      l.remove());
+                  },
+                }
+              );
+            })(e, t, el, ee, et, {
+              onActive: (e) => {
+                (er(e), es.current.onIndexChange?.(e));
+              },
+              onSelect: (e) => {
+                let t = ee.current[e];
+                t &&
+                  (es.current.onSelect?.(t, e),
+                  t.href && window.location.assign(t.href));
+              },
+            });
+            if (!a) {
+              let e = requestAnimationFrame(() => ei(!0));
+              return () => cancelAnimationFrame(e);
+            }
+            return (
+              (Q.current = a),
+              () => {
+                (a.destroy(), (Q.current = null));
+              }
+            );
+          }, [et]),
+          (0, n.useEffect)(() => {
+            let e = K.current;
+            e &&
+              !Z &&
+              e.animate(
+                [
+                  { opacity: 0, transform: "translateY(6px)" },
+                  { opacity: 1, transform: "translateY(0)" },
+                ],
+                { duration: 460, easing: "cubic-bezier(0.22, 1, 0.36, 1)" },
+              );
+          }, [ea, Z]),
+          (0, n.useImperativeHandle)(
+            _,
+            () => ({
+              next: () => Q.current?.step(1),
+              previous: () => Q.current?.step(-1),
+              goTo: (e) => Q.current?.goTo(e),
+            }),
+            [],
+          ));
+        let eu = U.trim().toLowerCase(),
+          ec = "transparent" === eu || "" === eu,
+          ed =
+            !ec &&
+            ((e) => {
+              let t = e.replace("#", "");
+              if (!/^[0-9a-f]{3}(?:[0-9a-f]{3})?$/i.test(t)) return !1;
+              let a = 3 === t.length ? t.replace(/./g, (e) => e + e) : t;
+              return (
+                (0.2126 * Number.parseInt(a.slice(0, 2), 16) +
+                  0.7152 * Number.parseInt(a.slice(2, 4), 16) +
+                  0.0722 * Number.parseInt(a.slice(4, 6), 16)) /
+                  255 >
+                0.6
+              );
+            })(eu),
+          ep = J[ea] ?? J[0];
+        return (0, r.jsxs)("div", {
+          ref: V,
+          className: (0, c.cn)(
+            "relative h-full min-h-[420px] w-full overflow-hidden",
+            Y,
+          ),
+          style: {
+            backgroundColor: ec ? void 0 : U,
+            color: ec ? "currentColor" : ed ? "#0a0a0a" : "#fafafa",
+            ...$,
+          },
+          role: "region",
+          "aria-roledescription": "carousel",
+          "aria-label": X,
+          tabIndex: 0,
+          children: [
+            (0, r.jsx)("div", { ref: G, style: y }),
+            en && ep
+              ? (0, r.jsx)("div", {
+                  style: {
+                    position: "absolute",
+                    inset: "12%",
+                    display: "grid",
+                    placeItems: "center",
+                  },
+                  children: (0, r.jsx)("img", {
+                    src: ep.src,
+                    alt: ep.alt,
+                    style: {
+                      maxWidth: "100%",
+                      maxHeight: "100%",
+                      objectFit: "cover",
+                      borderRadius: d,
+                    },
+                  }),
+                })
+              : null,
+            (0, r.jsx)("ul", {
+              style: w,
+              children: J.map((e, t) =>
+                (0, r.jsx)(
+                  "li",
+                  {
+                    "aria-current": t === ea ? "true" : void 0,
+                    children: e.title ? `${e.title}: ${e.alt}` : e.alt,
+                  },
+                  e.src,
+                ),
+              ),
+            }),
+            B || z
+              ? (0, r.jsxs)("div", {
+                  style: {
+                    position: "absolute",
+                    left: 0,
+                    right: 0,
+                    top: "var(--prism-caption-y, 82%)",
+                    display: "flex",
+                    flexDirection: "column",
+                    alignItems: "center",
+                    gap: 12,
+                    pointerEvents: "none",
+                  },
+                  children: [
+                    B && ep
+                      ? (0, r.jsxs)("div", {
+                          ref: K,
+                          "aria-live": "polite",
+                          style: {
+                            display: "flex",
+                            flexDirection: "column",
+                            alignItems: "center",
+                            gap: 2,
+                            textAlign: "center",
+                          },
+                          children: [
+                            (0, r.jsx)("span", {
+                              style: {
+                                fontSize: 15,
+                                fontWeight: 600,
+                                lineHeight: 1.35,
+                              },
+                              children: ep.title ?? ep.alt,
+                            }),
+                            ep.subtitle
+                              ? (0, r.jsx)("span", {
+                                  style: {
+                                    fontSize: 13,
+                                    opacity: 0.6,
+                                    lineHeight: 1.35,
+                                  },
+                                  children: ep.subtitle,
+                                })
+                              : null,
+                          ],
+                        })
+                      : null,
+                    z
+                      ? (0, r.jsxs)("div", {
+                          style: {
+                            display: "flex",
+                            alignItems: "center",
+                            gap: 14,
+                            pointerEvents: "auto",
+                            fontSize: 12,
+                            fontVariantNumeric: "tabular-nums",
+                          },
+                          children: [
+                            (0, r.jsx)("button", {
+                              type: "button",
+                              "aria-label": "Previous",
+                              onClick: () => Q.current?.step(-1),
+                              onPointerEnter: (e) => {
+                                e.currentTarget.style.background = M;
+                              },
+                              onPointerLeave: (e) => {
+                                e.currentTarget.style.background = S;
+                              },
+                              style: k,
+                              children: (0, r.jsx)("svg", {
+                                width: "14",
+                                height: "14",
+                                viewBox: "0 0 24 24",
+                                fill: "none",
+                                stroke: "currentColor",
+                                strokeWidth: "2",
+                                strokeLinecap: "round",
+                                strokeLinejoin: "round",
+                                "aria-hidden": "true",
+                                children: (0, r.jsx)("path", {
+                                  d: "m15 18-6-6 6-6",
+                                }),
+                              }),
+                            }),
+                            (0, r.jsxs)("span", {
+                              style: {
+                                opacity: 0.6,
+                                minWidth: 52,
+                                textAlign: "center",
+                              },
+                              children: [
+                                String(ea + 1).padStart(2, "0"),
+                                " / ",
+                                String(J.length).padStart(2, "0"),
+                              ],
+                            }),
+                            (0, r.jsx)("button", {
+                              type: "button",
+                              "aria-label": "Next",
+                              onClick: () => Q.current?.step(1),
+                              onPointerEnter: (e) => {
+                                e.currentTarget.style.background = M;
+                              },
+                              onPointerLeave: (e) => {
+                                e.currentTarget.style.background = S;
+                              },
+                              style: k,
+                              children: (0, r.jsx)("svg", {
+                                width: "14",
+                                height: "14",
+                                viewBox: "0 0 24 24",
+                                fill: "none",
+                                stroke: "currentColor",
+                                strokeWidth: "2",
+                                strokeLinecap: "round",
+                                strokeLinejoin: "round",
+                                "aria-hidden": "true",
+                                children: (0, r.jsx)("path", {
+                                  d: "m9 18 6-6-6-6",
+                                }),
+                              }),
+                            }),
+                          ],
+                        })
+                      : null,
+                  ],
+                })
+              : null,
+          ],
+        });
+      });
+    I.displayName = "PrismCarousel";
+    let A = {
+        prism: {
+          aspect: 1.5,
+          size: 0.62,
+          neighborScale: 0.66,
+          saturation: 0,
+          dim: 0.2,
+          sweep: 1,
+          sweepDuration: 1.1,
+          dispersion: 1,
+        },
+        vivid: {
+          aspect: 1.5,
+          size: 0.62,
+          neighborScale: 0.66,
+          saturation: 1,
+          dim: 0.15,
+          sweep: 0.7,
+          sweepDuration: 1,
+          dispersion: 1,
+        },
+        cinema: {
+          aspect: 2.1,
+          size: 0.56,
+          neighborScale: 0.7,
+          saturation: 0,
+          dim: 0.35,
+          sweep: 1,
+          sweepDuration: 1.3,
+          dispersion: 0.8,
+        },
+        portrait: {
+          aspect: 0.75,
+          size: 0.74,
+          neighborScale: 0.74,
+          saturation: 0,
+          dim: 0.2,
+          sweep: 1,
+          sweepDuration: 1.1,
+          dispersion: 1,
+        },
+        quiet: {
+          aspect: 1.5,
+          size: 0.62,
+          neighborScale: 0.66,
+          saturation: 0.25,
+          dim: 0.25,
+          sweep: 0,
+          sweepDuration: 1.1,
+          dispersion: 0,
+        },
+        spectrum: {
+          aspect: 1.5,
+          size: 0.62,
+          neighborScale: 0.66,
+          saturation: 0,
+          dim: 0.2,
+          sweep: 1.7,
+          sweepDuration: 1.5,
+          dispersion: 2,
+        },
+      },
+      E = [
+        { label: "Prism", value: "prism" },
+        { label: "Vivid", value: "vivid" },
+        { label: "Cinema", value: "cinema" },
+        { label: "Portrait", value: "portrait" },
+        { label: "Quiet", value: "quiet" },
+        { label: "Spectrum", value: "spectrum" },
+      ],
+      P = [
+        {
+          name: "items",
+          type: "{ src: string; alt: string; title?: string; subtitle?: string; href?: string }[]",
+          default: "built-in scene collection",
+          description:
+            "Images to show, in order. Images must allow cross-origin loading. Title and subtitle caption the active image; href makes clicking it navigate.",
+        },
+        {
+          name: "startIndex",
+          type: "number",
+          default: "0",
+          description: "Index of the image shown first.",
+        },
+        {
+          name: "aspect",
+          type: "number",
+          default: "1.5",
+          description:
+            "Width divided by height of the active image. Neighbours are narrower crops of their images.",
+        },
+        {
+          name: "size",
+          type: "number",
+          default: "0.62",
+          description:
+            "Height of the active image as a fraction of the space above the caption.",
+        },
+        {
+          name: "neighborScale",
+          type: "number",
+          default: "0.66",
+          description:
+            "Height of the neighbouring images relative to the active one.",
+        },
+        {
+          name: "gap",
+          type: "number",
+          default: "14",
+          description: "Space between images in pixels.",
+        },
+        {
+          name: "radius",
+          type: "number",
+          default: "18",
+          description:
+            "Corner radius of the active image in pixels. Neighbours scale it with their height.",
+        },
+        {
+          name: "saturation",
+          type: "number",
+          default: "0",
+          description:
+            "Colour of the images that are not active, from 0 (monochrome) to 1 (full colour).",
+        },
+        {
+          name: "dim",
+          type: "number",
+          default: "0.2",
+          description: "How much the images away from the centre darken.",
+        },
+        {
+          name: "sweep",
+          type: "number",
+          default: "1",
+          description:
+            "Strength of the band of spectrum that sweeps across each new image as its colour arrives. 0 turns the colour on without a sweep.",
+        },
+        {
+          name: "sweepDuration",
+          type: "number",
+          default: "1.1",
+          description: "Seconds the sweep takes to cross an image.",
+        },
+        {
+          name: "dispersion",
+          type: "number",
+          default: "1",
+          description:
+            "How strongly images split into a spectrum while the carousel moves. 0 keeps them sharp.",
+        },
+        {
+          name: "autoplay",
+          type: "boolean",
+          default: "true",
+          description: "Advance to the next image every interval seconds.",
+        },
+        {
+          name: "interval",
+          type: "number",
+          default: "4.5",
+          description: "Seconds between autoplay steps.",
+        },
+        {
+          name: "loop",
+          type: "boolean",
+          default: "true",
+          description:
+            "Wrap around at the ends. When false, the carousel stops at the first and last image.",
+        },
+        {
+          name: "captions",
+          type: "boolean",
+          default: "true",
+          description: "Show the title and subtitle of the active image.",
+        },
+        {
+          name: "controls",
+          type: "boolean",
+          default: "true",
+          description: "Show previous and next buttons with a counter.",
+        },
+        {
+          name: "draggable",
+          type: "boolean",
+          default: "true",
+          description:
+            "Drag or swipe sideways to move between images, with inertia and snapping.",
+        },
+        {
+          name: "wheel",
+          type: "boolean",
+          default: "true",
+          description:
+            "Scroll to move between images, one image per notch. Set false to leave page scrolling untouched.",
+        },
+        {
+          name: "pauseOnHover",
+          type: "boolean",
+          default: "true",
+          description:
+            "Pause autoplay while the pointer is over the carousel. Hovering a neighbour also lets some colour in.",
+        },
+        {
+          name: "backgroundColor",
+          type: "string",
+          default: '"transparent"',
+          description:
+            "Background of the component. Caption and controls adapt to it.",
+        },
+        {
+          name: "paused",
+          type: "boolean",
+          default: "false",
+          description:
+            "Stops autoplay. Reduced-motion users also get no sweep or dispersion.",
+        },
+        {
+          name: "dpr",
+          type: "number",
+          default: "2",
+          description: "Maximum device pixel ratio for the canvas.",
+        },
+        {
+          name: "ariaLabel",
+          type: "string",
+          default: '"Prism carousel…"',
+          description:
+            "Accessible description of the carousel and how to use it.",
+        },
+        {
+          name: "onIndexChange",
+          type: "(index) => void",
+          default: "—",
+          description: "Called when a different image becomes active.",
+        },
+        {
+          name: "onSelect",
+          type: "(item, index) => void",
+          default: "—",
+          description:
+            "Called when the active image is clicked or Enter is pressed.",
+        },
+        {
+          name: "ref",
+          type: "{ next, previous, goTo }",
+          default: "—",
+          description: "Imperative controls for moving between images.",
+        },
+        {
+          name: "className",
+          type: "string",
+          default: "—",
+          description:
+            "Classes for the root element. It fills its parent, with a 420px minimum height.",
+        },
+        {
+          name: "style",
+          type: "CSSProperties",
+          default: "—",
+          description: "Inline styles for the root element.",
+        },
+      ],
+      L = () => {
+        let [e, t] = (0, l.I)(),
+          a = (0, o.Y)(),
+          [s, u] = (0, n.useState)("prism"),
+          [c, d] = (0, n.useState)(A.prism),
+          p = (e) => (t) => d((a) => ({ ...a, [e]: t })),
+          [m, h] = (0, n.useState)(null),
+          v = m ?? ("dark" === a ? "#0A0A0A" : "#FFFFFF"),
+          [g, f] = (0, n.useState)(14),
+          [b, x] = (0, n.useState)(18),
+          [w, y] = (0, n.useState)(4.5),
+          [S, M] = (0, n.useState)(!0),
+          [k, C] = (0, n.useState)(!0),
+          [j, L] = (0, n.useState)(!0),
+          [D, R] = (0, n.useState)(!0),
+          [B, z] = (0, n.useState)(!0),
+          [T, F] = (0, n.useState)(!0),
+          [N, U] = (0, n.useState)(!0),
+          [H, W] = (0, n.useState)(!1);
+        return (0, r.jsxs)("div", {
+          children: [
+            (0, r.jsx)(i.Bg, {}),
+            (0, r.jsxs)(i.VX, {
+              children: [
+                (0, r.jsxs)(i.Ec, {
+                  children: [
+                    (0, r.jsx)(i.Ch, {
+                      onRefresh: t,
+                      minHeight: 560,
+                      enableResponsive: !0,
+                      children: (0, r.jsx)("div", {
+                        className: "relative h-full w-full",
+                        children: (0, r.jsx)(
+                          I,
+                          {
+                            aspect: c.aspect,
+                            size: c.size,
+                            neighborScale: c.neighborScale,
+                            gap: g,
+                            radius: b,
+                            saturation: c.saturation,
+                            dim: c.dim,
+                            sweep: c.sweep,
+                            sweepDuration: c.sweepDuration,
+                            dispersion: c.dispersion,
+                            autoplay: S,
+                            interval: w,
+                            loop: k,
+                            captions: j,
+                            controls: D,
+                            draggable: B,
+                            wheel: T,
+                            pauseOnHover: N,
+                            backgroundColor: v,
+                            paused: H,
+                          },
+                          e,
+                        ),
+                      }),
+                    }),
+                    (0, r.jsxs)(i.IH, {
+                      children: [
+                        (0, r.jsx)(i.bg, {
+                          title: "Preset",
+                          value: s,
+                          options: E,
+                          onChange: (e) => {
+                            (u(e), d(A[e] ?? A.prism));
+                          },
+                        }),
+                        (0, r.jsx)(i.W7, {
+                          title: "Background",
+                          value: v,
+                          onChange: h,
+                        }),
+                        (0, r.jsx)(i.yt, {
+                          title: "Aspect",
+                          min: 0.6,
+                          max: 2.4,
+                          step: 0.01,
+                          value: c.aspect,
+                          onChange: p("aspect"),
+                        }),
+                        (0, r.jsx)(i.yt, {
+                          title: "Size",
+                          min: 0.35,
+                          max: 0.9,
+                          step: 0.01,
+                          value: c.size,
+                          onChange: p("size"),
+                        }),
+                        (0, r.jsx)(i.yt, {
+                          title: "Neighbor Scale",
+                          min: 0.4,
+                          max: 1,
+                          step: 0.01,
+                          value: c.neighborScale,
+                          onChange: p("neighborScale"),
+                        }),
+                        (0, r.jsx)(i.yt, {
+                          title: "Gap",
+                          min: 0,
+                          max: 40,
+                          step: 1,
+                          value: g,
+                          valueUnit: "px",
+                          onChange: f,
+                        }),
+                        (0, r.jsx)(i.yt, {
+                          title: "Radius",
+                          min: 0,
+                          max: 48,
+                          step: 1,
+                          value: b,
+                          valueUnit: "px",
+                          onChange: x,
+                        }),
+                        (0, r.jsx)(i.yt, {
+                          title: "Saturation",
+                          min: 0,
+                          max: 1,
+                          step: 0.01,
+                          value: c.saturation,
+                          onChange: p("saturation"),
+                        }),
+                        (0, r.jsx)(i.yt, {
+                          title: "Dim",
+                          min: 0,
+                          max: 0.8,
+                          step: 0.01,
+                          value: c.dim,
+                          onChange: p("dim"),
+                        }),
+                        (0, r.jsx)(i.yt, {
+                          title: "Sweep",
+                          min: 0,
+                          max: 2,
+                          step: 0.05,
+                          value: c.sweep,
+                          onChange: p("sweep"),
+                        }),
+                        (0, r.jsx)(i.yt, {
+                          title: "Sweep Duration",
+                          min: 0.4,
+                          max: 3,
+                          step: 0.05,
+                          value: c.sweepDuration,
+                          valueUnit: "s",
+                          onChange: p("sweepDuration"),
+                        }),
+                        (0, r.jsx)(i.yt, {
+                          title: "Dispersion",
+                          min: 0,
+                          max: 3,
+                          step: 0.05,
+                          value: c.dispersion,
+                          onChange: p("dispersion"),
+                        }),
+                        (0, r.jsx)(i.yt, {
+                          title: "Interval",
+                          min: 2,
+                          max: 12,
+                          step: 0.5,
+                          value: w,
+                          valueUnit: "s",
+                          onChange: y,
+                        }),
+                        (0, r.jsx)(i.tl, {
+                          title: "Autoplay",
+                          checked: S,
+                          onChange: M,
+                        }),
+                        (0, r.jsx)(i.tl, {
+                          title: "Loop",
+                          checked: k,
+                          onChange: C,
+                        }),
+                        (0, r.jsx)(i.tl, {
+                          title: "Captions",
+                          checked: j,
+                          onChange: L,
+                        }),
+                        (0, r.jsx)(i.tl, {
+                          title: "Controls",
+                          checked: D,
+                          onChange: R,
+                        }),
+                        (0, r.jsx)(i.tl, {
+                          title: "Draggable",
+                          checked: B,
+                          onChange: z,
+                        }),
+                        (0, r.jsx)(i.tl, {
+                          title: "Wheel",
+                          checked: T,
+                          onChange: F,
+                        }),
+                        (0, r.jsx)(i.tl, {
+                          title: "Pause On Hover",
+                          checked: N,
+                          onChange: U,
+                        }),
+                        (0, r.jsx)(i.tl, {
+                          title: "Paused",
+                          checked: H,
+                          onChange: W,
+                        }),
+                      ],
+                    }),
+                    (0, r.jsx)(i.Ub, { data: P }),
+                  ],
+                }),
+                (0, r.jsx)(i.lT, { children: (0, r.jsx)(i.Gv, {}) }),
+              ],
+            }),
+          ],
+        });
+      };
+  },
+};

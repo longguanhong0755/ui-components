@@ -1,0 +1,1829 @@
+/* ReactBits Pro public preview module 83542 for shatter-type.
+ * Extracted from https://pro.reactbits.dev/_next/static/chunks/83542.f8476bda33a93670.js
+ * This is the compiled browser implementation, not the original TSX. */
+
+const module = {
+  83542: (e, t, a) => {
+    (a.r(t), a.d(t, { default: () => B }));
+    var r = a(95155),
+      n = a(12115),
+      i = a(56388),
+      l = a(86049),
+      o = a(90761),
+      s = a(12246),
+      u = a(2253),
+      h = a(90650);
+    let c = 1 / 120,
+      d = `
+uniform sampler2D uState;
+uniform vec2 uStateSize;
+attribute vec3 center;
+attribute vec3 bary;
+attribute float shard;
+varying vec2 vUv;
+varying vec3 vBary;
+varying vec3 vNormal;
+varying float vCrack;
+varying float vFlash;
+varying float vAlpha;
+varying float vOrigin;
+
+vec4 fetchState(float k) {
+  float column = mod(shard, 256.0) * 3.0 + k;
+  float row = floor(shard / 256.0);
+  return texture2D(uState, (vec2(column, row) + 0.5) / uStateSize);
+}
+
+vec3 rotateQ(vec4 q, vec3 v) {
+  vec3 t = 2.0 * cross(q.xyz, v);
+  return v + q.w * t + cross(q.xyz, t);
+}
+
+void main() {
+  vec4 motion = fetchState(0.0);
+  vec4 turn = fetchState(1.0);
+  vec4 extra = fetchState(2.0);
+  vec3 world = center + motion.xyz + rotateQ(turn, position * motion.w);
+  vNormal = rotateQ(turn, vec3(0.0, 0.0, 1.0));
+  vUv = uv;
+  vBary = bary;
+  vCrack = extra.x;
+  vFlash = extra.y;
+  vAlpha = extra.z;
+  vOrigin = center.x + position.x;
+  gl_Position = projectionMatrix * modelViewMatrix * vec4(world, 1.0);
+}
+`,
+      f = `
+uniform sampler2D uMask;
+uniform vec3 uColorA;
+uniform vec3 uColorB;
+uniform vec3 uAccent;
+uniform vec2 uBounds;
+uniform float uGlint;
+varying vec2 vUv;
+varying vec3 vBary;
+varying vec3 vNormal;
+varying float vCrack;
+varying float vFlash;
+varying float vAlpha;
+varying float vOrigin;
+
+void main() {
+  float mask = texture2D(uMask, vUv).a;
+  float alpha = mask * vAlpha;
+  if (alpha < 0.004) discard;
+  vec3 n = normalize(vNormal);
+  bool front = gl_FrontFacing;
+  vec3 facing = front ? n : -n;
+  float t = clamp((vOrigin - uBounds.x) / max(1.0, uBounds.y - uBounds.x), 0.0, 1.0);
+  vec3 base = front ? mix(uColorA, uColorB, t) : uAccent;
+  vec3 light = normalize(vec3(-0.45, 0.62, 0.64));
+  float shade = 1.0 + 0.6 * (dot(facing, light) - light.z);
+  vec3 bounce = reflect(-light, facing);
+  float tilt = smoothstep(0.0, 0.3, 1.0 - facing.z);
+  float spark = pow(max(bounce.z, 0.0), 26.0) * tilt * uGlint;
+  float edge = min(min(vBary.x, vBary.y), vBary.z);
+  float seam = 1.0 - smoothstep(0.0, fwidth(edge) * 1.5, edge);
+  vec3 colour = base * clamp(shade, 0.35, 1.4);
+  colour = mix(colour, vec3(1.0), clamp(spark + seam * vCrack * 0.3 + vFlash * 0.5, 0.0, 1.0));
+  gl_FragColor = vec4(colour, alpha);
+}
+`,
+      m = (e, t, a) => Math.min(a, Math.max(t, e)),
+      p = (e, t) => (Number.isFinite(e) ? e : t),
+      y = (e, t, a) => {
+        let r = m((a - e) / (t - e), 0, 1);
+        return r * r * (3 - 2 * r);
+      },
+      v = (e) => {
+        let t = e >>> 0;
+        return () => {
+          let e = (t = (t + 0x6d2b79f5) >>> 0);
+          return (
+            (e = Math.imul(e ^ (e >>> 15), 1 | e)),
+            (((e ^= e + Math.imul(e ^ (e >>> 7), 61 | e)) ^ (e >>> 14)) >>> 0) /
+              0x100000000
+          );
+        };
+      },
+      g = null,
+      x = (e) => {
+        let t = window.matchMedia("(prefers-reduced-motion: reduce)");
+        return (
+          t.addEventListener("change", e),
+          () => t.removeEventListener("change", e)
+        );
+      },
+      b = () => window.matchMedia("(prefers-reduced-motion: reduce)").matches,
+      w = (0, n.forwardRef)(function (
+        {
+          text: e = "Shatter",
+          fontFamily: t = "",
+          fontWeight: a = 700,
+          fontSize: i = 0,
+          letterSpacing: l = -0.02,
+          lineHeight: o = 1.05,
+          align: w = "center",
+          colors: F = ["currentColor", "currentColor"],
+          accentColor: M = "#7B5CFF",
+          shardSize: S = 0.09,
+          irregularity: A = 0.6,
+          crack: C = 0.6,
+          crackRadius: k = 0.5,
+          heal: j = 0.9,
+          shatter: E = !0,
+          shatterRadius: B = 0.55,
+          force: R = 1,
+          spin: z = 1,
+          depth: I = 1,
+          gravity: T = 0,
+          reassemble: N = 1.1,
+          stiffness: P = 0.55,
+          glint: D = 0.8,
+          intro: U = "assemble",
+          introDuration: L = 1.6,
+          autoplay: H = !1,
+          autoplayInterval: W = 4,
+          interactive: G = !0,
+          paused: Y = !1,
+          quality: q = 1,
+          className: $,
+          style: O,
+          children: Q,
+        },
+        X,
+      ) {
+        let _ = (0, n.useRef)(null),
+          V = (0, n.useRef)(null),
+          K = {
+            text: e,
+            fontFamily: t,
+            fontWeight: a,
+            fontSize: i,
+            letterSpacing: l,
+            lineHeight: o,
+            align: w,
+            colors: F,
+            accentColor: M,
+            shardSize: S,
+            irregularity: A,
+            crack: C,
+            crackRadius: k,
+            heal: j,
+            shatter: E,
+            shatterRadius: B,
+            force: R,
+            spin: z,
+            depth: I,
+            gravity: T,
+            reassemble: N,
+            stiffness: P,
+            glint: D,
+            intro: U,
+            introDuration: L,
+            autoplay: H,
+            autoplayInterval: W,
+            interactive: G,
+            paused: Y,
+            quality: q,
+            reduced: (0, n.useSyncExternalStore)(x, b, () => !1),
+          },
+          Z = (0, n.useRef)(K);
+        return (
+          (0, n.useEffect)(() => {
+            ((Z.current = K), V.current?.sync());
+          }),
+          (0, n.useEffect)(() => {
+            let e = _.current;
+            if (!e) return;
+            let t = ((e, t) => {
+              let a,
+                r = e.ownerDocument,
+                n = r.createElement("canvas");
+              (n.setAttribute("aria-hidden", "true"),
+                (n.style.cssText =
+                  "position:absolute;inset:0;width:100%;height:100%;display:block;pointer-events:none"),
+                e.insertBefore(n, e.firstChild));
+              try {
+                a = new s.WebGLRenderer({
+                  canvas: n,
+                  alpha: !0,
+                  premultipliedAlpha: !0,
+                  antialias: !0,
+                });
+              } catch {
+                return (n.remove(), null);
+              }
+              a.setClearColor(0, 0);
+              let i = r.defaultView ?? window,
+                l = i.matchMedia("(pointer: fine)"),
+                o = new u.Z58(),
+                h = new u.ubm(24, 1, 1, 1e4),
+                x = r.createElement("canvas"),
+                b = new u.GOR(x);
+              ((b.minFilter = u.k6q),
+                (b.magFilter = u.k6q),
+                (b.generateMipmaps = !1));
+              let w = new Float32Array(4),
+                F = new u.GYF(w, 1, 1, u.GWd, u.RQf),
+                M = new u.BKk({
+                  vertexShader: d,
+                  fragmentShader: f,
+                  transparent: !0,
+                  side: u.$EB,
+                  depthTest: !0,
+                  depthWrite: !0,
+                  uniforms: {
+                    uState: { value: F },
+                    uStateSize: { value: new u.I9Y(1, 1) },
+                    uMask: { value: b },
+                    uColorA: { value: new u.Q1f(1, 1, 1) },
+                    uColorB: { value: new u.Q1f(1, 1, 1) },
+                    uAccent: { value: new u.Q1f(0.48, 0.36, 1) },
+                    uBounds: { value: new u.I9Y(0, 1) },
+                    uGlint: { value: 0.8 },
+                  },
+                }),
+                S = new u.LoY(),
+                A = new u.eaF(S, M);
+              ((A.frustumCulled = !1), o.add(A));
+              let C = 0,
+                k = 0,
+                j = 0,
+                E = !1,
+                B = !0,
+                R = !1,
+                z = 0,
+                I = 0,
+                T = 64,
+                N = 0,
+                P = "",
+                D = "",
+                U = 1 / 0,
+                L = 0,
+                H = v(5369127),
+                W = new Float32Array(0),
+                G = new Float32Array(0),
+                Y = new Float32Array(0),
+                q = new Float32Array(0),
+                $ = new Float32Array(0),
+                O = new Float32Array(0),
+                Q = new Float32Array(0),
+                X = new Float32Array(0),
+                _ = new Float32Array(0),
+                V = new Float32Array(0),
+                K = new Float32Array(0),
+                Z = new Float32Array(0),
+                J = new Float32Array(0),
+                ee = new Float32Array(0),
+                et = new Float32Array(0),
+                ea = new Float32Array(0),
+                er = new Float32Array(0),
+                en = new Float32Array(0),
+                ei = new Float32Array(0),
+                el = new Float32Array(0),
+                eo = new Float32Array(0),
+                es = new Float64Array(0),
+                eu = new Float64Array(0),
+                eh = new Uint8Array(0),
+                ec = new Uint8Array(0),
+                ed = { x: 0, y: 0, inside: !1, at: 0, speed: 0 },
+                ef = { x: 0, y: 0, at: 0, live: !1 },
+                em = () => {
+                  let a = t.current,
+                    r = "",
+                    n = (t) => {
+                      let a = (t ?? "").trim();
+                      return a && "currentcolor" !== a.toLowerCase()
+                        ? a
+                        : (r || (r = i.getComputedStyle(e).color), r);
+                    },
+                    l = Array.isArray(a.colors) ? a.colors : [],
+                    o = n(l[0]),
+                    s = n(l[1] ?? l[0]),
+                    u = n(a.accentColor),
+                    h = `${o}|${s}|${u}`;
+                  if (h === D) return;
+                  D = h;
+                  let c = (e, t, a) => {
+                    let r = ((e, t) => {
+                      if (
+                        "undefined" == typeof document ||
+                        !e ||
+                        ("undefined" != typeof CSS &&
+                          "function" == typeof CSS.supports &&
+                          !CSS.supports("color", e))
+                      )
+                        return t;
+                      if (!g) {
+                        let e = document.createElement("canvas");
+                        ((e.width = 1),
+                          (e.height = 1),
+                          (g = e.getContext("2d", { willReadFrequently: !0 })));
+                      }
+                      if (!g) return t;
+                      (g.clearRect(0, 0, 1, 1),
+                        (g.fillStyle = "#000"),
+                        (g.fillStyle = e),
+                        g.fillRect(0, 0, 1, 1));
+                      let a = g.getImageData(0, 0, 1, 1).data;
+                      return { r: a[0], g: a[1], b: a[2] };
+                    })(t, a);
+                    M.uniforms[e].value.setRGB(r.r / 255, r.g / 255, r.b / 255);
+                  };
+                  (c("uColorA", o, { r: 23, g: 23, b: 23 }),
+                    c("uColorB", s, { r: 23, g: 23, b: 23 }),
+                    c("uAccent", u, { r: 123, g: 92, b: 255 }));
+                },
+                ep = (e, a, r, n) => {
+                  let i = m(p(t.current.introDuration, 1.6), 0.2, 6),
+                    l = z > 0 ? (W[e] + z / 2) / z : 0.5;
+                  if (
+                    ((eh[e] = 2),
+                    (es[e] = r + (0.5 * l + 0.14 * H()) * i * n),
+                    (O[e] = 0),
+                    (Q[e] = 0),
+                    (X[e] = 0),
+                    (Z[e] = 0),
+                    (J[e] = 0),
+                    (ee[e] = 0),
+                    (ec[e] = "drop" === a ? 3 : 2),
+                    "drop" === a)
+                  ) {
+                    ((Y[e] = (H() - 0.5) * T * 0.4),
+                      (q[e] = I * (0.55 + 0.45 * H()) + T),
+                      ($[e] = H() * T * 0.6),
+                      (_[e] = (H() - 0.5) * 1.2),
+                      (V[e] = (H() - 0.5) * 1.2),
+                      (K[e] = (H() - 0.5) * 1.6),
+                      (ei[e] = 1));
+                    return;
+                  }
+                  if ("fade" === a) {
+                    ((Y[e] = 0),
+                      (q[e] = 0),
+                      ($[e] = T * (0.6 + 0.8 * H())),
+                      (_[e] = (H() - 0.5) * 0.5),
+                      (V[e] = (H() - 0.5) * 0.5),
+                      (K[e] = (H() - 0.5) * 0.3),
+                      (ei[e] = 0));
+                    return;
+                  }
+                  let o = H() * Math.PI * 2,
+                    s = (0.2 + 0.8 * H()) * T * 1.1;
+                  ((Y[e] = Math.cos(o) * s),
+                    (q[e] = Math.sin(o) * s * 0.8),
+                    ($[e] = T * (0.5 + 1.7 * H())),
+                    (_[e] = (H() - 0.5) * Math.PI * 2),
+                    (V[e] = (H() - 0.5) * Math.PI * 2),
+                    (K[e] = (H() - 0.5) * Math.PI * 2),
+                    (ei[e] = 0));
+                },
+                ey = (e) => {
+                  let a = t.current,
+                    r = a.reduced ? "none" : a.intro;
+                  for (let t = 0; t < N; t++)
+                    "none" === r
+                      ? ((eh[t] = 0),
+                        (Y[t] = 0),
+                        (q[t] = 0),
+                        ($[t] = 0),
+                        (_[t] = 0),
+                        (V[t] = 0),
+                        (K[t] = 0),
+                        (ei[t] = 1),
+                        (ec[t] = 0))
+                      : ep(t, r, e, 1);
+                  let n = m(p(a.introDuration, 1.6), 0.2, 6);
+                  ((L = "none" === r ? e : e + 1.1 * n),
+                    (U = e + ("none" === r ? 1.2 : n + 1.4)));
+                },
+                ev = () => {
+                  var r;
+                  let n,
+                    l = t.current,
+                    o = e.getBoundingClientRect(),
+                    s = Math.max(1, Math.round(o.width)),
+                    c = Math.max(1, Math.round(o.height)),
+                    d =
+                      Math.min(i.devicePixelRatio || 1, 2) *
+                      m(p(l.quality, 1), 0.5, 1),
+                    f =
+                      (l.fontFamily ?? "").trim() ||
+                      i.getComputedStyle(e).fontFamily ||
+                      "sans-serif",
+                    y = [
+                      s,
+                      c,
+                      d,
+                      l.text,
+                      f,
+                      l.fontWeight,
+                      l.fontSize,
+                      l.letterSpacing,
+                      l.lineHeight,
+                      l.align,
+                      l.shardSize,
+                      l.irregularity,
+                    ].join("|");
+                  if (y === P) return !1;
+                  ((P = y),
+                    (z = s),
+                    (I = c),
+                    a.setPixelRatio(d),
+                    a.setSize(s, c, !1),
+                    (h.aspect = s / c),
+                    h.position.set(
+                      0,
+                      0,
+                      c / 2 / Math.tan((24 * Math.PI) / 360),
+                    ),
+                    (h.near = 1),
+                    (h.far = 4 * h.position.z),
+                    h.updateProjectionMatrix());
+                  let g = String(l.text ?? "").split("\n"),
+                    C = m(Math.round(p(Number(l.fontWeight), 700)), 100, 900),
+                    k = p(l.letterSpacing, -0.02),
+                    j = m(p(l.lineHeight, 1.05), 0.6, 3);
+                  ((x.width = Math.max(1, Math.ceil(s * d))),
+                    (x.height = Math.max(1, Math.ceil(c * d))));
+                  let E = x.getContext("2d", { willReadFrequently: !0 });
+                  if (!E) return !1;
+                  let B = "letterSpacing" in E,
+                    D = (e) => `${C} ${e}px ${f}`,
+                    U = (e) => {
+                      ((E.font = D(e)), B && (E.letterSpacing = `${k * e}px`));
+                      let t = 0;
+                      for (let e of g) t = Math.max(t, E.measureText(e).width);
+                      return t;
+                    },
+                    ed = p(l.fontSize, 0);
+                  if (!(ed > 0)) {
+                    ed = Math.min(0.46 * c, 420);
+                    for (
+                      let e = 0;
+                      e < 60 &&
+                      (!(U(ed) <= 0.86 * s) ||
+                        !(g.length * ed * j <= 0.82 * c));
+                      e++
+                    )
+                      ed *= 0.95;
+                  }
+                  ((T = ed = Math.max(6, ed)),
+                    E.setTransform(1, 0, 0, 1, 0, 0),
+                    E.clearRect(0, 0, x.width, x.height),
+                    E.setTransform(d, 0, 0, d, 0, 0),
+                    (E.font = D(ed)),
+                    B && (E.letterSpacing = `${k * ed}px`),
+                    (E.fillStyle = "#ffffff"),
+                    (E.textBaseline = "alphabetic"));
+                  let ef = E.measureText(g.find((e) => e.trim()) ?? "M"),
+                    em = ef.actualBoundingBoxAscent || 0.72 * ed,
+                    ep = ef.actualBoundingBoxDescent || 0.2 * ed,
+                    ev = (c - ((g.length - 1) * ed * j + em + ep)) / 2 + em,
+                    eg = 1 / 0,
+                    ex = -1 / 0;
+                  for (let e of g) {
+                    let t = E.measureText(e).width,
+                      a =
+                        "left" === l.align
+                          ? 0.07 * s
+                          : "right" === l.align
+                            ? 0.93 * s - t
+                            : (s - t) / 2;
+                    (E.fillText(e, a, ev),
+                      e.trim() &&
+                        ((eg = Math.min(eg, a)), (ex = Math.max(ex, a + t))),
+                      (ev += ed * j));
+                  }
+                  (Number.isFinite(eg) || ((eg = 0), (ex = s)),
+                    b.dispose(),
+                    (b.needsUpdate = !0),
+                    M.uniforms.uBounds.value.set(eg - s / 2, ex - s / 2));
+                  let eb = E.getImageData(0, 0, x.width, x.height).data,
+                    ew = x.width,
+                    eF = (e, t, a, r, n, i) => {
+                      let l = Math.floor(Math.min(e, a, n) * d),
+                        o = Math.ceil(Math.max(e, a, n) * d),
+                        s = Math.floor(Math.min(t, r, i) * d),
+                        u = Math.ceil(Math.max(t, r, i) * d),
+                        h = (a - e) * (i - t) - (n - e) * (r - t);
+                      if (1e-6 > Math.abs(h)) return !1;
+                      let c = h > 0 ? 1 : -1,
+                        f = 1.2 / d;
+                      for (
+                        let h = Math.max(0, s);
+                        h <= Math.min(x.height - 1, u);
+                        h++
+                      ) {
+                        let s = (h + 0.5) / d;
+                        for (
+                          let u = Math.max(0, l);
+                          u <= Math.min(ew - 1, o);
+                          u++
+                        ) {
+                          if (eb[(h * ew + u) * 4 + 3] <= 2) continue;
+                          let l = (u + 0.5) / d,
+                            o = ((a - e) * (s - t) - (r - t) * (l - e)) * c,
+                            m = ((n - a) * (s - r) - (i - r) * (l - a)) * c,
+                            p = ((e - n) * (s - i) - (t - i) * (l - n)) * c,
+                            y = Math.hypot(a - e, r - t),
+                            v = Math.hypot(n - a, i - r),
+                            g = Math.hypot(e - n, t - i);
+                          if (o >= -f * y && m >= -f * v && p >= -f * g)
+                            return !0;
+                        }
+                      }
+                      return !1;
+                    };
+                  H = v(5369127);
+                  let eM = Math.max(5, m(p(l.shardSize, 0.09), 0.03, 0.4) * ed),
+                    eS = m(p(l.irregularity, 0.6), 0, 1),
+                    eA = eM / 2,
+                    eC = Math.ceil(s / eA) + 1,
+                    ek = Math.ceil(c / eA) + 1,
+                    ej = new Uint8Array(eC * ek),
+                    eE = Math.max(0, Math.floor((eg - 0.2 * ed) * d)),
+                    eB = Math.min(ew - 1, Math.ceil((ex + 0.2 * ed) * d));
+                  for (let e = 0; e < x.height; e++) {
+                    let t = e * ew,
+                      a = Math.floor(e / d / eA) * eC;
+                    for (let e = eE; e <= eB; e++)
+                      eb[(t + e) * 4 + 3] > 2 &&
+                        (ej[a + Math.floor(e / d / eA)] = 1);
+                  }
+                  let eR = (e, t) => {
+                      let a = Math.floor(e / eA),
+                        r = Math.floor(t / eA);
+                      for (let e = -3; e <= 3; e++) {
+                        let t = r + e;
+                        if (!(t < 0) && !(t >= ek))
+                          for (let e = -3; e <= 3; e++) {
+                            let r = a + e;
+                            if (r >= 0 && r < eC && ej[t * eC + r]) return !0;
+                          }
+                      }
+                      return !1;
+                    },
+                    ez = new Float64Array(3200),
+                    eI = new Float64Array(3200),
+                    eT = 0,
+                    eN = 0.866 * eM,
+                    eP = 0;
+                  for (let e = -eM; e <= c + eM && eT < 3200; e += eN, eP++)
+                    for (
+                      let t = -eM + (eP % 2 ? eM / 2 : 0);
+                      t <= s + eM && eT < 3200;
+                      t += eM
+                    ) {
+                      if (H() < 0.2 * eS) continue;
+                      let a = t + (H() - 0.5) * eM * 0.75 * eS,
+                        r = e + (H() - 0.5) * eM * 0.75 * eS;
+                      eR(a, r) && ((ez[eT] = a), (eI[eT] = r), (eT += 1));
+                    }
+                  let eD =
+                      eT >= 3
+                        ? ((e, t, a) => {
+                            let r = Array.from({ length: a }, (e, t) => t).sort(
+                                (t, a) => e[t] - e[a],
+                              ),
+                              n = 1 / 0,
+                              i = 1 / 0,
+                              l = -1 / 0,
+                              o = -1 / 0;
+                            for (let r = 0; r < a; r++)
+                              ((n = Math.min(n, e[r])),
+                                (i = Math.min(i, t[r])),
+                                (l = Math.max(l, e[r])),
+                                (o = Math.max(o, t[r])));
+                            let s = 20 * Math.max(l - n, o - i, 1),
+                              u = (n + l) / 2,
+                              h = (i + o) / 2,
+                              c = new Float64Array(a + 3),
+                              d = new Float64Array(a + 3);
+                            (c.set(e.subarray(0, a)),
+                              d.set(t.subarray(0, a)),
+                              (c[a] = u - s),
+                              (d[a] = h - s),
+                              (c[a + 1] = u),
+                              (d[a + 1] = h + s),
+                              (c[a + 2] = u + s),
+                              (d[a + 2] = h - s));
+                            let f = (e, t, a) => {
+                                let r = c[e],
+                                  n = d[e],
+                                  i = c[t],
+                                  l = d[t],
+                                  o = c[a],
+                                  s = d[a],
+                                  u =
+                                    2 *
+                                    (r * (l - s) + i * (s - n) + o * (n - l));
+                                if (1e-12 > Math.abs(u))
+                                  return {
+                                    a: e,
+                                    b: t,
+                                    c: a,
+                                    x: (r + i + o) / 3,
+                                    y: (n + l + s) / 3,
+                                    r: 1 / 0,
+                                  };
+                                let h = r * r + n * n,
+                                  f = i * i + l * l,
+                                  m = o * o + s * s,
+                                  p =
+                                    (h * (l - s) + f * (s - n) + m * (n - l)) /
+                                    u,
+                                  y =
+                                    (h * (o - i) + f * (r - o) + m * (i - r)) /
+                                    u;
+                                return {
+                                  a: e,
+                                  b: t,
+                                  c: a,
+                                  x: p,
+                                  y,
+                                  r: (r - p) * (r - p) + (n - y) * (n - y),
+                                };
+                              },
+                              m = [f(a, a + 1, a + 2)],
+                              p = [],
+                              y = [];
+                            for (let e of r) {
+                              let t = c[e],
+                                a = d[e];
+                              y.length = 0;
+                              let r = [];
+                              for (let e of m) {
+                                let n = t - e.x;
+                                if (n > 0 && n * n > e.r) {
+                                  p.push(e);
+                                  continue;
+                                }
+                                let i = a - e.y;
+                                n * n + i * i <= e.r
+                                  ? y.push(e.a, e.b, e.b, e.c, e.c, e.a)
+                                  : r.push(e);
+                              }
+                              for (let t = 0; t < y.length; t += 2) {
+                                let a = y[t],
+                                  n = y[t + 1];
+                                if (a < 0) continue;
+                                let i = !1;
+                                for (let e = t + 2; e < y.length; e += 2)
+                                  ((y[e] === a && y[e + 1] === n) ||
+                                    (y[e] === n && y[e + 1] === a)) &&
+                                    ((y[e] = -1), (y[e + 1] = -1), (i = !0));
+                                i || r.push(f(a, n, e));
+                              }
+                              m = r;
+                            }
+                            let v = [];
+                            for (let e of p.concat(m))
+                              e.a >= a ||
+                                e.b >= a ||
+                                e.c >= a ||
+                                v.push(e.a, e.b, e.c);
+                            return v;
+                          })(ez, eI, eT)
+                        : [],
+                    eU = [];
+                  for (let e = 0; e < eD.length; e += 3) {
+                    let t = eD[e],
+                      a = eD[e + 1],
+                      r = eD[e + 2];
+                    eF(ez[t], eI[t], ez[a], eI[a], ez[r], eI[r]) &&
+                      eU.push(t, a, r);
+                  }
+                  ((W = new Float32Array((r = N = eU.length / 3))),
+                    (G = new Float32Array(r)),
+                    (Y = new Float32Array(r)),
+                    (q = new Float32Array(r)),
+                    ($ = new Float32Array(r)),
+                    (O = new Float32Array(r)),
+                    (Q = new Float32Array(r)),
+                    (X = new Float32Array(r)),
+                    (_ = new Float32Array(r)),
+                    (V = new Float32Array(r)),
+                    (K = new Float32Array(r)),
+                    (Z = new Float32Array(r)),
+                    (J = new Float32Array(r)),
+                    (ee = new Float32Array(r)),
+                    (et = new Float32Array(r).fill(1)),
+                    (ea = new Float32Array(r)),
+                    (er = new Float32Array(r)),
+                    (en = new Float32Array(r)),
+                    (ei = new Float32Array(r).fill(1)),
+                    (el = new Float32Array(r)),
+                    (eo = new Float32Array(r)),
+                    (es = new Float64Array(r)),
+                    (eu = new Float64Array(r)),
+                    (eh = new Uint8Array(r)),
+                    (ec = new Uint8Array(r)),
+                    (w = new Float32Array(
+                      768 * (n = Math.max(1, Math.ceil(r / 256))) * 4,
+                    )),
+                    F.dispose(),
+                    ((F = new u.GYF(w, 768, n, u.GWd, u.RQf)).minFilter =
+                      u.hxR),
+                    (F.magFilter = u.hxR),
+                    (F.needsUpdate = !0),
+                    (M.uniforms.uState.value = F),
+                    M.uniforms.uStateSize.value.set(768, n));
+                  let eL = new Float32Array(9 * N),
+                    eH = new Float32Array(9 * N),
+                    eW = new Float32Array(6 * N),
+                    eG = new Float32Array(9 * N),
+                    eY = new Float32Array(3 * N);
+                  for (let e = 0; e < N; e++) {
+                    let t = eU[3 * e],
+                      a = eU[3 * e + 1],
+                      r = eU[3 * e + 2];
+                    if (
+                      (ez[a] - ez[t]) * (eI[t] - eI[r]) -
+                        (ez[r] - ez[t]) * (eI[t] - eI[a]) <
+                      0
+                    ) {
+                      let e = t;
+                      ((t = a), (a = e));
+                    }
+                    let n = (ez[t] + ez[a] + ez[r]) / 3,
+                      i = (eI[t] + eI[a] + eI[r]) / 3;
+                    ((W[e] = n - s / 2), (G[e] = c / 2 - i));
+                    let l = H() * Math.PI * 2;
+                    ((el[e] = Math.cos(l)),
+                      (eo[e] = Math.sin(l)),
+                      [t, a, r].forEach((t, a) => {
+                        let r = 9 * e + 3 * a;
+                        ((eL[r] = ez[t] - n),
+                          (eL[r + 1] = i - eI[t]),
+                          (eL[r + 2] = 0),
+                          (eH[r] = W[e]),
+                          (eH[r + 1] = G[e]),
+                          (eH[r + 2] = 0),
+                          (eG[r + a] = 1),
+                          (eW[6 * e + 2 * a] = ez[t] / s),
+                          (eW[6 * e + 2 * a + 1] = 1 - eI[t] / c),
+                          (eY[3 * e + a] = e));
+                      }));
+                  }
+                  let eq = new u.LoY();
+                  if (
+                    (eq.setAttribute("position", new u.THS(eL, 3)),
+                    eq.setAttribute("center", new u.THS(eH, 3)),
+                    eq.setAttribute("uv", new u.THS(eW, 2)),
+                    eq.setAttribute("bary", new u.THS(eG, 3)),
+                    eq.setAttribute("shard", new u.THS(eY, 1)),
+                    S.dispose(),
+                    (A.geometry = S = eq),
+                    R)
+                  )
+                    if (performance.now() / 1e3 < L)
+                      ey(performance.now() / 1e3);
+                    else
+                      for (let e = 0; e < N; e++)
+                        ((eh[e] = 0), (ec[e] = 0), (ei[e] = 1));
+                  else
+                    for (let e = 0; e < N; e++)
+                      ((ei[e] = 0), (eh[e] = 2), (es[e] = 1 / 0));
+                  return !0;
+                },
+                eg = (e, a, r, n = 1) => {
+                  let i = t.current;
+                  if (!N || i.reduced) return;
+                  let l = e - z / 2,
+                    o = I / 2 - a,
+                    s = m(p(i.shatterRadius, 0.55), 0.1, 6) * T,
+                    u = m(p(i.force, 1), 0, 4) * n,
+                    h = m(p(i.spin, 1), 0, 4),
+                    c = m(p(i.depth, 1), 0, 4),
+                    d = m(p(i.reassemble, 1.1), 0.1, 10),
+                    f = !1;
+                  for (let e = 0; e < N; e++) {
+                    let t = W[e] - l,
+                      a = G[e] - o,
+                      n = Math.hypot(t, a);
+                    if (n > 1.6 * s) continue;
+                    let i = 1 - y(0.6 * s, 1.3 * s, n);
+                    if (i < 0.3 || 2 === eh[e] || 1 === eh[e]) {
+                      er[e] = Math.max(er[e], 0.7 * (1 - y(s, 1.6 * s, n)));
+                      continue;
+                    }
+                    f = !0;
+                    let m = n > 0.001 ? t / n : H() - 0.5,
+                      p = n > 0.001 ? a / n : H() - 0.5,
+                      v = Math.sqrt(T / 160),
+                      g = u * (170 + 380 * H()) * i * v;
+                    ((eh[e] = 1),
+                      (ec[e] = 1),
+                      (eu[e] = r + 0.04 + (n / s) * 0.09),
+                      (es[e] = eu[e] + d * (0.85 + 0.3 * H()) + (n / s) * 0.16),
+                      (O[e] = m * g + (H() - 0.5) * 70 * u * v),
+                      (Q[e] = p * g + (H() - 0.5) * 70 * u * v),
+                      (X[e] = c * (320 + 760 * H()) * i * v),
+                      (Z[e] = (H() - 0.5) * 2 * h * (3 + 6 * H()) * i),
+                      (J[e] = (H() - 0.5) * 2 * h * (3 + 6 * H()) * i),
+                      (ee[e] = (H() - 0.5) * 2 * h * (1.5 + 3.5 * H()) * i),
+                      (er[e] = 0.55));
+                  }
+                  f && ew();
+                },
+                ex = (e) => e - 2 * Math.PI * Math.round(e / (2 * Math.PI)),
+                eb = (e, a) => {
+                  let r = t.current,
+                    n = 5 + 9 * m(p(r.stiffness, 0.55), 0, 1),
+                    i =
+                      7.5 /
+                      Math.max(0.15, 0.55 * m(p(r.introDuration, 1.6), 0.2, 6)),
+                    l = 1500 * m(p(r.gravity, 0), 0, 4),
+                    o = Math.exp(-(2.6 * e)),
+                    s = Math.exp(-(0.7 * e)),
+                    u = 1 / Math.max(0.05, p(r.heal, 0.9)),
+                    h = m(p(r.crack, 0.6), 0, 1),
+                    c = m(p(r.crackRadius, 0.5), 0.05, 4) * T,
+                    d =
+                      Math.exp(-Math.max(0, a - ed.at) / 0.08) *
+                      y(40, 900, ed.speed),
+                    f =
+                      ed.inside &&
+                      t.current.interactive &&
+                      !r.reduced &&
+                      h > 0 &&
+                      d > 0.01,
+                    v = ed.x - z / 2,
+                    g = I / 2 - ed.y,
+                    x = 0;
+                  for (let t = 0; t < N; t++) {
+                    if (2 === eh[t]) {
+                      if (a < es[t]) continue;
+                      eh[t] = 0;
+                    }
+                    if (1 === eh[t])
+                      if (a >= es[t])
+                        ((eh[t] = 0),
+                          (_[t] = ex(_[t])),
+                          (V[t] = ex(V[t])),
+                          (K[t] = ex(K[t])),
+                          (O[t] *= 0.25),
+                          (Q[t] *= 0.25),
+                          (X[t] *= 0.25));
+                      else if (a >= eu[t]) {
+                        ((Q[t] -= l * e),
+                          (O[t] *= o),
+                          (Q[t] *= o),
+                          (X[t] *= o),
+                          (Z[t] *= s),
+                          (J[t] *= s),
+                          (ee[t] *= s),
+                          (Y[t] += O[t] * e),
+                          (q[t] += Q[t] * e),
+                          ($[t] += X[t] * e),
+                          (_[t] += Z[t] * e),
+                          (V[t] += J[t] * e),
+                          (K[t] += ee[t] * e),
+                          (x += 1));
+                        continue;
+                      } else {
+                        x += 1;
+                        continue;
+                      }
+                    if (f) {
+                      let e = Math.hypot(W[t] - v, G[t] - g);
+                      if (e < c) {
+                        let a = h * d * Math.pow(1 - e / c, 1.5);
+                        a > er[t] && (er[t] = a);
+                      }
+                    }
+                    let r =
+                        2 === ec[t]
+                          ? i
+                          : 3 === ec[t]
+                            ? 1.25 * i
+                            : ec[t]
+                              ? n
+                              : 18,
+                      m =
+                        2 === ec[t]
+                          ? 1
+                          : 3 === ec[t]
+                            ? 0.5
+                            : ec[t]
+                              ? 0.68
+                              : 0.9,
+                      p = r * r,
+                      y = 2 * m * r,
+                      b = eo[t] * er[t] * 0.14,
+                      w = -el[t] * er[t] * 0.14;
+                    ((O[t] += (-p * Y[t] - y * O[t]) * e),
+                      (Q[t] += (-p * q[t] - y * Q[t]) * e),
+                      (X[t] += (-p * $[t] - y * X[t]) * e),
+                      (Y[t] += O[t] * e),
+                      (q[t] += Q[t] * e),
+                      ($[t] += X[t] * e),
+                      (Z[t] += (-p * (_[t] - b) - y * Z[t]) * e),
+                      (J[t] += (-p * (V[t] - w) - y * J[t]) * e),
+                      (ee[t] += (-p * K[t] - y * ee[t]) * e),
+                      (_[t] += Z[t] * e),
+                      (V[t] += J[t] * e),
+                      (K[t] += ee[t] * e));
+                    let F = 1 - 0.025 * er[t];
+                    ((ea[t] += (-324 * (et[t] - F) - 30 * ea[t]) * e),
+                      (et[t] += ea[t] * e),
+                      ei[t] < 1 && (ei[t] = Math.min(1, ei[t] + 4.5 * e)),
+                      ec[t] &&
+                        Math.abs(Y[t]) + Math.abs(q[t]) + Math.abs($[t]) <
+                          1.5 &&
+                        Math.abs(_[t]) + Math.abs(V[t]) + Math.abs(K[t]) <
+                          0.06 &&
+                        ((ec[t] = 0), (en[t] = Math.max(en[t], 0.9))),
+                      (er[t] *= Math.exp(-e * u)),
+                      er[t] < 0.015 && (er[t] = 0),
+                      (en[t] *= Math.exp(-e / 0.16)),
+                      en[t] < 0.01 && (en[t] = 0));
+                    let M =
+                      Math.abs(Y[t]) + Math.abs(q[t]) + Math.abs($[t]) < 0.3 &&
+                      Math.abs(O[t]) + Math.abs(Q[t]) + Math.abs(X[t]) < 3 &&
+                      Math.abs(_[t] - b) + Math.abs(V[t] - w) + Math.abs(K[t]) <
+                        0.004 &&
+                      Math.abs(Z[t]) + Math.abs(J[t]) + Math.abs(ee[t]) <
+                        0.06 &&
+                      8e-4 > Math.abs(et[t] - F) &&
+                      0.02 > Math.abs(ea[t]);
+                    M &&
+                      ((Y[t] = 0),
+                      (q[t] = 0),
+                      ($[t] = 0),
+                      (O[t] = 0),
+                      (Q[t] = 0),
+                      (X[t] = 0),
+                      (_[t] = b),
+                      (V[t] = w),
+                      (K[t] = 0),
+                      (Z[t] = 0),
+                      (J[t] = 0),
+                      (ee[t] = 0),
+                      (et[t] = F),
+                      (ea[t] = 0),
+                      ec[t] && ((ec[t] = 0), (en[t] = Math.max(en[t], 0.9))));
+                    let S = +!M + er[t] + en[t] + (1 - ei[t]);
+                    S > 0.004 && (x += S);
+                  }
+                  return x;
+                },
+                ew = () => {
+                  E || !B || C || (C = i.requestAnimationFrame(eF));
+                };
+              function eF(e) {
+                if (((C = 0), E)) return;
+                let r = t.current,
+                  n = j ? m((e - j) / 1e3, 0, 0.05) : 1 / 60;
+                j = e;
+                let l = performance.now() / 1e3;
+                if (r.paused) {
+                  j = 0;
+                  return;
+                }
+                if (
+                  r.autoplay &&
+                  !r.reduced &&
+                  R &&
+                  N &&
+                  !ed.inside &&
+                  l >= U
+                ) {
+                  U =
+                    l +
+                    m(p(r.autoplayInterval, 4), 0.8, 30) * (0.85 + 0.3 * H());
+                  let e = Math.floor(H() * N);
+                  eg(W[e] + z / 2, I / 2 - G[e], l, 0.9);
+                }
+                let s = 0,
+                  u = n,
+                  d = l - n;
+                for (; u > 1e-6;) {
+                  let e = Math.min(c, u);
+                  ((u -= e), (d += e), (s = eb(e, d)));
+                }
+                ((M.uniforms.uGlint.value = m(p(r.glint, 0.8), 0, 2)),
+                  (() => {
+                    let e = m(p(t.current.crack, 0.6), 0, 1),
+                      a = m(p(t.current.glint, 0.8), 0, 2);
+                    for (let t = 0; t < N; t++) {
+                      let r =
+                        (256 * Math.floor(t / 256) * 3 + (t % 256) * 3) * 4;
+                      ((w[r] = Y[t]),
+                        (w[r + 1] = q[t]),
+                        (w[r + 2] = $[t]),
+                        (w[r + 3] = et[t]));
+                      let n = Math.cos(_[t] / 2),
+                        i = Math.sin(_[t] / 2),
+                        l = Math.cos(V[t] / 2),
+                        o = Math.sin(V[t] / 2),
+                        s = Math.cos(K[t] / 2),
+                        u = Math.sin(K[t] / 2);
+                      ((w[r + 4] = i * l * s + n * o * u),
+                        (w[r + 5] = n * o * s - i * l * u),
+                        (w[r + 6] = n * l * u + i * o * s),
+                        (w[r + 7] = n * l * s - i * o * u),
+                        (w[r + 8] = er[t] * e),
+                        (w[r + 9] = en[t] * a),
+                        (w[r + 10] = ei[t]),
+                        (w[r + 11] = 0));
+                    }
+                    F.needsUpdate = !0;
+                  })(),
+                  a.render(o, h));
+                let f = !1;
+                for (let e = 0; e < N && !f; e++)
+                  2 === eh[e] && es[e] !== 1 / 0 && (f = !0);
+                s > 0.004 || f || (ed.inside && l - ed.at < 0.2)
+                  ? ew()
+                  : (k && (i.clearTimeout(k), (k = 0)),
+                    r.autoplay &&
+                      !r.reduced &&
+                      R &&
+                      Number.isFinite(U) &&
+                      (k = i.setTimeout(
+                        () => {
+                          ((k = 0), ew());
+                        },
+                        Math.max(16, (U - l) * 1e3),
+                      )));
+              }
+              let eM = (t, a) => {
+                  let r = e.getBoundingClientRect();
+                  ((ed.x = t - r.left), (ed.y = a - r.top));
+                },
+                eS = (e) => {
+                  if (
+                    "touch" === e.pointerType ||
+                    !t.current.interactive ||
+                    !l.matches
+                  )
+                    return;
+                  let a = ed.x,
+                    r = ed.y,
+                    n = performance.now() / 1e3,
+                    i = Math.max(0.008, n - ed.at);
+                  eM(e.clientX, e.clientY);
+                  let o = ed.inside ? Math.hypot(ed.x - a, ed.y - r) / i : 0;
+                  ((ed.speed +=
+                    (Math.min(o, 4e3) - ed.speed) * Math.min(1, i / 0.05)),
+                    (ed.inside = !0),
+                    (ed.at = n),
+                    ew());
+                },
+                eA = (e) => {
+                  "touch" !== e.pointerType &&
+                    ((ed.inside = !1),
+                    (U = Math.max(U, performance.now() / 1e3 + 1.5)),
+                    ew());
+                },
+                eC = (e) => {
+                  let a = t.current;
+                  if (a.interactive && a.shatter) {
+                    if ("touch" === e.pointerType) {
+                      ((ef.x = e.clientX),
+                        (ef.y = e.clientY),
+                        (ef.at = performance.now() / 1e3),
+                        (ef.live = !0));
+                      return;
+                    }
+                    0 === e.button &&
+                      (eM(e.clientX, e.clientY),
+                      eg(ed.x, ed.y, performance.now() / 1e3));
+                  }
+                },
+                ek = (t) => {
+                  if (
+                    "touch" !== t.pointerType ||
+                    !ef.live ||
+                    ((ef.live = !1),
+                    Math.hypot(t.clientX - ef.x, t.clientY - ef.y) > 10 ||
+                      performance.now() / 1e3 - ef.at > 0.35)
+                  )
+                    return;
+                  let a = e.getBoundingClientRect();
+                  eg(
+                    t.clientX - a.left,
+                    t.clientY - a.top,
+                    performance.now() / 1e3,
+                  );
+                },
+                ej = () => {
+                  (em(), ev(), ew());
+                },
+                eE = new ResizeObserver(() => ej());
+              eE.observe(e);
+              let eB = new IntersectionObserver(
+                ([e]) => {
+                  (B = e.isIntersecting)
+                    ? ((j = 0),
+                      ej(),
+                      R || ((R = !0), ey(performance.now() / 1e3), ew()),
+                      ew())
+                    : C && (i.cancelAnimationFrame(C), (C = 0));
+                },
+                { threshold: 0.15 },
+              );
+              eB.observe(e);
+              let eR = () => {
+                ((P = ""), ej());
+              };
+              return (
+                r.fonts?.addEventListener?.("loadingdone", eR),
+                r.fonts?.ready?.then(() => {
+                  E || eR();
+                }),
+                e.addEventListener("pointermove", eS, { passive: !0 }),
+                e.addEventListener("pointerleave", eA),
+                e.addEventListener("pointerdown", eC, { passive: !0 }),
+                i.addEventListener("pointerup", ek, { passive: !0 }),
+                em(),
+                ev(),
+                {
+                  sync: () => ej(),
+                  shatter: (e, t) => {
+                    if (!N) return;
+                    if (
+                      "number" == typeof e &&
+                      "number" == typeof t &&
+                      Number.isFinite(e) &&
+                      Number.isFinite(t)
+                    )
+                      return void eg(e, t, performance.now() / 1e3);
+                    let a = Math.floor(H() * N);
+                    eg(W[a] + z / 2, I / 2 - G[a], performance.now() / 1e3);
+                  },
+                  assemble: () => {
+                    ((R = !0), ey(performance.now() / 1e3), ew());
+                  },
+                  destroy: () => {
+                    ((E = !0),
+                      C && i.cancelAnimationFrame(C),
+                      k && i.clearTimeout(k),
+                      eE.disconnect(),
+                      eB.disconnect(),
+                      r.fonts?.removeEventListener?.("loadingdone", eR),
+                      e.removeEventListener("pointermove", eS),
+                      e.removeEventListener("pointerleave", eA),
+                      e.removeEventListener("pointerdown", eC),
+                      i.removeEventListener("pointerup", ek),
+                      S.dispose(),
+                      M.dispose(),
+                      b.dispose(),
+                      F.dispose(),
+                      a.dispose(),
+                      a.forceContextLoss(),
+                      n.remove());
+                  },
+                }
+              );
+            })(e, Z);
+            return (
+              (V.current = t),
+              () => {
+                (t?.destroy(), (V.current = null));
+              }
+            );
+          }, []),
+          (0, n.useImperativeHandle)(
+            X,
+            () => ({
+              shatter: (e, t) => V.current?.shatter(e, t),
+              assemble: () => V.current?.assemble(),
+            }),
+            [],
+          ),
+          (0, r.jsxs)("div", {
+            ref: _,
+            className: (0, h.cn)(
+              "relative isolate h-full min-h-[240px] w-full overflow-hidden",
+              $,
+            ),
+            style: O,
+            children: [
+              (0, r.jsx)("span", {
+                style: {
+                  position: "absolute",
+                  width: 1,
+                  height: 1,
+                  margin: -1,
+                  padding: 0,
+                  overflow: "hidden",
+                  clip: "rect(0 0 0 0)",
+                  whiteSpace: "nowrap",
+                  border: 0,
+                },
+                children: e,
+              }),
+              Q &&
+                (0, r.jsx)("div", {
+                  className: "relative z-10 h-full w-full",
+                  children: Q,
+                }),
+            ],
+          })
+        );
+      });
+    w.displayName = "ShatterType";
+    let F = {
+        sans: "",
+        serif: 'ui-serif, "Iowan Old Style", Georgia, "Times New Roman", serif',
+        mono: 'ui-monospace, "SF Mono", SFMono-Regular, Menlo, Consolas, monospace',
+      },
+      M = [
+        { label: "Sans", value: "sans" },
+        { label: "Serif", value: "serif" },
+        { label: "Mono", value: "mono" },
+      ],
+      S = {
+        dark: ["#F5F5F5", "#F5F5F5", "#7B5CFF"],
+        light: ["#111111", "#111111", "#7B5CFF"],
+        font: "sans",
+        fontWeight: 700,
+        letterSpacing: -0.02,
+        shardSize: 0.09,
+        irregularity: 0.6,
+        force: 1,
+        spin: 1,
+        depth: 1,
+        glint: 0.8,
+        intro: "assemble",
+      },
+      A = {
+        glass: S,
+        prism: {
+          ...S,
+          dark: ["#B19EEF", "#FF9FFC", "#5227FF"],
+          light: ["#5227FF", "#D946EF", "#B19EEF"],
+          glint: 1.1,
+        },
+        ember: {
+          ...S,
+          dark: ["#FF7A27", "#FFC08A", "#7A2E0B"],
+          light: ["#E8590C", "#FF7A27", "#FFC08A"],
+          fontWeight: 800,
+        },
+        serif: {
+          ...S,
+          dark: ["#F5F5F5", "#D4D4D4", "#B19EEF"],
+          light: ["#171717", "#404040", "#B19EEF"],
+          font: "serif",
+          fontWeight: 600,
+          letterSpacing: -0.01,
+          intro: "fade",
+        },
+        crystal: {
+          ...S,
+          dark: ["#E9E4FF", "#B19EEF", "#5227FF"],
+          light: ["#3B2A99", "#5227FF", "#B19EEF"],
+          shardSize: 0.055,
+          irregularity: 0.9,
+          force: 1.35,
+          spin: 1.4,
+          depth: 1.3,
+          glint: 1.5,
+        },
+      },
+      C = [
+        { label: "Glass", value: "glass" },
+        { label: "Prism", value: "prism" },
+        { label: "Ember", value: "ember" },
+        { label: "Serif", value: "serif" },
+        { label: "Crystal", value: "crystal" },
+      ],
+      k = [
+        { label: "Assemble", value: "assemble" },
+        { label: "Drop", value: "drop" },
+        { label: "Fade", value: "fade" },
+        { label: "None", value: "none" },
+      ],
+      j = [
+        { label: "Center", value: "center" },
+        { label: "Left", value: "left" },
+        { label: "Right", value: "right" },
+      ],
+      E = [
+        {
+          name: "text",
+          type: "string",
+          default: '"Shatter"',
+          description:
+            "The headline. Use \\n for line breaks. It is also rendered as hidden text for screen readers.",
+        },
+        {
+          name: "fontFamily",
+          type: "string",
+          default: '""',
+          description:
+            "Font of the headline. Empty uses the font the component inherits, so it matches your page.",
+        },
+        {
+          name: "fontWeight",
+          type: "number",
+          default: "700",
+          description: "Weight of the headline, from 100 to 900.",
+        },
+        {
+          name: "fontSize",
+          type: "number",
+          default: "0",
+          description: "Size in pixels. 0 fits the headline to the component.",
+        },
+        {
+          name: "letterSpacing",
+          type: "number",
+          default: "-0.02",
+          description: "Tracking in em.",
+        },
+        {
+          name: "lineHeight",
+          type: "number",
+          default: "1.05",
+          description: "Line height for multi-line headlines.",
+        },
+        {
+          name: "align",
+          type: '"left" | "center" | "right"',
+          default: '"center"',
+          description: "Horizontal alignment of the headline.",
+        },
+        {
+          name: "colors",
+          type: "[string, string]",
+          default: '["currentColor", "currentColor"]',
+          description:
+            "Front faces of the glass, as a gradient across the headline. currentColor follows your text colour and theme.",
+        },
+        {
+          name: "accentColor",
+          type: "string",
+          default: '"#7B5CFF"',
+          description:
+            "Back faces of the shards, seen only while they turn in the air.",
+        },
+        {
+          name: "shardSize",
+          type: "number",
+          default: "0.09",
+          description: "Average shard size relative to the font size.",
+        },
+        {
+          name: "irregularity",
+          type: "number",
+          default: "0.6",
+          description:
+            "How uneven the fracture is, from 0 (even triangles) to 1 (mixed sizes and angles).",
+        },
+        {
+          name: "crack",
+          type: "number",
+          default: "0.6",
+          description:
+            "Strength of the hairline cracks that open under the cursor, from 0 to 1.",
+        },
+        {
+          name: "crackRadius",
+          type: "number",
+          default: "0.5",
+          description: "Reach of the cracks around the cursor, in em.",
+        },
+        {
+          name: "heal",
+          type: "number",
+          default: "0.9",
+          description: "Seconds for cracks to close again.",
+        },
+        {
+          name: "shatter",
+          type: "boolean",
+          default: "true",
+          description: "Click or tap to shatter the letters you hit.",
+        },
+        {
+          name: "shatterRadius",
+          type: "number",
+          default: "0.55",
+          description:
+            "Size of the shattered area around the click, in em. Glass just outside it cracks without breaking.",
+        },
+        {
+          name: "force",
+          type: "number",
+          default: "1",
+          description: "How far the shards burst outward.",
+        },
+        {
+          name: "spin",
+          type: "number",
+          default: "1",
+          description: "How fast the shards tumble.",
+        },
+        {
+          name: "depth",
+          type: "number",
+          default: "1",
+          description: "How far the shards fly toward the viewer.",
+        },
+        {
+          name: "gravity",
+          type: "number",
+          default: "0",
+          description:
+            "Pull on the flying shards. 0 keeps the burst suspended in the air before it implodes back.",
+        },
+        {
+          name: "reassemble",
+          type: "number",
+          default: "1.1",
+          description:
+            "Seconds the shards hang in the air before they fly back into the headline.",
+        },
+        {
+          name: "stiffness",
+          type: "number",
+          default: "0.55",
+          description:
+            "How hard the shards snap back into place, from 0 (slow drift) to 1 (snappy).",
+        },
+        {
+          name: "glint",
+          type: "number",
+          default: "0.8",
+          description:
+            "Light caught by tilted shards and the flash as each piece locks back in, from 0 to 2.",
+        },
+        {
+          name: "intro",
+          type: '"assemble" | "drop" | "fade" | "none"',
+          default: '"assemble"',
+          description:
+            "Entrance when the headline first scrolls into view: shards condensing into the word, dropping into place, or a soft fade.",
+        },
+        {
+          name: "introDuration",
+          type: "number",
+          default: "1.6",
+          description: "Length of the entrance in seconds.",
+        },
+        {
+          name: "autoplay",
+          type: "boolean",
+          default: "false",
+          description:
+            "Shatter a random spot every few seconds while the pointer is away.",
+        },
+        {
+          name: "autoplayInterval",
+          type: "number",
+          default: "4",
+          description: "Seconds between autoplay shatters.",
+        },
+        {
+          name: "interactive",
+          type: "boolean",
+          default: "true",
+          description:
+            "Respond to the pointer. Turn it off for a headline that only plays its entrance and autoplay.",
+        },
+        {
+          name: "paused",
+          type: "boolean",
+          default: "false",
+          description: "Freeze all motion.",
+        },
+        {
+          name: "quality",
+          type: "number",
+          default: "1",
+          description: "Render resolution multiplier, from 0.5 to 1.",
+        },
+        {
+          name: "ref",
+          type: "{ shatter, assemble }",
+          default: "—",
+          description:
+            "shatter(x?, y?) breaks the headline at a point in pixels (or a random spot), assemble() replays the entrance.",
+        },
+        {
+          name: "children",
+          type: "ReactNode",
+          default: "—",
+          description: "Content layered above the headline.",
+        },
+        {
+          name: "className",
+          type: "string",
+          default: "—",
+          description:
+            "Classes for the root element. It fills its parent and is at least 240px tall.",
+        },
+        {
+          name: "style",
+          type: "CSSProperties",
+          default: "—",
+          description: "Inline styles for the root element.",
+        },
+      ],
+      B = () => {
+        let [e, t] = (0, o.I)(),
+          a = "dark" === (0, l.Y)(),
+          [s, u] = (0, n.useState)("glass"),
+          [h, c] = (0, n.useState)(S),
+          d = (e) => (t) => c((a) => ({ ...a, [e]: t })),
+          [f, m] = (0, n.useState)(null),
+          p = f ?? (a ? h.dark : h.light),
+          [y, v] = (0, n.useState)("Shatter"),
+          [g, x] = (0, n.useState)("center"),
+          [b, B] = (0, n.useState)(0.6),
+          [R, z] = (0, n.useState)(0.5),
+          [I, T] = (0, n.useState)(0.9),
+          [N, P] = (0, n.useState)(!0),
+          [D, U] = (0, n.useState)(0.55),
+          [L, H] = (0, n.useState)(0),
+          [W, G] = (0, n.useState)(1.1),
+          [Y, q] = (0, n.useState)(0.55),
+          [$, O] = (0, n.useState)(1.6),
+          [Q, X] = (0, n.useState)(!0),
+          [_, V] = (0, n.useState)(4),
+          [K, Z] = (0, n.useState)(!0),
+          [J, ee] = (0, n.useState)(!1),
+          et = (e) => (t) => {
+            let a = [...p];
+            ((a[e] = t), m(a));
+          };
+        return (0, r.jsxs)("div", {
+          children: [
+            (0, r.jsx)(i.Bg, {}),
+            (0, r.jsxs)(i.VX, {
+              children: [
+                (0, r.jsxs)(i.Ec, {
+                  children: [
+                    (0, r.jsx)(i.Ch, {
+                      onRefresh: t,
+                      minHeight: 560,
+                      enableResponsive: !0,
+                      children: (0, r.jsx)("div", {
+                        className: `relative h-full w-full ${a ? "bg-[#0A0A0A]" : "bg-white"}`,
+                        children: (0, r.jsx)(
+                          w,
+                          {
+                            text: y,
+                            fontFamily: F[h.font] ?? "",
+                            fontWeight: h.fontWeight,
+                            letterSpacing: h.letterSpacing,
+                            align: g,
+                            colors: [p[0], p[1]],
+                            accentColor: p[2],
+                            shardSize: h.shardSize,
+                            irregularity: h.irregularity,
+                            crack: b,
+                            crackRadius: R,
+                            heal: I,
+                            shatter: N,
+                            shatterRadius: D,
+                            force: h.force,
+                            spin: h.spin,
+                            depth: h.depth,
+                            gravity: L,
+                            reassemble: W,
+                            stiffness: Y,
+                            glint: h.glint,
+                            intro: h.intro,
+                            introDuration: $,
+                            autoplay: Q,
+                            autoplayInterval: _,
+                            interactive: K,
+                            paused: J,
+                          },
+                          e,
+                        ),
+                      }),
+                    }),
+                    (0, r.jsxs)(i.IH, {
+                      children: [
+                        (0, r.jsx)(i.bg, {
+                          title: "Preset",
+                          value: s,
+                          options: C,
+                          onChange: (e) => {
+                            (u(e), c(A[e] ?? S), m(null), t());
+                          },
+                        }),
+                        (0, r.jsx)(i.UD, {
+                          title: "Text",
+                          value: y,
+                          placeholder: "Shatter",
+                          onChange: v,
+                        }),
+                        (0, r.jsx)(i.bg, {
+                          title: "Font",
+                          value: h.font,
+                          options: M,
+                          onChange: d("font"),
+                        }),
+                        (0, r.jsx)(i.W7, {
+                          title: "Front",
+                          value: p[0],
+                          onChange: et(0),
+                        }),
+                        (0, r.jsx)(i.W7, {
+                          title: "Front End",
+                          value: p[1],
+                          onChange: et(1),
+                        }),
+                        (0, r.jsx)(i.W7, {
+                          title: "Back",
+                          value: p[2],
+                          onChange: et(2),
+                        }),
+                        (0, r.jsx)(i.bg, {
+                          title: "Intro",
+                          value: h.intro,
+                          options: k,
+                          onChange: (e) => d("intro")(e),
+                        }),
+                        (0, r.jsx)(i.bg, {
+                          title: "Align",
+                          value: g,
+                          options: j,
+                          onChange: (e) => x(e),
+                        }),
+                        (0, r.jsx)(i.yt, {
+                          title: "Weight",
+                          min: 100,
+                          max: 900,
+                          step: 100,
+                          value: h.fontWeight,
+                          onChange: d("fontWeight"),
+                        }),
+                        (0, r.jsx)(i.yt, {
+                          title: "Letter Spacing",
+                          min: -0.1,
+                          max: 0.2,
+                          step: 0.01,
+                          value: h.letterSpacing,
+                          valueUnit: "em",
+                          onChange: d("letterSpacing"),
+                        }),
+                        (0, r.jsx)(i.yt, {
+                          title: "Shard Size",
+                          min: 0.04,
+                          max: 0.25,
+                          step: 0.005,
+                          value: h.shardSize,
+                          onChange: d("shardSize"),
+                        }),
+                        (0, r.jsx)(i.yt, {
+                          title: "Irregularity",
+                          min: 0,
+                          max: 1,
+                          step: 0.05,
+                          value: h.irregularity,
+                          onChange: d("irregularity"),
+                        }),
+                        (0, r.jsx)(i.yt, {
+                          title: "Crack",
+                          min: 0,
+                          max: 1,
+                          step: 0.05,
+                          value: b,
+                          onChange: B,
+                        }),
+                        (0, r.jsx)(i.yt, {
+                          title: "Crack Radius",
+                          min: 0.1,
+                          max: 1.5,
+                          step: 0.05,
+                          value: R,
+                          valueUnit: "em",
+                          onChange: z,
+                        }),
+                        (0, r.jsx)(i.yt, {
+                          title: "Heal",
+                          min: 0.1,
+                          max: 3,
+                          step: 0.05,
+                          value: I,
+                          valueUnit: "s",
+                          onChange: T,
+                        }),
+                        (0, r.jsx)(i.yt, {
+                          title: "Shatter Radius",
+                          min: 0.2,
+                          max: 2,
+                          step: 0.05,
+                          value: D,
+                          valueUnit: "em",
+                          onChange: U,
+                        }),
+                        (0, r.jsx)(i.yt, {
+                          title: "Force",
+                          min: 0,
+                          max: 3,
+                          step: 0.05,
+                          value: h.force,
+                          onChange: d("force"),
+                        }),
+                        (0, r.jsx)(i.yt, {
+                          title: "Spin",
+                          min: 0,
+                          max: 3,
+                          step: 0.05,
+                          value: h.spin,
+                          onChange: d("spin"),
+                        }),
+                        (0, r.jsx)(i.yt, {
+                          title: "Depth",
+                          min: 0,
+                          max: 3,
+                          step: 0.05,
+                          value: h.depth,
+                          onChange: d("depth"),
+                        }),
+                        (0, r.jsx)(i.yt, {
+                          title: "Gravity",
+                          min: 0,
+                          max: 3,
+                          step: 0.05,
+                          value: L,
+                          onChange: H,
+                        }),
+                        (0, r.jsx)(i.yt, {
+                          title: "Reassemble",
+                          min: 0.2,
+                          max: 4,
+                          step: 0.05,
+                          value: W,
+                          valueUnit: "s",
+                          onChange: G,
+                        }),
+                        (0, r.jsx)(i.yt, {
+                          title: "Stiffness",
+                          min: 0,
+                          max: 1,
+                          step: 0.05,
+                          value: Y,
+                          onChange: q,
+                        }),
+                        (0, r.jsx)(i.yt, {
+                          title: "Glint",
+                          min: 0,
+                          max: 2,
+                          step: 0.05,
+                          value: h.glint,
+                          onChange: d("glint"),
+                        }),
+                        (0, r.jsx)(i.yt, {
+                          title: "Intro Duration",
+                          min: 0.3,
+                          max: 4,
+                          step: 0.05,
+                          value: $,
+                          valueUnit: "s",
+                          onChange: O,
+                        }),
+                        (0, r.jsx)(i.yt, {
+                          title: "Autoplay Interval",
+                          min: 1.5,
+                          max: 10,
+                          step: 0.5,
+                          value: _,
+                          valueUnit: "s",
+                          onChange: V,
+                        }),
+                        (0, r.jsx)(i.tl, {
+                          title: "Shatter",
+                          checked: N,
+                          onChange: P,
+                        }),
+                        (0, r.jsx)(i.tl, {
+                          title: "Autoplay",
+                          checked: Q,
+                          onChange: X,
+                        }),
+                        (0, r.jsx)(i.tl, {
+                          title: "Interactive",
+                          checked: K,
+                          onChange: Z,
+                        }),
+                        (0, r.jsx)(i.tl, {
+                          title: "Paused",
+                          checked: J,
+                          onChange: ee,
+                        }),
+                      ],
+                    }),
+                    (0, r.jsx)(i.Ub, { data: E }),
+                  ],
+                }),
+                (0, r.jsx)(i.lT, { children: (0, r.jsx)(i.Gv, {}) }),
+              ],
+            }),
+          ],
+        });
+      };
+  },
+};

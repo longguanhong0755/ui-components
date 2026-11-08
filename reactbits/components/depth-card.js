@@ -1,0 +1,587 @@
+/* ReactBits Pro public preview module 89032 for depth-card.
+ * Extracted from https://pro.reactbits.dev/_next/static/chunks/89032.aaaec6bcc5bd94b1.js
+ * This is the compiled browser implementation, not the original TSX. */
+
+const module = {
+  89032: (e, t, a) => {
+    (a.r(t), a.d(t, { default: () => d }));
+    var n = a(95155),
+      i = a(12115),
+      r = a(56388),
+      s = a(90761),
+      l = a(90650);
+    let o = ({
+      image: e,
+      title: t,
+      description: a,
+      width: r = 240,
+      height: s = 320,
+      maxRotation: o = 20,
+      maxTranslation: d = 20,
+      borderRadius: c = "16px",
+      className: u,
+      contentClassName: p,
+      onClick: m,
+      href: f,
+      target: h = "_self",
+      imageAlt: g,
+      disableOnMobile: b = !1,
+      ariaLabel: x,
+      layers: y,
+      staggerDelay: v = 100,
+      revealAnimation: w = "slide",
+      respectReducedMotion: k = !0,
+      spotlight: C = !0,
+      spotlightColor: j = "rgba(255, 255, 255, 0.5)",
+    }) => {
+      let S = (0, i.useRef)(null),
+        N = (0, i.useRef)(null),
+        R = (0, i.useRef)([]),
+        A = (0, i.useRef)(null),
+        [E, M] = (0, i.useState)(!1),
+        [$, X] = (0, i.useState)(!1),
+        [T, Y] = (0, i.useState)(!1),
+        _ = (0, i.useRef)({ x: 0, y: 0, rotateX: 0, rotateY: 0 }),
+        B = (0, i.useRef)({ x: 0, y: 0, rotateX: 0, rotateY: 0 }),
+        D = (0, i.useRef)(void 0);
+      ((0, i.useEffect)(() => {
+        if (!b) return;
+        let e = () => {
+          X(
+            /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
+              navigator.userAgent,
+            ) || window.innerWidth < 768,
+          );
+        };
+        return (
+          e(),
+          window.addEventListener("resize", e),
+          () => window.removeEventListener("resize", e)
+        );
+      }, [b]),
+        (0, i.useEffect)(() => {
+          if (!k) return;
+          let e = window.matchMedia("(prefers-reduced-motion: reduce)"),
+            t = (e) => Y(e.matches);
+          return (
+            t({ matches: e.matches }),
+            e.addEventListener("change", t),
+            () => e.removeEventListener("change", t)
+          );
+        }, [k]));
+      let I = (b && $) || T;
+      (0, i.useEffect)(() => {
+        if (I) return;
+        let e = (e, t, a) => e + (t - e) * a,
+          t = () => {
+            let a = _.current,
+              n = B.current;
+            ((n.x = e(n.x, a.x, 0.1)),
+              (n.y = e(n.y, a.y, 0.1)),
+              (n.rotateX = e(n.rotateX, a.rotateX, 0.1)),
+              (n.rotateY = e(n.rotateY, a.rotateY, 0.1)),
+              N.current &&
+                (N.current.style.transform = `rotateX(${n.rotateX}deg) rotateY(${n.rotateY}deg)`),
+              y && y.length > 0
+                ? R.current.forEach((e, t) => {
+                    if (e) {
+                      let a = y[t].depth;
+                      e.style.transform = `translateX(${n.x * a}px) translateY(${n.y * a}px) scale(1.3)`;
+                    }
+                  })
+                : R.current[0] &&
+                  (R.current[0].style.transform = `translateX(${n.x}px) translateY(${n.y}px) scale(1.3)`),
+              (D.current = requestAnimationFrame(t)));
+          };
+        return (
+          (D.current = requestAnimationFrame(t)),
+          () => {
+            D.current && cancelAnimationFrame(D.current);
+          }
+        );
+      }, [I, y]);
+      let P = (0, i.useCallback)(
+          (e) => {
+            if (!S.current || I) return;
+            let t = S.current.getBoundingClientRect(),
+              a = t.left + t.width / 2,
+              n = t.top + t.height / 2,
+              i = e.clientX - a,
+              r = e.clientY - n;
+            if (C && A.current) {
+              let a = e.clientX - t.left,
+                n = e.clientY - t.top;
+              A.current.style.background = `radial-gradient(600px circle at ${a}px ${n}px, ${j} 0%, rgba(255, 255, 255, 0.1) 40%, transparent 100%)`;
+            }
+            let s = i / (t.width / 2),
+              l = r / (t.height / 2);
+            _.current = {
+              x: -(s * d),
+              y: -(l * d),
+              rotateX: -(l * o),
+              rotateY: s * o,
+            };
+          },
+          [o, d, I, C, j],
+        ),
+        L = (0, i.useCallback)(() => {
+          (M(!0), A.current && (A.current.style.opacity = "1"));
+        }, []),
+        V = (0, i.useCallback)(() => {
+          (M(!1),
+            (_.current = { x: 0, y: 0, rotateX: 0, rotateY: 0 }),
+            A.current && (A.current.style.opacity = "0"));
+        }, []),
+        q = (0, i.useCallback)(() => {
+          (f &&
+            ("_blank" === h
+              ? window.open(f, h, "noopener,noreferrer")
+              : (window.location.href = f)),
+            m?.());
+        }, [f, h, m]),
+        F = (0, i.useCallback)(
+          (e) => {
+            ("Enter" === e.key || " " === e.key) && (e.preventDefault(), q());
+          },
+          [q],
+        ),
+        O = f ? "a" : "div",
+        W = f
+          ? {
+              href: f,
+              target: h,
+              rel: "_blank" === h ? "noopener noreferrer" : void 0,
+            }
+          : {};
+      return (0, n.jsx)(O, {
+        ...W,
+        ref: S,
+        className: (0, l.cn)("relative cursor-pointer focus:outline-none", u),
+        style: {
+          width: `${r}px`,
+          height: `${s}px`,
+          perspective: "1000px",
+          borderRadius: c,
+          overflow: "hidden",
+        },
+        onMouseMove: P,
+        onMouseEnter: L,
+        onMouseLeave: V,
+        onClick: m && !f ? q : void 0,
+        onKeyDown: m || f ? F : void 0,
+        role: m || f ? "button" : void 0,
+        tabIndex: m || f ? 0 : void 0,
+        "aria-label": x || `${t} card`,
+        children: (0, n.jsxs)("div", {
+          ref: N,
+          className: (0, l.cn)(
+            "relative w-full h-full bg-[#333]",
+            "transition-shadow duration-300 ease-out",
+          ),
+          style: {
+            borderRadius: c,
+            transformStyle: "preserve-3d",
+            backfaceVisibility: "hidden",
+            WebkitBackfaceVisibility: "hidden",
+            willChange: "transform",
+            clipPath: `inset(0 round ${c})`,
+            boxShadow: E
+              ? "0 20px 40px rgba(0,0,0,0.4)"
+              : "0 10px 20px rgba(0,0,0,0.2)",
+          },
+          children: [
+            (0, n.jsx)("div", {
+              className: "absolute inset-0 overflow-hidden",
+              style: { borderRadius: c },
+              children:
+                y && y.length > 0
+                  ? y.map((e, t) =>
+                      (0, n.jsx)(
+                        "div",
+                        {
+                          ref: (e) => {
+                            R.current[t] = e;
+                          },
+                          className:
+                            "absolute inset-0 bg-cover bg-center bg-no-repeat pointer-events-none",
+                          style: {
+                            backgroundImage: `url(${e.image})`,
+                            zIndex: t,
+                            opacity: 0 === t ? 1 : 0.6,
+                            backfaceVisibility: "hidden",
+                            WebkitBackfaceVisibility: "hidden",
+                          },
+                        },
+                        t,
+                      ),
+                    )
+                  : (0, n.jsx)("div", {
+                      ref: (e) => {
+                        R.current[0] = e;
+                      },
+                      className:
+                        "absolute inset-0 bg-cover bg-center bg-no-repeat pointer-events-none",
+                      style: {
+                        backgroundImage: `url(${e})`,
+                        backfaceVisibility: "hidden",
+                        WebkitBackfaceVisibility: "hidden",
+                      },
+                    }),
+            }),
+            C &&
+              (0, n.jsx)("div", {
+                ref: A,
+                className:
+                  "absolute inset-0 pointer-events-none z-20 transition-opacity duration-300 ease-out opacity-0",
+                style: { mixBlendMode: "soft-light", filter: "blur(2px)" },
+              }),
+            (0, n.jsxs)("div", {
+              className:
+                "absolute inset-0 z-30 flex flex-col justify-end p-6 bg-linear-to-t from-black/80 via-black/40 to-transparent",
+              children: [
+                (0, n.jsx)("h3", {
+                  className: (0, l.cn)(
+                    "text-2xl font-bold text-white mb-2 transform transition-all duration-500",
+                    E
+                      ? "translate-y-0 opacity-100"
+                      : "translate-y-4 opacity-90",
+                  ),
+                  children: t,
+                }),
+                a &&
+                  (0, n.jsx)("p", {
+                    className: (0, l.cn)(
+                      "text-sm text-gray-200 transform transition-all duration-500 delay-75",
+                      E
+                        ? "translate-y-0 opacity-100"
+                        : "translate-y-4 opacity-0",
+                    ),
+                    children: a,
+                  }),
+              ],
+            }),
+          ],
+        }),
+      });
+    };
+    o.displayName = "DepthCard";
+    let d = () => {
+      let [e, t] = (0, s.I)(),
+        [a, l] = (0, i.useState)(240),
+        [d, c] = (0, i.useState)(320),
+        [u, p] = (0, i.useState)(20),
+        [m, f] = (0, i.useState)(20),
+        [h, g] = (0, i.useState)(100),
+        [b, x] = (0, i.useState)("slide"),
+        [y, v] = (0, i.useState)(!0);
+      return (0, n.jsxs)("div", {
+        children: [
+          (0, n.jsx)(r.Bg, {}),
+          (0, n.jsxs)(r.VX, {
+            children: [
+              (0, n.jsxs)(r.Ec, {
+                children: [
+                  (0, n.jsx)(r.Ch, {
+                    onRefresh: t,
+                    children: (0, n.jsxs)("div", {
+                      className:
+                        "flex flex-wrap gap-6 justify-center items-center py-8",
+                      children: [
+                        (0, n.jsx)(
+                          o,
+                          {
+                            image:
+                              "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800&q=80",
+                            title: "Mountains",
+                            description: "Tall majestic peaks.",
+                            width: a,
+                            height: d,
+                            maxRotation: u,
+                            maxTranslation: m,
+                            staggerDelay: h,
+                            revealAnimation: b,
+                            spotlight: y,
+                            imageAlt: "Mountain landscape",
+                            onClick: () => console.log("Mountain card clicked"),
+                          },
+                          `${e}-1`,
+                        ),
+                        (0, n.jsx)(
+                          o,
+                          {
+                            image:
+                              "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=800&q=80",
+                            title: "Ocean",
+                            description: "Clear water, blue skies.",
+                            width: a,
+                            height: d,
+                            maxRotation: u,
+                            maxTranslation: m,
+                            staggerDelay: h,
+                            revealAnimation: b,
+                            spotlight: y,
+                            imageAlt: "Ocean waves",
+                            href: "https://unsplash.com",
+                            target: "_blank",
+                          },
+                          `${e}-2`,
+                        ),
+                        (0, n.jsx)(
+                          o,
+                          {
+                            image:
+                              "https://images.unsplash.com/photo-1441974231531-c6227db76b6e?w=800&q=80",
+                            title: "Forest",
+                            description: "Old growth, tall trees.",
+                            width: a,
+                            height: d,
+                            maxRotation: u,
+                            maxTranslation: m,
+                            staggerDelay: h,
+                            revealAnimation: b,
+                            spotlight: y,
+                            imageAlt: "Forest scenery",
+                            layers: [
+                              {
+                                image:
+                                  "https://images.unsplash.com/photo-1441974231531-c6227db76b6e?w=800&q=80",
+                                depth: 1,
+                              },
+                              {
+                                image:
+                                  "https://images.unsplash.com/photo-1448375240586-882707db888b?w=800&q=80",
+                                depth: 1.5,
+                              },
+                            ],
+                          },
+                          `${e}-3`,
+                        ),
+                      ],
+                    }),
+                  }),
+                  (0, n.jsxs)(r.IH, {
+                    children: [
+                      (0, n.jsx)(r.yt, {
+                        title: "Width (px)",
+                        value: a,
+                        onChange: (e) => {
+                          (l(e), t());
+                        },
+                        min: 180,
+                        max: 300,
+                        step: 10,
+                      }),
+                      (0, n.jsx)(r.yt, {
+                        title: "Height (px)",
+                        value: d,
+                        onChange: (e) => {
+                          (c(e), t());
+                        },
+                        min: 240,
+                        max: 400,
+                        step: 10,
+                      }),
+                      (0, n.jsx)(r.yt, {
+                        title: "Max Rotation (degrees)",
+                        value: u,
+                        onChange: (e) => {
+                          (p(e), t());
+                        },
+                        min: 0,
+                        max: 30,
+                        step: 5,
+                      }),
+                      (0, n.jsx)(r.yt, {
+                        title: "Max Translation (px)",
+                        value: m,
+                        onChange: (e) => {
+                          (f(e), t());
+                        },
+                        min: 0,
+                        max: 30,
+                        step: 5,
+                      }),
+                      (0, n.jsx)(r.tl, {
+                        title: "Spotlight Effect",
+                        checked: y,
+                        onChange: (e) => {
+                          (v(e), t());
+                        },
+                      }),
+                      (0, n.jsx)(r.yt, {
+                        title: "Stagger Delay (ms)",
+                        value: h,
+                        onChange: (e) => {
+                          (g(e), t());
+                        },
+                        min: 0,
+                        max: 500,
+                        step: 50,
+                      }),
+                      (0, n.jsx)(r.bg, {
+                        title: "Reveal Animation",
+                        value: b,
+                        onChange: (e) => {
+                          (x(e), t());
+                        },
+                        options: [
+                          { label: "Slide", value: "slide" },
+                          { label: "Fade", value: "fade" },
+                          { label: "Scale", value: "scale" },
+                          { label: "None", value: "none" },
+                        ],
+                      }),
+                    ],
+                  }),
+                  (0, n.jsx)(r.Ub, {
+                    data: [
+                      {
+                        name: "image",
+                        type: "string",
+                        default: "undefined",
+                        description:
+                          "Background image URL for the card (optional if using layers)",
+                      },
+                      {
+                        name: "title",
+                        type: "string",
+                        default: '""',
+                        description: "Card title",
+                      },
+                      {
+                        name: "description",
+                        type: "string",
+                        default: "undefined",
+                        description: "Card description/content",
+                      },
+                      {
+                        name: "width",
+                        type: "number",
+                        default: "240",
+                        description: "Width of the card in pixels",
+                      },
+                      {
+                        name: "height",
+                        type: "number",
+                        default: "320",
+                        description: "Height of the card in pixels",
+                      },
+                      {
+                        name: "maxRotation",
+                        type: "number",
+                        default: "20",
+                        description: "Maximum rotation angle in degrees",
+                      },
+                      {
+                        name: "maxTranslation",
+                        type: "number",
+                        default: "20",
+                        description:
+                          "Maximum translation for parallax effect in pixels",
+                      },
+                      {
+                        name: "borderRadius",
+                        type: "string",
+                        default: '"10px"',
+                        description: "Border radius of the card",
+                      },
+                      {
+                        name: "className",
+                        type: "string",
+                        default: '""',
+                        description: "Additional CSS classes for the wrapper",
+                      },
+                      {
+                        name: "contentClassName",
+                        type: "string",
+                        default: '""',
+                        description:
+                          "Additional CSS classes for the card content",
+                      },
+                      {
+                        name: "onClick",
+                        type: "() => void",
+                        default: "undefined",
+                        description: "Callback when card is clicked",
+                      },
+                      {
+                        name: "href",
+                        type: "string",
+                        default: "undefined",
+                        description: "URL to navigate to when card is clicked",
+                      },
+                      {
+                        name: "target",
+                        type: '"_blank" | "_self" | "_parent" | "_top"',
+                        default: '"_self"',
+                        description: "Target for link navigation",
+                      },
+                      {
+                        name: "imageAlt",
+                        type: "string",
+                        default: "undefined",
+                        description: "Alt text for the background image",
+                      },
+                      {
+                        name: "disableOnMobile",
+                        type: "boolean",
+                        default: "false",
+                        description: "Disable 3D effects on mobile devices",
+                      },
+                      {
+                        name: "ariaLabel",
+                        type: "string",
+                        default: "undefined",
+                        description: "ARIA label for accessibility",
+                      },
+                      {
+                        name: "layers",
+                        type: "Array<{image: string, depth: number}>",
+                        default: "undefined",
+                        description:
+                          "Multiple layers for advanced parallax effect",
+                      },
+                      {
+                        name: "staggerDelay",
+                        type: "number",
+                        default: "100",
+                        description:
+                          "Stagger delay between content elements in ms",
+                      },
+                      {
+                        name: "revealAnimation",
+                        type: '"slide" | "fade" | "scale" | "none"',
+                        default: '"slide"',
+                        description: "Content reveal animation type",
+                      },
+                      {
+                        name: "respectReducedMotion",
+                        type: "boolean",
+                        default: "true",
+                        description: "Respect user's reduced motion preference",
+                      },
+                      {
+                        name: "spotlight",
+                        type: "boolean",
+                        default: "true",
+                        description:
+                          "Enable spotlight effect that follows the cursor",
+                      },
+                      {
+                        name: "spotlightColor",
+                        type: "string",
+                        default: '"rgba(255, 255, 255, 0.5)"',
+                        description: "Color of the spotlight effect",
+                      },
+                    ],
+                  }),
+                ],
+              }),
+              (0, n.jsx)(r.lT, { children: (0, n.jsx)(r.Gv, {}) }),
+            ],
+          }),
+        ],
+      });
+    };
+  },
+};

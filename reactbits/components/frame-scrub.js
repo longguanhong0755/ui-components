@@ -1,0 +1,1125 @@
+/* ReactBits Pro public preview module 53779 for frame-scrub.
+ * Extracted from https://pro.reactbits.dev/_next/static/chunks/53779.9ebb9163d68b42b7.js
+ * This is the compiled browser implementation, not the original TSX. */
+
+const module = {
+  53779: (e, t, r) => {
+    let a;
+    (r.r(t), r.d(t, { default: () => C }));
+    var n = r(95155),
+      l = r(12115),
+      i = r(30701),
+      s = r(56388),
+      o = r(90761),
+      u = r(90650);
+    let c = (e, t, r) => (e < t ? t : e > r ? r : e),
+      d = (e) => {
+        let t = e.trim().replace("#", "");
+        3 === t.length && (t = t[0] + t[0] + t[1] + t[1] + t[2] + t[2]);
+        let r = Number.parseInt(t.slice(0, 6) || "888888", 16);
+        return Number.isNaN(r)
+          ? [136, 136, 136]
+          : [(r >> 16) & 255, (r >> 8) & 255, 255 & r];
+      },
+      h = (e, t, r) => [
+        e[0] + (t[0] - e[0]) * r,
+        e[1] + (t[1] - e[1]) * r,
+        e[2] + (t[2] - e[2]) * r,
+      ],
+      m = (e) => (0.299 * e[0] + 0.587 * e[1] + 0.114 * e[2]) / 255,
+      f = (e) => {
+        let t = Math.hypot(e[0], e[1], e[2]) || 1;
+        return [e[0] / t, e[1] / t, e[2] / t];
+      },
+      p = (e, t) => [
+        e[1] * t[2] - e[2] * t[1],
+        e[2] * t[0] - e[0] * t[2],
+        e[0] * t[1] - e[1] * t[0],
+      ],
+      g = (e, t) => e[0] * t[0] + e[1] * t[1] + e[2] * t[2],
+      v = f([-0.42, -0.58, -1.7]),
+      x =
+        ((a = null),
+        () => {
+          if (a) return a;
+          let e = [],
+            t = [];
+          for (let t = 0; t < 260; t += 1) {
+            let r = (t / 260) * Math.PI * 2,
+              a = 2 + Math.cos(3 * r);
+            e.push([
+              a * Math.cos(2 * r),
+              a * Math.sin(2 * r),
+              1.05 * Math.sin(3 * r),
+            ]);
+          }
+          for (let r = 0; r < 260; r += 1) {
+            let a = e[(r + 1) % 260],
+              n = e[(r - 1 + 260) % 260];
+            t.push(f([a[0] - n[0], a[1] - n[1], a[2] - n[2]]));
+          }
+          let r = [],
+            n = f(p(t[0], [0, 0, 1]));
+          for (let e = 0; e < 260; e += 1) {
+            let a = t[e],
+              l = p(a, p(n, a));
+            ((n = f(Math.hypot(l[0], l[1], l[2]) > 1e-6 ? l : p(a, [0, 1, 0]))),
+              r.push(n));
+          }
+          let l = Math.atan2(g(n, f(p(t[0], r[0]))), g(n, r[0])),
+            i = new Float64Array(53040),
+            s = 0;
+          for (let a = 0; a < 260; a += 1) {
+            let n = (-l * a) / 260,
+              o = Math.cos(n),
+              u = Math.sin(n),
+              c = r[a],
+              d = f(p(t[a], c)),
+              h = [
+                c[0] * o + d[0] * u,
+                c[1] * o + d[1] * u,
+                c[2] * o + d[2] * u,
+              ],
+              m = f(p(t[a], h));
+            for (let t = 0; t < 34; t += 1) {
+              let r = (t / 34) * Math.PI * 2,
+                n = Math.cos(r),
+                l = Math.sin(r),
+                o = h[0] * n + m[0] * l,
+                u = h[1] * n + m[1] * l,
+                c = h[2] * n + m[2] * l;
+              ((i[s] = e[a][0] + 0.48 * o),
+                (i[s + 1] = e[a][1] + 0.48 * u),
+                (i[s + 2] = e[a][2] + 0.48 * c),
+                (i[s + 3] = o),
+                (i[s + 4] = u),
+                (i[s + 5] = c),
+                (s += 6));
+            }
+          }
+          return ((a = i), i);
+        }),
+      b = new Float64Array(53040),
+      y = new Float64Array(106080),
+      w = new Int32Array(8840),
+      M = ({
+        frames: e,
+        src: t,
+        video: r,
+        videoQuality: a = 720,
+        count: i = 48,
+        pad: s = 3,
+        start: o = 1,
+        variant: f = "blend",
+        scrollLength: p = 3,
+        smooth: g = 0.18,
+        fit: M = "cover",
+        width: C = 1020,
+        height: S = 0.72,
+        borderRadius: k = 20,
+        background: j = "#0a0a0a",
+        accent: R = "#ededed",
+        trail: E = 4,
+        slices: N = 14,
+        cells: L = 6,
+        lag: T = 2.4,
+        punch: P = 0.06,
+        grain: A = 0.07,
+        vignette: I = 0.34,
+        showCounter: F = !0,
+        onFrameChange: $,
+        className: U,
+      }) => {
+        let D = (0, l.useRef)(null),
+          H = (0, l.useRef)(null),
+          W = (0, l.useRef)(null),
+          V = (0, l.useRef)([]),
+          q = (0, l.useRef)([]),
+          B = (0, l.useRef)([]),
+          G = (0, l.useRef)(""),
+          z = (0, l.useRef)(null),
+          O = (0, l.useRef)({ w: 0, h: 0, dpr: 1 }),
+          _ = (0, l.useRef)(0),
+          X = (0, l.useRef)(0),
+          Q = (0, l.useRef)(0),
+          Z = (0, l.useRef)(!1),
+          J = (0, l.useRef)(-1),
+          K = (0, l.useRef)(null),
+          Y = (0, l.useRef)($),
+          [ee, et] = (0, l.useState)(0),
+          [er, ea] = (0, l.useState)({ key: null, n: 0 }),
+          [en, el] = (0, l.useState)({ key: "", n: 0 }),
+          [ei, es] = (0, l.useState)(null),
+          [eo, eu] = (0, l.useState)(!1);
+        ((0, l.useEffect)(() => {
+          Y.current = $;
+        }, [$]),
+          (0, l.useEffect)(() => {
+            if (!window.matchMedia) return;
+            let e = window.matchMedia("(prefers-reduced-motion: reduce)"),
+              t = () => eu(e.matches);
+            return (
+              t(),
+              e.addEventListener("change", t),
+              () => e.removeEventListener("change", t)
+            );
+          }, []));
+        let ec = (0, l.useMemo)(() => {
+            if (e && e.length > 0) return e;
+            if (!t) return null;
+            let r = Math.max(1, Math.round(i)),
+              a = [];
+            for (let e = 0; e < r; e += 1) {
+              let r = o + e;
+              a.push(t.replace("{i}", String(r).padStart(Math.max(0, s), "0")));
+            }
+            return a;
+          }, [e, t, i, s, o]),
+          ed = ec ? ec.length : c(Math.round(i), 2, 240),
+          eh = ec ? "urls" : r ? "video" : "synth",
+          em =
+            "synth" === eh
+              ? 1
+              : "urls" === eh
+                ? er.key === ec
+                  ? Math.min(1, er.n / ec.length)
+                  : 0
+                : en.key === r
+                  ? Math.min(1, en.n / ed)
+                  : 0;
+        ((0, l.useEffect)(() => {
+          if (!ec) {
+            V.current = [];
+            return;
+          }
+          q.current = [];
+          let e = !0,
+            t = [];
+          return (
+            ec.forEach((r, a) => {
+              let n = new Image();
+              n.decoding = "async";
+              let l = () => {
+                e &&
+                  (ea((e) =>
+                    e.key === ec ? { key: ec, n: e.n + 1 } : { key: ec, n: 1 },
+                  ),
+                  K.current?.());
+              };
+              ((n.onload = l), (n.onerror = l), (n.src = r), (t[a] = n));
+            }),
+            (V.current = t),
+            () => {
+              e = !1;
+            }
+          );
+        }, [ec]),
+          (0, l.useEffect)(() => {
+            if (ec || !r) {
+              q.current = [];
+              return;
+            }
+            let e = D.current,
+              t = e ? e.ownerDocument : null;
+            if (!t) return;
+            let n = !0,
+              l = t.createElement("video");
+            ((l.preload = "auto"), (l.muted = !0), (l.playsInline = !0));
+            let i = (e) =>
+              new Promise((t) => {
+                let r = !1,
+                  a = (a) => {
+                    r ||
+                      ((r = !0),
+                      l.removeEventListener(e, n),
+                      l.removeEventListener("error", i),
+                      clearTimeout(s),
+                      t(a));
+                  },
+                  n = () => a(!0),
+                  i = () => a(!1),
+                  s = setTimeout(() => a(!1), 8e3);
+                (l.addEventListener(e, n), l.addEventListener("error", i));
+              });
+            return (
+              (async () => {
+                if (((l.src = r), !(await i("loadedmetadata")))) {
+                  n &&
+                    es({
+                      key: r,
+                      msg:
+                        l.error && 4 === l.error.code
+                          ? "This browser cannot decode that video format"
+                          : "This video could not be loaded",
+                    });
+                  return;
+                }
+                if (!n) return;
+                let e = l.duration;
+                if (!Number.isFinite(e) || e <= 0) {
+                  n &&
+                    es({ key: r, msg: "This video has no readable duration" });
+                  return;
+                }
+                let s = l.videoWidth || 1280,
+                  o = l.videoHeight || 720,
+                  u = Math.min(1, Math.max(160, a) / s),
+                  c = Math.max(2, Math.round(s * u)),
+                  d = Math.max(2, Math.round(o * u)),
+                  h = [];
+                for (let a = 0; a < ed; a += 1) {
+                  if (!n) return;
+                  if (
+                    ((l.currentTime = (e * (a + 0.5)) / ed),
+                    !(await i("seeked")))
+                  ) {
+                    n &&
+                      0 === a &&
+                      es({ key: r, msg: "This video could not be decoded" });
+                    return;
+                  }
+                  if (!n) return;
+                  let s = t.createElement("canvas");
+                  ((s.width = c), (s.height = d));
+                  let o = s.getContext("2d");
+                  if (!o) return;
+                  (o.drawImage(l, 0, 0, c, d),
+                    (h[a] = s),
+                    (q.current = h),
+                    el({ key: r, n: a + 1 }),
+                    K.current?.());
+                }
+              })(),
+              () => {
+                ((n = !1),
+                  l.removeAttribute("src"),
+                  l.load(),
+                  (q.current = []));
+              }
+            );
+          }, [ec, r, a, ed]));
+        let ef = (0, l.useCallback)(
+            (e) => {
+              let t,
+                r = D.current,
+                a = r ? r.ownerDocument : null;
+              if (!a) return null;
+              let n = `${R}|${j}|${ed}`;
+              G.current !== n && ((G.current = n), (B.current = []));
+              let l = B.current.find((t) => t.key === e);
+              if (l) return l.cv;
+              if (B.current.length >= 10) (t = B.current.pop()).key = e;
+              else {
+                let r = a.createElement("canvas");
+                ((r.width = 900), (r.height = 560), (t = { key: e, cv: r }));
+              }
+              let i = t.cv.getContext("2d");
+              return i
+                ? (((e, t, r, a) => {
+                    (e.setTransform(1, 0, 0, 1, 0, 0),
+                      (e.globalAlpha = 1),
+                      (e.fillStyle = a),
+                      e.fillRect(0, 0, 900, 560));
+                    let n = d(r),
+                      l = d(a),
+                      i = m(l) > m(n),
+                      s = i ? h(n, [0, 0, 0], 0.34) : h(n, l, 0.88),
+                      o = i ? h(n, l, 0.78) : h(n, [255, 255, 255], 0.58),
+                      u = t * Math.PI * 2,
+                      f = Math.cos(u),
+                      p = Math.sin(u),
+                      g = x();
+                    for (let e = 0; e < 8840; e += 1) {
+                      let t = 6 * e,
+                        r = g[t],
+                        a = g[t + 2],
+                        n = r * f + a * p,
+                        l = a * f - r * p,
+                        i =
+                          0.8775825618903728 * g[t + 1] - 0.479425538604203 * l,
+                        s =
+                          0.479425538604203 * g[t + 1] + 0.8775825618903728 * l,
+                        o = g[t + 3] * f + g[t + 5] * p,
+                        u = g[t + 5] * f - g[t + 3] * p,
+                        c = 16 / (16 + s);
+                      ((b[t] = s),
+                        (b[t + 1] = 450 + 56.56565656565656 * n * c),
+                        (b[t + 2] = 280 + 56.56565656565656 * i * c),
+                        (b[t + 3] = o),
+                        (b[t + 4] =
+                          0.8775825618903728 * g[t + 4] -
+                          0.479425538604203 * u),
+                        (b[t + 5] =
+                          0.479425538604203 * g[t + 4] +
+                          0.8775825618903728 * u));
+                    }
+                    let M = 0;
+                    for (let e = 0; e < 260; e += 1) {
+                      let t = 34 * e,
+                        r = ((e + 1) % 260) * 34;
+                      for (let e = 0; e < 34; e += 1) {
+                        let a = (e + 1) % 34,
+                          n = (t + e) * 6,
+                          l = (t + a) * 6,
+                          i = (r + a) * 6,
+                          s = (r + e) * 6,
+                          o = b[n + 1],
+                          u = b[n + 2],
+                          c = b[l + 1],
+                          d = b[l + 2],
+                          h = b[i + 1],
+                          m = b[i + 2],
+                          f = b[s + 1],
+                          p = b[s + 2];
+                        if (
+                          (c - o) * (m - u) -
+                            (h - o) * (d - u) +
+                            ((h - o) * (p - u) - (f - o) * (m - u)) >=
+                          0
+                        )
+                          continue;
+                        let g = 12 * M;
+                        ((y[g] = (b[n] + b[l] + b[i] + b[s]) * 0.25),
+                          (y[g + 1] = o),
+                          (y[g + 2] = u),
+                          (y[g + 3] = c),
+                          (y[g + 4] = d),
+                          (y[g + 5] = h),
+                          (y[g + 6] = m),
+                          (y[g + 7] = f),
+                          (y[g + 8] = p));
+                        let v = b[n + 3] + b[l + 3] + b[i + 3] + b[s + 3],
+                          x = b[n + 4] + b[l + 4] + b[i + 4] + b[s + 4],
+                          C = b[n + 5] + b[l + 5] + b[i + 5] + b[s + 5],
+                          S = Math.hypot(v, x, C) || 1;
+                        ((y[g + 9] = v / S),
+                          (y[g + 10] = x / S),
+                          (y[g + 11] = C / S),
+                          (w[M] = M),
+                          (M += 1));
+                      }
+                    }
+                    let C = w.subarray(0, M);
+                    C.sort((e, t) => y[12 * t] - y[12 * e]);
+                    for (let t = 0; t < M; t += 1) {
+                      let r = 12 * C[t],
+                        a = y[r + 9],
+                        i = y[r + 10],
+                        u = y[r + 11],
+                        d = Math.max(0, -0.42 * a + -0.58 * i + -0.7 * u),
+                        m = 0.5 - 0.5 * i,
+                        f = Math.pow(
+                          Math.max(0, a * v[0] + i * v[1] + u * v[2]),
+                          34,
+                        ),
+                        p = c((y[r] + 3.2) / 9.5, 0, 0.58),
+                        g = c(0.03 + 0.8 * Math.pow(d, 1.15) + 0.09 * m, 0, 1),
+                        x = g < 0.5 ? h(s, n, 2 * g) : h(n, o, (g - 0.5) * 2),
+                        b = h(h(x, o, 0.6 * f), l, p),
+                        w = `rgb(${0 | b[0]},${0 | b[1]},${0 | b[2]})`;
+                      ((e.fillStyle = w),
+                        (e.strokeStyle = w),
+                        (e.lineWidth = 0.6),
+                        e.beginPath(),
+                        e.moveTo(y[r + 1], y[r + 2]),
+                        e.lineTo(y[r + 3], y[r + 4]),
+                        e.lineTo(y[r + 5], y[r + 6]),
+                        e.lineTo(y[r + 7], y[r + 8]),
+                        e.closePath(),
+                        e.fill(),
+                        e.stroke());
+                    }
+                  })(i, e / Math.max(1, ed), R, j),
+                  B.current.unshift(t),
+                  t.cv)
+                : null;
+            },
+            [R, j, ed],
+          ),
+          ep = (0, l.useCallback)(
+            (e) => {
+              let t = W.current;
+              if (!t) return;
+              let { w: r, h: a, dpr: n } = O.current;
+              if (r < 2 || a < 2) return;
+              let l = Math.max(0, ed - 1),
+                i = c(e, 0, 1) * l,
+                s = (e, n) => {
+                  let i = ((e) => {
+                    let t = c(Math.round(e), 0, l);
+                    if ("video" === eh) {
+                      let e = q.current[t];
+                      return e ? { img: e, w: e.width, h: e.height } : null;
+                    }
+                    if ("synth" === eh) {
+                      let e = ef(t);
+                      return e ? { img: e, w: 900, h: 560 } : null;
+                    }
+                    let r = V.current[t];
+                    return r && r.complete && 0 !== r.naturalWidth
+                      ? { img: r, w: r.naturalWidth, h: r.naturalHeight }
+                      : null;
+                  })(e);
+                  if (!i || n <= 0.002) return;
+                  let s =
+                      "contain" === M
+                        ? Math.min(r / i.w, a / i.h)
+                        : Math.max(r / i.w, a / i.h),
+                    o = i.w * s,
+                    u = i.h * s;
+                  ((t.globalAlpha = c(n, 0, 1)),
+                    t.drawImage(i.img, (r - o) / 2, (a - u) / 2, o, u),
+                    (t.globalAlpha = 1));
+                },
+                o = (e, t, r) => {
+                  let a = c(e, 0, l);
+                  if (!r) return void s(a, t);
+                  let n = Math.floor(a),
+                    i = a - n;
+                  (s(n, t),
+                    i > 0.002 && n < l && s(n + 1, i * i * (3 - 2 * i) * t));
+                },
+                u = (e, r, a, n, l) => {
+                  (t.save(),
+                    t.beginPath(),
+                    t.rect(e, r, a, n),
+                    t.clip(),
+                    o(l, 1, !0),
+                    t.restore());
+                };
+              (t.setTransform(n, 0, 0, n, 0, 0),
+                (t.globalCompositeOperation = "source-over"),
+                (t.globalAlpha = 1),
+                (t.fillStyle = j),
+                t.fillRect(0, 0, r, a));
+              let d = 1 + Math.max(0, P) * (1 - c(e, 0, 1));
+              (t.save(),
+                t.translate(r / 2, a / 2),
+                t.scale(d, d),
+                t.translate(-r / 2, -a / 2));
+              let h = Math.max(0, T);
+              if ("plain" === f) o(i, 1, !1);
+              else if ("ghost" === f) {
+                let e = c(Math.round(E), 0, 8),
+                  t = [];
+                for (let r = e; r >= 0; r -= 1) t.push(Math.exp(-(0.62 * r)));
+                let r = 0;
+                for (let a = 0; a < t.length; a += 1) {
+                  let n = e - a;
+                  ((r += t[a]), o(i - n * h * 0.5, t[a] / r, !0));
+                }
+              } else if ("slice" === f) {
+                let e = Math.max(1, Math.round(N)),
+                  t = a / e;
+                for (let a = 0; a < e; a += 1) {
+                  let n = e < 2 ? 0.5 : a / (e - 1);
+                  u(0, a * t, r, t + 1, i + (n - 0.5) * h);
+                }
+              } else if ("mosaic" === f) {
+                let e = Math.max(1, Math.round(L)),
+                  t = r / e,
+                  n = Math.max(1, Math.round(a / t)),
+                  l = a / n;
+                for (let r = 0; r < n; r += 1)
+                  for (let a = 0; a < e; a += 1) {
+                    let s = Math.min(
+                      1,
+                      2 *
+                        Math.hypot(
+                          e < 2 ? 0 : (a + 0.5) / e - 0.5,
+                          n < 2 ? 0 : (r + 0.5) / n - 0.5,
+                        ),
+                    );
+                    u(a * t, r * l, t + 1, l + 1, i + (s - 0.5) * h);
+                  }
+              } else if ("wipe" === f) {
+                let e = Math.floor(c(i, 0, l)),
+                  n = c(i - e, 0, 1) * r;
+                (o(e, 1, !1),
+                  e < l &&
+                    n > 0.5 &&
+                    (t.save(),
+                    t.beginPath(),
+                    t.rect(0, 0, n, a),
+                    t.clip(),
+                    s(e + 1, 1),
+                    t.restore(),
+                    (t.globalAlpha = 0.5),
+                    (t.fillStyle = R),
+                    t.fillRect(n - 1, 0, 1.5, a),
+                    (t.globalAlpha = 1)));
+              } else o(i, 1, !0);
+              if ((t.restore(), I > 0.001)) {
+                let e = t.createRadialGradient(
+                  r / 2,
+                  a / 2,
+                  0.22 * Math.min(r, a),
+                  r / 2,
+                  a / 2,
+                  0.72 * Math.max(r, a),
+                );
+                (e.addColorStop(0, "rgba(0,0,0,0)"),
+                  e.addColorStop(1, `rgba(0,0,0,${c(I, 0, 1).toFixed(3)})`),
+                  (t.fillStyle = e),
+                  t.fillRect(0, 0, r, a));
+              }
+              if (A > 0.001 && z.current) {
+                t.globalAlpha = c(A, 0, 1);
+                let e = t.createPattern(z.current, "repeat");
+                (e && ((t.fillStyle = e), t.fillRect(0, 0, r, a)),
+                  (t.globalAlpha = 1));
+              }
+              let m = c(Math.round(i), 0, l);
+              m !== J.current && ((J.current = m), et(m), Y.current?.(m));
+            },
+            [R, j, L, M, A, T, P, N, eh, ef, ed, E, f, I],
+          ),
+          eg = (0, l.useCallback)(() => {
+            let e = D.current;
+            if (!e) return 0;
+            let t = e.ownerDocument.defaultView,
+              r = t ? t.innerHeight : 0,
+              a = e.getBoundingClientRect(),
+              n = a.height - r;
+            return n <= 0 ? 0 : c(-a.top / n, 0, 1);
+          }, []);
+        (0, l.useEffect)(() => {
+          let e = D.current,
+            t = H.current;
+          if (!e || !t) return;
+          let r = e.ownerDocument,
+            a = r.defaultView;
+          if (!a) return;
+          ((W.current = t.getContext("2d")),
+            z.current ||
+              (z.current = ((e, t) => {
+                let r = e.createElement("canvas");
+                ((r.width = 128), (r.height = 128));
+                let a = r.getContext("2d");
+                if (!a) return r;
+                let n = a.createImageData(128, 128);
+                for (let e = 0; e < n.data.length; e += 4) {
+                  let t = 128 + (Math.random() - 0.5) * 255;
+                  ((n.data[e] = t),
+                    (n.data[e + 1] = t),
+                    (n.data[e + 2] = t),
+                    (n.data[e + 3] = 255));
+                }
+                return (a.putImageData(n, 0, 0), r);
+              })(r, 0)));
+          let n = eo ? 0 : c(g, 0, 0.95),
+            l = () => {
+              let e = t.getBoundingClientRect(),
+                r = Math.min(2, a.devicePixelRatio || 1),
+                n = Math.max(1, Math.round(e.width)),
+                l = Math.max(1, Math.round(e.height));
+              (O.current.w !== n || O.current.h !== l || O.current.dpr !== r) &&
+                ((O.current = { w: n, h: l, dpr: r }),
+                (t.width = Math.round(n * r)),
+                (t.height = Math.round(l * r)));
+            },
+            i = (e) => {
+              let t = X.current || e,
+                r = Math.min(0.05, Math.max(0, (e - t) / 1e3));
+              X.current = e;
+              let l = eg(),
+                s = _.current,
+                o = s + (l - s) * (n > 0 ? 1 - Math.pow(1 - n, 60 * r) : 1);
+              ((_.current = o),
+                ep(o),
+                Math.abs(l - o) > 15e-5
+                  ? (Q.current = a.requestAnimationFrame(i))
+                  : ((_.current = l), ep(l), (Z.current = !1)));
+            },
+            s = () => {
+              Z.current ||
+                ((Z.current = !0),
+                (X.current = 0),
+                (Q.current = a.requestAnimationFrame(i)));
+            };
+          K.current = s;
+          let o = () => {
+            (l(), (_.current = eg()), ep(_.current), s());
+          };
+          (l(),
+            (_.current = eg()),
+            ep(_.current),
+            a.addEventListener("scroll", s, { passive: !0 }),
+            r.addEventListener("scroll", s, { passive: !0, capture: !0 }),
+            a.addEventListener("resize", o));
+          let u = new ResizeObserver(o);
+          return (
+            u.observe(t),
+            () => {
+              (a.cancelAnimationFrame(Q.current),
+                (Z.current = !1),
+                (K.current = null),
+                a.removeEventListener("scroll", s),
+                r.removeEventListener("scroll", s, { capture: !0 }),
+                a.removeEventListener("resize", o),
+                u.disconnect());
+            }
+          );
+        }, [eg, ep, g, eo]);
+        let ev = 100 + 100 * Math.max(0.2, p),
+          ex = ei && r && ei.key === r ? ei.msg : null,
+          eb = "synth" !== eh && (em < 1 || null !== ex);
+        return (0, n.jsx)("section", {
+          ref: D,
+          "aria-label": "Scroll-scrubbed frame sequence",
+          className: (0, u.cn)("relative w-full", U),
+          style: { height: `${ev}vh` },
+          children: (0, n.jsx)("div", {
+            className:
+              "sticky top-0 flex h-screen w-full flex-col items-center justify-center gap-4 overflow-hidden px-4 sm:px-8",
+            children: (0, n.jsxs)("div", {
+              className: "relative w-full overflow-hidden",
+              style: {
+                maxWidth: `${Math.max(200, C)}px`,
+                height: `${100 * c(S, 0.2, 0.95)}vh`,
+                borderRadius: `${Math.max(0, k)}px`,
+                backgroundColor: j,
+              },
+              children: [
+                (0, n.jsx)("canvas", {
+                  ref: H,
+                  className: "block h-full w-full",
+                }),
+                F &&
+                  (0, n.jsxs)("div", {
+                    className:
+                      "pointer-events-none absolute right-4 top-4 font-mono text-[11px] tracking-[0.18em] tabular-nums sm:right-5 sm:top-5",
+                    style: { color: R, opacity: 0.72 },
+                    children: [
+                      String(ee + 1).padStart(2, "0"),
+                      (0, n.jsxs)("span", {
+                        style: { opacity: 0.5 },
+                        children: [" / ", String(ed).padStart(2, "0")],
+                      }),
+                    ],
+                  }),
+                eb &&
+                  (0, n.jsx)("div", {
+                    className:
+                      "absolute inset-0 flex items-center justify-center",
+                    style: { backgroundColor: j },
+                    children: ex
+                      ? (0, n.jsx)("span", {
+                          className:
+                            "max-w-[70%] text-center font-mono text-[11px] leading-relaxed tracking-[0.14em]",
+                          style: { color: R, opacity: 0.55 },
+                          children: ex,
+                        })
+                      : (0, n.jsxs)("div", {
+                          className: "flex w-40 flex-col items-center gap-2",
+                          children: [
+                            (0, n.jsx)("span", {
+                              className: "block h-px w-full overflow-hidden",
+                              style: { backgroundColor: `${R}26` },
+                              children: (0, n.jsx)("span", {
+                                className: "block h-full w-full origin-left",
+                                style: {
+                                  backgroundColor: R,
+                                  transform: `scaleX(${em.toFixed(3)})`,
+                                },
+                              }),
+                            }),
+                            (0, n.jsxs)("span", {
+                              className:
+                                "font-mono text-[10px] tracking-[0.18em] tabular-nums",
+                              style: { color: R, opacity: 0.6 },
+                              children: [Math.round(100 * em), "%"],
+                            }),
+                          ],
+                        }),
+                  }),
+              ],
+            }),
+          }),
+        });
+      },
+      C = () => {
+        let [e, t] = (0, o.I)(),
+          { resolvedTheme: r } = (0, i.D)(),
+          [a, u] = (0, l.useState)("blend"),
+          [c, d] = (0, l.useState)(48),
+          [h, m] = (0, l.useState)(3),
+          [f, p] = (0, l.useState)(0.18),
+          [g, v] = (0, l.useState)(0.72),
+          [x, b] = (0, l.useState)(20),
+          [y, w] = (0, l.useState)(4),
+          [C, S] = (0, l.useState)(14),
+          [k, j] = (0, l.useState)(6),
+          [R, E] = (0, l.useState)(2.4),
+          [N, L] = (0, l.useState)(0.06),
+          [T, P] = (0, l.useState)(0.07),
+          [A, I] = (0, l.useState)(0.34),
+          [F, $] = (0, l.useState)(!0),
+          [U, D] = (0, l.useState)(""),
+          [H, W] = (0, l.useState)(null),
+          [V, q] = (0, l.useState)(null),
+          B = (0, l.useMemo)(
+            () => (null !== H ? H : "dark" === r ? "#0a0a0a" : "#f5f5f5"),
+            [r, H],
+          ),
+          G = (0, l.useMemo)(
+            () => (null !== V ? V : "dark" === r ? "#ededed" : "#1a1a1a"),
+            [r, V],
+          );
+        return (0, n.jsxs)("div", {
+          children: [
+            (0, n.jsx)(s.Bg, {}),
+            (0, n.jsxs)(s.VX, {
+              children: [
+                (0, n.jsxs)(s.Ec, {
+                  children: [
+                    (0, n.jsx)(s.Ch, {
+                      onRefresh: t,
+                      minHeight: 620,
+                      enableResponsive: !0,
+                      children: (0, n.jsx)(
+                        M,
+                        {
+                          video: U.trim() || void 0,
+                          variant: a,
+                          count: c,
+                          scrollLength: h,
+                          smooth: f,
+                          height: g,
+                          borderRadius: x,
+                          background: B,
+                          accent: G,
+                          trail: y,
+                          slices: C,
+                          cells: k,
+                          lag: R,
+                          punch: N,
+                          grain: T,
+                          vignette: A,
+                          showCounter: F,
+                        },
+                        e,
+                      ),
+                    }),
+                    (0, n.jsxs)(s.IH, {
+                      children: [
+                        (0, n.jsx)(s.bg, {
+                          title: "Variant",
+                          value: a,
+                          onChange: (e) => u(e),
+                          options: [
+                            { value: "plain", label: "Plain" },
+                            { value: "blend", label: "Blend" },
+                            { value: "ghost", label: "Ghost" },
+                            { value: "slice", label: "Slice" },
+                            { value: "mosaic", label: "Mosaic" },
+                            { value: "wipe", label: "Wipe" },
+                          ],
+                        }),
+                        (0, n.jsx)(s.yt, {
+                          title: "Frames",
+                          value: c,
+                          onChange: d,
+                          min: 8,
+                          max: 120,
+                          step: 1,
+                        }),
+                        (0, n.jsx)(s.yt, {
+                          title: "Scroll length",
+                          value: h,
+                          onChange: m,
+                          min: 1,
+                          max: 8,
+                          step: 0.5,
+                          valueUnit: "vh",
+                        }),
+                        (0, n.jsx)(s.yt, {
+                          title: "Smoothing",
+                          value: f,
+                          onChange: p,
+                          min: 0,
+                          max: 0.6,
+                          step: 0.01,
+                        }),
+                        (0, n.jsx)(s.yt, {
+                          title: "Stage height",
+                          value: g,
+                          onChange: v,
+                          min: 0.3,
+                          max: 0.95,
+                          step: 0.01,
+                        }),
+                        (0, n.jsx)(s.yt, {
+                          title: "Radius",
+                          value: x,
+                          onChange: b,
+                          min: 0,
+                          max: 48,
+                          step: 1,
+                          valueUnit: "px",
+                        }),
+                        (0, n.jsx)(s.yt, {
+                          title: "Trail",
+                          value: y,
+                          onChange: w,
+                          min: 0,
+                          max: 8,
+                          step: 1,
+                        }),
+                        (0, n.jsx)(s.yt, {
+                          title: "Slices",
+                          value: C,
+                          onChange: S,
+                          min: 2,
+                          max: 40,
+                          step: 1,
+                        }),
+                        (0, n.jsx)(s.yt, {
+                          title: "Cells",
+                          value: k,
+                          onChange: j,
+                          min: 2,
+                          max: 16,
+                          step: 1,
+                        }),
+                        (0, n.jsx)(s.yt, {
+                          title: "Lag",
+                          value: R,
+                          onChange: E,
+                          min: 0,
+                          max: 8,
+                          step: 0.1,
+                        }),
+                        (0, n.jsx)(s.yt, {
+                          title: "Punch",
+                          value: N,
+                          onChange: L,
+                          min: 0,
+                          max: 0.3,
+                          step: 0.01,
+                        }),
+                        (0, n.jsx)(s.yt, {
+                          title: "Grain",
+                          value: T,
+                          onChange: P,
+                          min: 0,
+                          max: 0.3,
+                          step: 0.01,
+                        }),
+                        (0, n.jsx)(s.yt, {
+                          title: "Vignette",
+                          value: A,
+                          onChange: I,
+                          min: 0,
+                          max: 1,
+                          step: 0.01,
+                        }),
+                        (0, n.jsx)(s.W7, {
+                          title: "Background",
+                          value: B,
+                          onChange: W,
+                        }),
+                        (0, n.jsx)(s.W7, {
+                          title: "Accent",
+                          value: G,
+                          onChange: q,
+                        }),
+                        (0, n.jsx)(s.tl, {
+                          title: "Counter",
+                          checked: F,
+                          onChange: $,
+                        }),
+                        (0, n.jsx)(s.UD, {
+                          title: "Video URL",
+                          value: U,
+                          onChange: D,
+                          placeholder: "Leave empty for the built-in sequence",
+                        }),
+                      ],
+                    }),
+                    (0, n.jsx)(s.Ub, {
+                      data: [
+                        {
+                          name: "frames",
+                          type: "string[]",
+                          default: "undefined",
+                          description:
+                            "Explicit frame URLs in playback order. Takes priority over src.",
+                        },
+                        {
+                          name: "video",
+                          type: "string",
+                          default: "undefined",
+                          description:
+                            "Video URL sampled into count frames up front, then scrubbed. Needs CORS access.",
+                        },
+                        {
+                          name: "videoQuality",
+                          type: "number",
+                          default: "720",
+                          description:
+                            "Width in pixels each video frame is decoded at.",
+                        },
+                        {
+                          name: "src",
+                          type: "string",
+                          default: "undefined",
+                          description:
+                            'Frame URL pattern containing an {i} token, e.g. "/seq/shot-{i}.webp".',
+                        },
+                        {
+                          name: "count",
+                          type: "number",
+                          default: "48",
+                          description:
+                            "Number of frames. Used with src, or as the length of the built-in sequence.",
+                        },
+                        {
+                          name: "pad",
+                          type: "number",
+                          default: "3",
+                          description:
+                            "Zero-pad width applied to {i} when expanding src.",
+                        },
+                        {
+                          name: "start",
+                          type: "number",
+                          default: "1",
+                          description:
+                            "First frame number used when expanding src.",
+                        },
+                        {
+                          name: "variant",
+                          type: '"plain" | "blend" | "ghost" | "slice" | "mosaic" | "wipe"',
+                          default: '"blend"',
+                          description:
+                            "How consecutive frames are composited while scrubbing.",
+                        },
+                        {
+                          name: "scrollLength",
+                          type: "number",
+                          default: "3",
+                          description:
+                            "Extra viewports of scroll the sequence is spread across.",
+                        },
+                        {
+                          name: "smooth",
+                          type: "number",
+                          default: "0.18",
+                          description:
+                            "Scroll-following easing. 0 tracks the scrollbar exactly.",
+                        },
+                        {
+                          name: "fit",
+                          type: '"cover" | "contain"',
+                          default: '"cover"',
+                          description: "How each frame fills the stage.",
+                        },
+                        {
+                          name: "width",
+                          type: "number",
+                          default: "1020",
+                          description: "Maximum stage width in pixels.",
+                        },
+                        {
+                          name: "height",
+                          type: "number",
+                          default: "0.72",
+                          description:
+                            "Stage height as a fraction of the viewport.",
+                        },
+                        {
+                          name: "borderRadius",
+                          type: "number",
+                          default: "20",
+                          description: "Stage corner radius in pixels.",
+                        },
+                        {
+                          name: "background",
+                          type: "string",
+                          default: '"#0a0a0a"',
+                          description: "Colour painted behind every frame.",
+                        },
+                        {
+                          name: "accent",
+                          type: "string",
+                          default: '"#ededed"',
+                          description:
+                            "Colour used by the built-in sequence and the readouts.",
+                        },
+                        {
+                          name: "trail",
+                          type: "number",
+                          default: "4",
+                          description: "Echo count for the ghost variant.",
+                        },
+                        {
+                          name: "slices",
+                          type: "number",
+                          default: "14",
+                          description: "Band count for the slice variant.",
+                        },
+                        {
+                          name: "cells",
+                          type: "number",
+                          default: "6",
+                          description: "Column count for the mosaic variant.",
+                        },
+                        {
+                          name: "lag",
+                          type: "number",
+                          default: "2.4",
+                          description:
+                            "How many frames of lag the offset variants spread across.",
+                        },
+                        {
+                          name: "punch",
+                          type: "number",
+                          default: "0.06",
+                          description:
+                            "Extra scale applied at the start of the scrub.",
+                        },
+                        {
+                          name: "grain",
+                          type: "number",
+                          default: "0.07",
+                          description: "Film grain strength.",
+                        },
+                        {
+                          name: "vignette",
+                          type: "number",
+                          default: "0.34",
+                          description: "Vignette strength.",
+                        },
+                        {
+                          name: "showCounter",
+                          type: "boolean",
+                          default: "true",
+                          description:
+                            "Show the frame readout in the stage corner.",
+                        },
+                        {
+                          name: "onFrameChange",
+                          type: "(index: number) => void",
+                          default: "undefined",
+                          description:
+                            "Fired when the settled frame index changes.",
+                        },
+                        {
+                          name: "className",
+                          type: "string",
+                          default: '""',
+                          description: "Extra classes for the section wrapper.",
+                        },
+                      ],
+                    }),
+                  ],
+                }),
+                (0, n.jsx)(s.lT, { children: (0, n.jsx)(s.Gv, {}) }),
+              ],
+            }),
+          ],
+        });
+      };
+  },
+};

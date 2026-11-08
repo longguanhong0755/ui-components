@@ -1,0 +1,820 @@
+/* ReactBits Pro public preview module 24919 for spring-lettering.
+ * Extracted from https://pro.reactbits.dev/_next/static/chunks/24919.6faffdd6226fd9a2.js
+ * This is the compiled browser implementation, not the original TSX. */
+
+const module = {
+  24919: (e, t, n) => {
+    (n.r(t), n.d(t, { default: () => S }));
+    var a = n(95155),
+      r = n(12115),
+      l = n(86049),
+      o = n(56388),
+      s = n(90761),
+      i = n(90650);
+    let h = ["#FF9FFC", "#5227FF"],
+      c = (e, t, n) => Math.min(n, Math.max(t, e)),
+      u = (e) => {
+        let t = window.matchMedia("(prefers-reduced-motion: reduce)");
+        return (
+          t.addEventListener("change", e),
+          () => t.removeEventListener("change", e)
+        );
+      },
+      p = () => window.matchMedia("(prefers-reduced-motion: reduce)").matches,
+      d = {
+        position: "absolute",
+        width: 1,
+        height: 1,
+        padding: 0,
+        margin: -1,
+        overflow: "hidden",
+        clip: "rect(0, 0, 0, 0)",
+        whiteSpace: "nowrap",
+        border: 0,
+      },
+      m = { position: "relative", display: "inline-block" },
+      f = {
+        position: "absolute",
+        inset: 0,
+        pointerEvents: "none",
+        userSelect: "none",
+        WebkitUserSelect: "none",
+      },
+      v = { whiteSpace: "pre-wrap" },
+      g = { display: "inline-block", whiteSpace: "nowrap" },
+      y = { display: "inline-block", willChange: "transform" },
+      x = (0, r.forwardRef)(function (
+        {
+          text: e = "Made to move",
+          as: t = "span",
+          color: n = "currentColor",
+          colors: l = h,
+          echoes: o = 3,
+          echoOpacity: s = 0.85,
+          echoLag: x = 1,
+          strength: b = 0.35,
+          reach: w = 90,
+          stiffness: F = 1,
+          damping: C = 0.55,
+          stretch: j = 1,
+          tilt: S = 1,
+          pluck: E = 0.7,
+          area: k = "parent",
+          paused: M = !1,
+          className: A,
+          style: L,
+        },
+        I,
+      ) {
+        let P = (0, r.useRef)(null),
+          T = (0, r.useRef)(null),
+          N = (0, r.useSyncExternalStore)(u, p, () => !1) || M,
+          $ = (0, r.useMemo)(
+            () =>
+              e
+                .split(/(\s+)/)
+                .filter((e) => e.length > 0)
+                .map((e) => ({
+                  value: e,
+                  space: /^\s+$/.test(e),
+                  glyphs:
+                    "undefined" == typeof Intl || void 0 === Intl.Segmenter
+                      ? Array.from(e)
+                      : Array.from(
+                          new Intl.Segmenter(void 0, {
+                            granularity: "grapheme",
+                          }).segment(e),
+                          (e) => e.segment,
+                        ),
+                })),
+            [e],
+          ),
+          B = N ? 0 : Math.round(c(o, 0, 6)),
+          H = l.join("|"),
+          R = (0, r.useMemo)(() => {
+            let e = H ? H.split("|") : h;
+            return Array.from({ length: B }, (t, n) =>
+              ((e, t, n) => {
+                let a = e[0] ?? h[0],
+                  r = e[1] ?? e[0] ?? h[1];
+                if (n <= 1) return a;
+                let l = Math.round((t / (n - 1)) * 100);
+                return `color-mix(in oklch, ${a} ${100 - l}%, ${r})`;
+              })(e, B - 1 - n, B),
+            );
+          }, [H, B]),
+          D = {
+            echoes: o,
+            echoOpacity: s,
+            echoLag: x,
+            strength: b,
+            reach: w,
+            stiffness: F,
+            damping: C,
+            stretch: j,
+            tilt: S,
+            pluck: E,
+            area: k,
+          },
+          W = (0, r.useRef)(D);
+        ((0, r.useEffect)(() => {
+          W.current = D;
+        }),
+          (0, r.useEffect)(() => {
+            var e;
+            let t,
+              n,
+              a,
+              r,
+              l,
+              o,
+              s,
+              i,
+              h,
+              u,
+              p,
+              d,
+              m,
+              f,
+              v,
+              g,
+              y,
+              x,
+              b,
+              w,
+              F,
+              C,
+              j,
+              S,
+              E,
+              k = P.current;
+            if (!k || N) return;
+            let M =
+              ((e = () => W.current),
+              (t = Array.from(k.querySelectorAll("[data-spring-layer]")).map(
+                (e) => Array.from(e.querySelectorAll("[data-spring-glyph]")),
+              )),
+              (n = t[0]?.length ?? 0),
+              (a = t.map((e) => e.map(() => ({ x: 0, y: 0, vx: 0, vy: 0 })))),
+              (r = []),
+              (l = 1),
+              (o = 1),
+              (s = 0),
+              (i = 0),
+              (h = 0),
+              (u = 0),
+              (p = !1),
+              (d = () => {
+                let e = t[t.length - 1] ?? [],
+                  n = k.getBoundingClientRect();
+                for (let t of ((l = Math.max(n.width / 2, 1)),
+                (o = Math.max(n.height / 2, 1)),
+                (r.length = 0),
+                e))
+                  r.push({
+                    x: t.offsetLeft + t.offsetWidth / 2 - l,
+                    y: t.offsetTop + t.offsetHeight / 2 - o,
+                  });
+              }),
+              (m = () => {
+                let r = e(),
+                  l = c(r.tilt, 0, 3),
+                  o = a.length - 1,
+                  s = a[o];
+                for (let e = 0; e < a.length; e++) {
+                  let i = a[e],
+                    h = t[e],
+                    u = e !== o,
+                    p = o - e;
+                  for (let e = 0; e < n; e++) {
+                    let t = i[e],
+                      n = h[e],
+                      a = c(t.vx * l * 0.012, -16, 16);
+                    if (
+                      ((n.style.transform = `translate3d(${t.x.toFixed(2)}px, ${t.y.toFixed(2)}px, 0) rotate(${a.toFixed(2)}deg)`),
+                      u)
+                    ) {
+                      let a = s[e],
+                        l = c(
+                          (Math.hypot(t.x - a.x, t.y - a.y) - 0.6) / 5,
+                          0,
+                          1,
+                        ),
+                        o = c(r.echoOpacity, 0, 1) * (1 - (p - 1) * 0.12);
+                      n.style.opacity = (l * o).toFixed(3);
+                    }
+                  }
+                }
+              }),
+              (f = (t) => {
+                let h = e(),
+                  u = a.length - 1,
+                  p = 2 * Math.PI * 2.1 * c(h.stiffness, 0.1, 5),
+                  d = c(h.damping, 0.05, 2),
+                  m = c(h.stretch, 0, 3),
+                  f = c(h.echoLag, 0, 3),
+                  v = 0,
+                  g = 0;
+                for (let e of a[u]) ((v += e.x), (g += e.y));
+                ((v /= Math.max(n, 1)), (g /= Math.max(n, 1)));
+                let y = s - v,
+                  x = i - g,
+                  b = Math.hypot(y, x),
+                  w = b > 0.5 ? y / b : 0,
+                  F = b > 0.5 ? x / b : 0,
+                  C = !1;
+                for (let e = 0; e < a.length; e++) {
+                  let h = p * Math.pow(1 / (1 + 0.38 * f), u - e),
+                    v = a[e];
+                  for (let e = 0; e < n; e++) {
+                    let n = r[e] ?? { x: 0, y: 0 },
+                      a =
+                        h *
+                        Math.sqrt(
+                          Math.max(
+                            0.15,
+                            1 +
+                              0.55 *
+                                m *
+                                c((n.x / l) * w + (n.y / o) * F, -1, 1),
+                          ),
+                        ),
+                      u = v[e],
+                      p = a * a * (s - u.x) - 2 * d * a * u.vx,
+                      f = a * a * (i - u.y) - 2 * d * a * u.vy;
+                    ((u.vx += p * t),
+                      (u.vy += f * t),
+                      (u.x += u.vx * t),
+                      (u.y += u.vy * t),
+                      (Math.abs(u.vx) + Math.abs(u.vy) > 1.5 ||
+                        Math.abs(s - u.x) + Math.abs(i - u.y) > 0.15) &&
+                        (C = !0));
+                  }
+                }
+                return C;
+              }),
+              (v = (e) => {
+                let t = Math.min(Math.max((e - u) / 1e3, 0), 0.05);
+                u = e;
+                let n = Math.max(1, Math.ceil(t / (1 / 240))),
+                  r = !1;
+                for (let e = 0; e < n; e++) r = f(t / n) || r;
+                if ((m(), r)) h = requestAnimationFrame(v);
+                else {
+                  for (let e of ((p = !1), a))
+                    for (let t of e)
+                      ((t.x = s), (t.y = i), (t.vx = 0), (t.vy = 0));
+                  m();
+                }
+              }),
+              (g = () => {
+                p ||
+                  ((p = !0),
+                  (u = performance.now()),
+                  (h = requestAnimationFrame(v)));
+              }),
+              (y = (t, l) => {
+                let o = c(e().pluck, 0, 4);
+                if (o <= 0) return;
+                let s = k.getBoundingClientRect(),
+                  i = t ?? s.left + s.width / 2,
+                  h = l ?? s.top + s.height / 2,
+                  u = Math.max(2.2 * s.height, 120),
+                  p = a.length - 1;
+                for (let e = 0; e < a.length; e++) {
+                  let t = 1 - 0.14 * (p - e);
+                  for (let l = 0; l < n; l++) {
+                    let n = r[l] ?? { x: 0, y: 0 },
+                      c = a[e][l],
+                      p = s.left + s.width / 2 + n.x + c.x,
+                      d = s.top + s.height / 2 + n.y + c.y,
+                      m = p - i,
+                      f = d - h,
+                      v = Math.hypot(m, f);
+                    v < 1 ? ((m = 0), (f = -1)) : ((m /= v), (f /= v));
+                    let g = 1100 * o * Math.exp(-v / u) * t;
+                    ((c.vx += m * g), (c.vy += f * g - 0.25 * g));
+                  }
+                }
+                g();
+              }),
+              (x = () => {
+                ((s = 0), (i = 0), g());
+              }),
+              (w =
+                "window" === (b = e().area)
+                  ? window
+                  : "parent" === b
+                    ? (k.parentElement ?? k)
+                    : k),
+              (F = (t) => {
+                if ("touch" !== t.pointerType) {
+                  var n, a;
+                  let r, l, o, h, u, p, d;
+                  ((n = t.clientX),
+                    (a = t.clientY),
+                    (r = e()),
+                    (o =
+                      n - ((l = k.getBoundingClientRect()).left + l.width / 2)),
+                    (u = Math.hypot(o, (h = a - (l.top + l.height / 2)))),
+                    (d =
+                      (p = Math.max(r.reach, 1)) *
+                      Math.tanh((u * c(r.strength, 0, 2)) / p)),
+                    (s = u > 0 ? (o / u) * d : 0),
+                    (i = u > 0 ? (h / u) * d : 0),
+                    g());
+                }
+              }),
+              (C = () => x()),
+              (j = (e) => {
+                y(e.clientX, e.clientY);
+              }),
+              (S = (e) => {
+                e.relatedTarget || C();
+              }),
+              w.addEventListener("pointermove", F, { passive: !0 }),
+              w.addEventListener("pointerdown", j, { passive: !0 }),
+              w === window
+                ? document.addEventListener("mouseout", S, { passive: !0 })
+                : w.addEventListener("pointerleave", C, { passive: !0 }),
+              (E =
+                "undefined" == typeof ResizeObserver
+                  ? null
+                  : new ResizeObserver(() => d())),
+              E?.observe(k),
+              d(),
+              m(),
+              {
+                pluck: y,
+                reset: x,
+                destroy: () => {
+                  for (let e of (cancelAnimationFrame(h),
+                  E?.disconnect(),
+                  w.removeEventListener("pointermove", F),
+                  w.removeEventListener("pointerdown", j),
+                  w.removeEventListener("pointerleave", C),
+                  document.removeEventListener("mouseout", S),
+                  t))
+                    for (let t of e)
+                      ((t.style.transform = ""), (t.style.opacity = ""));
+                },
+              });
+            return (
+              (T.current = M),
+              () => {
+                (M.destroy(), T.current === M && (T.current = null));
+              }
+            );
+          }, [e, N, B, k]),
+          (0, r.useImperativeHandle)(
+            I,
+            () => ({
+              pluck: (e, t) => T.current?.pluck(e, t),
+              reset: () => T.current?.reset(),
+            }),
+            [],
+          ));
+        let O = (e, t) =>
+          $.map((n, r) =>
+            n.space
+              ? (0, a.jsx)("span", { style: v, children: n.value }, `${e}-${r}`)
+              : (0, a.jsx)(
+                  "span",
+                  {
+                    style: g,
+                    children: n.glyphs.map((e, n) =>
+                      (0, a.jsx)(
+                        "span",
+                        {
+                          "data-spring-glyph": "",
+                          style: t ? { ...y, color: t, opacity: 0 } : y,
+                          children: e,
+                        },
+                        n,
+                      ),
+                    ),
+                  },
+                  `${e}-${r}`,
+                ),
+          );
+        return (0, a.jsxs)(t, {
+          ref: P,
+          className: (0, i.cn)("relative inline-block", A),
+          style: L,
+          children: [
+            (0, a.jsx)("span", { style: d, children: e }),
+            (0, a.jsxs)(
+              "span",
+              {
+                "aria-hidden": "true",
+                style: m,
+                children: [
+                  R.map((e, t) =>
+                    (0, a.jsx)(
+                      "span",
+                      { "data-spring-layer": "", style: f, children: O(t, e) },
+                      t,
+                    ),
+                  ),
+                  (0, a.jsx)("span", {
+                    "data-spring-layer": "",
+                    style: {
+                      position: "relative",
+                      display: "inline-block",
+                      color: n,
+                    },
+                    children: O(B),
+                  }),
+                ],
+              },
+              `${e}-${B}`,
+            ),
+          ],
+        });
+      }),
+      b = {
+        aurora: { color: "#FFFFFF", near: "#FF9FFC", far: "#5227FF" },
+        prism: { color: "#FFFFFF", near: "#22D3EE", far: "#FACC15" },
+        ember: { color: "#FFF4E8", near: "#FFB86B", far: "#E2531B" },
+        ice: { color: "#F4FBFF", near: "#7DD3FC", far: "#1D4ED8" },
+        mono: { color: "#FFFFFF", near: "#A1A1AA", far: "#3F3F46" },
+        ink: { color: "#0A0A0A", near: "#FF9FFC", far: "#5227FF" },
+        paper: { color: "#18181B", near: "#A1A1AA", far: "#E4E4E7" },
+      },
+      w = [
+        { label: "Aurora", value: "aurora" },
+        { label: "Prism", value: "prism" },
+        { label: "Ember", value: "ember" },
+        { label: "Ice", value: "ice" },
+        { label: "Mono", value: "mono" },
+        { label: "Ink", value: "ink" },
+        { label: "Paper", value: "paper" },
+      ],
+      F = [
+        { label: "Parent", value: "parent" },
+        { label: "Self", value: "self" },
+        { label: "Window", value: "window" },
+      ],
+      C = [
+        { label: "Medium", value: "500" },
+        { label: "Semibold", value: "600" },
+        { label: "Bold", value: "700" },
+        { label: "Black", value: "800" },
+      ],
+      j = [
+        {
+          name: "text",
+          type: "string",
+          default: '"Made to move"',
+          description:
+            "Text to display. Words wrap as whole units and whitespace is preserved.",
+        },
+        {
+          name: "as",
+          type: '"span" | "div" | "p" | "h1" | … | "h6"',
+          default: '"span"',
+          description:
+            "Element to render. The component inherits font, size and alignment from its parent.",
+        },
+        {
+          name: "color",
+          type: "string",
+          default: '"currentColor"',
+          description:
+            "Colour of the lettering itself. Defaults to the surrounding text colour.",
+        },
+        {
+          name: "colors",
+          type: "string[]",
+          default: '["#FF9FFC", "#5227FF"]',
+          description:
+            "Two colours for the echoes: the one closest to the lettering, then the one that trails furthest. Echoes in between blend smoothly.",
+        },
+        {
+          name: "echoes",
+          type: "number",
+          default: "3",
+          description:
+            "Number of coloured echoes trailing behind the lettering, from 0 to 6.",
+        },
+        {
+          name: "echoOpacity",
+          type: "number",
+          default: "0.85",
+          description:
+            "Opacity of the echoes. They fade out completely once they catch up.",
+        },
+        {
+          name: "echoLag",
+          type: "number",
+          default: "1",
+          description:
+            "How much further behind each echo falls. 0 keeps them tight to the lettering.",
+        },
+        {
+          name: "strength",
+          type: "number",
+          default: "0.35",
+          description:
+            "How strongly the lettering is drawn towards the pointer. Low values lean, 1 chases the pointer across the area.",
+        },
+        {
+          name: "reach",
+          type: "number",
+          default: "90",
+          description:
+            "Furthest the lettering can travel from its place, in pixels. It eases into this limit.",
+        },
+        {
+          name: "stiffness",
+          type: "number",
+          default: "1",
+          description:
+            "Stiffness of the springs. Higher values follow more tightly.",
+        },
+        {
+          name: "damping",
+          type: "number",
+          default: "0.55",
+          description:
+            "Damping of the springs. Lower values overshoot and wobble more before settling.",
+        },
+        {
+          name: "stretch",
+          type: "number",
+          default: "1",
+          description:
+            "How elastic the word is: letters at the front of the motion respond faster than those behind, so it stretches as it moves and bunches as it stops.",
+        },
+        {
+          name: "tilt",
+          type: "number",
+          default: "1",
+          description:
+            "How much each letter leans with its own sideways speed.",
+        },
+        {
+          name: "pluck",
+          type: "number",
+          default: "0.7",
+          description:
+            "Strength of the kick a click or tap gives nearby letters before they spring back. 0 turns it off.",
+        },
+        {
+          name: "area",
+          type: '"parent" | "self" | "window"',
+          default: '"parent"',
+          description:
+            "Where the pointer is followed: anywhere over the parent element (such as a hero section), only over the text, or anywhere in the window.",
+        },
+        {
+          name: "paused",
+          type: "boolean",
+          default: "false",
+          description:
+            "Holds the lettering still. Reduced-motion users always get this.",
+        },
+        {
+          name: "ref",
+          type: "{ pluck, reset }",
+          default: "—",
+          description:
+            "Imperative controls: kick the letters from a point, or send the word home.",
+        },
+        {
+          name: "className",
+          type: "string",
+          default: "—",
+          description:
+            "Classes for the root element, for example font size and weight.",
+        },
+        {
+          name: "style",
+          type: "CSSProperties",
+          default: "—",
+          description: "Inline styles for the root element.",
+        },
+      ],
+      S = () => {
+        let [e, t] = (0, s.I)(),
+          n = (0, l.Y)(),
+          [i, h] = (0, r.useState)(null),
+          c = i ?? ("dark" === n ? "aurora" : "ink"),
+          [u, p] = (0, r.useState)({}),
+          d = { ...(b[c] ?? b.aurora), ...u },
+          [m, f] = (0, r.useState)("Made to move"),
+          [v, g] = (0, r.useState)(96),
+          [y, S] = (0, r.useState)("700"),
+          [E, k] = (0, r.useState)(!1),
+          [M, A] = (0, r.useState)(3),
+          [L, I] = (0, r.useState)(0.85),
+          [P, T] = (0, r.useState)(1),
+          [N, $] = (0, r.useState)(0.35),
+          [B, H] = (0, r.useState)(90),
+          [R, D] = (0, r.useState)(1),
+          [W, O] = (0, r.useState)(0.55),
+          [U, z] = (0, r.useState)(1),
+          [q, X] = (0, r.useState)(1),
+          [Y, _] = (0, r.useState)(0.7),
+          [G, V] = (0, r.useState)("parent"),
+          [J, K] = (0, r.useState)(!1);
+        return (0, a.jsxs)("div", {
+          children: [
+            (0, a.jsx)(o.Bg, {}),
+            (0, a.jsxs)(o.VX, {
+              children: [
+                (0, a.jsxs)(o.Ec, {
+                  children: [
+                    (0, a.jsx)(o.Ch, {
+                      onRefresh: t,
+                      minHeight: 500,
+                      enableResponsive: !0,
+                      children: (0, a.jsx)("div", {
+                        className:
+                          "flex h-full w-full items-center justify-center px-6 py-12 text-center sm:px-10",
+                        children: (0, a.jsx)(
+                          x,
+                          {
+                            as: "h2",
+                            text: m,
+                            color: d.color,
+                            colors: [d.near, d.far],
+                            echoes: M,
+                            echoOpacity: L,
+                            echoLag: P,
+                            strength: N,
+                            reach: B,
+                            stiffness: R,
+                            damping: W,
+                            stretch: U,
+                            tilt: q,
+                            pluck: Y,
+                            area: G,
+                            paused: J,
+                            style: {
+                              fontSize: `min(${v}px, 14vw)`,
+                              fontWeight: Number(y),
+                              letterSpacing: "-0.04em",
+                              lineHeight: 1.05,
+                              textTransform: E ? "uppercase" : void 0,
+                            },
+                          },
+                          e,
+                        ),
+                      }),
+                    }),
+                    (0, a.jsxs)(o.IH, {
+                      children: [
+                        (0, a.jsx)(o.bg, {
+                          title: "Preset",
+                          value: c,
+                          options: w,
+                          onChange: (e) => {
+                            (h(e), p({}));
+                          },
+                        }),
+                        (0, a.jsx)(o.UD, {
+                          title: "Text",
+                          value: m,
+                          onChange: f,
+                        }),
+                        (0, a.jsx)(o.W7, {
+                          title: "Color",
+                          value: d.color,
+                          onChange: (e) => p((t) => ({ ...t, color: e })),
+                        }),
+                        (0, a.jsx)(o.W7, {
+                          title: "Echo Near",
+                          value: d.near,
+                          onChange: (e) => p((t) => ({ ...t, near: e })),
+                        }),
+                        (0, a.jsx)(o.W7, {
+                          title: "Echo Far",
+                          value: d.far,
+                          onChange: (e) => p((t) => ({ ...t, far: e })),
+                        }),
+                        (0, a.jsx)(o.yt, {
+                          title: "Font Size",
+                          min: 24,
+                          max: 180,
+                          step: 1,
+                          value: v,
+                          valueUnit: "px",
+                          onChange: g,
+                        }),
+                        (0, a.jsx)(o.bg, {
+                          title: "Weight",
+                          value: y,
+                          options: C,
+                          onChange: S,
+                        }),
+                        (0, a.jsx)(o.yt, {
+                          title: "Echoes",
+                          min: 0,
+                          max: 6,
+                          step: 1,
+                          value: M,
+                          onChange: A,
+                        }),
+                        (0, a.jsx)(o.yt, {
+                          title: "Echo Opacity",
+                          min: 0,
+                          max: 1,
+                          step: 0.01,
+                          value: L,
+                          onChange: I,
+                        }),
+                        (0, a.jsx)(o.yt, {
+                          title: "Echo Lag",
+                          min: 0,
+                          max: 3,
+                          step: 0.05,
+                          value: P,
+                          onChange: T,
+                        }),
+                        (0, a.jsx)(o.yt, {
+                          title: "Strength",
+                          min: 0,
+                          max: 1.5,
+                          step: 0.01,
+                          value: N,
+                          onChange: $,
+                        }),
+                        (0, a.jsx)(o.yt, {
+                          title: "Reach",
+                          min: 10,
+                          max: 600,
+                          step: 5,
+                          value: B,
+                          valueUnit: "px",
+                          onChange: H,
+                        }),
+                        (0, a.jsx)(o.yt, {
+                          title: "Stiffness",
+                          min: 0.2,
+                          max: 3,
+                          step: 0.05,
+                          value: R,
+                          onChange: D,
+                        }),
+                        (0, a.jsx)(o.yt, {
+                          title: "Damping",
+                          min: 0.1,
+                          max: 1.5,
+                          step: 0.01,
+                          value: W,
+                          onChange: O,
+                        }),
+                        (0, a.jsx)(o.yt, {
+                          title: "Stretch",
+                          min: 0,
+                          max: 3,
+                          step: 0.05,
+                          value: U,
+                          onChange: z,
+                        }),
+                        (0, a.jsx)(o.yt, {
+                          title: "Tilt",
+                          min: 0,
+                          max: 3,
+                          step: 0.05,
+                          value: q,
+                          onChange: X,
+                        }),
+                        (0, a.jsx)(o.yt, {
+                          title: "Pluck",
+                          min: 0,
+                          max: 2,
+                          step: 0.05,
+                          value: Y,
+                          onChange: _,
+                        }),
+                        (0, a.jsx)(o.bg, {
+                          title: "Area",
+                          value: G,
+                          options: F,
+                          onChange: (e) => V(e),
+                        }),
+                        (0, a.jsx)(o.tl, {
+                          title: "Uppercase",
+                          checked: E,
+                          onChange: k,
+                        }),
+                        (0, a.jsx)(o.tl, {
+                          title: "Paused",
+                          checked: J,
+                          onChange: K,
+                        }),
+                      ],
+                    }),
+                    (0, a.jsx)(o.Ub, { data: j }),
+                  ],
+                }),
+                (0, a.jsx)(o.lT, { children: (0, a.jsx)(o.Gv, {}) }),
+              ],
+            }),
+          ],
+        });
+      };
+  },
+};

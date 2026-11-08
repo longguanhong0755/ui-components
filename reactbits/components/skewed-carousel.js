@@ -1,0 +1,582 @@
+/* ReactBits Pro public preview module 85367 for skewed-carousel.
+ * Extracted from https://pro.reactbits.dev/_next/static/chunks/85367.63fb0411ed2a2d66.js
+ * This is the compiled browser implementation, not the original TSX. */
+
+const module = {
+  85367: (e, t, a) => {
+    (a.r(t), a.d(t, { default: () => v }));
+    var s = a(95155),
+      i = a(12115),
+      n = a(56388),
+      o = a(90761),
+      r = a(39551),
+      l = a(30329),
+      c = a(31823),
+      d = a(90650);
+    let u = [
+        {
+          src: "https://images.unsplash.com/photo-1449157291145-7efd050a4d0e?q=80&w=500&auto=format&fit=crop",
+          title: "Vanishing Point",
+        },
+        {
+          src: "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=500&auto=format&fit=crop",
+          title: "Glass and Gravity",
+        },
+        {
+          src: "https://images.unsplash.com/photo-1487958449943-2429e8be8625?q=80&w=500&auto=format&fit=crop",
+          title: "Cut From the Sky",
+        },
+        {
+          src: "https://images.unsplash.com/photo-1479839672679-a46483c0e7c8?q=80&w=500&auto=format&fit=crop",
+          title: "Stacked in White",
+        },
+        {
+          src: "https://images.unsplash.com/photo-1518005020951-eccb494ad742?q=80&w=500&auto=format&fit=crop",
+          title: "The Long Curve",
+        },
+        {
+          src: "https://images.unsplash.com/photo-1523217582562-09d0def993a6?q=80&w=500&auto=format&fit=crop",
+          title: "Quiet Lines",
+        },
+        {
+          src: "https://images.unsplash.com/photo-1470075801209-17f9ec0cada6?q=80&w=500&auto=format&fit=crop",
+          title: "Cobalt Facade",
+        },
+        {
+          src: "https://images.unsplash.com/photo-1511818966892-d7d671e672a2?q=80&w=500&auto=format&fit=crop",
+          title: "Concrete Chorus",
+        },
+        {
+          src: "https://images.unsplash.com/photo-1470723710355-95304d8aece4?q=80&w=500&auto=format&fit=crop",
+          title: "City in Motion",
+        },
+        {
+          src: "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?q=80&w=500&auto=format&fit=crop",
+          title: "Water and Stone",
+        },
+      ],
+      p = (e, t, a) =>
+        t < 1 ? 0 : a ? ((e % t) + t) % t : e < 0 ? 0 : e > t - 1 ? t - 1 : e,
+      h = (e, t, a) => ({ type: "spring", bounce: e, duration: t * a }),
+      m = ({
+        item: e,
+        offset: t,
+        focused: a,
+        width: i,
+        aspectRatio: n,
+        rotation: o,
+        scale: l,
+        perspective: c,
+        radius: d,
+        blur: u,
+        captioned: p,
+        transition: h,
+        onPick: m,
+      }) =>
+        (0, s.jsx)("div", {
+          style: { perspective: c },
+          children: (0, s.jsx)(r.P.div, {
+            className: "will-change-[transform,scale]",
+            style: { width: i, aspectRatio: n },
+            animate: { rotateY: -(t * o), scale: a ? 1 : l },
+            transition: h,
+            children: (0, s.jsxs)("button", {
+              type: "button",
+              onClick: m,
+              tabIndex: a ? 0 : -1,
+              "aria-label": e.title,
+              "aria-current": a,
+              style: { borderRadius: d },
+              className:
+                "relative block h-full w-full cursor-pointer overflow-hidden border-0 bg-transparent p-0 outline-none focus-visible:[outline:2px_solid_currentColor] focus-visible:[outline-offset:4px]",
+              children: [
+                (0, s.jsx)("img", {
+                  src: e.src,
+                  alt: e.alt ?? e.title,
+                  draggable: !1,
+                  className: "h-full w-full object-cover",
+                }),
+                p &&
+                  (0, s.jsxs)(s.Fragment, {
+                    children: [
+                      (0, s.jsx)(r.P.span, {
+                        "aria-hidden": !0,
+                        className:
+                          "pointer-events-none absolute inset-x-0 bottom-0 h-2/5 bg-gradient-to-t from-black/80 via-black/30 to-transparent",
+                        animate: { opacity: +!!a },
+                        transition: h,
+                      }),
+                      (0, s.jsx)(r.P.span, {
+                        "aria-hidden": !a,
+                        className:
+                          "pointer-events-none absolute inset-x-0 bottom-0 block px-3.5 pb-3 text-left text-sm font-medium leading-snug tracking-[-0.01em] text-white [text-shadow:0_1px_2px_rgb(0_0_0/0.35)]",
+                        animate: {
+                          opacity: +!!a,
+                          filter: `blur(${a ? 0 : u}px)`,
+                          y: 10 * !a,
+                        },
+                        transition: h,
+                        children: e.title,
+                      }),
+                    ],
+                  }),
+              ],
+            }),
+          }),
+        }),
+      f = ({ items: e, current: t, token: a, transition: i, onPick: n }) =>
+        (0, s.jsx)("div", {
+          className: "flex w-44 items-center gap-1.5 sm:w-56",
+          children: e.map((e, o) =>
+            (0, s.jsx)(
+              "button",
+              {
+                type: "button",
+                onClick: () => n(o),
+                "aria-label": `Show ${e.title}`,
+                "aria-current": o === t,
+                className:
+                  "relative h-0.5 flex-1 cursor-pointer rounded-full bg-current/20 transition-colors duration-200 before:absolute before:inset-x-0 before:-inset-y-2.5 before:content-[''] hover:bg-current/45",
+                children:
+                  o === t &&
+                  (0, s.jsx)(r.P.span, {
+                    layoutId: a,
+                    className: "absolute inset-0 rounded-full bg-current",
+                    transition: i,
+                  }),
+              },
+              `rail-${e.src}-${o}`,
+            ),
+          ),
+        }),
+      x = ({ side: e, disabled: t, onPress: a }) => {
+        let i = "prev" === e ? l.A : c.A;
+        return (0, s.jsx)("button", {
+          type: "button",
+          onClick: a,
+          disabled: t,
+          "aria-label": "prev" === e ? "Previous slide" : "Next slide",
+          className:
+            "cursor-pointer p-1 opacity-40 transition-opacity duration-200 hover:opacity-100 disabled:pointer-events-none disabled:opacity-15",
+          children: (0, s.jsx)(i, { size: 16, strokeWidth: 2.25 }),
+        });
+      },
+      b = ({
+        items: e = u,
+        initialIndex: t = 3,
+        cardWidth: a = 200,
+        aspectRatio: n = "3 / 4",
+        rotation: o = 60,
+        inactiveScale: l = 0.85,
+        perspective: c = 800,
+        borderRadius: b = 8,
+        titleBlur: v = 2,
+        speed: g = 1,
+        showTitles: y = !0,
+        showControls: w = !0,
+        showDots: j = !0,
+        loop: C = !1,
+        autoplay: S = !1,
+        autoplayDelay: k = 3e3,
+        enableDrag: N = !0,
+        enableKeyboard: P = !0,
+        className: I,
+        onIndexChange: A,
+      }) => {
+        let D = e.length,
+          E = (0, i.useId)(),
+          [q, T] = (0, i.useState)(() => p(t, D, !1)),
+          _ = (0, i.useRef)(A);
+        ((0, i.useEffect)(() => {
+          _.current = A;
+        }, [A]),
+          (0, i.useEffect)(() => {
+            _.current?.(q);
+          }, [q]));
+        let R = (0, i.useCallback)((e) => T(p(e, D, C)), [D, C]),
+          B = (0, i.useCallback)((e) => T((t) => p(t + e, D, C)), [D, C]);
+        (0, i.useEffect)(() => {
+          if (!S || D <= 1) return;
+          let e = window.setInterval(
+            () => T((e) => (e + 1 >= D && !C ? e : p(e + 1, D, C))),
+            Math.max(k, 400),
+          );
+          return () => window.clearInterval(e);
+        }, [S, k, D, C]);
+        let W = (0, i.useMemo)(
+            () => ({
+              strip: h(0.2, 0.8, g),
+              card: h(0.1, 1, g),
+              rail: h(0.25, 0.5, g),
+            }),
+            [g],
+          ),
+          M = !C && 0 === q,
+          $ = !C && q >= D - 1;
+        return (0, s.jsxs)("div", {
+          tabIndex: 0,
+          role: "group",
+          "aria-roledescription": "carousel",
+          "aria-label": "Image carousel",
+          onKeyDown: (e) => {
+            if (!P) return;
+            let t = "ArrowLeft" === e.key ? -1 : +("ArrowRight" === e.key);
+            t && (e.preventDefault(), B(t));
+          },
+          className: (0, d.cn)(
+            "relative flex w-full select-none flex-col items-center overflow-hidden text-neutral-900 outline-none dark:text-neutral-100",
+            I,
+          ),
+          children: [
+            (0, s.jsx)("div", {
+              style: { width: a },
+              children: (0, s.jsx)(r.P.div, {
+                className: "flex w-fit",
+                style: { touchAction: "pan-y" },
+                animate: { x: -q * a },
+                transition: W.strip,
+                onPanEnd: N
+                  ? (e, t) => {
+                      let a = t.offset.x + 0.08 * t.velocity.x;
+                      45 > Math.abs(a) || B(a < 0 ? 1 : -1);
+                    }
+                  : void 0,
+                children: e.map((e, t) =>
+                  (0, s.jsx)(
+                    m,
+                    {
+                      item: e,
+                      offset: t - q,
+                      focused: t === q,
+                      width: a,
+                      aspectRatio: n,
+                      rotation: o,
+                      scale: l,
+                      perspective: c,
+                      radius: b,
+                      blur: v,
+                      captioned: y,
+                      transition: W.card,
+                      onPick: () => R(t),
+                    },
+                    `${e.src}-${t}`,
+                  ),
+                ),
+              }),
+            }),
+            (w || j) &&
+              (0, s.jsxs)("div", {
+                className: "mt-9 flex items-center gap-4",
+                children: [
+                  w &&
+                    (0, s.jsx)(x, {
+                      side: "prev",
+                      disabled: M,
+                      onPress: () => B(-1),
+                    }),
+                  j &&
+                    (0, s.jsx)(f, {
+                      items: e,
+                      current: q,
+                      token: E,
+                      transition: W.rail,
+                      onPick: R,
+                    }),
+                  w &&
+                    (0, s.jsx)(x, {
+                      side: "next",
+                      disabled: $,
+                      onPress: () => B(1),
+                    }),
+                ],
+              }),
+          ],
+        });
+      },
+      v = () => {
+        let [e, t] = (0, o.I)(),
+          [a, r] = (0, i.useState)(200),
+          [l, c] = (0, i.useState)(60),
+          [d, u] = (0, i.useState)(0.85),
+          [p, h] = (0, i.useState)(800),
+          [m, f] = (0, i.useState)(8),
+          [x, v] = (0, i.useState)(2),
+          [g, y] = (0, i.useState)(1),
+          [w, j] = (0, i.useState)(!0),
+          [C, S] = (0, i.useState)(!0),
+          [k, N] = (0, i.useState)(!0),
+          [P, I] = (0, i.useState)(!1),
+          [A, D] = (0, i.useState)(!1),
+          [E, q] = (0, i.useState)(3e3),
+          [T, _] = (0, i.useState)(!0);
+        return (0, s.jsxs)("div", {
+          children: [
+            (0, s.jsx)(n.Bg, {}),
+            (0, s.jsxs)(n.VX, {
+              children: [
+                (0, s.jsxs)(n.Ec, {
+                  children: [
+                    (0, s.jsx)(n.Ch, {
+                      onRefresh: t,
+                      minHeight: 520,
+                      children: (0, s.jsx)(
+                        b,
+                        {
+                          cardWidth: a,
+                          rotation: l,
+                          inactiveScale: d,
+                          perspective: p,
+                          borderRadius: m,
+                          titleBlur: x,
+                          speed: g,
+                          showTitles: w,
+                          showControls: C,
+                          showDots: k,
+                          loop: P,
+                          autoplay: A,
+                          autoplayDelay: E,
+                          enableDrag: T,
+                        },
+                        e,
+                      ),
+                    }),
+                    (0, s.jsxs)(n.IH, {
+                      children: [
+                        (0, s.jsx)(n.yt, {
+                          title: "Card Width",
+                          min: 120,
+                          max: 320,
+                          step: 10,
+                          value: a,
+                          onChange: r,
+                        }),
+                        (0, s.jsx)(n.yt, {
+                          title: "Rotation",
+                          min: 0,
+                          max: 90,
+                          step: 5,
+                          value: l,
+                          onChange: c,
+                        }),
+                        (0, s.jsx)(n.yt, {
+                          title: "Inactive Scale",
+                          min: 0.5,
+                          max: 1,
+                          step: 0.05,
+                          value: d,
+                          onChange: u,
+                        }),
+                        (0, s.jsx)(n.yt, {
+                          title: "Perspective",
+                          min: 300,
+                          max: 2e3,
+                          step: 50,
+                          value: p,
+                          onChange: h,
+                        }),
+                        (0, s.jsx)(n.yt, {
+                          title: "Border Radius",
+                          min: 0,
+                          max: 40,
+                          step: 1,
+                          value: m,
+                          onChange: f,
+                        }),
+                        (0, s.jsx)(n.yt, {
+                          title: "Title Blur",
+                          min: 0,
+                          max: 10,
+                          step: 0.5,
+                          value: x,
+                          onChange: v,
+                        }),
+                        (0, s.jsx)(n.yt, {
+                          title: "Speed",
+                          min: 0.2,
+                          max: 3,
+                          step: 0.1,
+                          value: g,
+                          onChange: y,
+                        }),
+                        (0, s.jsx)(n.yt, {
+                          title: "Autoplay Delay",
+                          min: 800,
+                          max: 8e3,
+                          step: 200,
+                          value: E,
+                          onChange: q,
+                        }),
+                        (0, s.jsx)(n.tl, {
+                          title: "Show Titles",
+                          checked: w,
+                          onChange: j,
+                        }),
+                        (0, s.jsx)(n.tl, {
+                          title: "Show Controls",
+                          checked: C,
+                          onChange: S,
+                        }),
+                        (0, s.jsx)(n.tl, {
+                          title: "Show Dots",
+                          checked: k,
+                          onChange: N,
+                        }),
+                        (0, s.jsx)(n.tl, {
+                          title: "Loop",
+                          checked: P,
+                          onChange: I,
+                        }),
+                        (0, s.jsx)(n.tl, {
+                          title: "Autoplay",
+                          checked: A,
+                          onChange: D,
+                        }),
+                        (0, s.jsx)(n.tl, {
+                          title: "Enable Drag",
+                          checked: T,
+                          onChange: _,
+                        }),
+                      ],
+                    }),
+                    (0, s.jsx)(n.Ub, {
+                      data: [
+                        {
+                          name: "items",
+                          type: "SkewedCarouselItem[]",
+                          default: "10 sample slides",
+                          description: "Slides rendered by the carousel",
+                        },
+                        {
+                          name: "initialIndex",
+                          type: "number",
+                          default: "3",
+                          description: "Slide focused on mount",
+                        },
+                        {
+                          name: "cardWidth",
+                          type: "number",
+                          default: "200",
+                          description: "Slide width in pixels",
+                        },
+                        {
+                          name: "aspectRatio",
+                          type: "string",
+                          default: '"3 / 4"',
+                          description: "Aspect ratio of each slide",
+                        },
+                        {
+                          name: "rotation",
+                          type: "number",
+                          default: "60",
+                          description:
+                            "Degrees each slide turns per step away from the active one",
+                        },
+                        {
+                          name: "inactiveScale",
+                          type: "number",
+                          default: "0.85",
+                          description: "Scale applied to every inactive slide",
+                        },
+                        {
+                          name: "perspective",
+                          type: "number",
+                          default: "800",
+                          description:
+                            "Perspective depth applied to each slide in pixels",
+                        },
+                        {
+                          name: "borderRadius",
+                          type: "number",
+                          default: "8",
+                          description: "Corner radius of the slides in pixels",
+                        },
+                        {
+                          name: "titleBlur",
+                          type: "number",
+                          default: "2",
+                          description:
+                            "Blur applied to inactive captions in pixels",
+                        },
+                        {
+                          name: "speed",
+                          type: "number",
+                          default: "1",
+                          description: "Multiplier for the transition duration",
+                        },
+                        {
+                          name: "showTitles",
+                          type: "boolean",
+                          default: "true",
+                          description:
+                            "Show the caption under the active slide",
+                        },
+                        {
+                          name: "showControls",
+                          type: "boolean",
+                          default: "true",
+                          description: "Show the previous and next buttons",
+                        },
+                        {
+                          name: "showDots",
+                          type: "boolean",
+                          default: "true",
+                          description: "Show the progress dots",
+                        },
+                        {
+                          name: "loop",
+                          type: "boolean",
+                          default: "false",
+                          description: "Wrap around at either end",
+                        },
+                        {
+                          name: "autoplay",
+                          type: "boolean",
+                          default: "false",
+                          description: "Advance on a timer",
+                        },
+                        {
+                          name: "autoplayDelay",
+                          type: "number",
+                          default: "3000",
+                          description:
+                            "Delay between automatic advances in milliseconds",
+                        },
+                        {
+                          name: "enableDrag",
+                          type: "boolean",
+                          default: "true",
+                          description:
+                            "Allow dragging across the strip to navigate",
+                        },
+                        {
+                          name: "enableKeyboard",
+                          type: "boolean",
+                          default: "true",
+                          description:
+                            "Allow arrow keys to navigate when focused",
+                        },
+                        {
+                          name: "className",
+                          type: "string",
+                          default: "undefined",
+                          description: "Additional CSS classes",
+                        },
+                        {
+                          name: "onIndexChange",
+                          type: "(index: number) => void",
+                          default: "undefined",
+                          description:
+                            "Fired whenever the active slide changes",
+                        },
+                      ],
+                    }),
+                  ],
+                }),
+                (0, s.jsx)(n.lT, { children: (0, s.jsx)(n.Gv, {}) }),
+              ],
+            }),
+          ],
+        });
+      };
+  },
+};

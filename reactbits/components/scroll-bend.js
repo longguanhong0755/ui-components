@@ -1,0 +1,1741 @@
+/* ReactBits Pro public preview module 83546 for scroll-bend.
+ * Extracted from https://pro.reactbits.dev/_next/static/chunks/83546.8a6c9d287b52c805.js
+ * This is the compiled browser implementation, not the original TSX. */
+
+const module = {
+  83546: (e, t, a) => {
+    (a.r(t), a.d(t, { default: () => B }));
+    var n = a(95155),
+      r = a(12115),
+      i = a(56388),
+      l = a(90761),
+      s = a(2253),
+      o = a(12246),
+      u = a(90650);
+    let d = 0.22,
+      c = 2 * Math.PI,
+      h = [
+        {
+          src: "/demo-media/abstract-amber-loop.webp",
+          alt: "Amber loop on a raspberry field",
+        },
+        {
+          src: "/demo-media/abstract-pink-eclipse.webp",
+          alt: "Coral disc rising over a violet plane",
+        },
+        {
+          src: "/demo-media/abstract-rose-balance.webp",
+          alt: "Raspberry pill and tangerine disc on rose",
+        },
+        {
+          src: "/demo-media/abstract-coral-fold.webp",
+          alt: "Vermilion fold over deep plum",
+        },
+        {
+          src: "/demo-media/abstract-fuchsia-wave.webp",
+          alt: "Fuchsia wave across a plum field",
+        },
+        {
+          src: "/demo-media/abstract-violet-steps.webp",
+          alt: "Violet and pink stepped planes",
+        },
+        {
+          src: "/demo-media/abstract-plum-ribbon.webp",
+          alt: "Pink and plum ribbons crossing",
+        },
+        {
+          src: "/demo-media/abstract-orchid-orbit.webp",
+          alt: "Fuchsia ring and peach crescent",
+        },
+      ],
+      p = {
+        position: "absolute",
+        width: 1,
+        height: 1,
+        padding: 0,
+        margin: -1,
+        overflow: "hidden",
+        clip: "rect(0, 0, 0, 0)",
+        whiteSpace: "nowrap",
+        border: 0,
+      },
+      m = (e) => {
+        let t = window.matchMedia("(prefers-reduced-motion: reduce)");
+        return (
+          t.addEventListener("change", e),
+          () => t.removeEventListener("change", e)
+        );
+      },
+      f = () => window.matchMedia("(prefers-reduced-motion: reduce)").matches,
+      v = (e, t, a) => Math.min(a, Math.max(t, e)),
+      g = (e, t) => (Number.isFinite(e) ? e : t),
+      b = (e, t) => ((e % t) + t) % t,
+      x = () => {
+        let e = new s.GYF(new Uint8Array(4), 1, 1);
+        return ((e.needsUpdate = !0), e);
+      },
+      y = (e) => (e ? new s.bdM(1, 1, 24, 48) : new s.bdM(1, 1, 48, 24)),
+      w = `
+uniform vec2 uView;
+uniform vec2 uTile;
+uniform vec2 uCenter;
+uniform float uMargin;
+uniform float uK;
+uniform float uBias;
+uniform float uLens;
+uniform float uVertical;
+out vec2 vLocal;
+out vec2 vScreen;
+
+void main() {
+  vec2 local = position.xy * (uTile + 2.0 * uMargin);
+  vec2 p = uCenter + local;
+  float r = length(p) / uLens;
+  float f = max(1.0 - r * r, 0.0);
+  float m = uK * f * f;
+  vec2 gain = mix(vec2(1.0 + uBias * m, 1.0 + m), vec2(1.0 + m, 1.0 + uBias * m), uVertical);
+  vec2 q = p * gain;
+  vLocal = local;
+  vScreen = q;
+  gl_Position = vec4(q / (0.5 * uView), 0.0, 1.0);
+}
+`,
+      M = `
+uniform sampler2D uMap;
+uniform float uImageAspect;
+uniform float uReady;
+uniform vec2 uTile;
+uniform vec2 uView;
+uniform float uCorner;
+uniform float uVertical;
+uniform float uFade;
+uniform float uShade;
+uniform float uSpread;
+uniform float uLens;
+uniform vec4 uPlaceholder;
+in vec2 vLocal;
+in vec2 vScreen;
+out vec4 fragColor;
+
+vec2 cover(vec2 local) {
+  float tileAspect = uTile.x / uTile.y;
+  vec2 scale = uImageAspect > tileAspect ? vec2(tileAspect / uImageAspect, 1.0) : vec2(1.0, uImageAspect / tileAspect);
+  return local / uTile * scale + 0.5;
+}
+
+void main() {
+  vec2 extent = 0.5 * uTile;
+  float corner = min(uCorner, min(extent.x, extent.y));
+  vec2 d = abs(vLocal) - extent + corner;
+  float sd = length(max(d, 0.0)) + min(max(d.x, d.y), 0.0) - corner;
+  float mask = clamp(0.5 - sd / max(fwidth(sd), 1e-4), 0.0, 1.0);
+  float along = mix(vScreen.x, vScreen.y, uVertical);
+  float span = mix(uView.x, uView.y, uVertical);
+  float reach = clamp(abs(along) / (0.5 * span), 0.0, 1.0);
+  float fade = uFade > 0.0 ? smoothstep(0.0, uFade, 0.5 * (1.0 - reach)) : 1.0;
+  vec4 base = texture(uMap, cover(vLocal));
+  vec3 rgb = base.rgb;
+  if (uSpread > 0.001) {
+    float dist = length(vScreen);
+    vec2 shift = vScreen / max(dist, 1.0) * uSpread * min(dist / uLens, 1.0);
+    rgb.r = texture(uMap, cover(vLocal + shift)).r;
+    rgb.b = texture(uMap, cover(vLocal - shift)).b;
+  }
+  vec4 image = vec4(rgb * (1.0 - uShade * reach * reach), base.a);
+  vec4 color = mix(uPlaceholder, image, smoothstep(0.0, 1.0, uReady));
+  fragColor = color * (mask * fade);
+}
+`,
+      S = (0, r.forwardRef)(function (
+        {
+          items: e = h,
+          orientation: t = "vertical",
+          bend: a = "direction",
+          strength: i = 1,
+          maxBend: l = 0.38,
+          restBend: S = 0,
+          axisBias: C = 0.75,
+          lensRadius: j = 1,
+          response: E = 0.32,
+          wobble: L = 0.25,
+          itemSize: R = 0.68,
+          aspectRatio: k,
+          gap: B = 16,
+          radius: I = 18,
+          autoScroll: A = 50,
+          pauseOnHover: P = !1,
+          wheelSpeed: T = 1,
+          dragSpeed: H = 1,
+          inertia: z = 0.55,
+          snap: F = !0,
+          infinite: V = !0,
+          fade: D = 0.16,
+          shade: U = 0.22,
+          aberration: W = 0.4,
+          paused: N = !1,
+          quality: O = 1,
+          onIndexChange: q,
+          className: $,
+          style: K,
+          ariaLabel: Y = "Image gallery",
+        },
+        _,
+      ) {
+        let G = (0, r.useRef)(null),
+          X = (0, r.useRef)(null),
+          Q = (0, r.useRef)(q),
+          [J, Z] = (0, r.useState)(!1),
+          ee = (0, r.useSyncExternalStore)(m, f, () => !1),
+          et = (0, r.useMemo)(
+            () =>
+              e
+                .map((e) =>
+                  "string" == typeof e
+                    ? { src: e }
+                    : { src: e?.src, alt: e?.alt },
+                )
+                .filter((e) => "string" == typeof e.src && e.src.length > 0),
+            [e],
+          ),
+          ea = k ?? ("horizontal" === t ? 0.78 : 1.35),
+          en = (0, r.useRef)({
+            items: et,
+            orientation: t,
+            bend: a,
+            strength: i,
+            maxBend: l,
+            restBend: S,
+            axisBias: C,
+            lensRadius: j,
+            response: E,
+            wobble: L,
+            itemSize: R,
+            aspectRatio: ea,
+            gap: B,
+            radius: I,
+            autoScroll: A,
+            pauseOnHover: P,
+            wheelSpeed: T,
+            dragSpeed: H,
+            inertia: z,
+            snap: F,
+            infinite: V,
+            fade: D,
+            shade: U,
+            aberration: W,
+            paused: N,
+            quality: O,
+            reduced: ee,
+          });
+        ((0, r.useEffect)(() => {
+          ((en.current = {
+            items: et,
+            orientation: t,
+            bend: a,
+            strength: i,
+            maxBend: l,
+            restBend: S,
+            axisBias: C,
+            lensRadius: j,
+            response: E,
+            wobble: L,
+            itemSize: R,
+            aspectRatio: ea,
+            gap: B,
+            radius: I,
+            autoScroll: A,
+            pauseOnHover: P,
+            wheelSpeed: T,
+            dragSpeed: H,
+            inertia: z,
+            snap: F,
+            infinite: V,
+            fade: D,
+            shade: U,
+            aberration: W,
+            paused: N,
+            quality: O,
+            reduced: ee,
+          }),
+            (Q.current = q),
+            X.current?.sync());
+        }),
+          (0, r.useEffect)(() => {
+            let e = G.current;
+            if (!e) return;
+            let t = ((e, t, a) => {
+              let n,
+                r = e.ownerDocument,
+                i = r.defaultView ?? window,
+                l = r.createElement("canvas");
+              (l.setAttribute("aria-hidden", "true"),
+                (l.style.cssText =
+                  "position:absolute;inset:0;width:100%;height:100%;display:block;pointer-events:none"));
+              try {
+                n = new o.WebGLRenderer({
+                  canvas: l,
+                  alpha: !0,
+                  antialias: !1,
+                  premultipliedAlpha: !0,
+                  powerPreference: "high-performance",
+                });
+              } catch {
+                return null;
+              }
+              (e.prepend(l), n.setClearColor(0, 0));
+              let u = new s.Z58(),
+                h = new s.qUd(-1, 1, 1, -1, 0, 1),
+                p = x(),
+                m = {
+                  uView: { value: new s.I9Y(1, 1) },
+                  uTile: { value: new s.I9Y(1, 1) },
+                  uMargin: { value: 3 },
+                  uK: { value: 0 },
+                  uBias: { value: 0.75 },
+                  uLens: { value: 1 },
+                  uVertical: { value: 1 },
+                  uCorner: { value: 18 },
+                  uFade: { value: 0.16 },
+                  uShade: { value: 0.22 },
+                  uSpread: { value: 0 },
+                  uPlaceholder: { value: new s.IUQ(0.06, 0.06, 0.06, 0.12) },
+                },
+                f = [],
+                S = new Map(),
+                C = [],
+                j = null,
+                E = !0,
+                L = y(!0),
+                R = {
+                  vertical: !0,
+                  span: 1,
+                  tileWidth: 1,
+                  tileHeight: 1,
+                  length: 1,
+                  stride: 0,
+                },
+                k = 0,
+                B = 0,
+                I = 0,
+                A = 0,
+                P = 0,
+                T = 0,
+                H = 0,
+                z = 0,
+                F = 1,
+                V = null,
+                D = 0,
+                U = null,
+                W = 0,
+                N = v(g(t.current.restBend, 0), -0.45, 0.45),
+                O = 0,
+                q = !1,
+                $ = t.current.infinite,
+                K = -1e9,
+                Y = -1e9,
+                _ = null,
+                G = 0,
+                X = -1,
+                Q = 0,
+                J = 0,
+                Z = !1,
+                ee = !0,
+                et = !1,
+                ea = !1,
+                en = () => i.performance.now() / 1e3,
+                er = () => Math.max(0, (t.current.items.length - 1) * R.stride),
+                ei = () => v(g(t.current.inertia, 0.55), 0.02, 3),
+                el = () => (t.current.reduced ? 0 : 0.08 + 0.15 * ei()),
+                es = () => {
+                  let e = t.current;
+                  return e.snap && (0 === g(e.autoScroll, 0) || e.reduced);
+                },
+                eo = () => {
+                  let e = t.current,
+                    a = g(e.autoScroll, 0);
+                  return (
+                    !e.reduced &&
+                    !e.paused &&
+                    0 !== a &&
+                    !U &&
+                    !!t.current.items.length &&
+                    !!R.stride &&
+                    (!e.pauseOnHover || !q) &&
+                    (!!t.current.infinite ||
+                      er() > (0.25 * Math.abs(a) + 1) * 4)
+                  );
+                },
+                eu = (e) => {
+                  if (!R.stride) return e;
+                  let a = Math.round(e / R.stride);
+                  return (
+                    (t.current.infinite
+                      ? a
+                      : v(a, 0, Math.max(0, t.current.items.length - 1))) *
+                    R.stride
+                  );
+                },
+                ed = () => Math.max(24, 0.16 * R.span),
+                ec = (e) => {
+                  let t = A < 0 ? 0 : er();
+                  if (!((A - t) * e >= 0)) return e;
+                  let a = Math.max(ed() - Math.abs(A - t), 0.1 * ed()),
+                    n = (0.11 * Math.abs(e)) / Math.E;
+                  return (e * a) / (n + a);
+                },
+                eh = () => {
+                  if (V) return D;
+                  let e = el();
+                  return H + (e > 0 ? T / e : 0) + z;
+                },
+                ep = () => {
+                  let e = t.current,
+                    a = v(g(e.restBend, 0), -0.45, 0.45);
+                  if (e.reduced) return a;
+                  let n =
+                    v((W / 2400) * v(g(e.strength, 1), 0, 5), -1, 1) *
+                    v(g(e.maxBend, 0.38), 0, 0.45);
+                  return "convex" === e.bend
+                    ? a + Math.abs(n)
+                    : "concave" === e.bend
+                      ? a - Math.abs(n)
+                      : a + n;
+                },
+                em = (e, a, n = d) => {
+                  if (((H = 0), (T = 0), (z = 0), t.current.reduced)) {
+                    ((A = e), (V = null), (D = 0));
+                    return;
+                  }
+                  let r = e - A,
+                    i = n;
+                  if (Math.abs(r) > 0.5 && a * r > 0) {
+                    let e = Math.abs(r / a);
+                    e <= 0.8 && (i = Math.max(0.1, e));
+                  } else
+                    Math.abs(r) > 0.5 &&
+                      Math.abs(a) > 30 &&
+                      (i = Math.min(n, 0.13));
+                  ((V = { target: e, omega: 1 / i }), (D = a));
+                },
+                ef = () => {
+                  let a = Math.max(1, e.clientWidth),
+                    r = Math.max(1, e.clientHeight),
+                    l =
+                      Math.min(i.devicePixelRatio || 1, 2) *
+                      v(g(t.current.quality, 1), 0.25, 1);
+                  ((a !== k || r !== B || Math.abs(l - I) > 0.001) &&
+                    ((k = a),
+                    (B = r),
+                    (I = l),
+                    n.setPixelRatio(I),
+                    n.setSize(k, B, !1)),
+                    (() => {
+                      let e = t.current,
+                        a = "horizontal" !== e.orientation;
+                      if (a !== E) {
+                        let e = L;
+                        ((L = y((E = a))),
+                          f.forEach((e) => {
+                            e.mesh.geometry = L;
+                          }),
+                          e.dispose(),
+                          (U = null));
+                      }
+                      let n = t.current.items.length;
+                      $ !== e.infinite &&
+                        !($ = e.infinite) &&
+                        n > 0 &&
+                        R.stride > 0 &&
+                        ((A = b(A, n * R.stride)),
+                        V && (V.target = eu(b(V.target, n * R.stride))));
+                      let r = E ? B : k,
+                        i = v(g(e.itemSize, 0.68), 0.05, 1) * Math.min(k, B),
+                        l = v(g(e.aspectRatio, 1.35), 0.2, 5),
+                        s = E ? i : i * l,
+                        o = E ? i / l : i,
+                        u = E ? o : s,
+                        d = Math.max(4, u + v(g(e.gap, 16), 0, 4e3));
+                      if (R.stride > 0 && Math.abs(d - R.stride) > 1e-6) {
+                        let e = d / R.stride;
+                        ((A *= e),
+                          (P *= e),
+                          (T *= e),
+                          (H *= e),
+                          (D *= e),
+                          V && (V.target *= e),
+                          U && (U.origin *= e));
+                      }
+                      R = {
+                        vertical: E,
+                        span: r,
+                        tileWidth: s,
+                        tileHeight: o,
+                        length: u,
+                        stride: d,
+                      };
+                    })());
+                },
+                ev = () => {
+                  let e = new s.I9Y(),
+                    t = { value: p },
+                    a = { value: 1 },
+                    n = { value: 0 },
+                    r = new s.BKk({
+                      glslVersion: s.Wdf,
+                      uniforms: {
+                        ...m,
+                        uCenter: { value: e },
+                        uMap: t,
+                        uImageAspect: a,
+                        uReady: n,
+                      },
+                      vertexShader: w,
+                      fragmentShader: M,
+                      transparent: !0,
+                      premultipliedAlpha: !0,
+                      depthTest: !1,
+                      depthWrite: !1,
+                    }),
+                    i = new s.eaF(L, r);
+                  ((i.frustumCulled = !1), (i.matrixAutoUpdate = !1), u.add(i));
+                  let l = { mesh: i, center: e, map: t, aspect: a, ready: n };
+                  return (f.push(l), l);
+                },
+                eg = () => {
+                  let e = t.current.items,
+                    a = e.map((e) => e.src).join("\n");
+                  if (a === j) return;
+                  j = a;
+                  let n = new Set(e.map((e) => e.src));
+                  (S.forEach((e, t) => {
+                    n.has(t) || (e.texture?.dispose(), S.delete(t));
+                  }),
+                    (C = C.filter((e) => S.get(e.src) === e)),
+                    n.forEach((e) => {
+                      if (S.has(e)) return;
+                      let t = r.createElement("img"),
+                        a = {
+                          src: e,
+                          image: t,
+                          texture: null,
+                          aspect: 1,
+                          ready: 0,
+                        };
+                      S.set(e, a);
+                      let n = () => {
+                        ea ||
+                          S.get(e) !== a ||
+                          !t.naturalWidth ||
+                          a.texture ||
+                          ((a.aspect =
+                            t.naturalWidth / Math.max(1, t.naturalHeight)),
+                          C.push(a),
+                          ey());
+                      };
+                      ((t.crossOrigin = "anonymous"),
+                        (t.decoding = "async"),
+                        (t.src = e),
+                        t.decode().then(n, () => {
+                          t.complete && n();
+                        }));
+                    }));
+                },
+                eb = () => {
+                  var e;
+                  let a;
+                  if (et || ea || !k || !B) return;
+                  let r = t.current,
+                    i = r.items.length,
+                    l =
+                      (a = Math.abs((e = N))) <= 0.36000000000000004
+                        ? e
+                        : Math.sign(e) *
+                          (0.36000000000000004 +
+                            (0.45 - 0.36000000000000004) *
+                              Math.tanh(
+                                (a - 0.36000000000000004) /
+                                  (0.45 - 0.36000000000000004),
+                              ));
+                  (m.uView.value.set(k, B),
+                    m.uTile.value.set(R.tileWidth, R.tileHeight),
+                    (m.uK.value = l),
+                    (m.uBias.value = v(g(r.axisBias, 0.75), 0, 1)));
+                  let s = (R.vertical ? R.tileWidth : R.tileHeight) * 0.5;
+                  ((m.uLens.value =
+                    v(g(r.lensRadius, 1), 0.2, 3) *
+                    Math.hypot(0.5 * R.span, s)),
+                    (m.uVertical.value = +!!R.vertical),
+                    (m.uCorner.value = v(g(r.radius, 18), 0, 4e3)),
+                    (m.uFade.value = v(g(r.fade, 0.16), 0, 0.5)),
+                    (m.uShade.value = v(g(r.shade, 0.22), 0, 1)),
+                    (m.uSpread.value =
+                      v(g(r.aberration, 0.4), 0, 1) * Math.abs(l) * 18));
+                  let o = 0;
+                  if (i > 0 && R.stride > 0) {
+                    let e =
+                        (0.5 * R.span) / Math.max(0.5, 1 + Math.min(0, l)) +
+                        0.5 * R.length +
+                        2,
+                      t = Math.ceil((P - e) / R.stride),
+                      a = Math.floor((P + e) / R.stride);
+                    r.infinite ||
+                      ((t = Math.max(t, 0)), (a = Math.min(a, i - 1)));
+                    for (let e = t; e <= a && o < 64; e++) {
+                      let t = f[o] ?? ev(),
+                        a = e * R.stride - P;
+                      R.vertical ? t.center.set(0, -a) : t.center.set(a, 0);
+                      let n = S.get(r.items[b(e, i)].src),
+                        l = n?.texture ?? null;
+                      ((t.map.value = l ?? p),
+                        (t.aspect.value = n && l ? n.aspect : 1),
+                        (t.ready.value = n && l ? n.ready : 0),
+                        (t.mesh.visible = !0),
+                        o++);
+                    }
+                  }
+                  for (let e = o; e < f.length; e++) f[e].mesh.visible = !1;
+                  n.render(u, h);
+                },
+                ex = (e) => {
+                  if (((Q = 0), ea || et)) return;
+                  Z = !0;
+                  let l = e / 1e3,
+                    o = J ? v(l - J, 0, 0.05) : 1 / 60;
+                  ((J = l),
+                    C.length &&
+                      (() => {
+                        let e,
+                          t = C.shift();
+                        if (!t || S.get(t.src) !== t || t.texture) return;
+                        let { image: a } = t,
+                          i = Math.max(a.naturalWidth, a.naturalHeight),
+                          l = Math.min(2048, n.capabilities.maxTextureSize);
+                        if (i > l) {
+                          let t = l / i,
+                            n = r.createElement("canvas");
+                          ((n.width = Math.max(
+                            1,
+                            Math.round(a.naturalWidth * t),
+                          )),
+                            (n.height = Math.max(
+                              1,
+                              Math.round(a.naturalHeight * t),
+                            )));
+                          let o = n.getContext("2d");
+                          (o &&
+                            ((o.imageSmoothingQuality = "high"),
+                            o.drawImage(a, 0, 0, n.width, n.height)),
+                            (e = new s.GOR(n)));
+                        } else e = new s.gPd(a);
+                        ((e.colorSpace = s.jf0),
+                          (e.premultiplyAlpha = !0),
+                          (e.generateMipmaps = !0),
+                          (e.minFilter = s.$_I),
+                          (e.magFilter = s.k6q),
+                          (e.anisotropy = Math.min(
+                            8,
+                            n.capabilities.getMaxAnisotropy(),
+                          )),
+                          (e.needsUpdate = !0),
+                          n.initTexture(e),
+                          (t.texture = e));
+                      })(),
+                    ((e, a) => {
+                      let n = t.current,
+                        r = t.current.items.length,
+                        i = P,
+                        l = er(),
+                        s = !t.current.infinite,
+                        o = 0;
+                      if (eo() && !V && a - K > 1.1) {
+                        let e = g(n.autoScroll, 0);
+                        if (s) {
+                          let t = 0.25 * Math.abs(e) + 1,
+                            a = Math.sign(e) * F;
+                          (((a > 0 && A >= l - t) || (a < 0 && A <= t)) &&
+                            (F = -F),
+                            (o = e * F));
+                        } else o = e;
+                      }
+                      if (
+                        (0.01 >
+                          Math.abs(
+                            (z = o + (z - o) * Math.exp(-e / 0.6)) - o,
+                          ) && (z = o),
+                        r && R.stride)
+                      )
+                        if (U) ((H = 0), (T = 0));
+                        else if (V) {
+                          let { target: t, omega: a } = V,
+                            n = A - t,
+                            r = D + a * n,
+                            i = Math.exp(-a * e);
+                          ((A = t + (n + r * e) * i),
+                            (D = (D - a * r * e) * i),
+                            0.08 > Math.abs(A - t) &&
+                              2 > Math.abs(D) &&
+                              ((A = t), (D = 0), (V = null)));
+                        } else {
+                          let t = ei(),
+                            n = Math.exp(-e / t),
+                            r = H * t * (1 - n);
+                          0.05 > Math.abs((H *= n)) && (H = 0);
+                          let i = el(),
+                            o = i > 0 ? T * (1 - Math.exp(-e / i)) : T;
+                          if (
+                            (0.02 > Math.abs((T -= o)) && ((o += T), (T = 0)),
+                            (A += r + o + z * e),
+                            s && (A < 0 || A > l))
+                          )
+                            em(
+                              v(A, 0, l),
+                              ec((r + o) / Math.max(e, 1e-4) + z),
+                              0.11,
+                            );
+                          else if (es() && a - Y >= 0.14) {
+                            let e = A + T + H * t,
+                              a = eu(e);
+                            if ("free" === _) {
+                              let t = e - G;
+                              t > 0.12 * R.stride
+                                ? (a = Math.max(a, eu(G + R.stride)))
+                                : t < -(0.12 * R.stride) &&
+                                  (a = Math.min(a, eu(G - R.stride)));
+                            }
+                            ((_ = null),
+                              (Math.abs(a - A) > 0.02 || 0 !== H || 0 !== T) &&
+                                em(a, H + (i > 0 ? T / i : 0)));
+                          }
+                        }
+                      else ((H = 0), (T = 0), (V = null), (D = 0));
+                      P = A;
+                      let u = e > 0 ? (P - i) / e : 0;
+                      0.5 >
+                        Math.abs(
+                          (W = n.reduced
+                            ? 0
+                            : u + (W - u) * Math.exp(-e / 0.07)),
+                        ) &&
+                        0.5 > Math.abs(u) &&
+                        (W = 0);
+                      let d = ep();
+                      if (n.reduced) {
+                        ((N = d), (O = 0));
+                        return;
+                      }
+                      let h = c / v(g(n.response, 0.32), 0.05, 3),
+                        p = 1 - 0.55 * v(g(n.wobble, 0.25), 0, 1),
+                        m = e;
+                      for (; m > 1e-6;) {
+                        let e = Math.min(m, 1 / 240);
+                        ((O += (h * h * (d - N) - 2 * p * h * O) * e),
+                          (N += O * e),
+                          (m -= e));
+                      }
+                      1e-5 > Math.abs(d - N) &&
+                        1e-4 > Math.abs(O) &&
+                        ((N = d), (O = 0));
+                    })(o, l),
+                    S.forEach((e) => {
+                      e.texture &&
+                        e.ready < 1 &&
+                        (e.ready = Math.min(1, e.ready + o / 0.6));
+                    }),
+                    eb(),
+                    (() => {
+                      let e = t.current.items.length;
+                      if (!e || !R.stride) return;
+                      let n = Math.round(P / R.stride),
+                        r = t.current.infinite ? b(n, e) : v(n, 0, e - 1);
+                      r !== X && ((X = r), a(r));
+                    })(),
+                    (Z = !1),
+                    !Q &&
+                      ee &&
+                      !r.hidden &&
+                      (() => {
+                        if (
+                          U ||
+                          V ||
+                          0 !== T ||
+                          0 !== H ||
+                          C.length ||
+                          eo() ||
+                          0 !== z ||
+                          0 !== W ||
+                          Math.abs(N - ep()) > 1e-5 ||
+                          0 !== O
+                        )
+                          return !0;
+                        for (let e of S.values())
+                          if (e.texture && e.ready < 1) return !0;
+                        return (
+                          !!(
+                            t.current.items.length &&
+                            R.stride &&
+                            ((!t.current.infinite && (A < 0 || A > er())) ||
+                              (es() && Math.abs(eu(A) - A) > 0.02))
+                          ) || !1
+                        );
+                      })() &&
+                      (Q = i.requestAnimationFrame(ex)));
+                };
+              function ey() {
+                ea ||
+                  Q ||
+                  Z ||
+                  et ||
+                  !ee ||
+                  r.hidden ||
+                  ((J = 0), (Q = i.requestAnimationFrame(ex)));
+              }
+              let ew = (e) => {
+                  ((K = en()), (Y = -1e9), (_ = null), em(e, eh(), 0.16), ey());
+                },
+                eM = (e) => {
+                  let a = t.current.items.length;
+                  if (!a || !R.stride) return;
+                  let n = Math.round((V ? V.target : A + T) / R.stride);
+                  ew(
+                    (t.current.infinite ? n + e : v(n + e, 0, a - 1)) *
+                      R.stride,
+                  );
+                },
+                eS = (e) => {
+                  let a = t.current.items.length;
+                  if (!a || !R.stride || !Number.isFinite(e)) return;
+                  let n = b(Math.round(e), a);
+                  if (!t.current.infinite) return void ew(n * R.stride);
+                  let r = Math.round((V ? V.target : A + T) / R.stride),
+                    i = n - b(r, a);
+                  (i > a / 2 ? (i -= a) : i < -a / 2 && (i += a),
+                    ew((r + i) * R.stride));
+                },
+                eC = (e) => (R.vertical ? e.clientY : e.clientX),
+                ej = (a) => {
+                  let n = t.current;
+                  if (
+                    !a.isPrimary ||
+                    a.button > 0 ||
+                    !g(n.dragSpeed, 1) ||
+                    !t.current.items.length ||
+                    !R.stride
+                  )
+                    return;
+                  let r = e.getBoundingClientRect(),
+                    i = R.vertical
+                      ? e.clientHeight / Math.max(r.height, 1)
+                      : e.clientWidth / Math.max(r.width, 1);
+                  ((V = null), (D = 0), (H = 0), (T = 0), (z = 0), (_ = null));
+                  let l = en();
+                  ((U = {
+                    id: a.pointerId,
+                    start: eC(a),
+                    origin: t.current.infinite
+                      ? A
+                      : ((e) => {
+                          let t = er(),
+                            a = ed();
+                          if (e < 0) {
+                            let t = Math.max(e, -(0.98 * a));
+                            return (t * a) / (a + t);
+                          }
+                          if (e > t) {
+                            let n = Math.min(e - t, 0.98 * a);
+                            return t + (n * a) / (a - n);
+                          }
+                          return e;
+                        })(A),
+                    scale: i,
+                    samples: [{ t: l, p: A }],
+                  }),
+                    (K = l));
+                  try {
+                    e.setPointerCapture(a.pointerId);
+                  } catch {}
+                  ((e.style.cursor = "grabbing"), ey());
+                },
+                eE = (e) => {
+                  if (!U || e.pointerId !== U.id) return;
+                  let a = g(t.current.dragSpeed, 1),
+                    n = U.origin - (eC(e) - U.start) * U.scale * a;
+                  A = t.current.infinite
+                    ? n
+                    : ((e) => {
+                        let t = er(),
+                          a = ed();
+                        if (e < 0) return (e * a) / (a - e);
+                        if (e > t) {
+                          let n = e - t;
+                          return t + (n * a) / (n + a);
+                        }
+                        return e;
+                      })(n);
+                  let r = en();
+                  for (
+                    U.samples.push({ t: r, p: A });
+                    U.samples.length > 2 && r - U.samples[0].t > 0.1;
+                  )
+                    U.samples.shift();
+                  ((K = r), ey());
+                },
+                eL = (a) => {
+                  var n;
+                  if (!U || a.pointerId !== U.id) return;
+                  let r = U;
+                  U = null;
+                  try {
+                    e.hasPointerCapture(a.pointerId) &&
+                      e.releasePointerCapture(a.pointerId);
+                  } catch {}
+                  e.style.cursor = "grab";
+                  let i = en(),
+                    l = r.samples.filter((e) => i - e.t < 0.1),
+                    s = 0;
+                  if (
+                    "pointerup" === a.type &&
+                    l.length > 1 &&
+                    i - l[l.length - 1].t < 0.06
+                  ) {
+                    let e = l[0],
+                      t = l[l.length - 1];
+                    s = (t.p - e.p) / Math.max(t.t - e.t, 1 / 120);
+                  }
+                  ((K = i),
+                    (n = t.current.reduced ? 0 : v(s, -8e3, 8e3)),
+                    !t.current.infinite && (A < 0 || A > er())
+                      ? em(v(A, 0, er()), ec(n), 0.11)
+                      : es()
+                        ? em(eu(A + n * ei()), n)
+                        : (H = n),
+                    ey());
+                },
+                eR = (e) => {
+                  "touch" !== e.pointerType && ((q = !0), ey());
+                },
+                ek = (e) => {
+                  "touch" !== e.pointerType && ((q = !1), ey());
+                },
+                eB = (e) => {
+                  let a,
+                    n = g(t.current.wheelSpeed, 1);
+                  if (!n || !t.current.items.length || !R.stride || e.ctrlKey)
+                    return;
+                  if (R.vertical) {
+                    if (Math.abs(e.deltaX) > Math.abs(e.deltaY)) return;
+                    a = e.deltaY;
+                  } else
+                    a =
+                      Math.abs(e.deltaX) >= Math.abs(e.deltaY)
+                        ? e.deltaX
+                        : e.deltaY;
+                  if (!a) return;
+                  if (U) return void e.preventDefault();
+                  let r =
+                      v(
+                        a *
+                          (1 === e.deltaMode
+                            ? 16
+                            : 2 === e.deltaMode
+                              ? R.span
+                              : 1),
+                        -240,
+                        240,
+                      ) * n,
+                    i = en();
+                  if (
+                    es() &&
+                    (i - Y > 0.14 && (_ = null),
+                    null === _ &&
+                      ((G = V ? V.target : eu(A + T)),
+                      (_ = Math.abs(r) >= 0.12 * R.stride ? "detent" : "free")),
+                    "detent" === _)
+                  ) {
+                    let t = V ? V.target : eu(A + T),
+                      a = eu(
+                        t +
+                          Math.sign(r) *
+                            Math.max(1, Math.round(Math.abs(r) / 120)) *
+                            R.stride,
+                      );
+                    if (a === t && !V && 0.5 > Math.abs(A - t)) return;
+                    (e.preventDefault(),
+                      (Y = i),
+                      (K = i),
+                      a !== t &&
+                        Math.abs(t - A) < 1.5 * R.stride &&
+                        em(a, eh(), 0.16),
+                      ey());
+                    return;
+                  }
+                  if (
+                    (V && ((T = V.target - A), (H = 0), (V = null), (D = 0)),
+                    !t.current.infinite)
+                  ) {
+                    let e = A + T,
+                      t = v(e + r, 0, er());
+                    if (0.5 > Math.abs(t - e)) return;
+                    r = t - e;
+                  }
+                  (e.preventDefault(), (T += r), (Y = i), (K = i), ey());
+                },
+                eI = (a) => {
+                  if (a.target !== e || a.altKey || a.ctrlKey || a.metaKey)
+                    return;
+                  let n = R.vertical ? "ArrowDown" : "ArrowRight",
+                    r = R.vertical ? "ArrowUp" : "ArrowLeft";
+                  a.key === n || "PageDown" === a.key
+                    ? (a.preventDefault(), eM(1))
+                    : a.key === r || "PageUp" === a.key
+                      ? (a.preventDefault(), eM(-1))
+                      : "Home" === a.key
+                        ? (a.preventDefault(), eS(0))
+                        : "End" === a.key &&
+                          (a.preventDefault(), eS(t.current.items.length - 1));
+                },
+                eA = () => {
+                  r.hidden || ey();
+                },
+                eP = (e) => {
+                  (e.preventDefault(),
+                    (et = !0),
+                    Q && i.cancelAnimationFrame(Q),
+                    (Q = 0));
+                },
+                eT = () => {
+                  ((et = !1),
+                    (p = x()),
+                    (L = y(E)),
+                    f.forEach((e) => {
+                      ((e.mesh.geometry = L), (e.map.value = p));
+                    }),
+                    S.forEach((e) => {
+                      e.texture &&
+                        ((e.texture = null), (e.ready = 0), C.push(e));
+                    }),
+                    eb(),
+                    ey());
+                };
+              (e.addEventListener("pointerdown", ej),
+                e.addEventListener("pointermove", eE),
+                e.addEventListener("pointerup", eL),
+                e.addEventListener("pointercancel", eL),
+                e.addEventListener("lostpointercapture", eL),
+                e.addEventListener("pointerenter", eR),
+                e.addEventListener("pointerleave", ek),
+                e.addEventListener("wheel", eB, { passive: !1 }),
+                e.addEventListener("keydown", eI),
+                r.addEventListener("visibilitychange", eA),
+                l.addEventListener("webglcontextlost", eP),
+                l.addEventListener("webglcontextrestored", eT));
+              let eH =
+                "function" == typeof i.ResizeObserver
+                  ? new i.ResizeObserver(() => {
+                      (ef(), eb(), ey());
+                    })
+                  : null;
+              eH?.observe(e);
+              let ez =
+                "function" == typeof i.IntersectionObserver
+                  ? new i.IntersectionObserver(
+                      (e) => {
+                        (ee = e.some((e) => e.isIntersecting))
+                          ? ey()
+                          : Q && (i.cancelAnimationFrame(Q), (Q = 0));
+                      },
+                      { rootMargin: "80px" },
+                    )
+                  : null;
+              return (
+                ez?.observe(e),
+                eg(),
+                ef(),
+                (e.style.cursor = g(t.current.dragSpeed, 1) ? "grab" : ""),
+                eb(),
+                ey(),
+                {
+                  sync: () => {
+                    ea ||
+                      (eg(),
+                      ef(),
+                      U ||
+                        (e.style.cursor = g(t.current.dragSpeed, 1)
+                          ? "grab"
+                          : ""),
+                      eb(),
+                      ey());
+                  },
+                  destroy: () => {
+                    ((ea = !0),
+                      Q && i.cancelAnimationFrame(Q),
+                      (Q = 0),
+                      e.removeEventListener("pointerdown", ej),
+                      e.removeEventListener("pointermove", eE),
+                      e.removeEventListener("pointerup", eL),
+                      e.removeEventListener("pointercancel", eL),
+                      e.removeEventListener("lostpointercapture", eL),
+                      e.removeEventListener("pointerenter", eR),
+                      e.removeEventListener("pointerleave", ek),
+                      e.removeEventListener("wheel", eB),
+                      e.removeEventListener("keydown", eI),
+                      r.removeEventListener("visibilitychange", eA),
+                      l.removeEventListener("webglcontextlost", eP),
+                      l.removeEventListener("webglcontextrestored", eT),
+                      eH?.disconnect(),
+                      ez?.disconnect(),
+                      (e.style.cursor = ""),
+                      S.forEach((e) => e.texture?.dispose()),
+                      S.clear(),
+                      (C = []),
+                      f.forEach((e) => {
+                        (u.remove(e.mesh), e.mesh.material.dispose());
+                      }),
+                      (f.length = 0),
+                      L.dispose(),
+                      p.dispose(),
+                      n.dispose(),
+                      n.getContext().isContextLost() || n.forceContextLoss(),
+                      l.remove());
+                  },
+                  next: () => eM(1),
+                  previous: () => eM(-1),
+                  goTo: eS,
+                  impulse: (e) => {
+                    if (
+                      !Number.isFinite(e) ||
+                      !t.current.items.length ||
+                      !R.stride
+                    )
+                      return;
+                    let a = v(e, -2e4, 2e4),
+                      n = eh() + a;
+                    ((K = en()),
+                      (Y = -1e9),
+                      (_ = null),
+                      es() || t.current.reduced
+                        ? em(eu(A + n * ei()), n)
+                        : (V && ((H = D), (V = null), (D = 0)), (H += a)),
+                      ey());
+                  },
+                }
+              );
+            })(e, en, (e) => Q.current?.(e));
+            if (!t) {
+              let e = requestAnimationFrame(() => Z(!0));
+              return () => cancelAnimationFrame(e);
+            }
+            return (
+              (X.current = t),
+              () => {
+                (t.destroy(), (X.current = null));
+              }
+            );
+          }, []),
+          (0, r.useImperativeHandle)(
+            _,
+            () => ({
+              next: () => X.current?.next(),
+              previous: () => X.current?.previous(),
+              goTo: (e) => X.current?.goTo(e),
+              impulse: (e) => X.current?.impulse(e),
+            }),
+            [],
+          ));
+        let er = "horizontal" === t;
+        return (0, n.jsxs)("div", {
+          ref: G,
+          role: "region",
+          "aria-roledescription": "carousel",
+          "aria-label": Y,
+          tabIndex: 0,
+          className: (0, u.cn)(
+            "relative h-full min-h-[420px] w-full select-none overflow-hidden outline-none focus-visible:outline-2 focus-visible:-outline-offset-2 focus-visible:outline-[color-mix(in_oklch,currentColor_35%,transparent)]",
+            $,
+          ),
+          style: {
+            touchAction: er ? "pan-y" : "pan-x",
+            WebkitTapHighlightColor: "transparent",
+            ...K,
+          },
+          children: [
+            J
+              ? (0, n.jsx)("div", {
+                  "aria-hidden": "true",
+                  style: {
+                    position: "absolute",
+                    inset: 0,
+                    display: "flex",
+                    flexDirection: er ? "row" : "column",
+                    alignItems: "center",
+                    gap: B,
+                    padding: 24,
+                    overflow: "auto",
+                    touchAction: "auto",
+                  },
+                  children: et.map((e, t) =>
+                    (0, n.jsx)(
+                      "div",
+                      {
+                        style: {
+                          flex: "none",
+                          width: er ? void 0 : `${100 * v(R, 0.05, 1)}%`,
+                          height: er ? `${100 * v(R, 0.05, 1)}%` : void 0,
+                          aspectRatio: String(v(ea, 0.2, 5)),
+                          borderRadius: I,
+                          backgroundColor: "rgba(128, 128, 128, 0.12)",
+                          backgroundImage: `url(${JSON.stringify(e.src)})`,
+                          backgroundSize: "cover",
+                          backgroundPosition: "center",
+                        },
+                      },
+                      `${t}-${e.src}`,
+                    ),
+                  ),
+                })
+              : null,
+            (0, n.jsx)("ul", {
+              style: p,
+              children: et.map((e, t) =>
+                (0, n.jsx)(
+                  "li",
+                  { children: e.alt ?? `Image ${t + 1} of ${et.length}` },
+                  `${t}-${e.src}`,
+                ),
+              ),
+            }),
+          ],
+        });
+      });
+    S.displayName = "ScrollBend";
+    let C = {
+        orientation: "vertical",
+        bend: "direction",
+        strength: 1,
+        maxBend: 0.38,
+        restBend: 0,
+        axisBias: 0.75,
+        lensRadius: 1,
+        response: 0.32,
+        wobble: 0.25,
+        itemSize: 0.68,
+        aspectRatio: 1.35,
+        aberration: 0.4,
+      },
+      j = {
+        velocity: C,
+        bulge: { ...C, bend: "convex", restBend: 0.12, maxBend: 0.42 },
+        pinch: { ...C, bend: "concave", restBend: -0.1 },
+        reel: {
+          ...C,
+          orientation: "horizontal",
+          aspectRatio: 0.78,
+          itemSize: 0.62,
+        },
+        fisheye: { ...C, axisBias: 1, restBend: 0.22, lensRadius: 0.85 },
+        calm: { ...C, strength: 0.5, maxBend: 0.2, aberration: 0, wobble: 0 },
+      },
+      E = [
+        { label: "Velocity", value: "velocity" },
+        { label: "Bulge", value: "bulge" },
+        { label: "Pinch", value: "pinch" },
+        { label: "Reel", value: "reel" },
+        { label: "Fisheye", value: "fisheye" },
+        { label: "Calm", value: "calm" },
+      ],
+      L = [
+        { label: "Vertical", value: "vertical" },
+        { label: "Horizontal", value: "horizontal" },
+      ],
+      R = [
+        { label: "Direction", value: "direction" },
+        { label: "Convex", value: "convex" },
+        { label: "Concave", value: "concave" },
+      ],
+      k = [
+        {
+          name: "items",
+          type: "(string | { src: string; alt?: string })[]",
+          default: "8 abstract images",
+          description:
+            "Images in the strip, as URLs or { src, alt } objects. Alt text goes into a hidden list that screen readers announce.",
+        },
+        {
+          name: "orientation",
+          type: '"vertical" | "horizontal"',
+          default: '"vertical"',
+          description: "Direction the strip runs and scrolls.",
+        },
+        {
+          name: "bend",
+          type: '"convex" | "concave" | "direction"',
+          default: '"direction"',
+          description:
+            "How speed shapes the lens. convex swells the middle toward you, concave pinches it, direction swells while scrolling forward and pinches while scrolling back.",
+        },
+        {
+          name: "strength",
+          type: "number",
+          default: "1",
+          description:
+            "How quickly the bend builds as scrolling speeds up. Higher values bend fully at gentler speeds.",
+        },
+        {
+          name: "maxBend",
+          type: "number",
+          default: "0.38",
+          description: "Strongest bend that speed can add, from 0 to 0.45.",
+        },
+        {
+          name: "restBend",
+          type: "number",
+          default: "0",
+          description:
+            "Bend the strip holds when it is still. Positive values bulge, negative values pinch.",
+        },
+        {
+          name: "axisBias",
+          type: "number",
+          default: "0.75",
+          description:
+            "How much the lens also stretches along the strip. 0 only widens the silhouette and keeps the gaps straight, 1 is a full fisheye where the gaps bow.",
+        },
+        {
+          name: "lensRadius",
+          type: "number",
+          default: "1",
+          description:
+            "Size of the lens relative to the visible strip. Smaller values gather the bend into the middle.",
+        },
+        {
+          name: "response",
+          type: "number",
+          default: "0.32",
+          description: "Seconds the bend takes to follow a change in speed.",
+        },
+        {
+          name: "wobble",
+          type: "number",
+          default: "0.25",
+          description:
+            "Overshoot as the bend springs back, from 0 (none) to 1 (jelly).",
+        },
+        {
+          name: "itemSize",
+          type: "number",
+          default: "0.68",
+          description:
+            "Tile size across the strip, as a fraction of the container's shorter side.",
+        },
+        {
+          name: "aspectRatio",
+          type: "number",
+          default: "1.35 vertical, 0.78 horizontal",
+          description:
+            "Tile width divided by height. Images are cropped to fill their tile.",
+        },
+        {
+          name: "gap",
+          type: "number",
+          default: "16",
+          description: "Space between tiles in pixels.",
+        },
+        {
+          name: "radius",
+          type: "number",
+          default: "18",
+          description: "Corner radius of the tiles in pixels.",
+        },
+        {
+          name: "autoScroll",
+          type: "number",
+          default: "50",
+          description:
+            "Drift speed in pixels per second while idle. It pauses briefly after any input. Negative values drift backward, 0 turns it off.",
+        },
+        {
+          name: "pauseOnHover",
+          type: "boolean",
+          default: "false",
+          description: "Stop the drift while the pointer is over the strip.",
+        },
+        {
+          name: "wheelSpeed",
+          type: "number",
+          default: "1",
+          description:
+            "Multiplier for wheel and trackpad scrolling. 0 leaves the page scroll untouched.",
+        },
+        {
+          name: "dragSpeed",
+          type: "number",
+          default: "1",
+          description:
+            "Multiplier for mouse and touch dragging. 0 turns dragging off.",
+        },
+        {
+          name: "inertia",
+          type: "number",
+          default: "0.55",
+          description:
+            "Seconds of momentum after a flick. It also sets how softly wheel scrolling glides.",
+        },
+        {
+          name: "snap",
+          type: "boolean",
+          default: "true",
+          description:
+            "Settle on the nearest image when scrolling stops. Applies when autoScroll is 0. A single wheel notch then steps one image.",
+        },
+        {
+          name: "infinite",
+          type: "boolean",
+          default: "true",
+          description:
+            "Loop the images endlessly. When off, the ends stretch and spring back, and the drift turns around.",
+        },
+        {
+          name: "fade",
+          type: "number",
+          default: "0.16",
+          description:
+            "Length of the fade to transparent at each end, as a fraction of the strip's length.",
+        },
+        {
+          name: "shade",
+          type: "number",
+          default: "0.22",
+          description:
+            "How much the tiles darken toward the ends, from 0 to 1.",
+        },
+        {
+          name: "aberration",
+          type: "number",
+          default: "0.4",
+          description:
+            "Colour fringing that appears as the lens bends, from 0 to 1.",
+        },
+        {
+          name: "paused",
+          type: "boolean",
+          default: "false",
+          description:
+            "Stop the drift. Scrolling, dragging and the keyboard still work. Reduced-motion users get no drift or bend.",
+        },
+        {
+          name: "quality",
+          type: "number",
+          default: "1",
+          description:
+            "Resolution scale from 0.25 to 1. Lower values are cheaper on large screens.",
+        },
+        {
+          name: "onIndexChange",
+          type: "(index: number) => void",
+          default: "—",
+          description:
+            "Called with the index of the image nearest the centre whenever it changes.",
+        },
+        {
+          name: "ariaLabel",
+          type: "string",
+          default: '"Image gallery"',
+          description:
+            "Accessible name of the carousel. When it has focus, the arrow keys and Page Up/Down step one image, Home and End jump to the first and last.",
+        },
+        {
+          name: "ref",
+          type: "{ next, previous, goTo, impulse }",
+          default: "—",
+          description:
+            "next() and previous() step one image, goTo(index) glides to an image, impulse(velocity) pushes the strip in pixels per second.",
+        },
+        {
+          name: "className",
+          type: "string",
+          default: "—",
+          description:
+            "Classes for the root element. It fills its parent, with a 420px minimum height.",
+        },
+        {
+          name: "style",
+          type: "CSSProperties",
+          default: "—",
+          description: "Inline styles for the root element.",
+        },
+      ],
+      B = () => {
+        let [e, t] = (0, l.I)(),
+          [a, s] = (0, r.useState)("velocity"),
+          [o, u] = (0, r.useState)(C),
+          d = (e) => (t) => u((a) => ({ ...a, [e]: t })),
+          [c, h] = (0, r.useState)(16),
+          [p, m] = (0, r.useState)(18),
+          [f, v] = (0, r.useState)(50),
+          [g, b] = (0, r.useState)(!1),
+          [x, y] = (0, r.useState)(1),
+          [w, M] = (0, r.useState)(1),
+          [B, I] = (0, r.useState)(0.55),
+          [A, P] = (0, r.useState)(!0),
+          [T, H] = (0, r.useState)(!0),
+          [z, F] = (0, r.useState)(0.16),
+          [V, D] = (0, r.useState)(0.22),
+          [U, W] = (0, r.useState)(!1),
+          [N, O] = (0, r.useState)(1);
+        return (0, n.jsxs)("div", {
+          children: [
+            (0, n.jsx)(i.Bg, {}),
+            (0, n.jsxs)(i.VX, {
+              children: [
+                (0, n.jsxs)(i.Ec, {
+                  children: [
+                    (0, n.jsx)(i.Ch, {
+                      onRefresh: t,
+                      minHeight: 620,
+                      enableResponsive: !0,
+                      children: (0, n.jsx)("div", {
+                        className: "relative h-full w-full",
+                        children: (0, n.jsx)(
+                          S,
+                          {
+                            orientation: o.orientation,
+                            bend: o.bend,
+                            strength: o.strength,
+                            maxBend: o.maxBend,
+                            restBend: o.restBend,
+                            axisBias: o.axisBias,
+                            lensRadius: o.lensRadius,
+                            response: o.response,
+                            wobble: o.wobble,
+                            itemSize: o.itemSize,
+                            aspectRatio: o.aspectRatio,
+                            gap: c,
+                            radius: p,
+                            autoScroll: f,
+                            pauseOnHover: g,
+                            wheelSpeed: x,
+                            dragSpeed: w,
+                            inertia: B,
+                            snap: A,
+                            infinite: T,
+                            fade: z,
+                            shade: V,
+                            aberration: o.aberration,
+                            paused: U,
+                            quality: N,
+                          },
+                          e,
+                        ),
+                      }),
+                    }),
+                    (0, n.jsxs)(i.IH, {
+                      children: [
+                        (0, n.jsx)(i.bg, {
+                          title: "Preset",
+                          value: a,
+                          options: E,
+                          onChange: (e) => {
+                            (s(e), u(j[e] ?? C));
+                          },
+                        }),
+                        (0, n.jsx)(i.bg, {
+                          title: "Orientation",
+                          value: o.orientation,
+                          options: L,
+                          onChange: (e) => d("orientation")(e),
+                        }),
+                        (0, n.jsx)(i.bg, {
+                          title: "Bend",
+                          value: o.bend,
+                          options: R,
+                          onChange: (e) => d("bend")(e),
+                        }),
+                        (0, n.jsx)(i.yt, {
+                          title: "Strength",
+                          min: 0,
+                          max: 3,
+                          step: 0.05,
+                          value: o.strength,
+                          onChange: d("strength"),
+                        }),
+                        (0, n.jsx)(i.yt, {
+                          title: "Max Bend",
+                          min: 0,
+                          max: 0.45,
+                          step: 0.01,
+                          value: o.maxBend,
+                          onChange: d("maxBend"),
+                        }),
+                        (0, n.jsx)(i.yt, {
+                          title: "Rest Bend",
+                          min: -0.45,
+                          max: 0.45,
+                          step: 0.01,
+                          value: o.restBend,
+                          onChange: d("restBend"),
+                        }),
+                        (0, n.jsx)(i.yt, {
+                          title: "Axis Bias",
+                          min: 0,
+                          max: 1,
+                          step: 0.01,
+                          value: o.axisBias,
+                          onChange: d("axisBias"),
+                        }),
+                        (0, n.jsx)(i.yt, {
+                          title: "Lens Radius",
+                          min: 0.4,
+                          max: 2,
+                          step: 0.01,
+                          value: o.lensRadius,
+                          onChange: d("lensRadius"),
+                        }),
+                        (0, n.jsx)(i.yt, {
+                          title: "Response",
+                          min: 0.08,
+                          max: 1,
+                          step: 0.01,
+                          value: o.response,
+                          valueUnit: "s",
+                          onChange: d("response"),
+                        }),
+                        (0, n.jsx)(i.yt, {
+                          title: "Wobble",
+                          min: 0,
+                          max: 1,
+                          step: 0.01,
+                          value: o.wobble,
+                          onChange: d("wobble"),
+                        }),
+                        (0, n.jsx)(i.yt, {
+                          title: "Item Size",
+                          min: 0.2,
+                          max: 1,
+                          step: 0.01,
+                          value: o.itemSize,
+                          onChange: d("itemSize"),
+                        }),
+                        (0, n.jsx)(i.yt, {
+                          title: "Aspect Ratio",
+                          min: 0.4,
+                          max: 2.5,
+                          step: 0.01,
+                          value: o.aspectRatio,
+                          onChange: d("aspectRatio"),
+                        }),
+                        (0, n.jsx)(i.yt, {
+                          title: "Gap",
+                          min: 0,
+                          max: 64,
+                          step: 1,
+                          value: c,
+                          valueUnit: "px",
+                          onChange: h,
+                        }),
+                        (0, n.jsx)(i.yt, {
+                          title: "Radius",
+                          min: 0,
+                          max: 48,
+                          step: 1,
+                          value: p,
+                          valueUnit: "px",
+                          onChange: m,
+                        }),
+                        (0, n.jsx)(i.yt, {
+                          title: "Auto Scroll",
+                          min: -200,
+                          max: 200,
+                          step: 5,
+                          value: f,
+                          valueUnit: "px/s",
+                          onChange: v,
+                        }),
+                        (0, n.jsx)(i.yt, {
+                          title: "Wheel Speed",
+                          min: 0,
+                          max: 3,
+                          step: 0.05,
+                          value: x,
+                          onChange: y,
+                        }),
+                        (0, n.jsx)(i.yt, {
+                          title: "Drag Speed",
+                          min: 0,
+                          max: 3,
+                          step: 0.05,
+                          value: w,
+                          onChange: M,
+                        }),
+                        (0, n.jsx)(i.yt, {
+                          title: "Inertia",
+                          min: 0,
+                          max: 1.5,
+                          step: 0.01,
+                          value: B,
+                          valueUnit: "s",
+                          onChange: I,
+                        }),
+                        (0, n.jsx)(i.yt, {
+                          title: "Fade",
+                          min: 0,
+                          max: 0.5,
+                          step: 0.01,
+                          value: z,
+                          onChange: F,
+                        }),
+                        (0, n.jsx)(i.yt, {
+                          title: "Shade",
+                          min: 0,
+                          max: 1,
+                          step: 0.01,
+                          value: V,
+                          onChange: D,
+                        }),
+                        (0, n.jsx)(i.yt, {
+                          title: "Aberration",
+                          min: 0,
+                          max: 1,
+                          step: 0.01,
+                          value: o.aberration,
+                          onChange: d("aberration"),
+                        }),
+                        (0, n.jsx)(i.yt, {
+                          title: "Quality",
+                          min: 0.25,
+                          max: 1,
+                          step: 0.05,
+                          value: N,
+                          onChange: O,
+                        }),
+                        (0, n.jsx)(i.tl, {
+                          title: "Pause On Hover",
+                          checked: g,
+                          onChange: b,
+                        }),
+                        (0, n.jsx)(i.tl, {
+                          title: "Snap",
+                          checked: A,
+                          onChange: P,
+                        }),
+                        (0, n.jsx)(i.tl, {
+                          title: "Infinite",
+                          checked: T,
+                          onChange: H,
+                        }),
+                        (0, n.jsx)(i.tl, {
+                          title: "Paused",
+                          checked: U,
+                          onChange: W,
+                        }),
+                      ],
+                    }),
+                    (0, n.jsx)(i.Ub, { data: k }),
+                  ],
+                }),
+                (0, n.jsx)(i.lT, { children: (0, n.jsx)(i.Gv, {}) }),
+              ],
+            }),
+          ],
+        });
+      };
+  },
+};
