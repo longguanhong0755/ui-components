@@ -1,7 +1,7 @@
 {
  "source": "https://pro.reactbits.dev",
- "generatedAt": "2026-11-08T10:19:07+00:00",
- "count": 230,
+ "generatedAt": "2026-11-08T13:18:43+00:00",
+ "count": 231,
  "components": [
   {
    "slug": "3d-letter-swap",
@@ -982,6 +982,21 @@
    "bytes": 29754,
    "entryBytes": 28009,
    "fallback": false
+  },
+  {
+   "slug": "flicker",
+   "name": "Flicker",
+   "category": "UI & Cards",
+   "description": "A grid of particles that flicker on and off",
+   "module": 26874,
+   "chunk": 26874,
+   "chunkUrl": "https://pro.reactbits.dev/_next/static/chunks/26874.c0703b4da60ce671.js",
+   "chunkFile": "chunks/flicker__26874.js",
+   "componentFile": "components/flicker.js",
+   "bytes": 9242,
+   "entryBytes": 3926,
+   "fallback": false,
+   "hidden": true
   },
   {
    "slug": "fog-sphere",

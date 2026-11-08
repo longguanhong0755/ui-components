@@ -1,9 +1,9 @@
 {
  "source": "https://pro.reactbits.dev",
- "generatedAt": "2026-11-08T10:19:07+00:00",
+ "generatedAt": "2026-11-08T13:18:43+00:00",
  "webpack": "https://pro.reactbits.dev/_next/static/chunks/webpack-9b5a3d0f56973969.js?dpl=dpl_wN86oRS3t6xUGV2WPQ9rJuVdixkW",
- "total": 230,
- "ok": 230,
+ "total": 231,
+ "ok": 231,
  "failed": 0,
  "components": [
   {
@@ -2605,6 +2605,43 @@
    "name": "Flame Paths",
    "category": "Backgrounds",
    "description": "Glowing flame tongues that gust and flare up"
+  },
+  {
+   "slug": "flicker",
+   "module": 26874,
+   "chunk": 26874,
+   "deps": [
+    36472,
+    39551,
+    19543,
+    80944,
+    20137,
+    7775,
+    8664,
+    78388,
+    11358,
+    91690,
+    36019,
+    79071,
+    10951,
+    65326,
+    454,
+    80864,
+    52407,
+    43408,
+    66729,
+    36222,
+    26874
+   ],
+   "url": "https://pro.reactbits.dev/_next/static/chunks/26874.c0703b4da60ce671.js",
+   "bytes": 9242,
+   "chunkFile": "chunks/flicker__26874.js",
+   "entryBytes": 3926,
+   "entryExtracted": true,
+   "name": "Flicker",
+   "category": "UI & Cards",
+   "description": "A grid of particles that flicker on and off",
+   "hidden": true
   },
   {
    "slug": "fog-sphere",
