@@ -1,0 +1,622 @@
+{
+  "commit": "59e9f48c0ad9a3db2fbeb8898b4390d5a1eabb40",
+  "count": 88,
+  "files": [
+    {
+      "id": "flow-field",
+      "file": "flow-field.html",
+      "bytes": 10086,
+      "sha256": "00f057ed9b4dc425218a17405543b821836ee49a02cf0f78769564a2a24a3bdd",
+      "upstream": "https://github.com/pbakaus/radiant/blob/59e9f48c0ad9a3db2fbeb8898b4390d5a1eabb40/static/flow-field.html"
+    },
+    {
+      "id": "topographic",
+      "file": "topographic.html",
+      "bytes": 16179,
+      "sha256": "666a68c4e70b57125bd7a73b7b9ae8ef3158f628662c6041fb79e57589bddada",
+      "upstream": "https://github.com/pbakaus/radiant/blob/59e9f48c0ad9a3db2fbeb8898b4390d5a1eabb40/static/topographic.html"
+    },
+    {
+      "id": "generative-tree",
+      "file": "generative-tree.html",
+      "bytes": 19743,
+      "sha256": "d8d512f3b5674581d101dd36f309d4bb562c70deddee952786344f9b3a8eded7",
+      "upstream": "https://github.com/pbakaus/radiant/blob/59e9f48c0ad9a3db2fbeb8898b4390d5a1eabb40/static/generative-tree.html"
+    },
+    {
+      "id": "strange-attractor",
+      "file": "strange-attractor.html",
+      "bytes": 8693,
+      "sha256": "3c0dab92d29a57b6818dac2591bb922e760e790503182de38b68fd269fcb726b",
+      "upstream": "https://github.com/pbakaus/radiant/blob/59e9f48c0ad9a3db2fbeb8898b4390d5a1eabb40/static/strange-attractor.html"
+    },
+    {
+      "id": "pendulum-wave",
+      "file": "pendulum-wave.html",
+      "bytes": 11141,
+      "sha256": "877eb88b1b97234a15823b47953c158e769e51c6b7ffbf04d01eb03ba389212c",
+      "upstream": "https://github.com/pbakaus/radiant/blob/59e9f48c0ad9a3db2fbeb8898b4390d5a1eabb40/static/pendulum-wave.html"
+    },
+    {
+      "id": "phyllotaxis",
+      "file": "phyllotaxis.html",
+      "bytes": 10672,
+      "sha256": "1f89946473e38b56c423843601f864e07ebf6842930bf993ea47174e4b5141b0",
+      "upstream": "https://github.com/pbakaus/radiant/blob/59e9f48c0ad9a3db2fbeb8898b4390d5a1eabb40/static/phyllotaxis.html"
+    },
+    {
+      "id": "fluid-amber",
+      "file": "fluid-amber.html",
+      "bytes": 7784,
+      "sha256": "c0f376497e67b7fb4845eb87592d465771f746ee647787723ed0896839814f46",
+      "upstream": "https://github.com/pbakaus/radiant/blob/59e9f48c0ad9a3db2fbeb8898b4390d5a1eabb40/static/fluid-amber.html"
+    },
+    {
+      "id": "champagne-fizz",
+      "file": "champagne-fizz.html",
+      "bytes": 15174,
+      "sha256": "f64e819d652547d341de843d1e013801960f6f8692c49a204a26a9e46b8c6e33",
+      "upstream": "https://github.com/pbakaus/radiant/blob/59e9f48c0ad9a3db2fbeb8898b4390d5a1eabb40/static/champagne-fizz.html"
+    },
+    {
+      "id": "sugar-glass",
+      "file": "sugar-glass.html",
+      "bytes": 19634,
+      "sha256": "d15bdbda17d9c78ee295929d1cd7f2c5756bc2e00a03c16d499182db3ae9e02b",
+      "upstream": "https://github.com/pbakaus/radiant/blob/59e9f48c0ad9a3db2fbeb8898b4390d5a1eabb40/static/sugar-glass.html"
+    },
+    {
+      "id": "resonant-strings",
+      "file": "resonant-strings.html",
+      "bytes": 11402,
+      "sha256": "3ef28ab268589dff561ad8e53d2848433e3a8c949f2f4a03d9ed6365cf269797",
+      "upstream": "https://github.com/pbakaus/radiant/blob/59e9f48c0ad9a3db2fbeb8898b4390d5a1eabb40/static/resonant-strings.html"
+    },
+    {
+      "id": "chladni-resonance",
+      "file": "chladni-resonance.html",
+      "bytes": 8387,
+      "sha256": "d5b09cd04109404be7f052a5473898082b998307489b6e6e098e2a239c118b4d",
+      "upstream": "https://github.com/pbakaus/radiant/blob/59e9f48c0ad9a3db2fbeb8898b4390d5a1eabb40/static/chladni-resonance.html"
+    },
+    {
+      "id": "kinetic-grid",
+      "file": "kinetic-grid.html",
+      "bytes": 19056,
+      "sha256": "04bb95487a10b1a4d0a2d2aa6fbc92ce951621d45cf2d3f70c376e509b57109f",
+      "upstream": "https://github.com/pbakaus/radiant/blob/59e9f48c0ad9a3db2fbeb8898b4390d5a1eabb40/static/kinetic-grid.html"
+    },
+    {
+      "id": "strobe-geometry",
+      "file": "strobe-geometry.html",
+      "bytes": 21323,
+      "sha256": "7090af381d14730f7ae6bbf7119944a1aebafadf739d41f2c1052d1a735281e3",
+      "upstream": "https://github.com/pbakaus/radiant/blob/59e9f48c0ad9a3db2fbeb8898b4390d5a1eabb40/static/strobe-geometry.html"
+    },
+    {
+      "id": "laser-labyrinth",
+      "file": "laser-labyrinth.html",
+      "bytes": 17067,
+      "sha256": "237bd4a42afa0e267b1155f070fad17b3eef1191067c1184ce478de69bc6b402",
+      "upstream": "https://github.com/pbakaus/radiant/blob/59e9f48c0ad9a3db2fbeb8898b4390d5a1eabb40/static/laser-labyrinth.html"
+    },
+    {
+      "id": "bass-ripple",
+      "file": "bass-ripple.html",
+      "bytes": 22055,
+      "sha256": "7812edf0c399f004d87044b045cedf7597e2dae0bcae13cd92bdc0357a24354c",
+      "upstream": "https://github.com/pbakaus/radiant/blob/59e9f48c0ad9a3db2fbeb8898b4390d5a1eabb40/static/bass-ripple.html"
+    },
+    {
+      "id": "ink-dissolve",
+      "file": "ink-dissolve.html",
+      "bytes": 13626,
+      "sha256": "f75aab9cc745d44d59c44674017c54e0809ff54109307af54a1cc182634cb517",
+      "upstream": "https://github.com/pbakaus/radiant/blob/59e9f48c0ad9a3db2fbeb8898b4390d5a1eabb40/static/ink-dissolve.html"
+    },
+    {
+      "id": "sequin-wave",
+      "file": "sequin-wave.html",
+      "bytes": 14638,
+      "sha256": "058060120b0fb89ebaa66787cae4bb584c0a52628e436fcc683088cae7dd88af",
+      "upstream": "https://github.com/pbakaus/radiant/blob/59e9f48c0ad9a3db2fbeb8898b4390d5a1eabb40/static/sequin-wave.html"
+    },
+    {
+      "id": "gilt-mosaic",
+      "file": "gilt-mosaic.html",
+      "bytes": 21120,
+      "sha256": "ecca9fbde028e3e60e7c49dd3aee073f1d681bab9f77dc55e51fbec9a2f2133d",
+      "upstream": "https://github.com/pbakaus/radiant/blob/59e9f48c0ad9a3db2fbeb8898b4390d5a1eabb40/static/gilt-mosaic.html"
+    },
+    {
+      "id": "gilded-fracture",
+      "file": "gilded-fracture.html",
+      "bytes": 35071,
+      "sha256": "6734be61fb3c9963cdf1e063034c29881b53d82fcb66feb6e4748d5408a9c89c",
+      "upstream": "https://github.com/pbakaus/radiant/blob/59e9f48c0ad9a3db2fbeb8898b4390d5a1eabb40/static/gilded-fracture.html"
+    },
+    {
+      "id": "radiant-geometry",
+      "file": "radiant-geometry.html",
+      "bytes": 25212,
+      "sha256": "dc9c1a5768a830dddc4a5fa48f80348f7e333383ef30e2bd92f760d562ce993e",
+      "upstream": "https://github.com/pbakaus/radiant/blob/59e9f48c0ad9a3db2fbeb8898b4390d5a1eabb40/static/radiant-geometry.html"
+    },
+    {
+      "id": "golden-throne",
+      "file": "golden-throne.html",
+      "bytes": 15581,
+      "sha256": "5527403cd06e3e3fee7607ce63f8cce2a307f92af56fb499c04bfe839d35cc76",
+      "upstream": "https://github.com/pbakaus/radiant/blob/59e9f48c0ad9a3db2fbeb8898b4390d5a1eabb40/static/golden-throne.html"
+    },
+    {
+      "id": "sacred-strange",
+      "file": "sacred-strange.html",
+      "bytes": 26296,
+      "sha256": "f783892e6acee8f80de6f3d02d07afd58d5d4149355e59390ee7c911f9e9a36a",
+      "upstream": "https://github.com/pbakaus/radiant/blob/59e9f48c0ad9a3db2fbeb8898b4390d5a1eabb40/static/sacred-strange.html"
+    },
+    {
+      "id": "tropical-heat",
+      "file": "tropical-heat.html",
+      "bytes": 15167,
+      "sha256": "a45768eb7a038acb93e4e12cabc71b48007bd2307c7c6f7bf28b484988acb04e",
+      "upstream": "https://github.com/pbakaus/radiant/blob/59e9f48c0ad9a3db2fbeb8898b4390d5a1eabb40/static/tropical-heat.html"
+    },
+    {
+      "id": "neon-drip",
+      "file": "neon-drip.html",
+      "bytes": 14627,
+      "sha256": "1693f25c7f0873a53a5360f6fdcb52fb89d28b4a9203e1e42ca8f52cd0927ebe",
+      "upstream": "https://github.com/pbakaus/radiant/blob/59e9f48c0ad9a3db2fbeb8898b4390d5a1eabb40/static/neon-drip.html"
+    },
+    {
+      "id": "voltage-arc",
+      "file": "voltage-arc.html",
+      "bytes": 17578,
+      "sha256": "c0c9f1673d0c9cbfb804e6dcd9f04593caa695a01e4217da7128e54356f0fd6b",
+      "upstream": "https://github.com/pbakaus/radiant/blob/59e9f48c0ad9a3db2fbeb8898b4390d5a1eabb40/static/voltage-arc.html"
+    },
+    {
+      "id": "moonlit-ripple",
+      "file": "moonlit-ripple.html",
+      "bytes": 11875,
+      "sha256": "5bb56ae846518e3065aa42ce33b9e9117d081b41cbc485284fd52172444ccbf3",
+      "upstream": "https://github.com/pbakaus/radiant/blob/59e9f48c0ad9a3db2fbeb8898b4390d5a1eabb40/static/moonlit-ripple.html"
+    },
+    {
+      "id": "eclipse-glow",
+      "file": "eclipse-glow.html",
+      "bytes": 15126,
+      "sha256": "355aa5bab1b6b225e35c1ec8042104be3df196aa7339c1f7c4b38e28a99d034b",
+      "upstream": "https://github.com/pbakaus/radiant/blob/59e9f48c0ad9a3db2fbeb8898b4390d5a1eabb40/static/eclipse-glow.html"
+    },
+    {
+      "id": "diamond-caustics",
+      "file": "diamond-caustics.html",
+      "bytes": 22937,
+      "sha256": "f34d906646c9ee0441d3f7afc02f739afcfcfc610aacaf3ba15b496529350517",
+      "upstream": "https://github.com/pbakaus/radiant/blob/59e9f48c0ad9a3db2fbeb8898b4390d5a1eabb40/static/diamond-caustics.html"
+    },
+    {
+      "id": "rain-on-glass",
+      "file": "rain-on-glass.html",
+      "bytes": 37654,
+      "sha256": "e52a5da24beed56c8485af730b63c763c44601831786e4fcb8f58d25aa37f3a2",
+      "upstream": "https://github.com/pbakaus/radiant/blob/59e9f48c0ad9a3db2fbeb8898b4390d5a1eabb40/static/rain-on-glass.html"
+    },
+    {
+      "id": "rain-umbrella",
+      "file": "rain-umbrella.html",
+      "bytes": 45796,
+      "sha256": "19ce91d33face6fd9651ba50b1d473cfcb3a5b1d91a9983983a7570ad5ec4d87",
+      "upstream": "https://github.com/pbakaus/radiant/blob/59e9f48c0ad9a3db2fbeb8898b4390d5a1eabb40/static/rain-umbrella.html"
+    },
+    {
+      "id": "metamorphosis",
+      "file": "metamorphosis.html",
+      "bytes": 15692,
+      "sha256": "e2deec14cf011271b97c6a0f1cd1d7478a3c80b18e39b207876195c3c5f00f04",
+      "upstream": "https://github.com/pbakaus/radiant/blob/59e9f48c0ad9a3db2fbeb8898b4390d5a1eabb40/static/metamorphosis.html"
+    },
+    {
+      "id": "artpop-iridescence",
+      "file": "artpop-iridescence.html",
+      "bytes": 15314,
+      "sha256": "9d981413be481def56a382d02f20e2f2f95045b21efb15e1b624d786f0493df7",
+      "upstream": "https://github.com/pbakaus/radiant/blob/59e9f48c0ad9a3db2fbeb8898b4390d5a1eabb40/static/artpop-iridescence.html"
+    },
+    {
+      "id": "silk-groove",
+      "file": "silk-groove.html",
+      "bytes": 13431,
+      "sha256": "f1de8e39254ea5011a3033eaf2522265bf2c2b877da229f68cc8f981b0dbc957",
+      "upstream": "https://github.com/pbakaus/radiant/blob/59e9f48c0ad9a3db2fbeb8898b4390d5a1eabb40/static/silk-groove.html"
+    },
+    {
+      "id": "gilt-thread",
+      "file": "gilt-thread.html",
+      "bytes": 13739,
+      "sha256": "73d26b215703e537985d9990a501e76cd30fc069a5d422ce5f27f6c8d9626f71",
+      "upstream": "https://github.com/pbakaus/radiant/blob/59e9f48c0ad9a3db2fbeb8898b4390d5a1eabb40/static/gilt-thread.html"
+    },
+    {
+      "id": "event-horizon",
+      "file": "event-horizon.html",
+      "bytes": 21954,
+      "sha256": "6eb05925d6297cbcb51629b3068b25f7b5d3ad798666b498b53c7c4ba7b43c20",
+      "upstream": "https://github.com/pbakaus/radiant/blob/59e9f48c0ad9a3db2fbeb8898b4390d5a1eabb40/static/event-horizon.html"
+    },
+    {
+      "id": "burning-film",
+      "file": "burning-film.html",
+      "bytes": 16554,
+      "sha256": "1c3585670b8e3863071a17e9e5309e04377e4795b83a7bef48f4c5f24234c1bc",
+      "upstream": "https://github.com/pbakaus/radiant/blob/59e9f48c0ad9a3db2fbeb8898b4390d5a1eabb40/static/burning-film.html"
+    },
+    {
+      "id": "vertigo",
+      "file": "vertigo.html",
+      "bytes": 12354,
+      "sha256": "24037378248afc77aaec979556829887ba58596ea05770272825a7bd18fba45d",
+      "upstream": "https://github.com/pbakaus/radiant/blob/59e9f48c0ad9a3db2fbeb8898b4390d5a1eabb40/static/vertigo.html"
+    },
+    {
+      "id": "stardust-veil",
+      "file": "stardust-veil.html",
+      "bytes": 22307,
+      "sha256": "50496737eaa1cd1d938bcafeb0897cfaaa2d12448dad3d3886ded5e24f92011c",
+      "upstream": "https://github.com/pbakaus/radiant/blob/59e9f48c0ad9a3db2fbeb8898b4390d5a1eabb40/static/stardust-veil.html"
+    },
+    {
+      "id": "silk-cascade",
+      "file": "silk-cascade.html",
+      "bytes": 14292,
+      "sha256": "9d0c7d5a37dbd7a948f933347dac5f5e5f91a0e4f7b05113990ce92b4bd08fea",
+      "upstream": "https://github.com/pbakaus/radiant/blob/59e9f48c0ad9a3db2fbeb8898b4390d5a1eabb40/static/silk-cascade.html"
+    },
+    {
+      "id": "smolder",
+      "file": "smolder.html",
+      "bytes": 21597,
+      "sha256": "eb2e6c91117a23d2572f6967169e41bc13bb6a101e0b276a2818f8c75183e603",
+      "upstream": "https://github.com/pbakaus/radiant/blob/59e9f48c0ad9a3db2fbeb8898b4390d5a1eabb40/static/smolder.html"
+    },
+    {
+      "id": "signal-decay",
+      "file": "signal-decay.html",
+      "bytes": 16702,
+      "sha256": "50e6681c25a438edf3056f0b384cdaf3dd1303adaee5e2b6577cd054ab7f6481",
+      "upstream": "https://github.com/pbakaus/radiant/blob/59e9f48c0ad9a3db2fbeb8898b4390d5a1eabb40/static/signal-decay.html"
+    },
+    {
+      "id": "neon-revival",
+      "file": "neon-revival.html",
+      "bytes": 36106,
+      "sha256": "9a02b5fd939361badf8718e9faf5be0398b803b9807e73df2b24cae37b958bbf",
+      "upstream": "https://github.com/pbakaus/radiant/blob/59e9f48c0ad9a3db2fbeb8898b4390d5a1eabb40/static/neon-revival.html"
+    },
+    {
+      "id": "lipstick-smear",
+      "file": "lipstick-smear.html",
+      "bytes": 26788,
+      "sha256": "bcff8c9dde210b4305bc59f3f5b322a36bdd17a82bd34074a58f17b12a734df0",
+      "upstream": "https://github.com/pbakaus/radiant/blob/59e9f48c0ad9a3db2fbeb8898b4390d5a1eabb40/static/lipstick-smear.html"
+    },
+    {
+      "id": "glitter-storm",
+      "file": "glitter-storm.html",
+      "bytes": 13844,
+      "sha256": "dc8ca37d38da71f57baf21184f62a2a54153382f8ed87091450ef6de104947fc",
+      "upstream": "https://github.com/pbakaus/radiant/blob/59e9f48c0ad9a3db2fbeb8898b4390d5a1eabb40/static/glitter-storm.html"
+    },
+    {
+      "id": "rubber-reality",
+      "file": "rubber-reality.html",
+      "bytes": 12886,
+      "sha256": "35e20db2095af249f42c5bd32469ad2e4c29b1b99a5d0bf4a4458cdac80564f3",
+      "upstream": "https://github.com/pbakaus/radiant/blob/59e9f48c0ad9a3db2fbeb8898b4390d5a1eabb40/static/rubber-reality.html"
+    },
+    {
+      "id": "magma-core",
+      "file": "magma-core.html",
+      "bytes": 16973,
+      "sha256": "6a014e01ada784ef37359f908b3d86069928517e4e2c25e844a02634c9cf339e",
+      "upstream": "https://github.com/pbakaus/radiant/blob/59e9f48c0ad9a3db2fbeb8898b4390d5a1eabb40/static/magma-core.html"
+    },
+    {
+      "id": "clockwork-mind",
+      "file": "clockwork-mind.html",
+      "bytes": 34368,
+      "sha256": "20cdfacff212b2a9efd2136925aed7bba0ddb1dc5398783086c56bc9eca74499",
+      "upstream": "https://github.com/pbakaus/radiant/blob/59e9f48c0ad9a3db2fbeb8898b4390d5a1eabb40/static/clockwork-mind.html"
+    },
+    {
+      "id": "edge-of-chaos",
+      "file": "edge-of-chaos.html",
+      "bytes": 32907,
+      "sha256": "8c77d672483c58cfb72aea57c85ccd05d08b383a5b23a75857f63f4c77f1b640",
+      "upstream": "https://github.com/pbakaus/radiant/blob/59e9f48c0ad9a3db2fbeb8898b4390d5a1eabb40/static/edge-of-chaos.html"
+    },
+    {
+      "id": "spark-chamber",
+      "file": "spark-chamber.html",
+      "bytes": 15714,
+      "sha256": "d9fd7129e772ec3bd45ede6fdc51a2e3e33e163478c9c002e6a624f25e691c9b",
+      "upstream": "https://github.com/pbakaus/radiant/blob/59e9f48c0ad9a3db2fbeb8898b4390d5a1eabb40/static/spark-chamber.html"
+    },
+    {
+      "id": "shifting-veils",
+      "file": "shifting-veils.html",
+      "bytes": 12493,
+      "sha256": "8f8a64699c87f2454ac68b3120b347765383d3b76da8bf66ddcb5eb70d2ca5ca",
+      "upstream": "https://github.com/pbakaus/radiant/blob/59e9f48c0ad9a3db2fbeb8898b4390d5a1eabb40/static/shifting-veils.html"
+    },
+    {
+      "id": "crystal-lattice",
+      "file": "crystal-lattice.html",
+      "bytes": 27448,
+      "sha256": "0df8af54c304c64a33075c4a3d6828a4616efe3260c79c4a91180f2c528f612b",
+      "upstream": "https://github.com/pbakaus/radiant/blob/59e9f48c0ad9a3db2fbeb8898b4390d5a1eabb40/static/crystal-lattice.html"
+    },
+    {
+      "id": "kaleidoscope-runway",
+      "file": "kaleidoscope-runway.html",
+      "bytes": 14652,
+      "sha256": "97b102a36109fcc1be92bb58315f2fe726af8d80a2869d1f48c5f2b819296507",
+      "upstream": "https://github.com/pbakaus/radiant/blob/59e9f48c0ad9a3db2fbeb8898b4390d5a1eabb40/static/kaleidoscope-runway.html"
+    },
+    {
+      "id": "digital-rain",
+      "file": "digital-rain.html",
+      "bytes": 18057,
+      "sha256": "b9c7cc25840171ae506811ba72f87375fc8f4b9d2d27a4f53c5f34d7ac222673",
+      "upstream": "https://github.com/pbakaus/radiant/blob/59e9f48c0ad9a3db2fbeb8898b4390d5a1eabb40/static/digital-rain.html"
+    },
+    {
+      "id": "neon-drive",
+      "file": "neon-drive.html",
+      "bytes": 19503,
+      "sha256": "bf78a33854d012b7dfc888f0eef1282181307f61e879814e21d7e5c9f7211840",
+      "upstream": "https://github.com/pbakaus/radiant/blob/59e9f48c0ad9a3db2fbeb8898b4390d5a1eabb40/static/neon-drive.html"
+    },
+    {
+      "id": "liquid-gold",
+      "file": "liquid-gold.html",
+      "bytes": 14084,
+      "sha256": "69f4cf062ccfb3817357cc0f90f8e273460bae50c4343773f469622ebdbaf62f",
+      "upstream": "https://github.com/pbakaus/radiant/blob/59e9f48c0ad9a3db2fbeb8898b4390d5a1eabb40/static/liquid-gold.html"
+    },
+    {
+      "id": "aurora-veil",
+      "file": "aurora-veil.html",
+      "bytes": 17976,
+      "sha256": "59ac137ebf40cb6225843012afdf26c40e67afe7bcd4cb4df92cddacd4d25acf",
+      "upstream": "https://github.com/pbakaus/radiant/blob/59e9f48c0ad9a3db2fbeb8898b4390d5a1eabb40/static/aurora-veil.html"
+    },
+    {
+      "id": "bioluminescence",
+      "file": "bioluminescence.html",
+      "bytes": 16624,
+      "sha256": "934fe9a40aa2c16b50de6064a5f545564108e9a52dc2ed0f7ba1323d29b22aeb",
+      "upstream": "https://github.com/pbakaus/radiant/blob/59e9f48c0ad9a3db2fbeb8898b4390d5a1eabb40/static/bioluminescence.html"
+    },
+    {
+      "id": "gothic-filigree",
+      "file": "gothic-filigree.html",
+      "bytes": 17676,
+      "sha256": "25ed22c6dafec6502e5ecc4ff1fc6382231e8d2dccd972cc65fd655bba874223",
+      "upstream": "https://github.com/pbakaus/radiant/blob/59e9f48c0ad9a3db2fbeb8898b4390d5a1eabb40/static/gothic-filigree.html"
+    },
+    {
+      "id": "laser-precision",
+      "file": "laser-precision.html",
+      "bytes": 28397,
+      "sha256": "03e7b4b08d70fbd538809039b1956216239461212f6afbbbe9a7da110128cf42",
+      "upstream": "https://github.com/pbakaus/radiant/blob/59e9f48c0ad9a3db2fbeb8898b4390d5a1eabb40/static/laser-precision.html"
+    },
+    {
+      "id": "magnetic-sand",
+      "file": "magnetic-sand.html",
+      "bytes": 14511,
+      "sha256": "b3914fd1ce10b94461c1983f1f9d3cbf35a12f3c20f8e9c85144c60d0083c685",
+      "upstream": "https://github.com/pbakaus/radiant/blob/59e9f48c0ad9a3db2fbeb8898b4390d5a1eabb40/static/magnetic-sand.html"
+    },
+    {
+      "id": "woven-radiance",
+      "file": "woven-radiance.html",
+      "bytes": 17526,
+      "sha256": "b91fe15990691e11e3c3213778b72c4402a8dc5ea1ed314c9138b4c9058d2222",
+      "upstream": "https://github.com/pbakaus/radiant/blob/59e9f48c0ad9a3db2fbeb8898b4390d5a1eabb40/static/woven-radiance.html"
+    },
+    {
+      "id": "jazz-chaos",
+      "file": "jazz-chaos.html",
+      "bytes": 23219,
+      "sha256": "8a5262a72cb61663edf85c6c0999d03524b8ff2777340c0f5ed5255ff0c5ab27",
+      "upstream": "https://github.com/pbakaus/radiant/blob/59e9f48c0ad9a3db2fbeb8898b4390d5a1eabb40/static/jazz-chaos.html"
+    },
+    {
+      "id": "thunder-sermon",
+      "file": "thunder-sermon.html",
+      "bytes": 17893,
+      "sha256": "f1e816ccad17a88a2837a9166dd198805ea972a1610966bf7b95d1db85c53b1f",
+      "upstream": "https://github.com/pbakaus/radiant/blob/59e9f48c0ad9a3db2fbeb8898b4390d5a1eabb40/static/thunder-sermon.html"
+    },
+    {
+      "id": "vinyl-grooves",
+      "file": "vinyl-grooves.html",
+      "bytes": 19435,
+      "sha256": "8262c7f5d081de16f806bb17e2778b9b55b9adb74cb4b05517d2005b6015ef28",
+      "upstream": "https://github.com/pbakaus/radiant/blob/59e9f48c0ad9a3db2fbeb8898b4390d5a1eabb40/static/vinyl-grooves.html"
+    },
+    {
+      "id": "vintage-static",
+      "file": "vintage-static.html",
+      "bytes": 16470,
+      "sha256": "f4d27a4996e0f97a7039f210c6edacd0afc332f9582716aa2883a3a2850556b4",
+      "upstream": "https://github.com/pbakaus/radiant/blob/59e9f48c0ad9a3db2fbeb8898b4390d5a1eabb40/static/vintage-static.html"
+    },
+    {
+      "id": "torn-paper",
+      "file": "torn-paper.html",
+      "bytes": 23899,
+      "sha256": "23dadd59cafdead7c79b4fbfca23ebce15c9cf8e29a93913c9d09a386048e215",
+      "upstream": "https://github.com/pbakaus/radiant/blob/59e9f48c0ad9a3db2fbeb8898b4390d5a1eabb40/static/torn-paper.html"
+    },
+    {
+      "id": "polaroid-burn",
+      "file": "polaroid-burn.html",
+      "bytes": 15707,
+      "sha256": "f7ca76481de24781a2c3bde6f33ffbaefbb62b1fac7e131e1d65cd26d78034ce",
+      "upstream": "https://github.com/pbakaus/radiant/blob/59e9f48c0ad9a3db2fbeb8898b4390d5a1eabb40/static/polaroid-burn.html"
+    },
+    {
+      "id": "scream-wave",
+      "file": "scream-wave.html",
+      "bytes": 19340,
+      "sha256": "a4aa483ff18f9ea143ebbc3ac59cf9e5ba319a901c1e17cffdf44c06eedf6381",
+      "upstream": "https://github.com/pbakaus/radiant/blob/59e9f48c0ad9a3db2fbeb8898b4390d5a1eabb40/static/scream-wave.html"
+    },
+    {
+      "id": "ink-calligraphy",
+      "file": "ink-calligraphy.html",
+      "bytes": 21398,
+      "sha256": "115d4a51e2d03212ad131ee191aa8aaf3c1ebde33a2dbdb73101db0f5082e8ef",
+      "upstream": "https://github.com/pbakaus/radiant/blob/59e9f48c0ad9a3db2fbeb8898b4390d5a1eabb40/static/ink-calligraphy.html"
+    },
+    {
+      "id": "velvet-spotlight",
+      "file": "velvet-spotlight.html",
+      "bytes": 20666,
+      "sha256": "dd82118c9cb1f5e340fc560df26f054e964224a46a93d2aca3bca41ba5430356",
+      "upstream": "https://github.com/pbakaus/radiant/blob/59e9f48c0ad9a3db2fbeb8898b4390d5a1eabb40/static/velvet-spotlight.html"
+    },
+    {
+      "id": "murmuration",
+      "file": "murmuration.html",
+      "bytes": 21823,
+      "sha256": "bba38f9b71e9c5a4da0e56b9131e1febd35a742e62f52c419289429e7b96d1e9",
+      "upstream": "https://github.com/pbakaus/radiant/blob/59e9f48c0ad9a3db2fbeb8898b4390d5a1eabb40/static/murmuration.html"
+    },
+    {
+      "id": "tesseract-shadow",
+      "file": "tesseract-shadow.html",
+      "bytes": 21537,
+      "sha256": "ed055e94447e01e7a94733e6fd533ac5174a618ebd5f8f6c49a02dbbbf477641",
+      "upstream": "https://github.com/pbakaus/radiant/blob/59e9f48c0ad9a3db2fbeb8898b4390d5a1eabb40/static/tesseract-shadow.html"
+    },
+    {
+      "id": "moire-interference",
+      "file": "moire-interference.html",
+      "bytes": 10458,
+      "sha256": "7fb51eccbdaa27738972966586468f91380994c98d17d55a37372d9c81765d69",
+      "upstream": "https://github.com/pbakaus/radiant/blob/59e9f48c0ad9a3db2fbeb8898b4390d5a1eabb40/static/moire-interference.html"
+    },
+    {
+      "id": "phase-transition",
+      "file": "phase-transition.html",
+      "bytes": 23021,
+      "sha256": "415ff8af7304663e3a93384d7ca6c05372c6a15e4604fc53a3f781fc7fc29563",
+      "upstream": "https://github.com/pbakaus/radiant/blob/59e9f48c0ad9a3db2fbeb8898b4390d5a1eabb40/static/phase-transition.html"
+    },
+    {
+      "id": "magnetic-field",
+      "file": "magnetic-field.html",
+      "bytes": 9747,
+      "sha256": "55a84513c16946633cd775d94bf307f105a12e879f06141a357f1c4da7209ada",
+      "upstream": "https://github.com/pbakaus/radiant/blob/59e9f48c0ad9a3db2fbeb8898b4390d5a1eabb40/static/magnetic-field.html"
+    },
+    {
+      "id": "aurora-curtain",
+      "file": "aurora-curtain.html",
+      "bytes": 9620,
+      "sha256": "96d0c174a036ca61d712e17f1e3dc121582039f36c6be2e94aff652bb8dbefc7",
+      "upstream": "https://github.com/pbakaus/radiant/blob/59e9f48c0ad9a3db2fbeb8898b4390d5a1eabb40/static/aurora-curtain.html"
+    },
+    {
+      "id": "vortex",
+      "file": "vortex.html",
+      "bytes": 8999,
+      "sha256": "46e3799aae4b18183bfecb17ea714b5ce659520c75e3042dbb0f908fd53b1e24",
+      "upstream": "https://github.com/pbakaus/radiant/blob/59e9f48c0ad9a3db2fbeb8898b4390d5a1eabb40/static/vortex.html"
+    },
+    {
+      "id": "chromatic-bloom",
+      "file": "chromatic-bloom.html",
+      "bytes": 13193,
+      "sha256": "bf0f2f2581b449b1b8b7bce975a3a7960837955469100d5e9610db652a128721",
+      "upstream": "https://github.com/pbakaus/radiant/blob/59e9f48c0ad9a3db2fbeb8898b4390d5a1eabb40/static/chromatic-bloom.html"
+    },
+    {
+      "id": "lens-whisper",
+      "file": "lens-whisper.html",
+      "bytes": 14510,
+      "sha256": "b4643b7226de18fdbe45b426ffbbba1d022cb239a93018b16ff470a3238c5cd7",
+      "upstream": "https://github.com/pbakaus/radiant/blob/59e9f48c0ad9a3db2fbeb8898b4390d5a1eabb40/static/lens-whisper.html"
+    },
+    {
+      "id": "luminous-silt",
+      "file": "luminous-silt.html",
+      "bytes": 12607,
+      "sha256": "5cf56e23a23d10cdb458d71751c96b8b768ccd7649df54c7e830df251af3bb8f",
+      "upstream": "https://github.com/pbakaus/radiant/blob/59e9f48c0ad9a3db2fbeb8898b4390d5a1eabb40/static/luminous-silt.html"
+    },
+    {
+      "id": "synth-ribbon",
+      "file": "synth-ribbon.html",
+      "bytes": 15405,
+      "sha256": "869f84ccfe5ad9014c6fee68cd37d1d20dbf149e3081f07dda6506fd60830741",
+      "upstream": "https://github.com/pbakaus/radiant/blob/59e9f48c0ad9a3db2fbeb8898b4390d5a1eabb40/static/synth-ribbon.html"
+    },
+    {
+      "id": "hologram-glitch",
+      "file": "hologram-glitch.html",
+      "bytes": 18938,
+      "sha256": "766b673252d1468e0dd9f3e25bb69fe9a088498297d47c4a381ef4cfe073c3f5",
+      "upstream": "https://github.com/pbakaus/radiant/blob/59e9f48c0ad9a3db2fbeb8898b4390d5a1eabb40/static/hologram-glitch.html"
+    },
+    {
+      "id": "shattered-plains",
+      "file": "shattered-plains.html",
+      "bytes": 14262,
+      "sha256": "b8764fc7cfabec2557dc46ccc55f1116f57a9ccf193537beb4ef0c7bf3b2c34c",
+      "upstream": "https://github.com/pbakaus/radiant/blob/59e9f48c0ad9a3db2fbeb8898b4390d5a1eabb40/static/shattered-plains.html"
+    },
+    {
+      "id": "painted-strata",
+      "file": "painted-strata.html",
+      "bytes": 16981,
+      "sha256": "e7e59dd5ad8c2be3de1ad5d843e894a55bda08efc347f27492cb044ad9dd243a",
+      "upstream": "https://github.com/pbakaus/radiant/blob/59e9f48c0ad9a3db2fbeb8898b4390d5a1eabb40/static/painted-strata.html"
+    },
+    {
+      "id": "feedback-loop",
+      "file": "feedback-loop.html",
+      "bytes": 22802,
+      "sha256": "05c1dcc8e050f6aef7e6784eb49ef493d14f3e3f0c07cdfec6864cc8430a867d",
+      "upstream": "https://github.com/pbakaus/radiant/blob/59e9f48c0ad9a3db2fbeb8898b4390d5a1eabb40/static/feedback-loop.html"
+    },
+    {
+      "id": "dither-gradient",
+      "file": "dither-gradient.html",
+      "bytes": 20150,
+      "sha256": "79661354b980ec4c19013260ed48adfce5e20a5692a0f2caaf2c613979d6015c",
+      "upstream": "https://github.com/pbakaus/radiant/blob/59e9f48c0ad9a3db2fbeb8898b4390d5a1eabb40/static/dither-gradient.html"
+    },
+    {
+      "id": "analog-drift",
+      "file": "analog-drift.html",
+      "bytes": 13871,
+      "sha256": "685aa834afbf093cdb648a6a28b25daa84fcd964510723b41adcb1998e877c91",
+      "upstream": "https://github.com/pbakaus/radiant/blob/59e9f48c0ad9a3db2fbeb8898b4390d5a1eabb40/static/analog-drift.html"
+    },
+    {
+      "id": "navier-stokes",
+      "file": "navier-stokes.html",
+      "bytes": 17363,
+      "sha256": "642fb11f1dbc37a7c2c4c2b9ffe8e2356d830d4d0b08cf79955b9a1be928bf7a",
+      "upstream": "https://github.com/pbakaus/radiant/blob/59e9f48c0ad9a3db2fbeb8898b4390d5a1eabb40/static/navier-stokes.html"
+    }
+  ]
+}

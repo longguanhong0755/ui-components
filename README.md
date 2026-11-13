@@ -35,6 +35,7 @@ export default function Page() {
 components/          # 所有组件源码（.tsx）
   <slug>.tsx             # 基础组件
   <slug>-variant-N.tsx   # 同一组件的外观预设变体
+radiant/             # Radiant Shaders 归档：88 个自包含 HTML、参数表与 MIT LICENSE
 ```
 
 ## 常见依赖 / Common Dependencies
@@ -54,7 +55,7 @@ components/          # 所有组件源码（.tsx）
 ## 许可与第三方声明 / License & Third-party notice
 
 本仓库是第三方公开组件资源的整理与展示镜像，**部分组件并非本仓库原创**。
-`components/`、`demos/`、`reactbits/` 中的组件源码、演示录像与封面素材，
+`components/`、`demos/`、`reactbits/`、`radiant/` 中的组件源码、演示录像与封面素材，
 其版权与许可归原作者/原站点所有；本仓库不对这些内容重新授权。
 使用、修改或再分发前，请确认并遵循原始许可。
 
@@ -65,6 +66,7 @@ components/          # 所有组件源码（.tsx）
 | [Originkit](https://www.originkit.dev) | `components/` 与 `demos/` 中大部分组件源码、演示录像与封面 |
 | [ReactBits Pro](https://pro.reactbits.dev) | `reactbits/` 下 231 个公开预览实现 |
 | [Shaders / Shader Effects, Inc.](https://shaders.com/pro) | 1,000 个着色器预设与素材；运行时以 MIT 许可发布，独立归档见 [shaders-pro-archive](https://github.com/longguanhong0755/shaders-pro-archive) |
+| [Radiant Shaders](https://radiant-shaders.com) | `radiant/` 下 88 个独立着色器（自包含 HTML）、参数表与素材；MIT License，Copyright (c) 2025 Paul Bakaus，上游 [pbakaus/radiant](https://github.com/pbakaus/radiant) |
 
 本仓库新增的整理脚本、站点代码与文档以 MIT License 发布。
 第三方内容的可用性、合法性与适用性由使用者自行判断；本仓库仅作索引、预览与整理，

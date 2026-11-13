@@ -28,7 +28,18 @@
 - 说明：该归档使用公开可访问的内容制作，仅用于保存与配套展示；着色器预设
   与预览素材的版权归原站点/原作者所有。
 
-## 4. 其他第三方依赖
+## 4. Radiant Shaders
+
+- 站点：https://radiant-shaders.com
+- 上游：https://github.com/pbakaus/radiant（归档提交 `59e9f48c0ad9a3db2fbeb8898b4390d5a1eabb40`）
+- 内容：`radiant/` 下 88 个独立着色器（自包含 HTML，含 Canvas 2D 与 WebGL）、
+  `shaders.ts` 参数表、原始 README 与 MIT LICENSE。
+- 许可：MIT License，Copyright (c) 2025 Paul Bakaus。完整许可文本见
+  [`radiant/LICENSE`](./radiant/LICENSE)。
+- 说明：仅归档公开可访问的成品着色器与参数表，用于保存与配套展示；单个 HTML
+  可离线运行，参数通过 `postMessage` 修改。着色器创意与代码版权归 Paul Bakaus 所有。
+
+## 5. 其他第三方依赖
 
 组件源码可能引用 `framer-motion`、`three`、`gsap`、`motion`、`ogl`、`d3-geo`、
 `matter-js` 等第三方库。这些库分别遵循其各自的许可，详见对应依赖包的 LICENSE。
