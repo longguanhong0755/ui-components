@@ -8,6 +8,10 @@ text effects, cursors, backgrounds, and more. Every component is a single self-c
 共 650+ 个基础组件和 450+ 个预设变体。每个组件都是单个自包含的 `.tsx` 文件，
 复制进项目即可使用。
 
+> **第三方声明**：本仓库中的部分组件、演示录像与封面素材由第三方提供，或整理自
+> 第三方公开资源；版权与许可归原作者/原站点所有。完整来源列表与下架方式见
+> [`THIRD-PARTY-NOTICES.md`](./THIRD-PARTY-NOTICES.md)。
+
 ## 快速开始 / Quick Start
 
 1. 找到你喜欢的组件，把 `components/<name>.tsx` 复制到你的项目里（例如 `src/components/ui/`）。
@@ -47,6 +51,25 @@ components/          # 所有组件源码（.tsx）
 
 若组件使用了 Tailwind，请确保你的项目已配置 Tailwind CSS。
 
-## 许可 / License
+## 许可与第三方声明 / License & Third-party notice
 
-本仓库内容以 MIT License 发布，可自由使用、修改、再分发（含商业用途），无需署名。
+本仓库是第三方公开组件资源的整理与展示镜像，**部分组件并非本仓库原创**。
+`components/`、`demos/`、`reactbits/` 中的组件源码、演示录像与封面素材，
+其版权与许可归原作者/原站点所有；本仓库不对这些内容重新授权。
+使用、修改或再分发前，请确认并遵循原始许可。
+
+已确认的第三方来源：
+
+| 来源 | 内容 |
+|---|---|
+| [Originkit](https://www.originkit.dev) | `components/` 与 `demos/` 中大部分组件源码、演示录像与封面 |
+| [ReactBits Pro](https://pro.reactbits.dev) | `reactbits/` 下 231 个公开预览实现 |
+| [Shaders / Shader Effects, Inc.](https://shaders.com/pro) | 1,000 个着色器预设与素材；运行时以 MIT 许可发布，独立归档见 [shaders-pro-archive](https://github.com/longguanhong0755/shaders-pro-archive) |
+
+本仓库新增的整理脚本、站点代码与文档以 MIT License 发布。
+第三方内容的可用性、合法性与适用性由使用者自行判断；本仓库仅作索引、预览与整理，
+不代表原作者立场。
+
+若你是版权持有人且不希望相关内容出现在本仓库或展示站，请提交
+[issue](https://github.com/longguanhong0755/ui-components/issues)，我们会核实并尽快下架。
+详细说明见 [`THIRD-PARTY-NOTICES.md`](./THIRD-PARTY-NOTICES.md)。
