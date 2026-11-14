@@ -1,0 +1,11 @@
+{
+  "source": "Paper Shaders",
+  "upstream": "https://github.com/paper-design/shaders",
+  "commit": "0747060cfc0776526e4226ff8c304f6eb788664c",
+  "package": "@paper-design/shaders-react",
+  "version": "0.0.61",
+  "license": "PolyForm Shield 1.0.0",
+  "licenseUrl": "https://polyformproject.org/licenses/shield/1.0.0/",
+  "site": "https://shaders.paper.design/",
+  "archivedAt": "2026-11-14"
+}

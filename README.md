@@ -1,11 +1,11 @@
 # UI Components
 
-A free, open collection of **650+ React UI components** — animations, canvas effects,
-text effects, cursors, backgrounds, and more. Every component is a single self-contained
-`.tsx` file you can copy straight into your project.
+A free, open collection of **1,400+ React UI components, presets and shader previews** —
+animations, canvas effects, text effects, cursors, backgrounds, and more. Every component
+is a single self-contained `.tsx` file you can copy straight into your project.
 
 一个免费开源的 **React UI 组件合集**：动画、Canvas 特效、文字效果、光标、背景等，
-共 650+ 个基础组件和 450+ 个预设变体。每个组件都是单个自包含的 `.tsx` 文件，
+共 1,400+ 个组件、预设与着色器条目。每个组件都是单个自包含的 `.tsx` 文件，
 复制进项目即可使用。
 
 > **第三方声明**：本仓库中的部分组件、演示录像与封面素材由第三方提供，或整理自
@@ -32,10 +32,16 @@ export default function Page() {
 ## 目录说明 / Layout
 
 ```
-components/          # 所有组件源码（.tsx）
+components/          # Originkit 组件源码（.tsx）
   <slug>.tsx             # 基础组件
   <slug>-variant-N.tsx   # 同一组件的外观预设变体
+demos/               # Originkit 演示录像与封面素材
+reactbits/           # ReactBits Pro 231 个公开预览实现
+shaders-pro/         # Shaders Pro 220 组 / 1,000 个预设归档
 radiant/             # Radiant Shaders 归档：88 个自包含 HTML、参数表与 MIT LICENSE
+third-party/
+  magic-ui/             # Magic UI 77 个组件、官方 demo 与 MIT LICENSE
+  paper-shaders/        # Paper Shaders 20 个着色器、参数表与 PolyForm Shield LICENSE
 ```
 
 ## 常见依赖 / Common Dependencies
@@ -55,9 +61,9 @@ radiant/             # Radiant Shaders 归档：88 个自包含 HTML、参数表
 ## 许可与第三方声明 / License & Third-party notice
 
 本仓库是第三方公开组件资源的整理与展示镜像，**部分组件并非本仓库原创**。
-`components/`、`demos/`、`reactbits/`、`radiant/` 中的组件源码、演示录像与封面素材，
-其版权与许可归原作者/原站点所有；本仓库不对这些内容重新授权。
-使用、修改或再分发前，请确认并遵循原始许可。
+`components/`、`demos/`、`reactbits/`、`shaders-pro/`、`radiant/` 与 `third-party/`
+中的组件源码、演示录像与封面素材，其版权与许可归原作者/原站点所有；本仓库不对这些
+内容重新授权。使用、修改或再分发前，请确认并遵循原始许可。
 
 已确认的第三方来源：
 
@@ -67,6 +73,8 @@ radiant/             # Radiant Shaders 归档：88 个自包含 HTML、参数表
 | [ReactBits Pro](https://pro.reactbits.dev) | `reactbits/` 下 231 个公开预览实现 |
 | [Shaders / Shader Effects, Inc.](https://shaders.com/pro) | 1,000 个着色器预设与素材；运行时以 MIT 许可发布，独立归档见 [shaders-pro-archive](https://github.com/longguanhong0755/shaders-pro-archive) |
 | [Radiant Shaders](https://radiant-shaders.com) | `radiant/` 下 88 个独立着色器（自包含 HTML）、参数表与素材；MIT License，Copyright (c) 2025 Paul Bakaus，上游 [pbakaus/radiant](https://github.com/pbakaus/radiant) |
+| [Magic UI](https://magicui.design) | `third-party/magic-ui/` 下 77 个组件、官方 demo、registry 元数据与源码；MIT License，Copyright (c) Magic UI，上游 [magicuidesign/magicui](https://github.com/magicuidesign/magicui) |
+| [Paper Shaders](https://shaders.paper.design) | `third-party/paper-shaders/` 下 20 个着色器、参数表与源码；**PolyForm Shield 1.0.0**（允许商用与再分发，但不得用于与 Paper Shaders 竞争的产品），上游 [paper-design/shaders](https://github.com/paper-design/shaders)，`@paper-design/shaders-react@0.0.61` |
 
 本仓库新增的整理脚本、站点代码与文档以 MIT License 发布。
 第三方内容的可用性、合法性与适用性由使用者自行判断；本仓库仅作索引、预览与整理，

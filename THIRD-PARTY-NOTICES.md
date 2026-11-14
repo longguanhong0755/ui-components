@@ -39,7 +39,37 @@
 - 说明：仅归档公开可访问的成品着色器与参数表，用于保存与配套展示；单个 HTML
   可离线运行，参数通过 `postMessage` 修改。着色器创意与代码版权归 Paul Bakaus 所有。
 
-## 5. 其他第三方依赖
+## 5. Magic UI
+
+- 站点：https://magicui.design
+- 上游：https://github.com/magicuidesign/magicui
+  （归档提交 `6f7b531e77659855d4bc1bec8e20fdb0c8199b20`）
+- 内容：`third-party/magic-ui/` 下 77 个组件源码、官方 demo、registry 元数据、
+  `LICENSE-MagicUI.md` 与 `MANIFEST.json`；站点预览宿主位于
+  `showcase/src/vendor/magicui/`。
+- 许可：MIT License，Copyright (c) Magic UI。完整许可文本见
+  [`third-party/magic-ui/LICENSE.md`](./third-party/magic-ui/LICENSE.md)。
+- 演示素材：图片来自 Unsplash（Unsplash License），图标来自 Simple Icons
+  （CC0 1.0），头像由 avatar.vercel.sh 生成，海面演示视频来自 Magic UI CDN；
+  均已落到本地 `third-party/magic-ui/media/`，仅用于离线预览。
+- 说明：本站对 Magic UI 源码做了少量运行兼容处理（导入路径、Tailwind v4→v3
+  类名转换、素材本地化），组件逻辑与版权仍归 Magic UI 作者所有。
+
+## 6. Paper Shaders
+
+- 站点：https://shaders.paper.design
+- 上游：https://github.com/paper-design/shaders
+  （归档提交 `0747060cfc0776526e4226ff8c304f6eb788664c`）
+- 内容：`third-party/paper-shaders/` 下 20 个 WebGL 着色器的站内实现、214 项参数
+  元数据、源码归档与封面；运行时使用 `@paper-design/shaders-react@0.0.61`。
+- 许可：**PolyForm Shield License 1.0.0**，不是 Apache-2.0。完整许可文本见
+  [`third-party/paper-shaders/LICENSE`](./third-party/paper-shaders/LICENSE)。
+  该许可允许商业与非商业使用、修改与再分发，但**不得用于与 Paper / Paper Shaders
+  直接竞争的产品或服务**；再分发时须保留许可文本与必要声明。
+- 说明：本站仅作技术预览、参数展示与源码索引，不提供 Paper Shaders 的托管服务，
+  也不代表 Paper 官方立场。使用前请自行确认你的场景符合 PolyForm Shield 条款。
+
+## 7. 其他第三方依赖
 
 组件源码可能引用 `framer-motion`、`three`、`gsap`、`motion`、`ogl`、`d3-geo`、
 `matter-js` 等第三方库。这些库分别遵循其各自的许可，详见对应依赖包的 LICENSE。

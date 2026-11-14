@@ -226,7 +226,7 @@ interface PixelCardProps {
  * Pixel Card
  *
  * A canvas grid of pixels that grows in on hover and shimmers, then shrinks out
- * on leave. Based on the React Bits PixelCard by David Haz. The pixel palette is
+ * on leave. Based on the open-source PixelCard effect by David Haz. The pixel palette is
  * a user color array, evenly assigned across the pixels.
  *
  * @framerIntrinsicWidth 300

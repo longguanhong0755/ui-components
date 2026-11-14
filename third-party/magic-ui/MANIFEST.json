@@ -1,0 +1,888 @@
+{
+  "source": "Magic UI",
+  "upstream": "https://github.com/magicuidesign/magicui",
+  "registry": "https://magicui.design/r/registry.json",
+  "commit": {
+    "author": {
+      "name": "Jinho",
+      "email": "81306489+jinho-yeom@users.noreply.github.com",
+      "date": "2026-11-13T14:33:41Z"
+    },
+    "committer": {
+      "name": "GitHub",
+      "email": "noreply@github.com",
+      "date": "2026-11-13T14:33:41Z"
+    },
+    "message": "feat(tweet-card): add logo prop to switch to the X logo (#1086)",
+    "tree": {
+      "sha": "1bd86506b1032eee376bfdfbdce2b55f129bc8f5",
+      "url": "https://api.github.com/repos/magicuidesign/magicui/git/trees/1bd86506b1032eee376bfdfbdce2b55f129bc8f5"
+    },
+    "url": "https://api.github.com/repos/magicuidesign/magicui/git/commits/6f7b531e77659855d4bc1bec8e20fdb0c8199b20",
+    "comment_count": 0,
+    "verification": {
+      "verified": true,
+      "reason": "valid",
+      "signature": "-----BEGIN PGP SIGNATURE-----\n\nwsFcBAABCAAQBQJq9x/FCRC1aQ7uu5UhlAAAEW0QACMlmsuxA+J48oaIxW3jA8M6\nDTwAFNBIhA4lqR8OCUI1vOxvh7p2MbcwuYisLfFmoAEijZ1yiPu4mkv3vVyF2hUW\nu2j4rLmPVefHvCN0snT7SyRuqcOOer8yEgvXiWfO933vFuw3W0gCrk8ZM1/Mc/ee\n03soQvZejoNSZiSSlFrp2TXeLrIvfVgIYWDjb2KP4GrjRZFkRlHjzanXve16n/nu\nFWeuIj5o9ou0ZzWzekc164caEoa+QXc0NLTt14/ks+Sn0CI/2FK3lKY4Mn5KhTmM\nX6zdvmam28dBe00Y9A7f/CMe/zXZjFAZHU0W4Qh9S8yAfixbDuQ+NDV53ALp2Tyo\n+nXvnZ9yt/1cdMU0YBG2ZZyolWr9hehbUulEmC8M2DOIAu0O307rdXmMWb1pW/yM\nv7kWsM4Nl6aL++bhroMtl2LWNIHZ8cQXNOL2c337rd96WWfLNOfo5Z1yxMfO0m0R\n6k1vMzULhvQ30IttTEkR9HRkL7+bHSusFQinftgAsq7sWh8XpkwCWs+aouyPW3zN\ndBM97yuw4mD7LHSyj+YpdihQf+5GJ1uwzGo3vS8eFoyz1DbZoTdvs2dz+bhL4PWR\nQ5nbkZmMfb5oM5Upkruz/ZNdFg4kYPyaGCevPtZgGozuUWRocvKc45Q7PKyZPvIk\n0iN1Ma6GZH8ZssPARlYQ\n=kZQo\n-----END PGP SIGNATURE-----\n",
+      "payload": "tree 1bd86506b1032eee376bfdfbdce2b55f129bc8f5\nparent a4dcb912073c0ff45654c943c16e131360405c11\nauthor Jinho <81306489+jinho-yeom@users.noreply.github.com> 1794580421 +0900\ncommitter GitHub <noreply@github.com> 1794580421 +0900\n\nfeat(tweet-card): add logo prop to switch to the X logo (#1086)",
+      "verified_at": "2026-11-13T14:33:41Z"
+    }
+  },
+  "license": "MIT",
+  "copyright": "Copyright (c) Magic UI",
+  "archivedAt": "2026-11-14T14:29:32.529Z",
+  "counts": {
+    "components": 77,
+    "demos": 77,
+    "skipped": [
+      "tweet-card",
+      "client-tweet-card"
+    ]
+  },
+  "items": [
+    {
+      "id": "magic-card",
+      "title": "Magic Card",
+      "file": "registry/magicui/magic-card.tsx",
+      "fileSha256": "b6ed8ac1dda703f9d7b1b89bbca0162d5ae17c8144c947d663cdac35c29b47a2",
+      "demo": "magic-card-demo",
+      "demoFile": "registry/example/magic-card-demo.tsx",
+      "demoSha256": "27d1fc598d10907d4870d7d128e2beda3ae3e404d734a52dc33920a680f17e3f",
+      "dependencies": [
+        "motion"
+      ]
+    },
+    {
+      "id": "android",
+      "title": "Android",
+      "file": "registry/magicui/android.tsx",
+      "fileSha256": "9235d2e9204078c65ff8077bf8adc6b3ed4b12c55a8354345faa8f8abbddb5cf",
+      "demo": "android-demo",
+      "demoFile": "scripts/third-party/magicui-demos/android.tsx",
+      "demoSha256": "c9a6cfa6f43c58e2a1b763ea37c85127b713b0d074e5f4c8f8643b5eadeea4dd",
+      "dependencies": []
+    },
+    {
+      "id": "warp-background",
+      "title": "Warp Background",
+      "file": "registry/magicui/warp-background.tsx",
+      "fileSha256": "ca2d664c7ca43fcf9d59a20a484be9945a1ffc4a835f8a9e6bbb039c93249a39",
+      "demo": "warp-background-demo",
+      "demoFile": "registry/example/warp-background-demo.tsx",
+      "demoSha256": "0fc88aa94922c1b739c99eed6363b2ea47aea536e67fa2c6ab9d717987a8f6ae",
+      "dependencies": [
+        "motion"
+      ]
+    },
+    {
+      "id": "line-shadow-text",
+      "title": "Line Shadow Text",
+      "file": "registry/magicui/line-shadow-text.tsx",
+      "fileSha256": "5103c5e2c2d30325d8581c1d172837b0040810f7361080208ecba1556bd52afa",
+      "demo": "line-shadow-text-demo",
+      "demoFile": "registry/example/line-shadow-text-demo.tsx",
+      "demoSha256": "357b245b9426415082dfc8efe474abfcd8a44d120cf5b0a73a9518bc4e8c74ba",
+      "dependencies": [
+        "motion"
+      ]
+    },
+    {
+      "id": "aurora-text",
+      "title": "Aurora Text",
+      "file": "registry/magicui/aurora-text.tsx",
+      "fileSha256": "c7bd0b72a093084a881416975249c507ddd715249ac5832a9161538eeef29927",
+      "demo": "aurora-text-demo",
+      "demoFile": "registry/example/aurora-text-demo.tsx",
+      "demoSha256": "199001d28f2aeaaeae3bb99a4f92c7e5a50312f0e57e34fbf2719074cfb08790",
+      "dependencies": []
+    },
+    {
+      "id": "morphing-text",
+      "title": "Morphing Text",
+      "file": "registry/magicui/morphing-text.tsx",
+      "fileSha256": "8475ec9beae637a2af6183ed1f91227d0e048f93051352faa0e8d921b2c53d62",
+      "demo": "morphing-text-demo",
+      "demoFile": "registry/example/morphing-text-demo.tsx",
+      "demoSha256": "9661c0a40073751d4c821f60d3575f66a496e103f49895ffa5754d66e9ca97bd",
+      "dependencies": []
+    },
+    {
+      "id": "scroll-progress",
+      "title": "Scroll Progress",
+      "file": "registry/magicui/scroll-progress.tsx",
+      "fileSha256": "4d79d33956520a69ff3c74509deaee7be6036125b0e0fb54078eba7eeefe894a",
+      "demo": "scroll-progress-demo",
+      "demoFile": "registry/example/scroll-progress-demo.tsx",
+      "demoSha256": "682091dc20311da32d88e7d6606b0f1ed9546130d38f88f6423dbdbb698c3047",
+      "dependencies": [
+        "motion"
+      ]
+    },
+    {
+      "id": "lens",
+      "title": "Lens",
+      "file": "registry/magicui/lens.tsx",
+      "fileSha256": "85e2ae91387ee22d1492224e5767788653b5954a2d65ec0fd59ca023dae6f0e3",
+      "demo": "lens-demo",
+      "demoFile": "registry/example/lens-demo.tsx",
+      "demoSha256": "cecc756e1d8fcc724cd9047b0bb9db7ea18e109f687d6ca9a0b2ececa51c4ea7",
+      "dependencies": [
+        "motion"
+      ]
+    },
+    {
+      "id": "pointer",
+      "title": "Pointer",
+      "file": "registry/magicui/pointer.tsx",
+      "fileSha256": "f46b0109767ca079e5bc87ccbaac0091216ad84c3da09b15b7c176664aff9e6f",
+      "demo": "pointer-demo-1",
+      "demoFile": "registry/example/pointer-demo-1.tsx",
+      "demoSha256": "7c680b98fe4c14ef8416b0cc2b246082135c2b699d57eb10eda0b9775cf5b103",
+      "dependencies": [
+        "motion"
+      ]
+    },
+    {
+      "id": "smooth-cursor",
+      "file": "registry/magicui/smooth-cursor.tsx",
+      "fileSha256": "bbcb3812f29fe0c128066bb83f810849a6eeb951569109d5b46bcd0f16a83c0c",
+      "demo": "smooth-cursor-demo",
+      "demoFile": "registry/example/smooth-cursor-demo.tsx",
+      "demoSha256": "c10ab610bc4fe4f27c0ed8fe498c1bdcd123fb517496990734c450da3db8bcd8",
+      "dependencies": [
+        "motion"
+      ]
+    },
+    {
+      "id": "progressive-blur",
+      "title": "Progressive Blur",
+      "file": "registry/magicui/progressive-blur.tsx",
+      "fileSha256": "2d1a95b26a66b707cd786c626e3fe7819330d7ec585618afb301e6cd776d811b",
+      "demo": "progressive-blur-demo",
+      "demoFile": "registry/example/progressive-blur-demo.tsx",
+      "demoSha256": "4998844f2e99316adee5fb5107e8de44b0434425846477d4efa8bd425b01a13d",
+      "dependencies": []
+    },
+    {
+      "id": "neon-gradient-card",
+      "title": "Neon Gradient Card",
+      "file": "registry/magicui/neon-gradient-card.tsx",
+      "fileSha256": "bd96e18be176f3f2365cf27d686bf31d6f062c0abb707ca21e88079ab28f76ed",
+      "demo": "neon-gradient-card-demo",
+      "demoFile": "registry/example/neon-gradient-card-demo.tsx",
+      "demoSha256": "1d984dafca4e761067c289beb38e9c1ba95fe8edbde589c28ec654471328d22e",
+      "dependencies": []
+    },
+    {
+      "id": "noise-texture",
+      "title": "Noise Texture",
+      "file": "registry/magicui/noise-texture.tsx",
+      "fileSha256": "90cad110cf368c95bd40edcdfe64d52c6aacb0656996e20867562787f4ca4c1c",
+      "demo": "noise-texture-demo",
+      "demoFile": "registry/example/noise-texture-demo.tsx",
+      "demoSha256": "63badc9787e85b4e2a88b9b94bee5e8706d3973c7b24d38ce75d7c36f4e97218",
+      "dependencies": []
+    },
+    {
+      "id": "meteors",
+      "title": "Meteors",
+      "file": "registry/magicui/meteors.tsx",
+      "fileSha256": "0730d0d6449fb3fb098a5e9edc80d066bdf06ebbb1d1e598b8fb6a10ff4a5ff9",
+      "demo": "meteors-demo",
+      "demoFile": "registry/example/meteors-demo.tsx",
+      "demoSha256": "ba1343f7dd4b0f72c0b7a68012ebd9e48c0a1a97b912dddc5ee5c3e1921c4fe5",
+      "dependencies": []
+    },
+    {
+      "id": "grid-pattern",
+      "title": "Grid Pattern",
+      "file": "registry/magicui/grid-pattern.tsx",
+      "fileSha256": "1d1caaf01de0a1ebfdffea1163535f8fbfdfbee33cd0a640e09388815d1823df",
+      "demo": "grid-pattern-demo",
+      "demoFile": "registry/example/grid-pattern-demo.tsx",
+      "demoSha256": "9b7c0d43897f31083bcd24cee87b7413e73eefae92365d04bdb2cfcb09fbac50",
+      "dependencies": []
+    },
+    {
+      "id": "hexagon-pattern",
+      "title": "Hexagon Pattern",
+      "file": "registry/magicui/hexagon-pattern.tsx",
+      "fileSha256": "466ed6cafc0de757a37ced4b3659e6713d98dd6f97325982813f5f390d97ad68",
+      "demo": "hexagon-pattern-demo",
+      "demoFile": "registry/example/hexagon-pattern-demo.tsx",
+      "demoSha256": "5cec8f10fe5bd09e47e9abe023f9ff70c3440ec94979c045e3a52a78f505dcda",
+      "dependencies": []
+    },
+    {
+      "id": "striped-pattern",
+      "title": "Striped Pattern",
+      "file": "registry/magicui/striped-pattern.tsx",
+      "fileSha256": "e7616db6087216fc5e8ad0e0aa3fada349ea238a651d85ef4986c88f1f070966",
+      "demo": "striped-pattern-demo",
+      "demoFile": "registry/example/striped-pattern-demo.tsx",
+      "demoSha256": "9f62530a82640bbf25538558a1a0362b7cad9a4d5ed584d46cc7d31aa35933a4",
+      "dependencies": []
+    },
+    {
+      "id": "interactive-grid-pattern",
+      "title": "Interactive Grid Pattern",
+      "file": "registry/magicui/interactive-grid-pattern.tsx",
+      "fileSha256": "953385a7fae475dac73f5a88de878cfd8dab1ea5b83a95638ef06bbb10f0a6e2",
+      "demo": "interactive-grid-pattern-demo",
+      "demoFile": "registry/example/interactive-grid-pattern-demo.tsx",
+      "demoSha256": "af269198cae96cd3f944fe002971ece658daf3f207d53ec902be2dcccde0fb7e",
+      "dependencies": []
+    },
+    {
+      "id": "dot-pattern",
+      "title": "Dot Pattern",
+      "file": "registry/magicui/dot-pattern.tsx",
+      "fileSha256": "f198ffad23f2404f7f8d0d562e1eec5d5d43e61635994bf74a214af9fa553bcb",
+      "demo": "dot-pattern-demo",
+      "demoFile": "registry/example/dot-pattern-demo.tsx",
+      "demoSha256": "aa7206c333e068c751dca45c4a78dfae907e9979d763ffe69820a4f2e66f86a3",
+      "dependencies": []
+    },
+    {
+      "id": "flickering-grid",
+      "title": "Flickering Grid",
+      "file": "registry/magicui/flickering-grid.tsx",
+      "fileSha256": "16e5ee59fda4298a8e2210b38ad260b9c278ab8cf4a0817ed410d9e78edbdc3b",
+      "demo": "flickering-grid-demo",
+      "demoFile": "registry/example/flickering-grid-demo.tsx",
+      "demoSha256": "fd55c4a09876c107f627b30c78227b1af15845fb6e07bbeae1cd08b7fa082cca",
+      "dependencies": []
+    },
+    {
+      "id": "hero-video-dialog",
+      "title": "Hero Video Dialog",
+      "file": "registry/magicui/hero-video-dialog.tsx",
+      "fileSha256": "8a7a25227054b5b747e77efe12aacf3e4fff4410a55e4bcd8fda6c5bcf71b670",
+      "demo": "hero-video-dialog-demo",
+      "demoFile": "registry/example/hero-video-dialog-demo.tsx",
+      "demoSha256": "486011ac00cad35987c49e776608fb32ec9b5c8d68bb1ca0d9279986a1ed4508",
+      "dependencies": [
+        "motion"
+      ]
+    },
+    {
+      "id": "code-comparison",
+      "title": "Code Comparison",
+      "file": "registry/magicui/code-comparison.tsx",
+      "fileSha256": "46b78d47b40f52b3e491fedebd80a50a1b9f69fc526ea4ea3837b6e9edb4c092",
+      "demo": "code-comparison-demo",
+      "demoFile": "registry/example/code-comparison-demo.tsx",
+      "demoSha256": "c591b506b2244cc331ce3e3a99984e8cdd403bbafd4fd8170e32d2e7f0a4f945",
+      "dependencies": [
+        "shiki",
+        "@shikijs/transformers"
+      ]
+    },
+    {
+      "id": "marquee",
+      "title": "Marquee",
+      "file": "registry/magicui/marquee.tsx",
+      "fileSha256": "779f360a107409bfa35cda13bcef7d54cd620a15ab4a0ee50412442a4dd6b9c7",
+      "demo": "marquee-demo",
+      "demoFile": "registry/example/marquee-demo.tsx",
+      "demoSha256": "7ed4e929bbf6c54b6464cea98cc29fd1b4da16f1ab4cdcc7a49e2ef98ec19536",
+      "dependencies": []
+    },
+    {
+      "id": "globe",
+      "title": "Globe",
+      "file": "registry/magicui/globe.tsx",
+      "fileSha256": "76422bf378c6503883706fe7af90132f7716dbe383fab7728a95c95e4d16cfd0",
+      "demo": "globe-demo",
+      "demoFile": "scripts/third-party/magicui-demos/globe.tsx",
+      "demoSha256": "c758aacda5df3f513f865b474f85b6ed9aede67e84bc5affbb232250c6f5d34a",
+      "dependencies": [
+        "cobe@^0.6.4",
+        "motion"
+      ]
+    },
+    {
+      "id": "glyph-matrix",
+      "title": "Glyph Matrix",
+      "file": "registry/magicui/glyph-matrix.tsx",
+      "fileSha256": "0c4c11f8a81dab493b0adbf9ed3dd7342c64fd8957926a4e39b31294b1853633",
+      "demo": "glyph-matrix-demo",
+      "demoFile": "registry/example/glyph-matrix-demo.tsx",
+      "demoSha256": "0445fb928b889d31ee6b75392bee66dabce67bfb4fddebe70755c44fd276bf79",
+      "dependencies": []
+    },
+    {
+      "id": "glare-hover",
+      "title": "Glare Hover",
+      "file": "registry/magicui/glare-hover.tsx",
+      "fileSha256": "db8084ae31fb41978ce5c2fc164e7d2c63cf414e3817fe444dca4ed177c9986f",
+      "demo": "glare-hover-demo",
+      "demoFile": "registry/example/glare-hover-demo.tsx",
+      "demoSha256": "c72a51ee00f0f85bf11b760815f57f24218c981fe6db221d1870fad5636c8ce7",
+      "dependencies": []
+    },
+    {
+      "id": "shimmer-button",
+      "title": "Shimmer Button",
+      "file": "registry/magicui/shimmer-button.tsx",
+      "fileSha256": "c85ffda63ba086d2078a8dacffdfc25f0b106e1566362fa251888a214ee3c010",
+      "demo": "shimmer-button-demo",
+      "demoFile": "registry/example/shimmer-button-demo.tsx",
+      "demoSha256": "079683a50878b46a554cf78851811a4ece74e6400262c6ecf80b1c1468de48ec",
+      "dependencies": []
+    },
+    {
+      "id": "bento-grid",
+      "title": "Bento Grid",
+      "file": "registry/magicui/bento-grid.tsx",
+      "fileSha256": "9c2abcb2a4e51519e56d510299771a2d0e170ab9927a9a792a58614b1837ed47",
+      "demo": "bento-grid",
+      "demoFile": "scripts/third-party/magicui-demos/bento-grid.tsx",
+      "demoSha256": "37f9eadeae86e2451886c5a35e3475479b9f01677f43ab084297d7fc70bdf028",
+      "dependencies": [
+        "@radix-ui/react-icons"
+      ]
+    },
+    {
+      "id": "particles",
+      "title": "Particles",
+      "file": "registry/magicui/particles.tsx",
+      "fileSha256": "f768e19deca7c0ba9c424b4683b62cae3eedd11ef3dac8b0363e65c2773f236e",
+      "demo": "particles-demo",
+      "demoFile": "registry/example/particles-demo.tsx",
+      "demoSha256": "11a9a593028ac123aa6daad026646492e8d9840440545d7033198925dfa9ecc3",
+      "dependencies": []
+    },
+    {
+      "id": "number-ticker",
+      "title": "Number Ticker",
+      "file": "registry/magicui/number-ticker.tsx",
+      "fileSha256": "0f7dcbc6a1962615a877590304e846f33d390002a51f2226f544938577c220f4",
+      "demo": "number-ticker-demo",
+      "demoFile": "registry/example/number-ticker-demo.tsx",
+      "demoSha256": "f189295a609cd20bfde8c4b70ca4a8d5d957176f2d3459521eaba74dedafc11b",
+      "dependencies": [
+        "motion"
+      ]
+    },
+    {
+      "id": "ripple",
+      "title": "Ripple",
+      "file": "registry/magicui/ripple.tsx",
+      "fileSha256": "1ac207017c0f4e993f83a1ead8b8a1b4a92286ef1595a297aba79782b2616eaf",
+      "demo": "ripple-demo",
+      "demoFile": "registry/example/ripple-demo.tsx",
+      "demoSha256": "78e12b21f4919d83030656d18caa088aa859e57a67265b1e0b7a27b9da768414",
+      "dependencies": []
+    },
+    {
+      "id": "retro-grid",
+      "title": "Retro Grid",
+      "file": "registry/magicui/retro-grid.tsx",
+      "fileSha256": "7434890f7345291453245866ae78f3f8d622a75a4e3b806729ca33c995ef6142",
+      "demo": "retro-grid-demo",
+      "demoFile": "registry/example/retro-grid-demo.tsx",
+      "demoSha256": "7f65eddb1db8959c7f399797dc390c23907eaccbc1f35b152c8c04ef60a9e8fd",
+      "dependencies": []
+    },
+    {
+      "id": "animated-list",
+      "title": "Animated List",
+      "file": "registry/magicui/animated-list.tsx",
+      "fileSha256": "9363c5afa61d7aab1919b4500f7325cc8871b35103d5dd60a2a1625fe5e7dc58",
+      "demo": "animated-list-demo",
+      "demoFile": "registry/example/animated-list-demo.tsx",
+      "demoSha256": "3ca33ae7a60fd711d54c5969d474d63767741cb07df4cd84bf7b31fda5dcf874",
+      "dependencies": [
+        "motion"
+      ]
+    },
+    {
+      "id": "animated-shiny-text",
+      "title": "Animated Shiny Text",
+      "file": "registry/magicui/animated-shiny-text.tsx",
+      "fileSha256": "3743a0a0b4894840a96bacd839e493872bac484a940684f91fd23a1784c00fbb",
+      "demo": "animated-shiny-text-demo",
+      "demoFile": "registry/example/animated-shiny-text-demo.tsx",
+      "demoSha256": "463f80b2a14226e3b7a3c8a54e0a377c92c1e00586138f304a06907b2174d94d",
+      "dependencies": []
+    },
+    {
+      "id": "animated-grid-pattern",
+      "title": "Animated Grid Pattern",
+      "file": "registry/magicui/animated-grid-pattern.tsx",
+      "fileSha256": "fda051f51f5b805983beb855633e05bfcbf17a4b94a2459e5352d8bd624f618a",
+      "demo": "animated-grid-pattern-demo",
+      "demoFile": "registry/example/animated-grid-pattern-demo.tsx",
+      "demoSha256": "42b0a3253d7e73d7de3b6b478a129f2210f6f68036061951f0307a2a06ec057c",
+      "dependencies": [
+        "motion"
+      ]
+    },
+    {
+      "id": "border-beam",
+      "title": "Border Beam",
+      "file": "registry/magicui/border-beam.tsx",
+      "fileSha256": "ccdfb52cb8f2089e7823a9edfe9c3a52e52ab6759ed5b91d184b1e2bb80cf414",
+      "demo": "border-beam-demo",
+      "demoFile": "registry/example/border-beam-demo.tsx",
+      "demoSha256": "83cda19fa5014ad4c3616565083d0e6a10fb19e8713da844e09144d2258ec247",
+      "dependencies": [
+        "motion"
+      ]
+    },
+    {
+      "id": "animated-beam",
+      "title": "Animated Beam",
+      "file": "registry/magicui/animated-beam.tsx",
+      "fileSha256": "6afa2ee1d01694a428eb8517d48deebe5c6b532dc0ee871800bb9d92aae43e79",
+      "demo": "animated-beam-demo",
+      "demoFile": "registry/example/animated-beam-demo.tsx",
+      "demoSha256": "e47585cf5e93b3a22d868f894d93f75e9316d8f4ab1aca0353a46456ad2cc1e5",
+      "dependencies": [
+        "motion"
+      ]
+    },
+    {
+      "id": "text-reveal",
+      "title": "Text Reveal",
+      "file": "registry/magicui/text-reveal.tsx",
+      "fileSha256": "af69b435aa66a762af04d7d85b8578627ad9fb6541d01170135756e647d36240",
+      "demo": "text-reveal-demo",
+      "demoFile": "registry/example/text-reveal-demo.tsx",
+      "demoSha256": "874031091b4bb36e48b5278734653f5e42c967af1fe4284500d118d052930369",
+      "dependencies": [
+        "motion"
+      ]
+    },
+    {
+      "id": "dia-text-reveal",
+      "title": "Dia Text Reveal",
+      "file": "registry/magicui/dia-text-reveal.tsx",
+      "fileSha256": "239650378a2165db192ebfa8961f9e683e35edd290d83a17339798f8924cbe4f",
+      "demo": "dia-text-reveal-demo",
+      "demoFile": "registry/example/dia-text-reveal-demo.tsx",
+      "demoSha256": "9a6f11a921fcb55f0b8f8ddbc676e83012e3a4487d208b0a65b00919bcd3ed9c",
+      "dependencies": [
+        "motion"
+      ]
+    },
+    {
+      "id": "hyper-text",
+      "title": "Hyper Text",
+      "file": "registry/magicui/hyper-text.tsx",
+      "fileSha256": "12a2f5aa5d53e20ccbe611bde8057083451bda69a31318db166f758289cb93e8",
+      "demo": "hyper-text-demo",
+      "demoFile": "registry/example/hyper-text-demo.tsx",
+      "demoSha256": "134e0d0261b27d8d71b31cbadeb6958045a5f3551fb72aa756638727a042e7aa",
+      "dependencies": [
+        "motion"
+      ]
+    },
+    {
+      "id": "animated-gradient-text",
+      "title": "Animated Gradient Text",
+      "file": "registry/magicui/animated-gradient-text.tsx",
+      "fileSha256": "e5f0b81be1a9dc707199c2fd10c588bde872c72a02e2eb6d195d080112a34692",
+      "demo": "animated-gradient-text-demo",
+      "demoFile": "registry/example/animated-gradient-text-demo.tsx",
+      "demoSha256": "8f62d32bd01852c6a27d4e24eb547ff17f17838d944d6e67c8d8f0734befc722",
+      "dependencies": []
+    },
+    {
+      "id": "orbiting-circles",
+      "title": "Orbiting Circles",
+      "file": "registry/magicui/orbiting-circles.tsx",
+      "fileSha256": "859b88b6c22144e5cd4bf04ab49d339090eea13b422d3085a80584e6b9d4da68",
+      "demo": "orbiting-circles-demo",
+      "demoFile": "registry/example/orbiting-circles-demo.tsx",
+      "demoSha256": "6ff1d9122d2519c15eb4d566557613f4ce541b169db7740f518fab584560a455",
+      "dependencies": []
+    },
+    {
+      "id": "dock",
+      "title": "Dock",
+      "file": "registry/magicui/dock.tsx",
+      "fileSha256": "c12d578d4a273036fa435b67d8374d6fe9c7bcb962665cefc7b851aa86d12441",
+      "demo": "dock-demo-3",
+      "demoFile": "registry/example/dock-demo-3.tsx",
+      "demoSha256": "f6b9c22d75465c94d3a008d18d4dc744c31d7c27fab1d706560f6246f195da45",
+      "dependencies": [
+        "motion"
+      ]
+    },
+    {
+      "id": "word-rotate",
+      "title": "Word Rotate",
+      "file": "registry/magicui/word-rotate.tsx",
+      "fileSha256": "201852c2ddd0c63f1cefa730c50f97d88c1d4ee4b7158ca35032b8efc91d2293",
+      "demo": "word-rotate-demo",
+      "demoFile": "registry/example/word-rotate-demo.tsx",
+      "demoSha256": "ed43dede364e3e9e3556aa7f0b5003eb29cb2c43652d919656fef0629175a93c",
+      "dependencies": [
+        "motion"
+      ]
+    },
+    {
+      "id": "avatar-circles",
+      "title": "Avatar Circles",
+      "file": "registry/magicui/avatar-circles.tsx",
+      "fileSha256": "e0900fa87df8042ad4f98d1ec8168b1504b207eb0211ed19b1ba079d1f9741dd",
+      "demo": "avatar-circles-demo",
+      "demoFile": "registry/example/avatar-circles-demo.tsx",
+      "demoSha256": "b42ed418bd409cc6400126e1757ab9093d0ff2ae4655163fe7634c288c4f5d3c",
+      "dependencies": []
+    },
+    {
+      "id": "typing-animation",
+      "title": "Typing Animation",
+      "file": "registry/magicui/typing-animation.tsx",
+      "fileSha256": "70ce53aff9dd61cba9d5c8999e8a05120839d4d8e0396a5e0a1579f155d18e4b",
+      "demo": "typing-animation-demo",
+      "demoFile": "registry/example/typing-animation-demo.tsx",
+      "demoSha256": "5d7971ba7e6cfa06dd4901410522329b3b77f6eab1b309f8acb33b0c118bb4d4",
+      "dependencies": [
+        "motion"
+      ]
+    },
+    {
+      "id": "sparkles-text",
+      "title": "Sparkles Text",
+      "file": "registry/magicui/sparkles-text.tsx",
+      "fileSha256": "bab902a2260bcf17ae0065d13e0a231ddc0ec3a9ab74da164998ed1d4a330697",
+      "demo": "sparkles-text-demo",
+      "demoFile": "registry/example/sparkles-text-demo.tsx",
+      "demoSha256": "8bb99b55c59fb63c5f9c930636f41235ecd95d8bcdc50a45d49fd3736646048a",
+      "dependencies": [
+        "motion"
+      ]
+    },
+    {
+      "id": "spinning-text",
+      "title": "Spinning Text",
+      "file": "registry/magicui/spinning-text.tsx",
+      "fileSha256": "55726f972d09705b0cd10e8739e74afe8d11b7164537554f99905267e456dafa",
+      "demo": "spinning-text-demo",
+      "demoFile": "registry/example/spinning-text-demo.tsx",
+      "demoSha256": "0ded5b5e8a39690f8c21584b0c7fe13f6fc4b14b45bc6e0b36e5a8f352acb594",
+      "dependencies": [
+        "motion"
+      ]
+    },
+    {
+      "id": "comic-text",
+      "title": "Comic Text",
+      "file": "registry/magicui/comic-text.tsx",
+      "fileSha256": "d259aa2d9ef9fadcfd565a9bf29557660c511a08e3c18b675dd4b3d731417113",
+      "demo": "comic-text-demo",
+      "demoFile": "registry/example/comic-text-demo.tsx",
+      "demoSha256": "37b16b057227f58febe479c8588b835846cb27c0d1044a255ead10c828d618ea",
+      "dependencies": [
+        "motion"
+      ]
+    },
+    {
+      "id": "icon-cloud",
+      "title": "Icon Cloud",
+      "file": "registry/magicui/icon-cloud.tsx",
+      "fileSha256": "243e182efdb70940b01452135160747011b01ba6766a8d5e47ba93b526ae105f",
+      "demo": "icon-cloud-demo",
+      "demoFile": "registry/example/icon-cloud-demo.tsx",
+      "demoSha256": "07bd18a9be120ae4fc80b6cc971c3c51b9b95fff4d2895d6c252559a8e15c36e",
+      "dependencies": [
+        "lucide-react"
+      ]
+    },
+    {
+      "id": "text-animate",
+      "title": "Text Animate",
+      "file": "registry/magicui/text-animate.tsx",
+      "fileSha256": "0ebece79c412661f57bc0489416b55a376e9f006e0f558162bb6e91f814a99a6",
+      "demo": "text-animate-demo",
+      "demoFile": "registry/example/text-animate-demo.tsx",
+      "demoSha256": "0dbb2e98a42f5b40be3223414400ec51785e99f86ebcfd79d9c89efdf00fa75e",
+      "dependencies": [
+        "motion"
+      ]
+    },
+    {
+      "id": "scroll-based-velocity",
+      "title": "Scroll Based Velocity",
+      "file": "registry/magicui/scroll-based-velocity.tsx",
+      "fileSha256": "17cebe769a2337587bcb0e8e5d3ebd71f5b7ffc27ad1f6f59a8971f5d277b844",
+      "demo": "scroll-based-velocity-demo",
+      "demoFile": "registry/example/scroll-based-velocity-demo.tsx",
+      "demoSha256": "6fbd077bcfa248a0c0125fec77ec01567f8dbb5c64ff3e85c8811f0ea6f3a156",
+      "dependencies": [
+        "motion"
+      ]
+    },
+    {
+      "id": "shiny-button",
+      "title": "Shiny Button",
+      "file": "registry/magicui/shiny-button.tsx",
+      "fileSha256": "916c8b8ffe1a018b560dff80aed78cdfaeded889bcbec70e3fe34618d5073abf",
+      "demo": "shiny-button-demo",
+      "demoFile": "registry/example/shiny-button-demo.tsx",
+      "demoSha256": "0a6d6576bbb19d50ad4a48750193173c48fe1a08074ca52f87590602f67ab5b6",
+      "dependencies": [
+        "motion"
+      ]
+    },
+    {
+      "id": "shine-border",
+      "title": "Shine Border",
+      "file": "registry/magicui/shine-border.tsx",
+      "fileSha256": "c9344b563c2427f26393f6f5e2fe5c72d6a3fcb4b90b8f073ebad515e963c46c",
+      "demo": "shine-border-demo",
+      "demoFile": "registry/example/shine-border-demo.tsx",
+      "demoSha256": "a7c9410583e33411bfa577ecfa271931cc9a28f2a674f19b3fc57805492599a8",
+      "dependencies": []
+    },
+    {
+      "id": "animated-circular-progress-bar",
+      "title": "Animated Circular Progress Bar",
+      "file": "registry/magicui/animated-circular-progress-bar.tsx",
+      "fileSha256": "37bcc4d9679a80ef02b9adc6b36a8c0b578aa6bc2a69739efad6302d4bdb853c",
+      "demo": "animated-circular-progress-bar-demo",
+      "demoFile": "registry/example/animated-circular-progress-bar-demo.tsx",
+      "demoSha256": "24a98a6315503d1cc65a4d7c618574d7800c8e41d14dd1318379db756b15435f",
+      "dependencies": []
+    },
+    {
+      "id": "confetti",
+      "title": "Confetti",
+      "file": "registry/magicui/confetti.tsx",
+      "fileSha256": "c2a713b9a768d0f62f2c67837c441586de02a744b528c91548d043d8cb3fc8a6",
+      "demo": "confetti-demo",
+      "demoFile": "registry/example/confetti-demo.tsx",
+      "demoSha256": "772f8855414e08df83543e8788bb9e7ae48f44d3b02bcfac2c60dfd9c97d80ac",
+      "dependencies": [
+        "canvas-confetti",
+        "@types/canvas-confetti"
+      ]
+    },
+    {
+      "id": "cool-mode",
+      "title": "Cool Mode",
+      "file": "registry/magicui/cool-mode.tsx",
+      "fileSha256": "becd2f4a1438403960739d12b6cfc19fe8ebb0e769238f6b0266a202d425a5e2",
+      "demo": "cool-mode-demo",
+      "demoFile": "registry/example/cool-mode-demo.tsx",
+      "demoSha256": "435a9a20667c4f66977ada7bd111b168a4be97aecd73e950d21caac724d350cc",
+      "dependencies": []
+    },
+    {
+      "id": "pulsating-button",
+      "title": "Pulsating Button",
+      "file": "registry/magicui/pulsating-button.tsx",
+      "fileSha256": "f73dd2d7da811ea0202b5bab7d441562f48772a55459b26316c8dc836ee852ca",
+      "demo": "pulsating-button-demo",
+      "demoFile": "registry/example/pulsating-button-demo.tsx",
+      "demoSha256": "45bea0642d383007c1811408845a639792c0e89e914d57a6c2622174cb3bbc63",
+      "dependencies": []
+    },
+    {
+      "id": "ripple-button",
+      "title": "Ripple Button",
+      "file": "registry/magicui/ripple-button.tsx",
+      "fileSha256": "446f62f2971876799014f6fab30ee76d03b022de2411c960d491c67b31b353fa",
+      "demo": "ripple-button-demo",
+      "demoFile": "registry/example/ripple-button-demo.tsx",
+      "demoSha256": "de6b2c1dd09fe3f984357c6d457d23888a53b25a0190e0d112b97fba4fa309c7",
+      "dependencies": []
+    },
+    {
+      "id": "file-tree",
+      "title": "File Tree",
+      "file": "registry/magicui/file-tree.tsx",
+      "fileSha256": "19f8c8923a3aba1ef840b8a2c0eca1c7e4772f850140c38a532c0cb2d4d20875",
+      "demo": "file-tree-demo",
+      "demoFile": "registry/example/file-tree-demo.tsx",
+      "demoSha256": "a47bdce9906e5432120c18ddc1e7a06c04562315a37668edcdbd4e2040105c43",
+      "dependencies": []
+    },
+    {
+      "id": "blur-fade",
+      "title": "Blur Fade",
+      "file": "registry/magicui/blur-fade.tsx",
+      "fileSha256": "99a8e83aa8817f48e26d921e959ff9abefb5c2f1f0b72b166ed95e88e015949f",
+      "demo": "blur-fade",
+      "demoFile": "scripts/third-party/magicui-demos/blur-fade.tsx",
+      "demoSha256": "8d1ee4ed733a998e7c9a660c78c699b82396204344c8080a7f4fb51ee184ec87",
+      "dependencies": [
+        "motion"
+      ]
+    },
+    {
+      "id": "safari",
+      "title": "Safari",
+      "file": "registry/magicui/safari.tsx",
+      "fileSha256": "2cb6ce69def86020f6860a3dd8696f0998dac340db932a3eee05e990b2e29f3e",
+      "demo": "safari",
+      "demoFile": "scripts/third-party/magicui-demos/safari.tsx",
+      "demoSha256": "38918f10620983c595613192674ee17597fa84c90cb1024186e0cb130e59a949",
+      "dependencies": []
+    },
+    {
+      "id": "iphone",
+      "title": "iPhone",
+      "file": "registry/magicui/iphone.tsx",
+      "fileSha256": "64aa5f8f05c2444d2f0f791328a6bc5c0cc73624eb53dde2c5d29cd710c20124",
+      "demo": "iphone",
+      "demoFile": "scripts/third-party/magicui-demos/iphone.tsx",
+      "demoSha256": "f5d305b5f0ddd0a10fc9dca57340b5953cf8d3df4e3b5b00c4e6bed63cd3b9a5",
+      "dependencies": []
+    },
+    {
+      "id": "rainbow-button",
+      "title": "Rainbow Button",
+      "file": "registry/magicui/rainbow-button.tsx",
+      "fileSha256": "cda40de677181acd8690cd24bad7f734753fec3b2d921206e733f7d6a4e36ea0",
+      "demo": "rainbow-button-demo",
+      "demoFile": "registry/example/rainbow-button-demo.tsx",
+      "demoSha256": "3dd2b9dec233609407fa1ecdd4533d0ad2a4ef04e2770892c728ff7030cf5e2d",
+      "dependencies": []
+    },
+    {
+      "id": "interactive-hover-button",
+      "file": "registry/magicui/interactive-hover-button.tsx",
+      "fileSha256": "ab16b3a2efea7fcc84a0eddeb7dad5304b403f89d22e056427fd3f905baaa0de",
+      "demo": "interactive-hover-button-demo",
+      "demoFile": "registry/example/interactive-hover-button-demo.tsx",
+      "demoSha256": "c8260b6c0cf85dc751018719656fe40865066964e5caa2d837d5a666b05ddaf1",
+      "dependencies": []
+    },
+    {
+      "id": "terminal",
+      "title": "Terminal",
+      "file": "registry/magicui/terminal.tsx",
+      "fileSha256": "a0ece03773e1a17862e049f11f72647b5db44dc1400473bdecd3c0e81f43f2d7",
+      "demo": "terminal-demo",
+      "demoFile": "registry/example/terminal-demo.tsx",
+      "demoSha256": "869f0ffee9300ee052659bf3a5b10ab1c3b727cbc6dc841bc3bca128e35795d1",
+      "dependencies": []
+    },
+    {
+      "id": "video-text",
+      "title": "Video Text",
+      "file": "registry/magicui/video-text.tsx",
+      "fileSha256": "93fdb8caeb85d84700b78a14cfccc471d1b364b4c23bab702eb0ef832683e0dd",
+      "demo": "video-text-demo",
+      "demoFile": "registry/example/video-text-demo.tsx",
+      "demoSha256": "2a428f360427ee2ea72add81d16e2088d1a04b8ef296fd28a3d7e4cc0f4ae46f",
+      "dependencies": []
+    },
+    {
+      "id": "pixel-image",
+      "title": "Pixel Image",
+      "file": "registry/magicui/pixel-image.tsx",
+      "fileSha256": "88240ed4cfcf58eb1c77ab79b524ee5721135dc0a243d892d0ac3420708626c2",
+      "demo": "pixel-image-demo",
+      "demoFile": "registry/example/pixel-image-demo.tsx",
+      "demoSha256": "d4f8ac03149d7246d8aaea9063f96feaf9102bff7cf2776beec4006d45c738d1",
+      "dependencies": []
+    },
+    {
+      "id": "highlighter",
+      "title": "Highlighter",
+      "file": "registry/magicui/highlighter.tsx",
+      "fileSha256": "521c876ac04938ae747126a5277c14c6eb19114a9a09c3567249a7d2ee2af5b2",
+      "demo": "highlighter-demo",
+      "demoFile": "registry/example/highlighter-demo.tsx",
+      "demoSha256": "a8d46282a2a7096bd6ba9193df67e763c53c3a1ef098361d0e05b52daec4049c",
+      "dependencies": [
+        "motion",
+        "rough-notation"
+      ]
+    },
+    {
+      "id": "animated-theme-toggler",
+      "title": "Theme Toggler",
+      "file": "registry/magicui/animated-theme-toggler.tsx",
+      "fileSha256": "5d09afdb5968e9f7f3967943c27103d727f264fdd51fa14b10a4b3130a1970a8",
+      "demo": "animated-theme-toggler-demo",
+      "demoFile": "registry/example/animated-theme-toggler-demo.tsx",
+      "demoSha256": "438ab1f4fafc0b98aa0b6f46d927efec3761467d42a3359fbaed70641741e927",
+      "dependencies": [
+        "lucide-react"
+      ]
+    },
+    {
+      "id": "light-rays",
+      "title": "Light Rays",
+      "file": "registry/magicui/light-rays.tsx",
+      "fileSha256": "e0b8d42d19a7b05b80f69bf023dadc24143d6b7b75da113bd158eddbf36d46bf",
+      "demo": "light-rays-demo",
+      "demoFile": "registry/example/light-rays-demo.tsx",
+      "demoSha256": "ae6ff9006ee7210bfd32459539f7115a26e898e1c568beac91dbb727c62e0f3e",
+      "dependencies": [
+        "motion"
+      ]
+    },
+    {
+      "id": "dotted-map",
+      "title": "Dotted Map",
+      "file": "registry/magicui/dotted-map.tsx",
+      "fileSha256": "9cf9a7edbed239b6e8cfdad588a97400d059ccf8f391d94f3cf033261a5ef7d9",
+      "demo": "dotted-map-demo-2",
+      "demoFile": "registry/example/dotted-map-demo-2.tsx",
+      "demoSha256": "07b966826083b518582652508cdc3cb36318c01a990d1ef1a4dc2edeb55d96c5",
+      "dependencies": [
+        "svg-dotted-map"
+      ]
+    },
+    {
+      "id": "backlight",
+      "title": "Backlight",
+      "file": "registry/magicui/backlight.tsx",
+      "fileSha256": "d302fbcbfa80f42cf59f3ffbf4451627f6a79d9206d6e3bc1fb3f65511515108",
+      "demo": "backlight-image-demo",
+      "demoFile": "registry/example/backlight-image-demo.tsx",
+      "demoSha256": "bbdaf2e605b5a4cef5e8c8d70477e3a57d75ebf15a4b91c27f034e6538c7ccd8",
+      "dependencies": []
+    },
+    {
+      "id": "kinetic-text",
+      "title": "Kinetic Text",
+      "file": "registry/magicui/kinetic-text.tsx",
+      "fileSha256": "a02ab6c77ae376778fec3c27b0b1c9d0d7ec0f7e0ac9434d0716eb217556c355",
+      "demo": "kinetic-text-demo",
+      "demoFile": "registry/example/kinetic-text-demo.tsx",
+      "demoSha256": "efb4f511aa9e02bda817ecab38de2a62ad6fb87b9d3fb96f3580f1ebfd4b5c9d",
+      "dependencies": []
+    },
+    {
+      "id": "text-3d-flip",
+      "title": "Text 3D Flip",
+      "file": "registry/magicui/text-3d-flip.tsx",
+      "fileSha256": "d0ec56314f80b3e1ca9a56bc2b690ab379dcda2306562849fd137ab59ea14615",
+      "demo": "text-3d-flip-demo",
+      "demoFile": "registry/example/text-3d-flip-demo.tsx",
+      "demoSha256": "0252ad2243a2970dcdf279cb398889cf859e3df09451e413f140a97f22b6d044",
+      "dependencies": [
+        "motion"
+      ]
+    },
+    {
+      "id": "floating-3d-particles",
+      "title": "Floating 3D Particles",
+      "file": "registry/magicui/floating-3d-particles.tsx",
+      "fileSha256": "0c14fcceb9f6165baad6703ce031aaf7228c1d040c87132e3cc9121e4fc14712",
+      "demo": "floating-3d-particles-demo",
+      "demoFile": "registry/example/floating-3d-particles-demo.tsx",
+      "demoSha256": "69edbd55af1360f23491af65149035994bb69f326d5566bde6f3c024fd1a4300",
+      "dependencies": []
+    },
+    {
+      "id": "dither-field",
+      "title": "Dither Field",
+      "file": "registry/magicui/dither-field.tsx",
+      "fileSha256": "e8d1becb5b116e676ee1b5a8aac91267848c0549ede7926a5a161e3c0c319d12",
+      "demo": "dither-field-demo",
+      "demoFile": "registry/example/dither-field-demo.tsx",
+      "demoSha256": "11d543cb3dacaca1a9bcb24f2839a8ab277c9f6722f0df3acfec287b45ab75e8",
+      "dependencies": []
+    }
+  ]
+}

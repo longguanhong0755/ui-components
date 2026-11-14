@@ -1,0 +1,20 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "floating-3d-particles-demo-2",
+  "title": "Floating 3D Particles Demo 2",
+  "description": "Example showing the particle field as a standalone background.",
+  "dependencies": [
+    "next-themes"
+  ],
+  "registryDependencies": [
+    "@magicui/floating-3d-particles"
+  ],
+  "files": [
+    {
+      "path": "registry/example/floating-3d-particles-demo-2.tsx",
+      "content": "\"use client\"\n\nimport { useTheme } from \"next-themes\"\n\nimport { Floating3DParticles } from \"@/registry/magicui/floating-3d-particles\"\n\nexport default function Component() {\n  const { resolvedTheme } = useTheme()\n  const color = resolvedTheme === \"dark\" ? \"#c4b5fd\" : \"#6d28d9\"\n\n  return (\n    <div className=\"bg-background relative h-[500px] w-full overflow-hidden rounded-lg border\">\n      <Floating3DParticles\n        color={color}\n        depth={0.8}\n        opacity={0.55}\n        quantity={1000}\n      />\n    </div>\n  )\n}\n",
+      "type": "registry:example"
+    }
+  ],
+  "type": "registry:example"
+}
